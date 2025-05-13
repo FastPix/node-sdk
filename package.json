@@ -1,6 +1,6 @@
 {
   "name": "@fastpix/fastpix-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "FastPix API SDK for Node.js, written in TypeScript",
   "types": "dist/index.d.ts",
   "main": "dist/index.mjs",
@@ -25,11 +25,34 @@
     "build:types": "tsc",
     "build": "npm run format && npm run build:esm && npm run build:cjs && npm run build:types"
   },
+  "keywords": [
+    "FastPix API SDK",
+    "FastPix Node.js SDK",
+    "on-demand media API",
+    "signing keys API",
+    "Video Data API",
+    "Live Video data API",
+    "CloudPlayout API",
+    "Simulcasting",
+    "media playback",
+    "live streaming",
+    "video analytics SDK",
+    "real-time video data",
+    "video streaming API",
+    "Node.js video API client",
+    "cloud video playout",
+    "media key generation",
+    "video data integration",
+    "FastPix on-demand video streaming",
+    "FastPix live streaming",
+    "video metadata API",
+    "FastPix live streaming SDK"
+  ],
   "author": "FastPix, Inc",
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^22.10.1",
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.25.4",
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"

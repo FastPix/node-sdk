@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2]
+- Updated `package.json` with keywords related to FastPix Node.js API SDK.
+
 ## [1.0.1]
 - update `README.md`
 
