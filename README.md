@@ -127,117 +127,117 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [dimensions](docs/sdks/dimensions/README.md)
+### [dimensions](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/dimensions/README.md)
 
-* [listDimensions](docs/sdks/dimensions/README.md#listdimensions) - List the dimensions
-* [listFilterValuesForDimension](docs/sdks/dimensions/README.md#listfiltervaluesfordimension) - List the filter values for a dimension
+* [listDimensions](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/dimensions/README.md#listdimensions) - List the dimensions
+* [listFilterValuesForDimension](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/dimensions/README.md#listfiltervaluesfordimension) - List the filter values for a dimension
 
-### [drmConfigurations](docs/sdks/drmconfigurations/README.md)
+### [drmConfigurations](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/drmconfigurations/README.md)
 
-* [getDrmConfiguration](docs/sdks/drmconfigurations/README.md#getdrmconfiguration) - Get list of DRM configuration IDs
-* [getDrmConfigurationById](docs/sdks/drmconfigurations/README.md#getdrmconfigurationbyid) - Get DRM configuration by ID
+* [getDrmConfiguration](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/drmconfigurations/README.md#getdrmconfiguration) - Get list of DRM configuration IDs
+* [getDrmConfigurationById](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/drmconfigurations/README.md#getdrmconfigurationbyid) - Get DRM configuration by ID
 
-### [errors](docs/sdks/errors/README.md)
+### [errors](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/errors/README.md)
 
-* [listErrors](docs/sdks/errors/README.md#listerrors) - List errors
+* [listErrors](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/errors/README.md#listerrors) - List errors
 
 
-### [inputVideo](docs/sdks/inputvideo/README.md)
+### [inputVideo](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/inputvideo/README.md)
 
-* [createMedia](docs/sdks/inputvideo/README.md#createmedia) - Create media from URL
-* [directUploadVideoMedia](docs/sdks/inputvideo/README.md#directuploadvideomedia) - Upload media from device
+* [createMedia](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/inputvideo/README.md#createmedia) - Create media from URL
+* [directUploadVideoMedia](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/inputvideo/README.md#directuploadvideomedia) - Upload media from device
 
-### [inVideoAIFeatures](docs/sdks/invideoaifeatures/README.md)
+### [inVideoAIFeatures](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md)
 
-* [updateMediaSummary](docs/sdks/invideoaifeatures/README.md#updatemediasummary) - Generate video summary
-* [updateMediaChapters](docs/sdks/invideoaifeatures/README.md#updatemediachapters) - Generate video chapters
-* [updateMediaNamedEntities](docs/sdks/invideoaifeatures/README.md#updatemedianamedentities) - Generate named entities
-* [updateMediaModeration](docs/sdks/invideoaifeatures/README.md#updatemediamoderation) - Enable video moderation
+* [updateMediaSummary](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md#updatemediasummary) - Generate video summary
+* [updateMediaChapters](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md#updatemediachapters) - Generate video chapters
+* [updateMediaNamedEntities](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md#updatemedianamedentities) - Generate named entities
+* [updateMediaModeration](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md#updatemediamoderation) - Enable video moderation
 
-### [livePlayback](docs/sdks/liveplayback/README.md)
+### [livePlayback](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md)
 
-* [createPlaybackIdOfStream](docs/sdks/liveplayback/README.md#createplaybackidofstream) - Create a playbackId
-* [deletePlaybackIdOfStream](docs/sdks/liveplayback/README.md#deleteplaybackidofstream) - Delete a playbackId
-* [getLiveStreamPlaybackId](docs/sdks/liveplayback/README.md#getlivestreamplaybackid) - Get playbackId details
+* [createPlaybackIdOfStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#createplaybackidofstream) - Create a playbackId
+* [deletePlaybackIdOfStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#deleteplaybackidofstream) - Delete a playbackId
+* [getLiveStreamPlaybackId](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#getlivestreamplaybackid) - Get playbackId details
 
-### [manageLiveStream](docs/sdks/managelivestream/README.md)
+### [manageLiveStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md)
 
-* [getAllStreams](docs/sdks/managelivestream/README.md#getallstreams) - Get all live streams
-* [getLiveStreamViewerCountById](docs/sdks/managelivestream/README.md#getlivestreamviewercountbyid) - Get stream views by ID
-* [getLiveStreamById](docs/sdks/managelivestream/README.md#getlivestreambyid) - Get stream by ID
-* [deleteLiveStream](docs/sdks/managelivestream/README.md#deletelivestream) - Delete a stream
-* [updateLiveStream](docs/sdks/managelivestream/README.md#updatelivestream) - Update a stream
-* [enableLiveStream](docs/sdks/managelivestream/README.md#enablelivestream) - Enable a stream
-* [disableLiveStream](docs/sdks/managelivestream/README.md#disablelivestream) - Disable a stream
-* [completeLiveStream](docs/sdks/managelivestream/README.md#completelivestream) - Complete a stream
+* [getAllStreams](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#getallstreams) - Get all live streams
+* [getLiveStreamViewerCountById](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#getlivestreamviewercountbyid) - Get stream views by ID
+* [getLiveStreamById](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#getlivestreambyid) - Get stream by ID
+* [deleteLiveStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#deletelivestream) - Delete a stream
+* [updateLiveStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#updatelivestream) - Update a stream
+* [enableLiveStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#enablelivestream) - Enable a stream
+* [disableLiveStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#disablelivestream) - Disable a stream
+* [completeLiveStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#completelivestream) - Complete a stream
 
-### [manageVideos](docs/sdks/managevideos/README.md)
+### [manageVideos](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md)
 
-* [listMedia](docs/sdks/managevideos/README.md#listmedia) - Get list of all media
-* [listLiveClips](docs/sdks/managevideos/README.md#listliveclips) - Get all clips of a live stream
-* [getMedia](docs/sdks/managevideos/README.md#getmedia) - Get a media by ID
-* [updatedMedia](docs/sdks/managevideos/README.md#updatedmedia) - Update a media by ID
-* [deleteMedia](docs/sdks/managevideos/README.md#deletemedia) - Delete a media by ID
-* [addMediaTrack](docs/sdks/managevideos/README.md#addmediatrack) - Add audio / subtitle track
-* [cancelUpload](docs/sdks/managevideos/README.md#cancelupload) - Cancel ongoing upload
-* [updateMediaTrack](docs/sdks/managevideos/README.md#updatemediatrack) - Update audio / subtitle track
-* [deleteMediaTrack](docs/sdks/managevideos/README.md#deletemediatrack) - Delete audio / subtitle track
-* [generateSubtitleTrack](docs/sdks/managevideos/README.md#generatesubtitletrack) - Generate track subtitle
-* [updatedSourceAccess](docs/sdks/managevideos/README.md#updatedsourceaccess) - Update the source access of a media by ID
-* [updatedMp4Support](docs/sdks/managevideos/README.md#updatedmp4support) - Update the mp4Support of a media by ID
-* [retrieveMediaInputInfo](docs/sdks/managevideos/README.md#retrievemediainputinfo) - Get info of media inputs
-* [listUploads](docs/sdks/managevideos/README.md#listuploads) - Get all unused upload URLs
-* [getMediaClips](docs/sdks/managevideos/README.md#getmediaclips) - Get all clips of a media
+* [listMedia](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#listmedia) - Get list of all media
+* [listLiveClips](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#listliveclips) - Get all clips of a live stream
+* [getMedia](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#getmedia) - Get a media by ID
+* [updatedMedia](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatedmedia) - Update a media by ID
+* [deleteMedia](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#deletemedia) - Delete a media by ID
+* [addMediaTrack](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#addmediatrack) - Add audio / subtitle track
+* [cancelUpload](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#cancelupload) - Cancel ongoing upload
+* [updateMediaTrack](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatemediatrack) - Update audio / subtitle track
+* [deleteMediaTrack](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#deletemediatrack) - Delete audio / subtitle track
+* [generateSubtitleTrack](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#generatesubtitletrack) - Generate track subtitle
+* [updatedSourceAccess](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatedsourceaccess) - Update the source access of a media by ID
+* [updatedMp4Support](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatedmp4support) - Update the mp4Support of a media by ID
+* [retrieveMediaInputInfo](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#retrievemediainputinfo) - Get info of media inputs
+* [listUploads](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#listuploads) - Get all unused upload URLs
+* [getMediaClips](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#getmediaclips) - Get all clips of a media
 
-### [metrics](docs/sdks/metrics/README.md)
+### [metrics](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md)
 
-* [listBreakdownValues](docs/sdks/metrics/README.md#listbreakdownvalues) - List breakdown values
-* [listOverallValues](docs/sdks/metrics/README.md#listoverallvalues) - List overall values
-* [getTimeseriesData](docs/sdks/metrics/README.md#gettimeseriesdata) - Get timeseries data
-* [listComparisonValues](docs/sdks/metrics/README.md#listcomparisonvalues) - List comparison values
+* [listBreakdownValues](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#listbreakdownvalues) - List breakdown values
+* [listOverallValues](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#listoverallvalues) - List overall values
+* [getTimeseriesData](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#gettimeseriesdata) - Get timeseries data
+* [listComparisonValues](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#listcomparisonvalues) - List comparison values
 
-### [playback](docs/sdks/playback/README.md)
+### [playback](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md)
 
-* [createMediaPlaybackId](docs/sdks/playback/README.md#createmediaplaybackid) - Create a playback ID
-* [deleteMediaPlaybackId](docs/sdks/playback/README.md#deletemediaplaybackid) - Delete a playback ID
-* [getPlaybackId](docs/sdks/playback/README.md#getplaybackid) - Get a playback ID
+* [createMediaPlaybackId](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#createmediaplaybackid) - Create a playback ID
+* [deleteMediaPlaybackId](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#deletemediaplaybackid) - Delete a playback ID
+* [getPlaybackId](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#getplaybackid) - Get a playback ID
 
-### [playlist](docs/sdks/playlist/README.md)
+### [playlist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md)
 
-* [createAPlaylist](docs/sdks/playlist/README.md#createaplaylist) - Create a new playlist
-* [getAllPlaylists](docs/sdks/playlist/README.md#getallplaylists) - Get all playlists
-* [getPlaylistById](docs/sdks/playlist/README.md#getplaylistbyid) - Get a playlist by ID
-* [updateAPlaylist](docs/sdks/playlist/README.md#updateaplaylist) - Update a playlist by ID
-* [deleteAPlaylist](docs/sdks/playlist/README.md#deleteaplaylist) - Delete a playlist by ID
-* [addMediaToPlaylist](docs/sdks/playlist/README.md#addmediatoplaylist) - Add media to a playlist by ID
-* [changeMediaOrderInPlaylist](docs/sdks/playlist/README.md#changemediaorderinplaylist) - Change media order in a playlist by ID
-* [deleteMediaFromPlaylist](docs/sdks/playlist/README.md#deletemediafromplaylist) - Delete media in a playlist by ID
+* [createAPlaylist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#createaplaylist) - Create a new playlist
+* [getAllPlaylists](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#getallplaylists) - Get all playlists
+* [getPlaylistById](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#getplaylistbyid) - Get a playlist by ID
+* [updateAPlaylist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#updateaplaylist) - Update a playlist by ID
+* [deleteAPlaylist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#deleteaplaylist) - Delete a playlist by ID
+* [addMediaToPlaylist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#addmediatoplaylist) - Add media to a playlist by ID
+* [changeMediaOrderInPlaylist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#changemediaorderinplaylist) - Change media order in a playlist by ID
+* [deleteMediaFromPlaylist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#deletemediafromplaylist) - Delete media in a playlist by ID
 
-### [signingKeys](docs/sdks/signingkeys/README.md)
+### [signingKeys](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md)
 
-* [createSigningKey](docs/sdks/signingkeys/README.md#createsigningkey) - Create a signing key
-* [listSigningKeys](docs/sdks/signingkeys/README.md#listsigningkeys) - Get list of signing key
-* [deleteSigningKey](docs/sdks/signingkeys/README.md#deletesigningkey) - Delete a signing key
-* [getSigningKeyById](docs/sdks/signingkeys/README.md#getsigningkeybyid) - Get signing key by ID
+* [createSigningKey](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md#createsigningkey) - Create a signing key
+* [listSigningKeys](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md#listsigningkeys) - Get list of signing key
+* [deleteSigningKey](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md#deletesigningkey) - Delete a signing key
+* [getSigningKeyById](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md#getsigningkeybyid) - Get signing key by ID
 
-### [simulcastStream](docs/sdks/simulcaststream/README.md)
+### [simulcastStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md)
 
-* [createSimulcastOfStream](docs/sdks/simulcaststream/README.md#createsimulcastofstream) - Create a simulcast
-* [deleteSimulcastOfStream](docs/sdks/simulcaststream/README.md#deletesimulcastofstream) - Delete a simulcast
-* [getSpecificSimulcastOfStream](docs/sdks/simulcaststream/README.md#getspecificsimulcastofstream) - Get a specific simulcast
-* [updateSpecificSimulcastOfStream](docs/sdks/simulcaststream/README.md#updatespecificsimulcastofstream) - Update a simulcast
+* [createSimulcastOfStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#createsimulcastofstream) - Create a simulcast
+* [deleteSimulcastOfStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#deletesimulcastofstream) - Delete a simulcast
+* [getSpecificSimulcastOfStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#getspecificsimulcastofstream) - Get a specific simulcast
+* [updateSpecificSimulcastOfStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#updatespecificsimulcastofstream) - Update a simulcast
 
-### [startLiveStream](docs/sdks/startlivestream/README.md)
+### [startLiveStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/startlivestream/README.md)
 
-* [createNewStream](docs/sdks/startlivestream/README.md#createnewstream) - Create a new stream
+* [createNewStream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/startlivestream/README.md#createnewstream) - Create a new stream
 
-### [views](docs/sdks/views/README.md)
+### [views](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md)
 
-* [listVideoViews](docs/sdks/views/README.md#listvideoviews) - List video views
-* [getVideoViewDetails](docs/sdks/views/README.md#getvideoviewdetails) - Get details of video view
-* [listByTopContent](docs/sdks/views/README.md#listbytopcontent) - List by top content
-* [getDataViewlistCurrentViewsGetTimeseriesViews](docs/sdks/views/README.md#getdataviewlistcurrentviewsgettimeseriesviews) - Get concurrent viewers timeseries
-* [getDataViewlistCurrentViewsFilter](docs/sdks/views/README.md#getdataviewlistcurrentviewsfilter) - Get concurrent viewers breakdown by dimension
+* [listVideoViews](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#listvideoviews) - List video views
+* [getVideoViewDetails](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#getvideoviewdetails) - Get details of video view
+* [listByTopContent](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#listbytopcontent) - List by top content
+* [getDataViewlistCurrentViewsGetTimeseriesViews](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#getdataviewlistcurrentviewsgettimeseriesviews) - Get concurrent viewers timeseries
+* [getDataViewlistCurrentViewsFilter](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#getdataviewlistcurrentviewsfilter) - Get concurrent viewers breakdown by dimension
 
 </details>
 
@@ -548,3 +548,4 @@ The API reference provides comprehensive documentation for all available endpoin
 ## Support
 
 If you have any queries, please reach out to **support@fastpix.io**.
+

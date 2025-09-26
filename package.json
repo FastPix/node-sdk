@@ -1,6 +1,6 @@
 {
   "name": "@fastpix/fastpix-node",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": {
     "name": "FastPix-Dev",
     "email": "devs@fastpix.io",
@@ -43,6 +43,29 @@
     "ts-node": "^10.9.2",
     "zod": "^3.20.0"
   },
+  "keywords": [
+    "FastPix API SDK",
+    "FastPix Node.js SDK",
+    "on-demand media API",
+    "signing keys API",
+    "Video Data API",
+    "Live Video data API",
+    "CloudPlayout API",
+    "Simulcasting",
+    "media playback",
+    "live streaming",
+    "video analytics SDK",
+    "real-time video data",
+    "video streaming API",
+    "Node.js video API client",
+    "cloud video playout",
+    "media key generation",
+    "video data integration",
+    "FastPix on-demand video streaming",
+    "FastPix live streaming",
+    "video metadata API",
+    "FastPix live streaming SDK"
+  ],
   "exports": {
     ".": {
       "import": {
