@@ -1,0 +1,29 @@
+# MetricsOverallDataDetails
+
+Retrieves overall values for a specified metric
+
+## Example Usage
+
+```typescript
+import { MetricsOverallDataDetails } from "@fastpix/fastpix-node/models";
+
+let value: MetricsOverallDataDetails = {
+  value: 0.740365072855583,
+  totalWatchTime: 59534302,
+  uniqueViews: 44,
+  totalViews: 195,
+  totalPlayTime: 24729470,
+  globalValue: 0.740365072855583,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                 | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           | Example                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                               | *models.MetricsOverallDataDetailsValue*                                                                                               | :heavy_minus_sign:                                                                                                                    | metric value calculated based on the applied filters.                                                                                 | 0.740365072855583                                                                                                                     |
+| `totalWatchTime`                                                                                                                      | *number*                                                                                                                              | :heavy_minus_sign:                                                                                                                    | Total time watched across all views, represented in milliseconds.                                                                     | 59534302                                                                                                                              |
+| `uniqueViews`                                                                                                                         | *number*                                                                                                                              | :heavy_minus_sign:                                                                                                                    | The count of unique viewers who interacted with the content.                                                                          | 44                                                                                                                                    |
+| `totalViews`                                                                                                                          | *number*                                                                                                                              | :heavy_minus_sign:                                                                                                                    | The total number of views recorded.                                                                                                   | 195                                                                                                                                   |
+| `totalPlayTime`                                                                                                                       | *number*                                                                                                                              | :heavy_minus_sign:                                                                                                                    | Total time spent playing the video, represented in milliseconds.                                                                      | 24729470                                                                                                                              |
+| `globalValue`                                                                                                                         | *models.GlobalValue*                                                                                                                  | :heavy_minus_sign:                                                                                                                    | A global metric value that reflects the overall performance of the specified metric across the entire dataset for the given timespan. | 0.740365072855583                                                                                                                     |

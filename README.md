@@ -1,22 +1,39 @@
-# Introduction:
+# FastPix Typescript SDK
 
-The FastPix Node.js SDK, written in typescript, simplifies integration with the FastPix platform. This SDK is designed for secure and efficient communication with the FastPix API, enabling easy management of media uploads, live streaming, and simulcasting. It is intended for use with Node.js (version >= 18).
+Type-safe and developer-friendly TypeScript SDK for integration with the FastPix platform API.
 
-# Key Features:
+# Introduction
 
-- ## Media API:
+The FastPix TypeScript SDK simplifies integration with the FastPix platform. It provides a type-safe and developer-friendly interface for secure and efficient communication with the FastPix API, enabling easy management of media uploads, live streaming, on-demand content, playlists, video analytics, and signing keys for secure access and token management. It is intended for use with Node.js (version >= 18)
 
-  - **Upload Media**: Upload media files seamlessly from URLs or devices.
-  - **Manage Media**: Perform operations such as listing, fetching, updating, and deleting media assets.
-  - **Playback IDs**: Generate and manage playback IDs for media access.
+# Key Features
 
-- ## Live API:
+## Media API
+- **Upload Media**: Seamlessly upload media files from URLs or local devices.  
+- **Manage Media**: List, fetch, update, and delete media assets with ease.  
+- **Playback IDs**: Generate and manage playback IDs for secure and flexible media access.  
+- **Advanced Media Tools**: Generate video summaries, chapters, named entities, subtitles, and perform content moderation.  
+- **Playlist Management**: Create and manage playlists, add or remove media, and adjust playback order.  
+- **DRM Support**: Configure and manage DRM settings for protected content.  
 
-  - **Create & Manage Live Streams:**: Create, list, update, and delete live streams effortlessly.
-  - **Control Stream Access**: Generate playback IDs for live streams to control and manage access.
-  - **Simulcast to Multiple Platforms**: Stream content to multiple platforms simultaneously.
+## Live API
+- **Create & Manage Live Streams**: Effortlessly create, list, update, and delete live streams.  
+- **Control Stream Access**: Generate playback IDs to manage viewer access securely.  
+- **Stream Management**: Enable, disable, or complete streams with fine-grained control.  
+- **Simulcast to Multiple Platforms**: Broadcast live content to multiple platforms simultaneously.  
 
-For detailed usage, refer to the [FastPix API Reference](https://docs.fastpix.io/reference).
+## Signing Keys
+- **Create Signing Keys**: Generate signing keys for secure token-based access.  
+- **List & Retrieve Keys**: Fetch all keys or get details for a specific key.  
+- **Manage Keys**: Delete or revoke signing keys to maintain secure access control.  
+
+## Video Data API
+- **View Analytics**: List video views, get detailed view information, and track top-performing content.  
+- **Concurrent Viewer Insights**: Access timeseries data for live and on-demand streams.  
+- **Custom Reporting**: Filter viewers by dimensions, list breakdowns, and compare metrics across datasets.  
+- **Error Tracking & Diagnostics**: Retrieve logs and analyze errors for proactive monitoring.  
+
+For detailed usage, refer to the [FastPix API Reference](https://docs.fastpix.io/reference/signingkeys-overview).
 
 # Prerequisites:
 
@@ -30,68 +47,62 @@ To get started with the **FastPix Node SDK**, ensure you have the following:
 
 # Installation:
 
-To install the SDK, you can use npm or your favourite node package manager 😉:
+You can install the FastPix TypeScript SDK using your preferred Node.js package manager:
 
 ```bash
 npm install @fastpix/fastpix-node
 ```
 
-# Basic Usage:
+### PNPM
 
-## Importing the SDK
-
-Depending on your project setup, you can import the SDK using either `import` or `require`.
-
-### Using `import` (ES Modules)
-
-If your project supports ES Modules, use the `import` syntax:
-
-```javascript
-import Client from "@fastpix/fastpix-node";
+```bash
+pnpm add @fastpix/fastpix-node
 ```
 
-### Using `require` (CommonJS)
+### Bun
 
-If you're using CommonJS modules, you can use `require`:
-
-```javascript
-const Client = require("@fastpix/fastpix-node").default;
+```bash
+bun add @fastpix/fastpix-node
 ```
 
-# Initialization:
+### Yarn
 
-Initialize the FastPix SDK with your API credentials.
-
-```javascript
-import Client from "@fastpix/fastpix-node";
-
-const fastpix = new Client({
-  accessTokenId: "your-access-token-id",
-  secretKey: "your-secret-key",
-});
+```bash
+yarn add @fastpix/fastpix-node
 ```
 
-## Example Usage:
+## Requirements
 
-Below is an example of configuring `FastPix Node SDK` into your project.
+For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+This package is published with CommonJS and ES Modules (ESM) support.
 
-```javascript
-// Using import (ES Modules)
-import Client from "@fastpix/fastpix-node";
+## Table of Contents
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Debugging](#debugging)
+  * [Detailed Usage](#detailed-usage)
+  * [Support](#support)
 
-// or using require (CommonJS)
-// const Client = require("@fastpix/fastpix-node").default;
+## SDK Example Usage
 
-// Initialize the FastPix SDK with your Access Token ID and Secret Key
-const fastpix = new Client({
-  accessTokenId: "your-access-token-id", // Replace with your Access Token ID
-  secretKey: "your-secret-key", // Replace with your Secret Key
+### Example
+
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const fastpix = new Fastpix({
+  security: {
+    username: "your-access-token",
+    password: "secret-key",
+  },
 });
 
-async function main() {
-  
-  // Create a request payload for uploading media from a URL
-  const uploadUrlRequest = {
+async function run() {
+  const result = await fastpix.inputVideo.createMedia({
     inputs: [
       {
         type: "video",
@@ -99,411 +110,441 @@ async function main() {
       },
     ],
     metadata: {
-      video_title: "Big_Buck_Bunny",
+      "key1": "value1",
     },
     accessPolicy: "public",
-  };
+  });
 
-  const response = await fastpix.uploadMediaFromUrl(uploadUrlRequest);
-  console.log("Media Id:", response.data.id);
+  console.log(result);
 }
 
-main();
+run();
+
 ```
 
-# Usage:
+## Available Resources and Operations
 
-## 1. Media Operations:
+<details open>
+<summary>Available methods</summary>
 
-### 1.1. Media Uploads:
+### [dimensions](docs/sdks/dimensions/README.md)
 
-#### Upload Media from a URL:
+* [listDimensions](docs/sdks/dimensions/README.md#listdimensions) - List the dimensions
+* [listFilterValuesForDimension](docs/sdks/dimensions/README.md#listfiltervaluesfordimension) - List the filter values for a dimension
 
-Use the `uploadMediaFromUrl` method to upload media directly from a URL. For detailed configuration options, refer to the [Create media from URL](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/UploadMedia.md#method-uploadmediafromurl) API documentation.
+### [drmConfigurations](docs/sdks/drmconfigurations/README.md)
 
-```javascript
-// Define the request payload for uploading media from a URL.
-const mediaFromUrlRequest = {
-  inputs: [
-    {
-      type: "video", // Specifies the type of media being uploaded (e.g., "video").
-      url: "https://static.fastpix.io/sample.mp4", // URL of the media file to be uploaded.
-    },
-  ],
-  metadata: {
-    video_title: "Big_Buck_Bunny", // Metadata to associate with the media, such as its title.
+* [getDrmConfiguration](docs/sdks/drmconfigurations/README.md#getdrmconfiguration) - Get list of DRM configuration IDs
+* [getDrmConfigurationById](docs/sdks/drmconfigurations/README.md#getdrmconfigurationbyid) - Get DRM configuration by ID
+
+### [errors](docs/sdks/errors/README.md)
+
+* [listErrors](docs/sdks/errors/README.md#listerrors) - List errors
+
+
+### [inputVideo](docs/sdks/inputvideo/README.md)
+
+* [createMedia](docs/sdks/inputvideo/README.md#createmedia) - Create media from URL
+* [directUploadVideoMedia](docs/sdks/inputvideo/README.md#directuploadvideomedia) - Upload media from device
+
+### [inVideoAIFeatures](docs/sdks/invideoaifeatures/README.md)
+
+* [updateMediaSummary](docs/sdks/invideoaifeatures/README.md#updatemediasummary) - Generate video summary
+* [updateMediaChapters](docs/sdks/invideoaifeatures/README.md#updatemediachapters) - Generate video chapters
+* [updateMediaNamedEntities](docs/sdks/invideoaifeatures/README.md#updatemedianamedentities) - Generate named entities
+* [updateMediaModeration](docs/sdks/invideoaifeatures/README.md#updatemediamoderation) - Enable video moderation
+
+### [livePlayback](docs/sdks/liveplayback/README.md)
+
+* [createPlaybackIdOfStream](docs/sdks/liveplayback/README.md#createplaybackidofstream) - Create a playbackId
+* [deletePlaybackIdOfStream](docs/sdks/liveplayback/README.md#deleteplaybackidofstream) - Delete a playbackId
+* [getLiveStreamPlaybackId](docs/sdks/liveplayback/README.md#getlivestreamplaybackid) - Get playbackId details
+
+### [manageLiveStream](docs/sdks/managelivestream/README.md)
+
+* [getAllStreams](docs/sdks/managelivestream/README.md#getallstreams) - Get all live streams
+* [getLiveStreamViewerCountById](docs/sdks/managelivestream/README.md#getlivestreamviewercountbyid) - Get stream views by ID
+* [getLiveStreamById](docs/sdks/managelivestream/README.md#getlivestreambyid) - Get stream by ID
+* [deleteLiveStream](docs/sdks/managelivestream/README.md#deletelivestream) - Delete a stream
+* [updateLiveStream](docs/sdks/managelivestream/README.md#updatelivestream) - Update a stream
+* [enableLiveStream](docs/sdks/managelivestream/README.md#enablelivestream) - Enable a stream
+* [disableLiveStream](docs/sdks/managelivestream/README.md#disablelivestream) - Disable a stream
+* [completeLiveStream](docs/sdks/managelivestream/README.md#completelivestream) - Complete a stream
+
+### [manageVideos](docs/sdks/managevideos/README.md)
+
+* [listMedia](docs/sdks/managevideos/README.md#listmedia) - Get list of all media
+* [listLiveClips](docs/sdks/managevideos/README.md#listliveclips) - Get all clips of a live stream
+* [getMedia](docs/sdks/managevideos/README.md#getmedia) - Get a media by ID
+* [updatedMedia](docs/sdks/managevideos/README.md#updatedmedia) - Update a media by ID
+* [deleteMedia](docs/sdks/managevideos/README.md#deletemedia) - Delete a media by ID
+* [addMediaTrack](docs/sdks/managevideos/README.md#addmediatrack) - Add audio / subtitle track
+* [cancelUpload](docs/sdks/managevideos/README.md#cancelupload) - Cancel ongoing upload
+* [updateMediaTrack](docs/sdks/managevideos/README.md#updatemediatrack) - Update audio / subtitle track
+* [deleteMediaTrack](docs/sdks/managevideos/README.md#deletemediatrack) - Delete audio / subtitle track
+* [generateSubtitleTrack](docs/sdks/managevideos/README.md#generatesubtitletrack) - Generate track subtitle
+* [updatedSourceAccess](docs/sdks/managevideos/README.md#updatedsourceaccess) - Update the source access of a media by ID
+* [updatedMp4Support](docs/sdks/managevideos/README.md#updatedmp4support) - Update the mp4Support of a media by ID
+* [retrieveMediaInputInfo](docs/sdks/managevideos/README.md#retrievemediainputinfo) - Get info of media inputs
+* [listUploads](docs/sdks/managevideos/README.md#listuploads) - Get all unused upload URLs
+* [getMediaClips](docs/sdks/managevideos/README.md#getmediaclips) - Get all clips of a media
+
+### [metrics](docs/sdks/metrics/README.md)
+
+* [listBreakdownValues](docs/sdks/metrics/README.md#listbreakdownvalues) - List breakdown values
+* [listOverallValues](docs/sdks/metrics/README.md#listoverallvalues) - List overall values
+* [getTimeseriesData](docs/sdks/metrics/README.md#gettimeseriesdata) - Get timeseries data
+* [listComparisonValues](docs/sdks/metrics/README.md#listcomparisonvalues) - List comparison values
+
+### [playback](docs/sdks/playback/README.md)
+
+* [createMediaPlaybackId](docs/sdks/playback/README.md#createmediaplaybackid) - Create a playback ID
+* [deleteMediaPlaybackId](docs/sdks/playback/README.md#deletemediaplaybackid) - Delete a playback ID
+* [getPlaybackId](docs/sdks/playback/README.md#getplaybackid) - Get a playback ID
+
+### [playlist](docs/sdks/playlist/README.md)
+
+* [createAPlaylist](docs/sdks/playlist/README.md#createaplaylist) - Create a new playlist
+* [getAllPlaylists](docs/sdks/playlist/README.md#getallplaylists) - Get all playlists
+* [getPlaylistById](docs/sdks/playlist/README.md#getplaylistbyid) - Get a playlist by ID
+* [updateAPlaylist](docs/sdks/playlist/README.md#updateaplaylist) - Update a playlist by ID
+* [deleteAPlaylist](docs/sdks/playlist/README.md#deleteaplaylist) - Delete a playlist by ID
+* [addMediaToPlaylist](docs/sdks/playlist/README.md#addmediatoplaylist) - Add media to a playlist by ID
+* [changeMediaOrderInPlaylist](docs/sdks/playlist/README.md#changemediaorderinplaylist) - Change media order in a playlist by ID
+* [deleteMediaFromPlaylist](docs/sdks/playlist/README.md#deletemediafromplaylist) - Delete media in a playlist by ID
+
+### [signingKeys](docs/sdks/signingkeys/README.md)
+
+* [createSigningKey](docs/sdks/signingkeys/README.md#createsigningkey) - Create a signing key
+* [listSigningKeys](docs/sdks/signingkeys/README.md#listsigningkeys) - Get list of signing key
+* [deleteSigningKey](docs/sdks/signingkeys/README.md#deletesigningkey) - Delete a signing key
+* [getSigningKeyById](docs/sdks/signingkeys/README.md#getsigningkeybyid) - Get signing key by ID
+
+### [simulcastStream](docs/sdks/simulcaststream/README.md)
+
+* [createSimulcastOfStream](docs/sdks/simulcaststream/README.md#createsimulcastofstream) - Create a simulcast
+* [deleteSimulcastOfStream](docs/sdks/simulcaststream/README.md#deletesimulcastofstream) - Delete a simulcast
+* [getSpecificSimulcastOfStream](docs/sdks/simulcaststream/README.md#getspecificsimulcastofstream) - Get a specific simulcast
+* [updateSpecificSimulcastOfStream](docs/sdks/simulcaststream/README.md#updatespecificsimulcastofstream) - Update a simulcast
+
+### [startLiveStream](docs/sdks/startlivestream/README.md)
+
+* [createNewStream](docs/sdks/startlivestream/README.md#createnewstream) - Create a new stream
+
+### [views](docs/sdks/views/README.md)
+
+* [listVideoViews](docs/sdks/views/README.md#listvideoviews) - List video views
+* [getVideoViewDetails](docs/sdks/views/README.md#getvideoviewdetails) - Get details of video view
+* [listByTopContent](docs/sdks/views/README.md#listbytopcontent) - List by top content
+* [getDataViewlistCurrentViewsGetTimeseriesViews](docs/sdks/views/README.md#getdataviewlistcurrentviewsgettimeseriesviews) - Get concurrent viewers timeseries
+* [getDataViewlistCurrentViewsFilter](docs/sdks/views/README.md#getdataviewlistcurrentviewsfilter) - Get concurrent viewers breakdown by dimension
+
+</details>
+
+## Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const fastpix = new Fastpix({
+  security: {
+    username: "your-access-token",
+    password: "secret-key",
   },
-  accessPolicy: "public", // Access policy for the media ("public" or "private").
-};
-
-const mediaFromUrlResponse =
-  await fastpix.uploadMediaFromUrl(mediaFromUrlRequest);
-console.log("Upload Response:", mediaFromUrlResponse);
-```
-
-#### Upload Media from a Local Device:
-
-Use the `uploadMediaFromDevice` method to obtain a `signedUrl` and upload media directly from a local device. For more details on configuration options, refer to the [Upload media from device](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/UploadMedia.md#method-uploadmediafromdevice) API documentation.
-
-```javascript
-// Define the request payload for uploading media from a device.
-const mediaFromDeviceRequest = {
-  corsOrigin: "*", // Specifies the allowed origin for CORS (Cross-Origin Resource Sharing). "*" allows all origins.
-  pushMediaSettings: {
-    accessPolicy: "private", // Sets the access policy for the uploaded media (e.g., "private" or "public").
-    optimizeAudio: true, // Enables audio optimization for the uploaded media.
-    maxResolution: "1080p", // Specifies the maximum resolution allowed for the uploaded media.
-  },
-};
-
-const mediaFromDeviceResponse = await fastpix.uploadMediaFromDevice(
-  mediaFromDeviceRequest
-);
-console.log("Upload Response:", mediaFromDeviceResponse);
-```
-
-### 1.2. Media Management:
-
-#### Get List of All Media:
-
-Use the `getAllMediaAssets` method to fetch a list of all media assets. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. Refer to the [Get list of all media](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/ManageMedia.md#method-getallmediaassets) API documentation for the accepted values.
-
-```javascript
-// Define the parameters for fetching media assets in a separate variable.
-const mediaQueryParams = {
-  limit: 20,    // Number of assets to fetch in one request (between 1 and 50)
-  offset: 5,    // Pagination starting position
-  orderBy: "asc"  // Sorting order of the assets ("asc" for ascending)
-};
-
-const mediaAssets = await fastpix.getAllMediaAssets(mediaQueryParams);
-console.log("Fetched Media Assets:", mediaAssets);
-```
-
-#### Get Media Asset by ID:
-
-Use the `getMediaAssetById` method to retrieve a specific media asset by its ID. Provide `mediaId`of the asset to fetch its details. Refer to the [Get a media by ID](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/ManageMedia.md#method-getmediaassetbyid) API documentation for more details.
-
-```javascript
-// Define the parameter for fetching a specific media asset by ID.
-const mediaQueryParams = {
-  mediaId: "media-id", // Unique identifier for the media asset to be retrieved
-};
-
-const getMediaAsset = await fastpix.getMediaAssetById(mediaQueryParams);
-console.log("Retrieved media asset by ID:", getMediaAsset);
-```
-
-#### Update Media Asset:
-
-Use the `updateMediaAsset` method to update metadata or other properties of a specific media asset. Provide the `mediaId` of the asset along with the metadata to be updated. Refer to the [Update a media by ID](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/ManageMedia.md#method-updatemediaasset) API documentation for more details.
-
-```javascript
-// Define the parameter for specifying the media asset to be updated.
-const mediaAssetToUpdate = {
-  mediaId: "media-id", // Unique identifier for the media asset to update.
-};
-
-// Define the payload with the updates to be applied to the media asset.
-const updatePayload = {
-  metadata: {
-    "key": "value", // Replace "key" and "value" with actual metadata entries.
-    "category": "nature" // Example of another metadata entry.
-  },
-};
-
-const updateMediaAsset = await fastpix.updateMediaAsset(
-  mediaAssetToUpdate,
-  updatePayload
-);
-console.log("Updated Media Asset:", updateMediaAsset);
-```
-
-#### Delete Media Asset:
-
-Use the `deleteMediaAsset` method to delete a specific media asset by its ID. Pass the `mediaId` of the asset you want to delete. Refer to the [Delete a media by ID](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/ManageMedia.md#method-deletemediaasset) API documentation for more information.
-
-```javascript
-// Define the parameter for specifying the media asset to be deleted.
-const mediaAssetToDelete = {
-  mediaId: "media-id", // Unique identifier for the media asset to delete.
-};
-
-const deleteMediaAsset = await fastpix.deleteMediaAsset(mediaAssetToDelete);
-console.log("Deleted Media Asset:", deleteMediaAsset);
-```
-
-#### Get Media Asset Info:
-
-Use the `getMediaAssetInfo` method to retrieve detailed information about a specific media asset. Pass the `mediaId` to fetch its details. Refer to the [Get info of media inputs](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/ManageMedia.md#method-getmediaassetinfo) API documentation for more details.
-
-```javascript
-// Define the parameter for specifying the media asset whose info is to be retrieved.
-const mediaInfoRequest = {
-  mediaId: "media-id", // Unique identifier for the media asset.
-};
-
-const getMediaInfo = await fastpix.getMediaAssetInfo(mediaInfoRequest);
-console.log("Media Asset Info:", getMediaInfo);
-```
-
-### 1.3. Manage Media Playback:
-
-#### Generate Media Playback ID:
-
-Use the `generateMediaPlaybackId` method to generate a playback ID for a specific media asset. You can pass an `mediaId` and configure options such as the `accessPolicy`. For detailed configuration options, refer to the [Create a playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/ManageMediaPlayback.md#method-generatemediaplaybackid) API documentation.
-
-```javascript
-// Define the mediaId and accessPolicy dynamically
-const mediaPlaybackRequest = {
-  mediaId: "media-id", // Unique identifier for the media asset.
-};
-
-const playbackOptions = {
-  accessPolicy: "public", // Can be 'public' or 'private'.
-};
-
-const playbackIdResponse = await fastpix.generateMediaPlaybackId(
-  mediaPlaybackRequest, // Pass the mediaId
-  playbackOptions // Pass the accessPolicy
-);
-
-console.log("Playback ID Creation Response:", playbackIdResponse);
-```
-
-#### Delete Media Playback ID:
-
-Use the `deleteMediaPlaybackId` method to delete one or more playback IDs associated with a specific media asset. This method allows you to specify both the `mediaId` and the `playbackId` you wish to delete. This method supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings. For detailed configuration options, refer to the [Delete a playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/VideoOnDemand/ManageMediaPlayback.md#method-deletemediaplaybackid) API documentation.
-
-```javascript
-const mediaId = "media-id"; // The ID of the media asset for which you want to delete the playback ID.
-const playbackId = "playback-id"; // For deleting a single playback ID as a string.
-
-// Example for multiple playback IDs:
-// const playbackId = ["playback-id-1", "playback-id-2"]; // Pass an array of playback IDs to delete.
-
-// Use the deleteMediaPlaybackId method to delete the specified playback ID(s).
-const deletePlaybackResponse = await fastpix.deleteMediaPlaybackId({
-  mediaId: mediaId,     // Pass the mediaId for which playback ID(s) are to be deleted
-  playbackId: playbackId, // Pass the playbackId(s) to delete. 
 });
 
-console.log("Playback ID Deletion Response:", deletePlaybackResponse);
-```
-
----
-
-## 2. Live Stream Operations:
-
-### 2.1. Start Live Stream:
-
-Use the `initiateLiveStream` method to start a live stream with specific configurations. For detailed configuration options, refer to the [Create a new stream](https://github.com/FastPix/node-sdk/blob/main/docs/Live/CreateLiveStream.md#method-initiatelivestream) API documentation.
-
-```javascript
-const liveStreamRequest = {
-  playbackSettings: {
-    accessPolicy: "public", // Defines the access level of the live stream (public or private)
-  },
-  inputMediaSettings: {
-    maxResolution: "1080p", // Set the maximum resolution of the live stream
-    reconnectWindow: 1800, // Set the duration for reconnecting the stream in seconds
-    mediaPolicy: "private", // Define media policy (private or public)
+async function run() {
+  const result = await fastpix.inputVideo.createMedia({
+    inputs: [
+      {
+        type: "video",
+        url: "https://static.fastpix.io/sample.mp4",
+      },
+    ],
     metadata: {
-      liveStream: "fp_livestream", // Custom metadata for the live stream
+      "key1": "value1",
     },
-    enableDvrMode: true, // Enable DVR mode to allow viewers to rewind the live stream
+    accessPolicy: "public",
+  }, {
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const fastpix = new Fastpix({
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
+    },
+    retryConnectionErrors: false,
   },
-};
-
-// Initiating the live stream
-const generateLiveStream = await fastpix.initiateLiveStream(liveStreamRequest);
-console.log("Live Stream initiated successfully:", generateLiveStream);
-```
-
-### 2.2. Live Stream Management:
-
-#### Get List of All Live Streams:
-
-Use the `getAllLiveStreams` method to fetch a list of all live streams. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. For detailed configuration options, refer to the [Get all live streams](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageLiveStreams.md#method-getalllivestreams) API documentation.
-
-```javascript
-const getAllLiveStreamPagination = {
-  limit: 10, // Limit the number of live streams retrieved.
-  offset: 1, // Skip a specified number of streams for pagination.
-  orderBy: "asc", // Order the results based on the specified criteria ("asc" or "desc").
-};
-
-const getAllLiveStreams = await fastpix.getAllLiveStreams(
-  getAllLiveStreamPagination
-);
-console.log("All Live Streams:", getAllLiveStreams);
-```
-
-#### Get Live Stream by ID:
-
-Use the `getLiveStreamById` method to retrieve a specific live stream by its ID. Provide the `streamId` of the stream you wish to fetch. For more details, refer to the [Get stream by ID](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageLiveStreams.md#method-getlivestreambyid) API documentation.
-
-```javascript
-const getLiveStreamById = await fastpix.getLiveStreamById({
-  streamId: "a09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream ID
-});
-
-console.log("Live Stream Details:", getLiveStreamById);
-```
-
-#### Update Live Stream:
-
-Use the `updateLiveStream` method to update a live stream's configuration. Provide the `streamId` of the stream and specify the fields you want to update. For more details, refer to the [Update a stream](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageLiveStreams.md#method-updatelivestream) API documentation.
-
-```javascript
-const updateLiveStreamRequest = {
-  metadata: {
-    livestream_name: "Game_streaming",
+  security: {
+    username: "your-access-token",
+    password: "secret-key",
   },
-  reconnectWindow: 100,
-};
-
-const updateLiveStream = await fastpix.updateLiveStream(
-  { streamId: "a09f3e958c16ed00e85bfe798abd9845" }, // Provide the stream ID for the live stream to update
-  updateLiveStreamRequest
-);
-
-console.log("Updated Live Stream:", updateLiveStream);
-```
-
-#### Delete Live Stream:
-
-Use the `deleteLiveStream` method to delete a live stream by its ID. Provide `streamId` of the stream you want to delete. For more details, refer to the [Delete a stream](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageLiveStreams.md#method-deletelivestream) API documentation.
-
-```javascript
-const deleteLiveStream = await fastpix.deleteLiveStream({
-  streamId: "a09f3e958c16ed00e85bfe798abd9845", // Provide the stream ID of the live stream to delete
-});
-console.log("Deleted Live Stream:", deleteLiveStream);
-```
-
-### 2.3. Manage Live Stream Playback:
-
-#### Generate Live Stream Playback ID:
-
-Use the `generateLiveStreamPlaybackId` method to generate a playback ID for a live stream. Replace `streamId` with the actual ID of the live stream and specify the desired `accessPolicy`. For more details, refer to the [Create a playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageStreamPlayback.md#method-generatelivestreamplaybackid) API documentation.
-
-```javascript
-const generateLiveStreamPlaybackId = await fastpix.generateLiveStreamPlaybackId(
-  { streamId: "a09f3e958c16ed00e85bfe798abd9845" }, // Pass the stream ID for which the playback ID is to be generated
-  { accessPolicy: "public" } // This can be "public" or "private" based on your needs
-);
-
-console.log("Generated Live Stream Playback ID:", generateLiveStreamPlaybackId);
-```
-
-#### Delete Live Stream Playback ID:
-
-Use the `deleteLiveStreamPlaybackId` method to remove one or more playback IDs associated with a live stream. This method allows you to specify the `streamId` of the live stream, and the `playbackId` you wish to delete. This method supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings. For more details, refer to the [Delete a playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageStreamPlayback.md#method-deletelivestreamplaybackid) API documentation.
-
-```javascript
-// Define the streamId and playbackId dynamically
-const streamId = "a09f3e958c16ed00e85bfe798abd9845";
-
-// For single playbackId, pass it as a string
-const playbackId = "632029b4-7c53-4dcf-a4d3-1884c29e90f8"; 
-
-// For multiple playbackId's, pass them as an array of strings
-// const playbackId = ["632029b4-7c53-4dcf-a4d3-1884c29e90f8", "687629b4-7c53-4dcf-a4d3-1884876540f8"]; 
-
-const deleteLiveStreamPlaybackId = await fastpix.deleteLiveStreamPlaybackId({
-  streamId: streamId, // Pass the streamId of the live stream for which playback ID is to be deleted
-  playbackId: playbackId, // Pass the playbackId as an array (even for a single ID)
 });
 
-console.log("Deleted Live Stream Playback ID:", deleteLiveStreamPlaybackId);
-```
-
-#### Get Live Stream Playback Policy:
-
-Use the `getLiveStreamPlaybackPolicy` method to retrieve the playback policy for a specific live stream playback ID. Replace `streamId` with the stream's ID and `playbackId` with the actual playback ID to fetch the policy. For more details, refer to the [Get stream's playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageStreamPlayback.md#method-getlivestreamplaybackpolicy) API documentation.
-
-```javascript
-const getLiveStreamPlaybackPolicy = await fastpix.getLiveStreamPlaybackPolicy({
-  streamId: "1c5e8abcc2080cba74f5d0ac91c7833e", // Replace with the actual stream ID
-  playbackId: "95ce872d-0b58-44f3-be72-8ed8b97ee2c9", // Replace with the actual playback ID
-});
-
-console.log("Live Stream Playback Policy:", getLiveStreamPlaybackPolicy);
-```
-
-### 2.4. Manage Live Stream Simulcast:
-
-#### Initiate Live Stream Simulcast:
-
-Use the `initiateLiveStreamSimulcast` method to create a new simulcast for a live stream. Provide the stream ID and simulcast payload with the URL and stream key. For more details, refer to the [Create a simulcast](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageStreamSimulcast.md#method-initiatelivestreamsimulcast) API documentation.
-
-```javascript
-const simulcastPayload = {
-  url: "rtmps://live.fastpix.io:443/live",
-  streamKey:
-    "46c3457fa8a579b2d4da64125a2b6e83ka09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream key
-};
-
-const generateSimulcast = await fastpix.initiateLiveStreamSimulcast(
-  {
-    streamId: "a09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream ID
-  },
-  simulcastPayload
-);
-
-console.log("Generate Simulcast:", generateSimulcast);
-```
-
-#### Get Live Stream Simulcast:
-
-Use the `getLiveStreamSimulcast` method to retrieve details of a specific simulcast stream. Provide the `streamId` and `simulcastId` of the simulcast you want to fetch. For more details, refer to the [Get a specific simulcast of a stream](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageStreamSimulcast.md#method-getlivestreamsimulcast) API documentation.
-
-```javascript
-const getLiveSimulcast = await fastpix.getLiveStreamSimulcast({
-  streamId: "a09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream ID
-  simulcastId: "7269209ff0299319b6321c9a6e7850ff", // Replace with actual simulcast ID
-});
-
-console.log("Live Stream Simulcast Details:", getLiveSimulcast);
-```
-
-#### Update Live Stream Simulcast:
-
-Use the `updateLiveStreamSimulcast` method to update the configuration of a simulcast stream. Provide the `streamId`, `simulcastId`, and the fields you want to update. For more details, refer to the [Update a specific simulcast of a stream](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageStreamSimulcast.md#method-updatelivestreamsimulcast) API documentation.
-
-```javascript
-const updateLiveSimulcast = await fastpix.updateLiveStreamSimulcast(
-  {
-    streamId: "a09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream ID
-    simulcastId: "7269209ff0299319b6321c9a6e7850ff", // Replace with actual simulcast ID
-  },
-  {
-    isEnabled: false, // Disable the simulcast stream (set to true to enable)
+async function run() {
+  const result = await fastpix.inputVideo.createMedia({
+    inputs: [
+      {
+        type: "video",
+        url: "https://static.fastpix.io/sample.mp4",
+      },
+    ],
     metadata: {
-      simulcast2: "media", // Update the metadata as needed
+      "key1": "value1",
     },
+    accessPolicy: "public",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+## Error Handling
+
+[`FastpixError`](./src/models/errors/fastpixerror.ts) is the base class for all HTTP error responses. It has the following properties:
+
+| Property            | Type       | Description                                                                             |
+| ------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| `error.message`     | `string`   | Error message                                                                           |
+| `error.statusCode`  | `number`   | HTTP response status code eg `404`                                                      |
+| `error.headers`     | `Headers`  | HTTP response headers                                                                   |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned.                                  |
+| `error.rawResponse` | `Response` | Raw HTTP response                                                                       |
+| `error.data$`       |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
+
+### Example
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+import * as errors from "@fastpix/fastpix-node/models/errors";
+
+const fastpix = new Fastpix({
+  security: {
+    username: "your-access-token",
+    password: "secret-key",
+  },
+});
+
+async function run() {
+  try {
+    const result = await fastpix.inputVideo.createMedia({
+      inputs: [
+        {
+          type: "video",
+          url: "https://static.fastpix.io/sample.mp4",
+        },
+      ],
+      metadata: {
+        "key1": "value1",
+      },
+      accessPolicy: "public",
+    });
+
+    console.log(result);
+  } catch (error) {
+    // The base class for HTTP error responses
+    if (error instanceof errors.FastpixError) {
+      console.log(error.message);
+      console.log(error.statusCode);
+      console.log(error.body);
+      console.log(error.headers);
+
+      // Depending on the method different errors may be thrown
+      if (error instanceof errors.BadRequestError) {
+        console.log(error.data$.success); // boolean
+        console.log(error.data$.error); // models.BadRequestError
+      }
+    }
   }
-);
+}
 
-console.log("Updated Live Stream Simulcast:", updateLiveSimulcast);
+run();
+
 ```
 
-#### Delete Live Stream Simulcast:
+### Error Classes
+**Primary errors:**
+* [`FastpixError`](./src/models/errors/fastpixerror.ts): The base class for HTTP error responses.
+  * [`InvalidPermissionError`](./src/models/errors/invalidpermissionerror.ts): *
+  * [`ValidationErrorResponse`](./src/models/errors/validationerrorresponse.ts): Status code `422`. *
 
-Use the `deleteLiveStreamSimulcast` method to remove a specific simulcast from a live stream. Provide the `streamId` and `simulcastId` for the simulcast you want to delete. For more details, refer to the [Delete a simulcast](https://github.com/FastPix/node-sdk/blob/main/docs/Live/ManageStreamSimulcast.md#method-deletelivestreamsimulcast) API documentation.
+<details><summary>Less common errors (28)</summary>
 
-```javascript
-const deleteLiveSimulcast = await fastpix.deleteLiveStreamSimulcast({
-  streamId: "a09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream ID
-  simulcastId: "7269209ff0299319b6321c9a6e7850ff", // Replace with actual simulcast ID
+<br />
+
+**Network errors:**
+* [`ConnectionError`](./src/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+
+
+**Inherit from [`FastpixError`](./src/models/errors/fastpixerror.ts)**:
+* [`ForbiddenError`](./src/models/errors/forbiddenerror.ts): Status code `403`. Applicable to 26 of 66 methods.*
+* [`UnauthorizedError`](./src/models/errors/unauthorizederror.ts): Applicable to 24 of 66 methods.*
+* [`MediaNotFoundError`](./src/models/errors/medianotfounderror.ts): Status code `404`. Applicable to 17 of 66 methods.*
+* [`BadRequestError`](./src/models/errors/badrequesterror.ts): Bad Request. Status code `400`. Applicable to 10 of 66 methods.*
+* [`NotFoundError`](./src/models/errors/notfounderror.ts): Status code `404`. Applicable to 8 of 66 methods.*
+* [`ViewNotFoundError`](./src/models/errors/viewnotfounderror.ts): View Not Found. Status code `404`. Applicable to 7 of 66 methods.*
+* [`LiveNotFoundError`](./src/models/errors/livenotfounderror.ts): Stream Not Found. Status code `404`. Applicable to 6 of 66 methods.*
+* [`InvalidPlaylistIdResponseError`](./src/models/errors/invalidplaylistidresponseerror.ts): Payload Validation Failed. Status code `422`. Applicable to 6 of 66 methods.*
+* [`UnAuthorizedResponseError`](./src/models/errors/unauthorizedresponseerror.ts): response for unauthorized request. Status code `401`. Applicable to 4 of 66 methods.*
+* [`ForbiddenResponseError`](./src/models/errors/forbiddenresponseerror.ts): response for forbidden request. Status code `403`. Applicable to 4 of 66 methods.*
+* [`TrackDuplicateRequestError`](./src/models/errors/trackduplicaterequesterror.ts): Duplicate language name. Status code `400`. Applicable to 3 of 66 methods.*
+* [`NotFoundErrorSimulcast`](./src/models/errors/notfounderrorsimulcast.ts): Stream/Simulcast Not Found. Status code `404`. Applicable to 3 of 66 methods.*
+* [`MediaOrPlaybackNotFoundError`](./src/models/errors/mediaorplaybacknotfounderror.ts): Status code `404`. Applicable to 2 of 66 methods.*
+* [`NotFoundErrorPlaybackId`](./src/models/errors/notfounderrorplaybackid.ts): Status code `404`. Applicable to 2 of 66 methods.*
+* [`SigningKeyNotFoundError`](./src/models/errors/signingkeynotfounderror.ts): Bad Request. Status code `404`. Applicable to 2 of 66 methods.*
+* [`DuplicateMp4SupportError`](./src/models/errors/duplicatemp4supporterror.ts): Mp4Support value already exists. Status code `400`. Applicable to 1 of 66 methods.*
+* [`TrialPlanRestrictionError`](./src/models/errors/trialplanrestrictionerror.ts): Bad Request – Stream is either already enabled or cannot be enabled on trial plan. Status code `400`. Applicable to 1 of 66 methods.*
+* [`StreamAlreadyEnabledError`](./src/models/errors/streamalreadyenablederror.ts): Bad Request – Stream is either already enabled or cannot be enabled on trial plan. Status code `400`. Applicable to 1 of 66 methods.*
+* [`StreamAlreadyDisabledError`](./src/models/errors/streamalreadydisablederror.ts): Stream already disabled. Status code `400`. Applicable to 1 of 66 methods.*
+* [`SimulcastUnavailableError`](./src/models/errors/simulcastunavailableerror.ts): Simulcast is not available for trial streams. Status code `400`. Applicable to 1 of 66 methods.*
+* [`MediaClipNotFoundError`](./src/models/errors/mediaclipnotfounderror.ts): media workspace relation not found. Status code `404`. Applicable to 1 of 66 methods.*
+* [`DuplicateReferenceIdErrorResponse`](./src/models/errors/duplicatereferenceiderrorresponse.ts): Displays the result of the request. Status code `409`. Applicable to 1 of 66 methods.*
+* [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+
+</details>
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
+
+## Server Selection
+
+### Override Server URL Per-Client
+
+The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const fastpix = new Fastpix({
+  serverURL: "https://api.fastpix.io/v1/",
+  security: {
+    username: "your-access-token",
+    password: "secret-key",
+  },
 });
 
-console.log("Deleted Live Stream Simulcast:", deleteLiveSimulcast);
+async function run() {
+  const result = await fastpix.inputVideo.createMedia({
+    inputs: [
+      {
+        type: "video",
+        url: "https://static.fastpix.io/sample.mp4",
+      },
+    ],
+    metadata: {
+      "key1": "value1",
+    },
+    accessPolicy: "public",
+  });
+
+  console.log(result);
+}
+
+run();
+
 ```
 
-## Detailed Usage:
+## Custom HTTP Client
+
+The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). This
+client is a thin wrapper around `fetch` and provides the ability to attach hooks
+around the request lifecycle that can be used to modify the request or handle
+errors and response.
+
+The `HTTPClient` constructor takes an optional `fetcher` argument that can be
+used to integrate a third-party HTTP client or when writing tests to mock out
+the HTTP client and feed in fixtures.
+
+The following example shows how to use the `"beforeRequest"` hook to to add a
+custom header and a timeout to requests and how to use the `"requestError"` hook
+to log errors:
+
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+import { HTTPClient } from "@fastpix/fastpix-node/lib/http";
+
+const httpClient = new HTTPClient({
+  // fetcher takes a function that has the same signature as native `fetch`.
+  fetcher: (request) => {
+    return fetch(request);
+  }
+});
+
+httpClient.addHook("beforeRequest", (request) => {
+  const nextRequest = new Request(request, {
+    signal: request.signal || AbortSignal.timeout(5000)
+  });
+
+  nextRequest.headers.set("x-custom-header", "custom value");
+
+  return nextRequest;
+});
+
+httpClient.addHook("requestError", (error, request) => {
+  console.group("Request Error");
+  console.log("Reason:", `${error}`);
+  console.log("Endpoint:", `${request.method} ${request.url}`);
+  console.groupEnd();
+});
+
+const sdk = new Fastpix({ httpClient: httpClient });
+```
+
+## Debugging
+
+You can setup your SDK to emit debug logs for SDK requests and responses.
+
+You can pass a logger that matches `console`'s interface as an SDK option.
+
+Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const sdk = new Fastpix({ debugLogger: console });
+```
+
+You can also enable a default debug logger by setting an environment variable `FASTPIX_DEBUG` to true.
+
+## Detailed Usage
 
 For a complete understanding of each API's functionality, including request and response details, parameter descriptions, and additional examples, please refer to the [FastPix API Reference](https://docs.fastpix.io/reference/signingkeys-overview).
 
 The API reference provides comprehensive documentation for all available endpoints and features, ensuring developers can integrate and utilize FastPix APIs efficiently.
+
+## Support
+
+If you have any queries, please reach out to **support@fastpix.io**.

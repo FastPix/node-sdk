@@ -1,0 +1,20 @@
+{
+  "name": "@fastpix/fastpix-node-examples",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:parent": "cd .. && npm i && npm run build && cd -",
+    "build:examples": "npm i",
+    "build": "npm run build:parent && npm run build:examples"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "dotenv": "^16.4.5",
+    "tsx": "^4.19.2"
+  },
+  "dependencies": {
+    "@fastpix/fastpix-node": "file:..",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}

@@ -1,60 +1,129 @@
 {
   "name": "@fastpix/fastpix-node",
-  "version": "1.0.2",
-  "description": "FastPix API SDK for Node.js, written in TypeScript",
-  "types": "dist/index.d.ts",
-  "main": "dist/index.mjs",
-  "type": "commonjs",
-  "files": [
-    "dist/*",
-    "types/*",
-    "docs/*"
-  ],
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
+  "version": "2.0.0",
+  "author": {
+    "name": "FastPix-Dev",
+    "email": "devs@fastpix.io",
+    "url": "https://www.fastpix.io/"
+  },
+  "license": "Apache-2.0",
+  "type": "module",
+  "tshy": {
+    "sourceDialects": [
+      "@fastpix/fastpix-node/source"
+    ],
+    "exports": {
+      ".": "./src/index.ts",
+      "./package.json": "./package.json",
+      "./types": "./src/types/index.ts",
+      "./models/errors": "./src/models/errors/index.ts",
+      "./models": "./src/models/index.ts",
+      "./models/operations": "./src/models/operations/index.ts",
+      "./*.js": "./src/*.ts",
+      "./*": "./src/*.ts"
     }
   },
+  "sideEffects": false,
   "scripts": {
-    "format": "prettier --write \"src/**/*.ts\"",
-    "build:cjs": "esbuild src/index.ts --bundle --outfile=dist/index.cjs --platform=node --format=cjs",
-    "build:esm": "esbuild src/index.ts --bundle --outfile=dist/index.mjs --platform=node --format=esm",
-    "build:types": "tsc",
-    "build": "npm run format && npm run build:esm && npm run build:cjs && npm run build:types"
+    "lint": "eslint --cache --max-warnings=0 src",
+    "build": "tshy",
+    "test": "node --test --enable-source-maps --loader ts-node/esm tests/**/*.test.ts",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [
-    "FastPix API SDK",
-    "FastPix Node.js SDK",
-    "on-demand media API",
-    "signing keys API",
-    "Video Data API",
-    "Live Video data API",
-    "CloudPlayout API",
-    "Simulcasting",
-    "media playback",
-    "live streaming",
-    "video analytics SDK",
-    "real-time video data",
-    "video streaming API",
-    "Node.js video API client",
-    "cloud video playout",
-    "media key generation",
-    "video data integration",
-    "FastPix on-demand video streaming",
-    "FastPix live streaming",
-    "video metadata API",
-    "FastPix live streaming SDK"
-  ],
-  "author": "FastPix, Inc",
-  "license": "Apache-2.0",
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "esbuild": "^0.25.4",
-    "prettier": "^3.4.2",
+    "@eslint/js": "^9.19.0",
+    "@types/node": "^24.5.2",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
+    "tshy": "^2.0.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.26.0"
+  },
+  "dependencies": {
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
-  }
+    "zod": "^3.20.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "@fastpix/fastpix-node/source": "./src/index.ts",
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    },
+    "./package.json": "./package.json",
+    "./types": {
+      "import": {
+        "@fastpix/fastpix-node/source": "./src/types/index.ts",
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/types/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/types/index.d.ts",
+        "default": "./dist/commonjs/types/index.js"
+      }
+    },
+    "./models/errors": {
+      "import": {
+        "@fastpix/fastpix-node/source": "./src/models/errors/index.ts",
+        "types": "./dist/esm/models/errors/index.d.ts",
+        "default": "./dist/esm/models/errors/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/models/errors/index.d.ts",
+        "default": "./dist/commonjs/models/errors/index.js"
+      }
+    },
+    "./models": {
+      "import": {
+        "@fastpix/fastpix-node/source": "./src/models/index.ts",
+        "types": "./dist/esm/models/index.d.ts",
+        "default": "./dist/esm/models/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/models/index.d.ts",
+        "default": "./dist/commonjs/models/index.js"
+      }
+    },
+    "./models/operations": {
+      "import": {
+        "@fastpix/fastpix-node/source": "./src/models/operations/index.ts",
+        "types": "./dist/esm/models/operations/index.d.ts",
+        "default": "./dist/esm/models/operations/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/models/operations/index.d.ts",
+        "default": "./dist/commonjs/models/operations/index.js"
+      }
+    },
+    "./*.js": {
+      "import": {
+        "@fastpix/fastpix-node/source": "./src/*.ts",
+        "types": "./dist/esm/*.d.ts",
+        "default": "./dist/esm/*.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/*.d.ts",
+        "default": "./dist/commonjs/*.js"
+      }
+    },
+    "./*": {
+      "import": {
+        "@fastpix/fastpix-node/source": "./src/*.ts",
+        "types": "./dist/esm/*.d.ts",
+        "default": "./dist/esm/*.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/*.d.ts",
+        "default": "./dist/commonjs/*.js"
+      }
+    }
+  },
+  "main": "./dist/commonjs/index.js",
+  "types": "./dist/commonjs/index.d.ts",
+  "module": "./dist/esm/index.js"
 }
