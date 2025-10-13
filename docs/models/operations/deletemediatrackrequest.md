@@ -6,8 +6,8 @@
 import { DeleteMediaTrackRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: DeleteMediaTrackRequest = {
-  mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-  trackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+  mediaId: "your-media-id",
+  trackId: "your-track-id",
 };
 ```
 

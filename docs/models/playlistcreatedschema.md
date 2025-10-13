@@ -8,19 +8,19 @@ Displays the result of the request.
 import { PlaylistCreatedSchema } from "@fastpix/fastpix-node/models";
 
 let value: PlaylistCreatedSchema = {
-  id: "e3dfdf15-16bb-4835-98b9-484c1e4320cc",
+  id: "your-playlist-id",
   mediaList: [
     {
       createdAt: new Date("2025-03-21T05:58:38.000708Z"),
       duration: "00:00:10",
-      id: "942e0ced-146b-487e-988f-6de578de1000",
+      id: "your-media-id",
       sourceResolution: "1080p",
       status: "Ready",
       thumbnail:
         "https://venus-images.fastpix.dev/ff31b32e-4979-4d2b-ad2a-685af43c9902/thumbnail.png",
     },
   ],
-  workspaceId: "d760b903-86ef-44d6-9b73-334130e0cf2d",
+  workspaceId: "your-workspace-id",
   createdAt: new Date("2025-06-04T13:29:39.409886Z"),
   updatedAt: new Date("2025-06-04T13:29:39.409886Z"),
   mediaCount: 3,

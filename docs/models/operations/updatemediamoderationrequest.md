@@ -6,7 +6,7 @@
 import { UpdateMediaModerationRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: UpdateMediaModerationRequest = {
-  mediaId: "0cec3c88-c69d-4232-9b96-f0976327fa2d",
+  mediaId: "your-media-id",
   requestBody: {
     moderation: {
       type: "video",

@@ -57,7 +57,7 @@ async function run() {
   const result = await fastpix.views.listVideoViews({
     timespan: "7:days",
     filterby: "browser_name:Chrome",
-    viewerId: "09a78f7d-02ee-44f5-aa39-1b268ed2c270",
+    viewerId: "your-viewer-id",
     errorCode: 1002,
   });
 
@@ -88,7 +88,7 @@ async function run() {
   const res = await viewsListVideoViews(fastpix, {
     timespan: "7:days",
     filterby: "browser_name:Chrome",
-    viewerId: "09a78f7d-02ee-44f5-aa39-1b268ed2c270",
+    viewerId: "your-viewer-id",
     errorCode: 1002,
   });
   if (res.ok) {

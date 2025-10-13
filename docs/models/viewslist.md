@@ -6,7 +6,7 @@
 import { ViewsList } from "@fastpix/fastpix-node/models";
 
 let value: ViewsList = {
-  viewId: "550e8400-e29b-41d4-a716-446655440000",
+  viewId: "your-view-id",
   operatingSystem: "macOs",
   application: "chrome",
   viewStartTime: "2023-12-06T08:04:14Z",

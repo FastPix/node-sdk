@@ -45,10 +45,10 @@ const fastpix = new Fastpix({
 
 async function run() {
   const result = await fastpix.playback.createMediaPlaybackId({
-    mediaId: "dbb8a39a-e4a5-4120-9f22-22f603f1446e",
+    mediaId: "your-media-id",
     requestBody: {
       accessPolicy: "public",
-      drmConfigurationId: "123e4567-e89b-12d3-a456-426614174000",
+      drmConfigurationId: "your-drm-configuration-id",
       resolution: "1080p",
     },
   });
@@ -78,10 +78,10 @@ const fastpix = new FastpixCore({
 
 async function run() {
   const res = await playbackCreateMediaPlaybackId(fastpix, {
-    mediaId: "dbb8a39a-e4a5-4120-9f22-22f603f1446e",
+    mediaId: "your-media-id",
     requestBody: {
       accessPolicy: "public",
-      drmConfigurationId: "123e4567-e89b-12d3-a456-426614174000",
+      drmConfigurationId: "your-drm-configuration-id",
       resolution: "1080p",
     },
   });
@@ -150,8 +150,8 @@ const fastpix = new Fastpix({
 
 async function run() {
   const result = await fastpix.playback.deleteMediaPlaybackId({
-    mediaId: "dbb8a39a-e4a5-4120-9f22-22f603f1446e",
-    playbackId: "dbb8a39a-e4a5-4120-9f22-22f603f1446e",
+    mediaId: "your-media-id",
+    playbackId: "your-playback-id",
   });
 
   console.log(result);
@@ -179,8 +179,8 @@ const fastpix = new FastpixCore({
 
 async function run() {
   const res = await playbackDeleteMediaPlaybackId(fastpix, {
-    mediaId: "dbb8a39a-e4a5-4120-9f22-22f603f1446e",
-    playbackId: "dbb8a39a-e4a5-4120-9f22-22f603f1446e",
+    mediaId: "your-media-id",
+    playbackId: "your-playback-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -243,8 +243,8 @@ const fastpix = new Fastpix({
 
 async function run() {
   const result = await fastpix.playback.getPlaybackId({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-    playbackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
+    playbackId: "your-playback-id",
   });
 
   console.log(result);
@@ -272,8 +272,8 @@ const fastpix = new FastpixCore({
 
 async function run() {
   const res = await playbackGetPlaybackId(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-    playbackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
+    playbackId: "your-playback-id",
   });
   if (res.ok) {
     const { value: result } = res;

@@ -6,8 +6,8 @@
 import { DeleteMediaPlaybackIdRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: DeleteMediaPlaybackIdRequest = {
-  mediaId: "dbb8a39a-e4a5-4120-9f22-22f603f1446e",
-  playbackId: "dbb8a39a-e4a5-4120-9f22-22f603f1446e",
+  mediaId: "your-media-id",
+  playbackId: "your-playback-id",
 };
 ```
 

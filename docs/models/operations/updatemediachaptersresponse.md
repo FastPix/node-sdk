@@ -10,7 +10,7 @@ import { UpdateMediaChaptersResponse } from "@fastpix/fastpix-node/models/operat
 let value: UpdateMediaChaptersResponse = {
   success: true,
   data: {
-    mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+    mediaId: "your-media-id",
   },
 };
 ```

@@ -6,7 +6,7 @@
 import { PlaylistItem } from "@fastpix/fastpix-node/models";
 
 let value: PlaylistItem = {
-  id: "db6e860f-cb57-43dd-8acf-39c9effd5608",
+  id: "your-playlist-id",
   name: "playlist1",
   type: "smart",
   referenceId: "a111dfdfdafsdfe",

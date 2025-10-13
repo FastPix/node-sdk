@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [2.0.2]
+- Adjusted the code samples in the README.md
+- Modified `getDrmConfiguration` method as a bug fix.
+
+## [2.0.1]
 - Added keywords to `package.json` and updated the README.md redirection link.
 
 ## [2.0.0] - Major Feature Release

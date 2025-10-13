@@ -28,7 +28,7 @@ let value: PatchResponseDTO = {
     },
     playbackIds: [
       {
-        id: "4e43ec52-4775-4f68-a3ff-a57d8a59bba8",
+        id: "your-playback-id",
         accessPolicy: "public",
       },
     ],

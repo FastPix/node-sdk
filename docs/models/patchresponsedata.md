@@ -20,7 +20,7 @@ let value: PatchResponseData = {
   },
   playbackIds: [
     {
-      id: "68b7ac0f-2504-4dd5-b7b4-d84ab4fee1bd",
+      id: "your-playback-id",
       accessPolicy: "public",
     },
   ],

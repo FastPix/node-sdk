@@ -1,0 +1,51 @@
+{
+  "name": "@fastpix/fastpix-node-samples",
+  "version": "1.0.0",
+  "description": "Sample code demonstrating FastPix Node.js SDK usage",
+  "type": "module",
+  "scripts": {
+    "build": "cd .. && npm run build",
+    "media": "npx tsx media/*.ts",
+    "live": "npx tsx live/*.ts",
+    "analytics": "npx tsx analytics/*.ts",
+    "ai": "npx tsx ai/*.ts",
+    "security": "npx tsx security/*.ts",
+    "all": "npx tsx */*.ts",
+    "input-video": "npx tsx media/input-video.ts",
+    "manage-videos": "npx tsx media/manage-videos.ts",
+    "playback": "npx tsx media/playback.ts",
+    "playlist": "npx tsx media/playlist.ts",
+    "start-live-stream": "npx tsx live/start-live-stream.ts",
+    "manage-live-stream": "npx tsx live/manage-live-stream.ts",
+    "live-playback": "npx tsx live/live-playback.ts",
+    "views": "npx tsx analytics/views.ts",
+    "metrics": "npx tsx analytics/metrics.ts",
+    "dimensions": "npx tsx analytics/dimensions.ts",
+    "errors": "npx tsx analytics/errors.ts",
+    "ai-features": "npx tsx ai/ai-features.ts",
+    "signing-keys": "npx tsx security/signing-keys.ts",
+    "drm-configurations": "npx tsx security/drm-configurations.ts"
+  },
+  "keywords": [
+    "fastpix",
+    "video",
+    "streaming",
+    "sdk",
+    "samples",
+    "examples"
+  ],
+  "author": "FastPix",
+  "license": "MIT",
+  "dependencies": {
+    "@fastpix/fastpix-node": "file:..",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

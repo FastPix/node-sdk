@@ -20,7 +20,7 @@ export type GetDrmConfigurationRequest = {
  */
 export type GetDrmConfigurationResponse = {
   success?: boolean | undefined;
-  data?: Array<models.DrmIdResponse> | undefined;
+  data?: models.DrmIdResponse | undefined;
   /**
    * Pagination organizes content into pages for better readability and navigation.
    */
@@ -91,14 +91,14 @@ export const GetDrmConfigurationResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   success: z.boolean().optional(),
-  data: z.array(models.DrmIdResponse$inboundSchema).optional(),
+  data: models.DrmIdResponse$inboundSchema.optional(),
   pagination: models.Pagination$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetDrmConfigurationResponse$Outbound = {
   success?: boolean | undefined;
-  data?: Array<models.DrmIdResponse$Outbound> | undefined;
+  data?: models.DrmIdResponse$Outbound | undefined;
   pagination?: models.Pagination$Outbound | undefined;
 };
 
@@ -109,7 +109,7 @@ export const GetDrmConfigurationResponse$outboundSchema: z.ZodType<
   GetDrmConfigurationResponse
 > = z.object({
   success: z.boolean().optional(),
-  data: z.array(models.DrmIdResponse$outboundSchema).optional(),
+  data: models.DrmIdResponse$outboundSchema.optional(),
   pagination: models.Pagination$outboundSchema.optional(),
 });
 

@@ -10,7 +10,7 @@ import { UpdateMediaSummaryResponse } from "@fastpix/fastpix-node/models/operati
 let value: UpdateMediaSummaryResponse = {
   success: true,
   data: {
-    mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+    mediaId: "your-media-id",
   },
 };
 ```

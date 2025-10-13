@@ -6,7 +6,7 @@
 import { GetMediaClipsRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: GetMediaClipsRequest = {
-  sourceMediaId: "fc733e3f-2fba-4c3d-9388-2511dc50d15f",
+  sourceMediaId: "your-source-media-id",
   offset: 5,
   limit: 20,
 };

@@ -6,7 +6,7 @@
 import { SummaryResponse } from "@fastpix/fastpix-node/models";
 
 let value: SummaryResponse = {
-  mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+  mediaId: "your-media-id",
   isGeneratedSummary: true,
 };
 ```
