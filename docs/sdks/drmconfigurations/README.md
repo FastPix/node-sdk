@@ -31,9 +31,9 @@ Related guide: <a href="https://docs.fastpix.io/docs/secure-playback-with-drm">M
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -57,9 +57,9 @@ import { drmConfigurationsGetDRMConfiguration } from "@fastpix/fastpix-node/func
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -118,15 +118,15 @@ Related guide: <a href="https://docs.fastpix.io/docs/secure-playback-with-drm">M
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.drmConfigurations.getDrmConfigurationById({
-    drmConfigurationId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    drmConfigurationId: "your-drm-configuration-id",
   });
 
   console.log(result);
@@ -146,15 +146,15 @@ import { drmConfigurationsGetDRMConfigurationById } from "@fastpix/fastpix-node/
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await drmConfigurationsGetDRMConfigurationById(fastpix, {
-    drmConfigurationId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    drmConfigurationId: "your-drm-configuration-id",
   });
   if (res.ok) {
     const { value: result } = res;
