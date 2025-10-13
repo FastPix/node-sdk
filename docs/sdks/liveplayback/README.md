@@ -26,15 +26,15 @@ Generates a new playback ID for the live stream, allowing viewers to access the 
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.livePlayback.createPlaybackIdOfStream({
-    streamId: "8717422d89288ad5958d4a86e9afe2a2",
+    streamId: "live-stream-id",
     playbackIdRequest: {
       accessPolicy: "public",
     },
@@ -57,10 +57,10 @@ import { livePlaybackCreatePlaybackIdOfStream } from "@fastpix/fastpix-node/func
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
-  },
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
+  },  
 });
 
 async function run() {
@@ -118,16 +118,16 @@ A streaming service wants to prevent new users from joining a live stream that i
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.livePlayback.deletePlaybackIdOfStream({
-    streamId: "8717422d89288ad5958d4a86e9afe2a2",
-    playbackId: "88b7ac0f-2504-4dd5-b7b4-d84ab4fee1bd",
+    streamId: "your-live-stream-id",
+    playbackId: "your-playback-id",
   });
 
   console.log(result);
@@ -147,16 +147,16 @@ import { livePlaybackDeletePlaybackIdOfStream } from "@fastpix/fastpix-node/func
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await livePlaybackDeletePlaybackIdOfStream(fastpix, {
-    streamId: "8717422d89288ad5958d4a86e9afe2a2",
-    playbackId: "88b7ac0f-2504-4dd5-b7b4-d84ab4fee1bd",
+    streamId: "your-live-stream-id",
+    playbackId: "your-playback-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -206,16 +206,16 @@ A developer needs to confirm the access policy of the playback ID to ensure whet
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.livePlayback.getLiveStreamPlaybackId({
-    streamId: "61a264dcc447b63da6fb79ef925cd76d",
-    playbackId: "61a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-live-stream-id",
+    playbackId: "your-playback-id",
   });
 
   console.log(result);
@@ -235,16 +235,16 @@ import { livePlaybackGetLiveStreamPlaybackId } from "@fastpix/fastpix-node/funcs
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await livePlaybackGetLiveStreamPlaybackId(fastpix, {
-    streamId: "61a264dcc447b63da6fb79ef925cd76d",
-    playbackId: "61a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-live-stream-id",
+    playbackId: "your-playback-id",
   });
   if (res.ok) {
     const { value: result } = res;
