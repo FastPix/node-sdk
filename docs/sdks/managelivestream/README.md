@@ -31,17 +31,37 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.manageLiveStream.getAllStreams({
-    limit: 20,
-  });
-
-  console.log(result);
+  try {
+    console.log('Starting FastPix Server...');
+    
+    // Get all streams first (safer operation)
+    console.log('Getting all streams...');
+    const streams = await fastpix.manageLiveStream.getAllStreams({
+      limit: 20,
+    });
+    console.log('Available streams:', JSON.stringify(streams, null, 2));
+    
+    // Create a playback ID instead of completing the stream
+    console.log('Creating playback ID...');
+    const playbackResult = await fastpix.livePlayback.createPlaybackIdOfStream({
+      streamId: "your-stream-id",
+      playbackIdRequest: {
+        accessPolicy: "public",
+      },
+    });
+    console.log('Playback ID created:', JSON.stringify(playbackResult, null, 2));
+    
+    console.log('Server operations completed successfully!');
+  } catch (error) {
+    console.error('Server error:', error.message);
+    console.error('Error details:', error);
+  }
 }
 
 run();
@@ -59,8 +79,8 @@ import { manageLiveStreamGetAllStreams } from "@fastpix/fastpix-node/funcs/manag
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -149,14 +169,15 @@ import { manageLiveStreamGetLiveStreamViewerCountById } from "@fastpix/fastpix-n
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
+  },
   },
 });
 
 async function run() {
   const res = await manageLiveStreamGetLiveStreamViewerCountById(fastpix, {
-    streamId: "61a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -238,14 +259,14 @@ import { manageLiveStreamGetLiveStreamById } from "@fastpix/fastpix-node/funcs/m
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageLiveStreamGetLiveStreamById(fastpix, {
-    streamId: "61a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -302,14 +323,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageLiveStream.deleteLiveStream({
-    streamId: "8717422d89288ad5958d4a86e9afe2a2",
+    streamId: "your-stream-id",
   });
 
   console.log(result);
@@ -329,15 +350,15 @@ import { manageLiveStreamDeleteLiveStream } from "@fastpix/fastpix-node/funcs/ma
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageLiveStreamDeleteLiveStream(fastpix, {
-    streamId: "8717422d89288ad5958d4a86e9afe2a2",
+    streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -395,15 +416,15 @@ This endpoint allows you to modify the parameters of an existing live stream, su
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageLiveStream.updateLiveStream({
-    streamId: "91a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
     patchLiveStreamRequest: {
       metadata: {
         "livestream_name": "Gaming_stream",
@@ -429,15 +450,15 @@ import { manageLiveStreamUpdateLiveStream } from "@fastpix/fastpix-node/funcs/ma
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageLiveStreamUpdateLiveStream(fastpix, {
-    streamId: "91a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-key",
     patchLiveStreamRequest: {
       metadata: {
         "livestream_name": "Gaming_stream",
@@ -501,14 +522,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageLiveStream.enableLiveStream({
-    streamId: "91a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
 
   console.log(result);
@@ -528,15 +549,15 @@ import { manageLiveStreamEnableLiveStream } from "@fastpix/fastpix-node/funcs/ma
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageLiveStreamEnableLiveStream(fastpix, {
-    streamId: "91a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -593,15 +614,15 @@ Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage strea
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageLiveStream.disableLiveStream({
-    streamId: "91a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
 
   console.log(result);
@@ -621,15 +642,15 @@ import { manageLiveStreamDisableLiveStream } from "@fastpix/fastpix-node/funcs/m
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageLiveStreamDisableLiveStream(fastpix, {
-    streamId: "91a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -687,15 +708,15 @@ Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage strea
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageLiveStream.completeLiveStream({
-    streamId: "91a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
 
   console.log(result);
@@ -715,15 +736,15 @@ import { manageLiveStreamCompleteLiveStream } from "@fastpix/fastpix-node/funcs/
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageLiveStreamCompleteLiveStream(fastpix, {
-    streamId: "91a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
