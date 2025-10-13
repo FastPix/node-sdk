@@ -65,7 +65,7 @@ const fastpix = new FastpixCore({
 
 async function run() {
   const res = await livePlaybackCreatePlaybackIdOfStream(fastpix, {
-    streamId: "8717422d89288ad5958d4a86e9afe2a2",
+    streamId: "live-stream-id",
     playbackIdRequest: {
       accessPolicy: "public",
     },
