@@ -24,9 +24,9 @@ Related guides: <a href="https://docs.fastpix.io/page/what-video-data-do-we-capt
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -50,9 +50,9 @@ import { dimensionsListDimensions } from "@fastpix/fastpix-node/funcs/dimensions
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -113,8 +113,8 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -142,9 +142,9 @@ import { dimensionsListFilterValuesForDimension } from "@fastpix/fastpix-node/fu
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
