@@ -121,14 +121,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageLiveStream.getLiveStreamViewerCountById({
-    streamId: "61a264dcc447b63da6fb79ef925cd76d",
+    streamId: "your-stream-id",
   });
 
   console.log(result);
