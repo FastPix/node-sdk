@@ -35,9 +35,9 @@ Related guide: <a href="https://docs.fastpix.io/docs/track-playback-errors">Trou
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -65,8 +65,8 @@ import { errorsListErrors } from "@fastpix/fastpix-node/funcs/errorsListErrors.j
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
