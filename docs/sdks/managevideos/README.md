@@ -44,8 +44,8 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -72,8 +72,8 @@ import { manageVideosListMedia } from "@fastpix/fastpix-node/funcs/manageVideosL
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -131,8 +131,8 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -159,15 +159,15 @@ import { manageVideosListLiveClips } from "@fastpix/fastpix-node/funcs/manageVid
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosListLiveClips(fastpix, {
-    livestreamId: "b6f71268143f70c798a7851a0a92dcbf",
+    livestreamId: "your-live-stream-id",
     limit: 20,
   });
   if (res.ok) {
@@ -235,15 +235,15 @@ Suppose your platform provides users with an interface where they can manage the
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.getMedia({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
   });
 
   console.log(result);
@@ -264,14 +264,14 @@ import { manageVideosGetMedia } from "@fastpix/fastpix-node/funcs/manageVideosGe
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosGetMedia(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -334,14 +334,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.updatedMedia({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
     requestBody: {
       metadata: {
         "metadata": "{\"user\":\"fastpix_admin\"}",
@@ -367,14 +367,14 @@ import { manageVideosUpdatedMedia } from "@fastpix/fastpix-node/funcs/manageVide
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosUpdatedMedia(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
     requestBody: {
       metadata: {
         "metadata": "{\"user\":\"fastpix_admin\"}",
@@ -441,14 +441,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.deleteMedia({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
   });
 
   console.log(result);
@@ -469,8 +469,8 @@ import { manageVideosDeleteMedia } from "@fastpix/fastpix-node/funcs/manageVideo
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -549,14 +549,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.addMediaTrack({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
     requestBody: {
       tracks: {
         url: "https://static.fastpix.io/music-1.mp3",
@@ -584,15 +584,15 @@ import { manageVideosAddMediaTrack } from "@fastpix/fastpix-node/funcs/manageVid
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosAddMediaTrack(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
     requestBody: {
       tracks: {
         url: "https://static.fastpix.io/music-1.mp3",
@@ -662,15 +662,15 @@ Suppose a user starts uploading a large video file but decides to cancel before 
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.cancelUpload({
-    uploadId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    uploadId: "your-upload-id",
   });
 
   console.log(result);
@@ -691,14 +691,14 @@ import { manageVideosCancelUpload } from "@fastpix/fastpix-node/funcs/manageVide
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosCancelUpload(fastpix, {
-    uploadId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    uploadId: "your-upload-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -776,15 +776,15 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.updateMediaTrack({
-    trackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    trackId: "track-id",
+    mediaId: "media-id",
     updateTrackRequest: {
       url: "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
       languageCode: "fr",
@@ -809,16 +809,16 @@ import { manageVideosUpdateMediaTrack } from "@fastpix/fastpix-node/funcs/manage
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosUpdateMediaTrack(fastpix, {
-    trackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    trackId: "track-id",
+    mediaId: "media-id",
     updateTrackRequest: {
       url: "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
       languageCode: "fr",
@@ -897,15 +897,15 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.deleteMediaTrack({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-    trackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "media-id",
+    trackId: "track-id",
   });
 
   console.log(result);
@@ -926,15 +926,15 @@ import { manageVideosDeleteMediaTrack } from "@fastpix/fastpix-node/funcs/manage
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosDeleteMediaTrack(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-    trackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "media-id",
+    trackId: "track-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -999,15 +999,15 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.generateSubtitleTrack({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-    trackId: "d46f5df9-1a8f-4f0a-b56e-9f5b5d5b9e21",
+    mediaId: "media-id",
+    trackId: "track-id",
     trackSubtitlesGenerateRequest: {
       languageName: "Italian",
     },
@@ -1031,15 +1031,15 @@ import { manageVideosGenerateSubtitleTrack } from "@fastpix/fastpix-node/funcs/m
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosGenerateSubtitleTrack(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-    trackId: "d46f5df9-1a8f-4f0a-b56e-9f5b5d5b9e21",
+    mediaId: "media-id",
+    trackId: "track-id",
     trackSubtitlesGenerateRequest: {
       languageName: "Italian",
     },
@@ -1100,15 +1100,15 @@ This endpoint allows you to update the `sourceAccess` setting of an existing med
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.updatedSourceAccess({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "media-id",
     requestBody: {
       sourceAccess: true,
     },
@@ -1132,14 +1132,14 @@ import { manageVideosUpdatedSourceAccess } from "@fastpix/fastpix-node/funcs/man
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosUpdatedSourceAccess(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "media-id",
     requestBody: {
       sourceAccess: true,
     },
@@ -1220,15 +1220,15 @@ Related guide: <a href="https://docs.fastpix.io/docs/mp4-support-for-offline-vie
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.updatedMp4Support({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "media-id",
     requestBody: {
       mp4Support: "capped_4k",
     },
@@ -1251,15 +1251,15 @@ import { manageVideosUpdatedMp4Support } from "@fastpix/fastpix-node/funcs/manag
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosUpdatedMp4Support(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "media-id",
     requestBody: {
       mp4Support: "capped_4k",
     },
@@ -1324,15 +1324,15 @@ This endpoint is particularly useful for ensuring that all necessary tracks (vid
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.retrieveMediaInputInfo({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "media-id",
   });
 
   console.log(result);
@@ -1352,15 +1352,15 @@ import { manageVideosRetrieveMediaInputInfo } from "@fastpix/fastpix-node/funcs/
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosRetrieveMediaInputInfo(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "media-id",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -1423,9 +1423,9 @@ A video management team for a media organization regularly uploads content to th
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -1451,9 +1451,9 @@ import { manageVideosListUploads } from "@fastpix/fastpix-node/funcs/manageVideo
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
@@ -1524,14 +1524,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.manageVideos.getMediaClips({
-    sourceMediaId: "fc733e3f-2fba-4c3d-9388-2511dc50d15f",
+    sourceMediaId: "your-source-media-id",
     offset: 5,
     limit: 20,
   });
@@ -1553,15 +1553,15 @@ import { manageVideosGetMediaClips } from "@fastpix/fastpix-node/funcs/manageVid
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await manageVideosGetMediaClips(fastpix, {
-    sourceMediaId: "fc733e3f-2fba-4c3d-9388-2511dc50d15f",
+    sourceMediaId: "your-source-media-id",
     offset: 5,
     limit: 20,
   });
