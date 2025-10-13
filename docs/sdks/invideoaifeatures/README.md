@@ -39,14 +39,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.inVideoAIFeatures.updateMediaSummary({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
     requestBody: {
       generate: true,
     },
@@ -70,14 +70,14 @@ import { inVideoAIFeaturesUpdateMediaSummary } from "@fastpix/fastpix-node/funcs
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await inVideoAIFeaturesUpdateMediaSummary(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
     requestBody: {
       generate: true,
     },
@@ -140,14 +140,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.inVideoAIFeatures.updateMediaChapters({
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
     requestBody: {
       chapters: true,
     },
@@ -171,14 +171,14 @@ import { inVideoAIFeaturesUpdateMediaChapters } from "@fastpix/fastpix-node/func
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await inVideoAIFeaturesUpdateMediaChapters(fastpix, {
-    mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+    mediaId: "your-media-id",
     requestBody: {
       chapters: true,
     },
@@ -245,15 +245,15 @@ Related guide: <a href="https://docs.fastpix.io/docs/generate-named-entities">Na
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.inVideoAIFeatures.updateMediaNamedEntities({
-    mediaId: "0cec3c88-c69d-4232-9b96-f0976327fa2d",
+    mediaId: "your-media-id",
     requestBody: {
       namedEntities: true,
     },
@@ -276,15 +276,15 @@ import { inVideoAIFeaturesUpdateMediaNamedEntities } from "@fastpix/fastpix-node
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-  security: {
-    username: "",
-    password: "",
+   security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await inVideoAIFeaturesUpdateMediaNamedEntities(fastpix, {
-    mediaId: "0cec3c88-c69d-4232-9b96-f0976327fa2d",
+    mediaId: "your-mediaId",
     requestBody: {
       namedEntities: true,
     },
@@ -346,15 +346,15 @@ Related guide: <a href="https://docs.fastpix.io/docs/using-nsfw-and-profanity-fi
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-  security: {
-    username: "",
-    password: "",
+ security: {
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const result = await fastpix.inVideoAIFeatures.updateMediaModeration({
-    mediaId: "0cec3c88-c69d-4232-9b96-f0976327fa2d",
+    mediaId: "your-media-id",
     requestBody: {
       moderation: {
         type: "video",
@@ -380,14 +380,14 @@ import { inVideoAIFeaturesUpdateMediaModeration } from "@fastpix/fastpix-node/fu
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   const res = await inVideoAIFeaturesUpdateMediaModeration(fastpix, {
-    mediaId: "0cec3c88-c69d-4232-9b96-f0976327fa2d",
+    mediaId: "your-media-id",
     requestBody: {
       moderation: {
         type: "video",
