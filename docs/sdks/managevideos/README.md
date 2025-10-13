@@ -138,7 +138,7 @@ const fastpix = new Fastpix({
 
 async function run() {
   const result = await fastpix.manageVideos.listLiveClips({
-    livestreamId: "b6f71268143f70c798a7851a0a92dcbf",
+    livestreamId: "your-live-stream-id",
     limit: 20,
   });
 
@@ -1009,7 +1009,8 @@ async function run() {
     mediaId: "media-id",
     trackId: "track-id",
     trackSubtitlesGenerateRequest: {
-      languageName: "Italian",
+      languageName: "your-language-name",
+      languageCode: "your-language-code"
     },
   });
 
