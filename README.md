@@ -204,21 +204,22 @@ For detailed documentation, see [FastPix Video on Demand Overview](https://docs.
 - [Get Media by ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#getmedia) - Get detailed information for specific media
 - [Update Media](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatedmedia) - Modify media metadata and settings
 - [Delete Media](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#deletemedia) - Remove media files from library
-- [Add Track](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#addmediatrack) - Add audio or subtitle tracks to media
 - [Cancel Upload](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#cancelupload) - Stop ongoing media upload process
-- [Update Track](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatemediatrack) - Modify existing audio or subtitle tracks
-- [Delete Track](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#deletemediatrack) - Remove audio or subtitle tracks
-- [Generate Subtitles](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#generatesubtitletrack) - Create automatic subtitles for media
-- [Update Source Access](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatedsourceaccess) - Control access permissions for media source
-- [Update MP4 Support](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatedmp4support) - Configure MP4 download capabilities
 - [Get Input Info](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#retrievemediainputinfo) - Retrieve detailed input information
 - [List Uploads](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#listuploads) - Get all available upload URLs
-- [Get Media Clips](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#getmediaclips) - Retrieve all video clips for media
 
 #### Playback
 - [Create Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#createmediaplaybackid) - Generate secure playback identifier
 - [Delete Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#deletemediaplaybackid) - Remove playback access
 - [Get Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#getplaybackid) - Retrieve playback configuration details
+
+#### Play Specific Segments
+- Stream only a portion of a video by appending `start`/`end` parameters to the playback URL. Explore: [Play specific segments](https://docs.fastpix.io/docs/play-your-videos#play-specific-segments). For creating reusable assets instead, see [Create clips from existing media](https://docs.fastpix.io/docs/create-clips-from-existing-media).
+- Try it: `https://stream.fastpix.io/{PLAYBACK_ID}.m3u8?start=20&end=60` (replace `{PLAYBACK_ID}` and tweak times).
+
+#### Create Clips from Existing Media
+- Create reusable, shareable clip assets from a source video with precise start/end control. Explore: [Create clips from existing media](https://docs.fastpix.io/docs/create-clips-from-existing-media).
+- Try it: use the clipping API from the guide to generate a new clip asset, then retrieve it via Media Clips to validate.
 
 #### Playlist
 - [Create Playlist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#createaplaylist) - Create new video playlist
@@ -246,8 +247,10 @@ Stream, manage, and transform live video content with real-time broadcasting cap
 
 For detailed documentation, see [FastPix Live Stream Overview](https://docs.fastpix.io/docs/live-stream-overview).
 
+
+
 #### Start Live Stream
-- [Create Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/startlivestream/README.md#createnewstream) - Initialize new live streaming session
+- [Create Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/startlivestream/README.md#createnewstream) - Initialize new live streaming session with **DVR mode support**
 
 #### Manage Live Stream
 - [List Streams](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#getallstreams) - Retrieve all active live streams
@@ -263,6 +266,10 @@ For detailed documentation, see [FastPix Live Stream Overview](https://docs.fast
 - [Create Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#createplaybackidofstream) - Generate secure live playback access
 - [Delete Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#deleteplaybackidofstream) - Revoke live playback access
 - [Get Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#getlivestreamplaybackid) - Retrieve live playback configuration
+
+#### Live Clipping
+- Explore instant live clipping during a live stream to capture key moments without creating new assets. See the Live Clipping guide: [Instant Live Clipping](https://docs.fastpix.io/docs/instant-live-clipping).
+- Try it: enable a test live stream and capture a highlight clip while broadcasting to see it appear instantly.
 
 #### Simulcast Stream
 - [Create Simulcast](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#createsimulcastofstream) - Set up multi-platform streaming
@@ -293,16 +300,62 @@ For detailed documentation, see [FastPix Video Data Overview](https://docs.fastp
 - [List Dimensions](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/dimensions/README.md#listdimensions) - Get available data dimensions for filtering and analysis
 - [List Filter Values](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/dimensions/README.md#listfiltervaluesfordimension) - Get specific values for a particular dimension
 
-### In-Video AI Features
+### Transformations
+
+Transform and enhance your video content with powerful AI and editing capabilities.
+
+#### In-Video AI Features
 
 Enhance video content with AI-powered features including moderation, summarization, and intelligent categorization.
 
 For detailed documentation, see [Video Moderation Guide](https://docs.fastpix.io/docs/using-nsfw-and-profanity-filter-for-video-moderation).
 
-- [Generate Summary](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md#updatemediasummary) - Create AI-generated video summaries
-- [Create Chapters](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md#updatemediachapters) - Automatically generate video chapter markers
-- [Extract Entities](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md#updatemedianamedentities) - Identify and extract named entities from content
-- [Enable Moderation](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/invideoaifeatures/README.md#updatemediamoderation) - Activate content moderation and safety checks
+- [Generate Summary](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/in-video-ai/README.md#updatemediasummary) - Create AI-generated video summaries
+- [Create Chapters](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/in-video-ai/README.md#updatemediachapters) - Automatically generate video chapter markers
+- [Extract Entities](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/in-video-ai/README.md#updatemedianamedentities) - Identify and extract named entities from content
+- [Enable Moderation](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/in-video-ai/README.md#updatemediamoderation) - Activate content moderation and safety checks
+
+#### Media Clips
+
+Retrieve and manage media clips created from your source content.
+
+For detailed documentation, see [Create clips from existing media](https://docs.fastpix.io/docs/create-clips-from-existing-media).
+
+- [Get Media Clips](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/get-clips/README.md#getmediaclips) - Retrieve all clips associated with a source media
+
+#### Subtitles
+
+Generate automatic subtitles for enhanced accessibility and user experience.
+
+For detailed documentation, see [Generate subtitles](https://docs.fastpix.io/docs/generate-subtitles).
+
+- [Generate Subtitles](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/subtitles/README.md#generatesubtitletrack) - Create automatic subtitles for media
+
+#### Media Tracks
+
+Add, update, and manage audio and subtitle tracks for your media content.
+
+For detailed documentation, see [Add tracks](https://docs.fastpix.io/docs/add-tracks).
+
+- [Add Track](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/tracks/README.md#addmediatrack) - Add audio or subtitle tracks to media
+- [Update Track](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/tracks/README.md#updatemediatrack) - Modify existing audio or subtitle tracks
+- [Delete Track](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/tracks/README.md#deletemediatrack) - Remove audio or subtitle tracks
+
+#### Access Control
+
+Control access permissions and visibility for your media content.
+
+For detailed documentation, see [Access control](https://docs.fastpix.io/docs/access-control).
+
+- [Update Source Access](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/access-control/README.md#updatesourceaccess) - Control access permissions for media source
+
+#### Format Support
+
+Configure download capabilities and format support for your media content.
+
+For detailed documentation, see [MP4 support](https://docs.fastpix.io/docs/mp4-support).
+
+- [Update MP4 Support](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/format-support/README.md#updatemp4support) - Configure MP4 download capabilities
 
 ### Error Handling
 
