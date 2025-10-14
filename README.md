@@ -213,6 +213,14 @@ For detailed documentation, see [FastPix Video on Demand Overview](https://docs.
 - [Delete Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#deletemediaplaybackid) - Remove playback access
 - [Get Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#getplaybackid) - Retrieve playback configuration details
 
+#### Play Specific Segments
+- Stream only a portion of a video by appending `start`/`end` parameters to the playback URL. Explore: [Play specific segments](https://docs.fastpix.io/docs/play-your-videos#play-specific-segments). For creating reusable assets instead, see [Create clips from existing media](https://docs.fastpix.io/docs/create-clips-from-existing-media).
+- Try it: `https://stream.fastpix.io/{PLAYBACK_ID}.m3u8?start=20&end=60` (replace `{PLAYBACK_ID}` and tweak times).
+
+#### Create Clips from Existing Media
+- Create reusable, shareable clip assets from a source video with precise start/end control. Explore: [Create clips from existing media](https://docs.fastpix.io/docs/create-clips-from-existing-media).
+- Try it: use the clipping API from the guide to generate a new clip asset, then retrieve it via Media Clips to validate.
+
 #### Playlist
 - [Create Playlist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#createaplaylist) - Create new video playlist
 - [List Playlists](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#getallplaylists) - Get all available playlists
@@ -239,6 +247,8 @@ Stream, manage, and transform live video content with real-time broadcasting cap
 
 For detailed documentation, see [FastPix Live Stream Overview](https://docs.fastpix.io/docs/live-stream-overview).
 
+
+
 #### Start Live Stream
 - [Create Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/startlivestream/README.md#createnewstream) - Initialize new live streaming session with **DVR mode support**
 
@@ -256,6 +266,10 @@ For detailed documentation, see [FastPix Live Stream Overview](https://docs.fast
 - [Create Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#createplaybackidofstream) - Generate secure live playback access
 - [Delete Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#deleteplaybackidofstream) - Revoke live playback access
 - [Get Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#getlivestreamplaybackid) - Retrieve live playback configuration
+
+#### Live Clipping
+- Explore instant live clipping during a live stream to capture key moments without creating new assets. See the Live Clipping guide: [Instant Live Clipping](https://docs.fastpix.io/docs/instant-live-clipping).
+- Try it: enable a test live stream and capture a highlight clip while broadcasting to see it appear instantly.
 
 #### Simulcast Stream
 - [Create Simulcast](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#createsimulcastofstream) - Set up multi-platform streaming
