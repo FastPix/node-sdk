@@ -6,7 +6,7 @@
     "email": "devs@fastpix.io",
     "url": "https://www.fastpix.io/"
   },
-  "license": "Apache-2.0",
+  "license": "MIT",
   "type": "module",
   "tshy": {
     "sourceDialects": [

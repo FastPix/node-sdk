@@ -20,7 +20,7 @@ The FastPix Node.js SDK simplifies integration with the FastPix platform. It pro
 <tr>
 <td><strong>Node.js</strong></td>
 <td><code>18+</code></td>
-<td>Core runtime environment</td>
+<td>Core runtime environment</td> 
 </tr>
 <tr>
 <td><strong>npm/yarn/pnpm</strong></td>
@@ -108,6 +108,13 @@ Import the necessary modules for your FastPix integration:
 import { Fastpix } from "@fastpix/fastpix-node";
 import type { CreateMediaRequest } from "@fastpix/fastpix-node/models/operations";
 ```
+
+> **Note:** If you encounter import errors in your project, you may need to add `"type": "module"` to your `package.json` file to enable ES modules support. This SDK is built with ES modules and requires proper module configuration.
+
+> **Security Note:** For production applications, it's recommended to make API calls from your backend server rather than directly from the browser to:
+> - Keep credentials secure
+> - Avoid CORS issues  
+> - Implement proper authentication.
 
 ### Initialization
 
