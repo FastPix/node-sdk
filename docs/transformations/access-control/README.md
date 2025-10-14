@@ -18,7 +18,7 @@ This endpoint allows you to control access permissions for a media source, deter
 
 **Use case**: This is particularly useful when you need to change the visibility of content, implement content gating, or manage user access to specific media.
 
-Related guide: <a href="https://docs.fastpix.io/docs/access-control">Access control</a>
+Related guide: <a href="https://docs.fastpix.io/reference/updated-source-access">Access control</a>
 
 ### Example Usage
 

@@ -18,7 +18,7 @@ This endpoint allows you to configure MP4 download capabilities for your media c
 
 **Use case**: This is particularly useful when you need to control how users can download your content, implement content protection, or manage bandwidth usage.
 
-Related guide: <a href="https://docs.fastpix.io/docs/mp4-support">MP4 support</a>
+Related guide: <a href="https://docs.fastpix.io/reference/updated-source-access">MP4 support</a>
 
 ### Example Usage
 

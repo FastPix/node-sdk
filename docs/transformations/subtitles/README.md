@@ -20,7 +20,7 @@ You can use the <a href="https://docs.fastpix.io/docs/ai-events#videomediaaisubt
 
 **Use case**: This is particularly useful when a user uploads a video and later chooses to generate subtitles without needing to re-upload the video.
 
-Related guide: <a href="https://docs.fastpix.io/docs/generate-subtitles">Generate subtitles</a>
+Related guide: <a href="https://docs.fastpix.io/docs/add-auto-generated-subtitles-to-videos">Generate subtitles</a>
 
 ### Example Usage
 
