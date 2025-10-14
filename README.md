@@ -98,18 +98,26 @@ bun add @fastpix/fastpix-node
 ```bash
 yarn add @fastpix/fastpix-node
 ```
-
 ### Imports
 
-Import the necessary modules for your FastPix integration:
+This SDK supports both **ES modules** and **CommonJS**. Examples in this documentation use ES module syntax as it's the preferred format, but you can use either approach.
 
+#### ES Modules (Recommended)
 ```typescript
 // Basic imports
 import { Fastpix } from "@fastpix/fastpix-node";
 import type { CreateMediaRequest } from "@fastpix/fastpix-node/models/operations";
 ```
 
-> **Note:** If you encounter import errors in your project, you may need to add `"type": "module"` to your `package.json` file to enable ES modules support. This SDK is built with ES modules and requires proper module configuration.
+#### CommonJS
+```javascript
+// CommonJS require syntax
+const { Fastpix } = require("@fastpix/fastpix-node");
+```
+
+> **Why ES Modules?** ES modules provide better tree-shaking, static analysis, and are the modern JavaScript standard. They enable smaller bundle sizes and better development tooling support.
+
+> **Note:** This SDK automatically provides both module formats. If you encounter import errors in your project, you may need to add `"type": "module"` to your `package.json` file to enable ES modules support.
 
 > **Security Note:** For production applications, it's recommended to make API calls from your backend server rather than directly from the browser to:
 > - Keep credentials secure
