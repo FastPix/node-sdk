@@ -246,8 +246,89 @@ Stream, manage, and transform live video content with real-time broadcasting cap
 
 For detailed documentation, see [FastPix Live Stream Overview](https://docs.fastpix.io/docs/live-stream-overview).
 
+### Live Stream Settings Explained
+
+#### What is DVR Mode?
+
+**DVR (Digital Video Recorder) Mode** allows viewers to control their live stream viewing experience, just like a TV DVR at home.
+
+**With DVR Mode Enabled (`enableDvrMode: true`):**
+- Viewers can **pause** the live stream
+- Viewers can **rewind** to see earlier parts
+- Viewers can **resume** from where they paused
+- Perfect for viewers who join the stream late
+
+**With DVR Mode Disabled (`enableDvrMode: false`):**
+- Viewers can only watch in **real-time**
+- No pausing or rewinding allowed
+- Stream plays continuously like traditional TV
+
+#### Complete Live Stream Configuration
+
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const fastpix = new Fastpix({
+  security: {
+    username: "your-access-token",
+    password: "your-secret-key",
+  },
+});
+
+async function run() {
+  const result = await fastpix.startLiveStream.createNewStream({
+    playbackSettings: {
+      accessPolicy: "public", // Who can watch the stream
+    },
+    inputMediaSettings: {
+      mediaPolicy: "public", // Who can access recorded content
+      metadata: {
+        "livestream_name": "My Live Stream",
+        "description": "Live stream description",
+      },
+      enableDvrMode: true, // Enable pause/rewind functionality
+      reconnectWindow: 60, // Seconds to wait if connection drops
+      maxResolution: "1080p", // Maximum video quality
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+#### Settings Explained for Beginners
+
+| Setting | What It Does | Options | Example Use Case |
+|---------|--------------|---------|-------------------|
+| **`accessPolicy`** | Controls who can watch your live stream | `"public"` or `"private"` | `"public"` = Anyone can watch, `"private"` = Only authenticated users |
+| **`mediaPolicy`** | Controls who can access the recorded video after streaming | `"public"` or `"private"` | `"public"` = Anyone can watch recording, `"private"` = Only authenticated users |
+| **`enableDvrMode`** | Allows viewers to pause and rewind the live stream | `true` or `false` | `true` = Viewers can pause/rewind, `false` = Real-time only |
+| **`reconnectWindow`** | How long to wait if your internet connection drops | `60-1800` seconds | `60` = Wait 1 minute before ending stream, `1800` = Wait 30 minutes |
+| **`maxResolution`** | Maximum video quality for your stream | `"720p"`, `"1080p"`, `"4K"` | `"1080p"` = High quality, `"720p"` = Lower bandwidth usage |
+| **`metadata`** | Tags and information about your stream | Key-value pairs | `{"title": "My Stream", "category": "Gaming"}` |
+
+#### When to Use DVR Mode
+
+**Use `enableDvrMode: true` for:**
+- **Educational content** - Students can pause lectures to take notes
+- **Live events** - Viewers joining late can rewind to the beginning
+- **Sports streams** - Fans can rewind to see amazing plays
+- **Long presentations** - Viewers can take breaks and resume
+- **Tutorials** - Step-by-step guides where pausing is helpful
+- **Q&A sessions** - Viewers can pause to think about questions
+
+**Use `enableDvrMode: false` for:**
+- **Breaking news** - Information that must be watched in real-time
+- **Live auctions** - Time-sensitive bidding where pausing isn't appropriate
+- **Live gaming** - Real-time gameplay where pausing breaks the experience
+- **Live concerts** - Continuous music performances
+- **Live sports** - Real-time action where pausing disrupts the flow
+- **Resource saving** - When you want to save bandwidth and storage
+
 #### Start Live Stream
-- [Create Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/startlivestream/README.md#createnewstream) - Initialize new live streaming session
+- [Create Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/startlivestream/README.md#createnewstream) - Initialize new live streaming session with **DVR mode support**
 
 #### Manage Live Stream
 - [List Streams](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#getallstreams) - Retrieve all active live streams
