@@ -295,7 +295,6 @@ For detailed documentation, see [FastPix Video Data Overview](https://docs.fastp
 - [List Breakdown Values](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#listbreakdownvalues) - Get detailed breakdown of metrics by dimension
 - [List Overall Values](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#listoverallvalues) - Get aggregated metric values across all content
 - [Get Timeseries Data](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#gettimeseriesdata) - Retrieve time-based metric trends and patterns
-- [List Comparison Values](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#listcomparisonvalues) - Compare metrics across different time periods
 
 #### Views
 - [List Video Views](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#listvideoviews) - Get comprehensive list of video viewing sessions
