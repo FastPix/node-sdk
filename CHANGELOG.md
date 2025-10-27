@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.3]
+### Changed
+- Updated npm authentication from Classic token to Granular token for improved security and fine-grained permissions.
+
 ## [2.0.2]
 - Adjusted the code samples in the README.md
 - Modified `getDrmConfiguration` method as a bug fix.
