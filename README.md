@@ -118,8 +118,8 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: process.env.FASTPIX_USERNAME,
-    password: process.env.FASTPIX_PASSWORD,
+    username: process.env.FASTPIX_USERNAME, // Your Access Token
+    password: process.env.FASTPIX_PASSWORD, // Your Secret Key
   },
 });
 ```
