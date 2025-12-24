@@ -1,0 +1,20 @@
+# AiResponseRecord
+
+Represents an AI response record containing status and data for AI-generated features like summary, chapters, named entities, or moderation.
+
+## Example Usage
+
+```typescript
+import { AiResponseRecord } from "@fastpix/fastpix-node/models";
+
+let value: AiResponseRecord = {
+  status: "ready",
+};
+```
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   | Example                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `status`                                                                                                      | *string*                                                                                                      | :heavy_minus_sign:                                                                                            | The status of the AI processing (for example, "available", "preparing", "failed").                            | ready                                                                                                         |
+| `data`                                                                                                        | Record<string, *any*>                                                                                         | :heavy_minus_sign:                                                                                            | The AI-generated content data. Can be a Map, List, or other structured data depending on the AI feature type. |                                                                                                               |

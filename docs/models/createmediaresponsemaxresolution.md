@@ -1,6 +1,6 @@
 # CreateMediaResponseMaxResolution
 
-The maximum resolution tier determines the highest quality your media will be available in.
+The maximum resolution tier defines the highest quality at which your media is available.
 
 ## Example Usage
 
@@ -12,6 +12,8 @@ let value: CreateMediaResponseMaxResolution = "1080p";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"2160p" | "1440p" | "1080p" | "720p" | "480p" | "360p"
+"2160p" | "1440p" | "1080p" | "720p" | "480p" | Unrecognized<string>
 ```

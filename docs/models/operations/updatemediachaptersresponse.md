@@ -1,23 +1,30 @@
 # UpdateMediaChaptersResponse
 
-Media details updated successfully with the chapters feature enabled or disabled
 
-## Example Usage
+## Supported Types
+
+### `operations.UpdateMediaChaptersResponseBody`
 
 ```typescript
-import { UpdateMediaChaptersResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: UpdateMediaChaptersResponse = {
+const value: operations.UpdateMediaChaptersResponseBody = {
   success: true,
   data: {
-    mediaId: "your-media-id",
+    mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+    isChaptersEnabled: true,
   },
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                       | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `success`                                                   | *boolean*                                                   | :heavy_minus_sign:                                          | Indicates if the request was successful or not.             | true                                                        |
-| `data`                                                      | [models.ChaptersResponse](../../models/chaptersresponse.md) | :heavy_minus_sign:                                          | N/A                                                         |                                                             |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

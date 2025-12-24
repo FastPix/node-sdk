@@ -6,7 +6,7 @@
 import { ListLiveClipsRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: ListLiveClipsRequest = {
-  livestreamId: "b6f71268143f70c798a7851a0a92dcbf",
+  livestreamId: "your-livestream-id",
   limit: 20,
 };
 ```

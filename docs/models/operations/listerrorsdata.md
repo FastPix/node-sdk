@@ -15,8 +15,8 @@ let value: ListErrorsData = {
       message:
         "com.fastpix.stats.sdk.h71.a - android.media.mediadrm$mediadrmstateexception: failed to handle key response: drm vendor-defined error: -2998",
       lastSeen: "2023-12-01T11:31:07.000Z",
-      id: "9pa85f64-5717-4562-b3fc-2c963f66afa6",
-      description: "a description of the error",
+      id: "5f8d0d55b54764421b7156c5",
+      description: "ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT",
       count: 4,
       code: "1003",
     },
@@ -29,8 +29,6 @@ let value: ListErrorsData = {
       message:
         "com.fastpix.stats.sdk.h71.a - android.media.mediadrm$mediadrmstateexception: failed to handle key response: drm vendor-defined error: -2998",
       lastSeen: "2023-12-01T11:31:07.000Z",
-      id: "9pa85f64-5717-4562-b3fc-2c963f66afa6",
-      description: "a description of the error",
       count: 4,
       code: "1003",
     },
@@ -40,7 +38,7 @@ let value: ListErrorsData = {
 
 ## Fields
 
-| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `errors`                                                                                                           | [models.ErrorDetails](../../models/errordetails.md)[]                                                              | :heavy_minus_sign:                                                                                                 | Retrieves a list of errors that have occurred in the system.                                                       |
-| `topErrors`                                                                                                        | [models.TopErrorDetails](../../models/toperrordetails.md)[]                                                        | :heavy_minus_sign:                                                                                                 | Retrieves a list of errors that have occurred most frequently in the system, ranked by their count of occurrences. |
+| Field                                                                                                                                 | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `errors`                                                                                                                              | [models.ErrorDetails](../../models/errordetails.md)[]                                                                                 | :heavy_minus_sign:                                                                                                                    | The endpoint retrieves a comprehensive list of errors that have occurred by providing detailed information about each error instance. |
+| `topErrors`                                                                                                                           | [models.TopErrorDetails](../../models/toperrordetails.md)[]                                                                           | :heavy_minus_sign:                                                                                                                    | Retrieves a list of errors that have occurred most frequently in the system, ranked by their count of occurrences.                    |

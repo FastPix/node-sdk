@@ -1,13 +1,12 @@
 # ListVideoViewsResponse
 
-Get the list of Views
 
-## Example Usage
+## Supported Types
+
+### `operations.ListVideoViewsResponseBody`
 
 ```typescript
-import { ListVideoViewsResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: ListVideoViewsResponse = {
+const value: operations.ListVideoViewsResponseBody = {
   success: true,
   data: [
     {
@@ -20,7 +19,6 @@ let value: ListVideoViewsResponse = {
         "Champion Engagement Model: Best practices for identifying and engaging your champion",
       errorCode: null,
       errorMessage: null,
-      errorId: null,
       country: "IN",
       viewWatchTime: 10016,
       qoeScore: 0.955924359113425,
@@ -34,7 +32,6 @@ let value: ListVideoViewsResponse = {
       videoTitle: "How to reduce time-to-value for your customers",
       errorCode: null,
       errorMessage: null,
-      errorId: null,
       country: "IN",
       viewWatchTime: 31926,
       qoeScore: 0.958520302068513,
@@ -48,7 +45,6 @@ let value: ListVideoViewsResponse = {
       videoTitle: "Implementing projects the ISRO way",
       errorCode: null,
       errorMessage: null,
-      errorId: null,
       country: "IN",
       viewWatchTime: 17562,
       qoeScore: 0.958648125844009,
@@ -62,7 +58,6 @@ let value: ListVideoViewsResponse = {
       videoTitle: "Designing your onboarding and adoption journey",
       errorCode: null,
       errorMessage: null,
-      errorId: null,
       country: "IN",
       viewWatchTime: 34823,
       qoeScore: 0.956301364903515,
@@ -74,10 +69,9 @@ let value: ListVideoViewsResponse = {
       viewStartTime: "2024-04-16T09:20:34",
       viewEndTime: "2024-04-16T09:21:24",
       videoTitle:
-        "How to Approach an Irate Customer With Mimecast's Alice Jeffery",
+        "How to Approach an Irate Customer With Mimecast\"s Alice Jeffery",
       errorCode: null,
       errorMessage: null,
-      errorId: null,
       country: "IN",
       viewWatchTime: 13493,
       qoeScore: 0.472563044953793,
@@ -89,10 +83,9 @@ let value: ListVideoViewsResponse = {
       viewStartTime: "2024-04-16T09:22:42",
       viewEndTime: "2024-04-16T09:22:45",
       videoTitle:
-        "How to Approach an Irate Customer With Mimecast's Alice Jeffery",
+        "How to Approach an Irate Customer With Mimecast\"s Alice Jeffery",
       errorCode: null,
       errorMessage: null,
-      errorId: null,
       country: "IN",
       viewWatchTime: 1,
       qoeScore: 0.5,
@@ -110,11 +103,16 @@ let value: ListVideoViewsResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `success`                                                                          | *boolean*                                                                          | :heavy_minus_sign:                                                                 | It demonstrates whether the request is successful or not.                          |                                                                                    |
-| `data`                                                                             | [models.ViewsList](../../models/viewslist.md)[]                                    | :heavy_minus_sign:                                                                 | Displays the result of the request.                                                |                                                                                    |
-| `pagination`                                                                       | [models.DataPagination](../../models/datapagination.md)                            | :heavy_minus_sign:                                                                 | Pagination organizes content into pages for better readability and navigation.     |                                                                                    |
-| `timespan`                                                                         | *number*[]                                                                         | :heavy_minus_sign:                                                                 | The timeframe from and to details displayed in the form of unix epoch timestamps.<br/> | {<br/>"availableValue": [<br/>1610025789,<br/>1610025947<br/>]<br/>}               |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

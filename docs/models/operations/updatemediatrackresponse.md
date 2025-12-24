@@ -1,16 +1,15 @@
 # UpdateMediaTrackResponse
 
-Media details updated successfully
 
-## Example Usage
+## Supported Types
+
+### `operations.UpdateMediaTrackResponseBody`
 
 ```typescript
-import { UpdateMediaTrackResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: UpdateMediaTrackResponse = {
+const value: operations.UpdateMediaTrackResponseBody = {
   success: true,
   data: {
-    id: "your-track-id",
+    id: "2452ca23-b7ed-4daf-babf-841996b0100e",
     type: "subtitle",
     url:
       "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
@@ -20,9 +19,16 @@ let value: UpdateMediaTrackResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `success`                                                         | *boolean*                                                         | :heavy_minus_sign:                                                | Demonstrates whether the request is successful or not.            | true                                                              |
-| `data`                                                            | [models.UpdateTrackResponse](../../models/updatetrackresponse.md) | :heavy_minus_sign:                                                | Contains details about the track that was added or updated.       |                                                                   |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

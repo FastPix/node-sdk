@@ -6,7 +6,7 @@
 import { GetPlaylistByIdRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: GetPlaylistByIdRequest = {
-  playlistId: "<id>",
+  playlistId: "your-playlist-id",
 };
 ```
 

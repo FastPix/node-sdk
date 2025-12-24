@@ -6,8 +6,8 @@
 import { Security } from "@fastpix/fastpix-node/models";
 
 let value: Security = {
-  username: "",
-  password: "",
+  username: "your-access-token",
+  password: "your-secret-key",
 };
 ```
 

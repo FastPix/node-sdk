@@ -1,14 +1,13 @@
-# DRMConfigurations
-(*drmConfigurations*)
+# DrmConfigurations
 
 ## Overview
 
 ### Available Operations
 
-* [getDrmConfiguration](#getdrmconfiguration) - Get list of DRM configuration IDs
-* [getDrmConfigurationById](#getdrmconfigurationbyid) - Get DRM configuration by ID
+* [list](#list) - Get list of DRM configuration IDs
+* [get](#get) - Get DRM configuration by ID
 
-## getDrmConfiguration
+## list
 
 
 This endpoint retrieves the DRM configuration (DRM ID) associated with a workspace. It returns a list of DRM configurations, identified by a unique DRM ID, which is used for creating DRM encrypted asset.
@@ -31,14 +30,14 @@ Related guide: <a href="https://docs.fastpix.io/docs/secure-playback-with-drm">M
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.drmConfigurations.getDrmConfiguration({});
+  const result = await fastpix.drmConfigurations.list({});
 
   console.log(result);
 }
@@ -52,24 +51,24 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { drmConfigurationsGetDRMConfiguration } from "@fastpix/fastpix-node/funcs/drmConfigurationsGetDRMConfiguration.js";
+import { drmConfigurationsList } from "@fastpix/fastpix-node/funcs/drmConfigurationsList.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const res = await drmConfigurationsGetDRMConfiguration(fastpix, {});
+  const res = await drmConfigurationsList(fastpix, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("drmConfigurationsGetDRMConfiguration failed:", res.error);
+    console.log("drmConfigurationsList failed:", res.error);
   }
 }
 
@@ -91,22 +90,18 @@ run();
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.BadRequestError         | 400                            | application/json               |
-| errors.InvalidPermissionError  | 401                            | application/json               |
-| errors.ForbiddenError          | 403                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
 
-## getDrmConfigurationById
+## get
 
 
 This endpoint retrieves a DRM configuration ID. It is used to fetch the DRM-related ID for a workspace, typically required when validating or applying DRM policies to video assets.
 
 **How it works:**
 1. Make a GET request to this endpoint, replacing `{drmConfigurationId}` with the UUID of the DRM configuration.  
-2. The response will contain the associated DRM configuration ID.
+2. The response contains the associated DRM configuration ID.
 
 Related guide: <a href="https://docs.fastpix.io/docs/secure-playback-with-drm">Manage DRM configuration</a>
 
@@ -118,14 +113,14 @@ Related guide: <a href="https://docs.fastpix.io/docs/secure-playback-with-drm">M
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.drmConfigurations.getDrmConfigurationById({
+  const result = await fastpix.drmConfigurations.get({
     drmConfigurationId: "your-drm-configuration-id",
   });
 
@@ -141,26 +136,26 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { drmConfigurationsGetDRMConfigurationById } from "@fastpix/fastpix-node/funcs/drmConfigurationsGetDRMConfigurationById.js";
+import { drmConfigurationsGet } from "@fastpix/fastpix-node/funcs/drmConfigurationsGet.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const res = await drmConfigurationsGetDRMConfigurationById(fastpix, {
+  const res = await drmConfigurationsGet(fastpix, {
     drmConfigurationId: "your-drm-configuration-id",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("drmConfigurationsGetDRMConfigurationById failed:", res.error);
+    console.log("drmConfigurationsGet failed:", res.error);
   }
 }
 
@@ -182,11 +177,6 @@ run();
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.BadRequestError         | 400                            | application/json               |
-| errors.InvalidPermissionError  | 401                            | application/json               |
-| errors.ForbiddenError          | 403                            | application/json               |
-| errors.MediaNotFoundError      | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |

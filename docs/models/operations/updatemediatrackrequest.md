@@ -6,21 +6,16 @@
 import { UpdateMediaTrackRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: UpdateMediaTrackRequest = {
-  trackId: "your-track-id",
-  mediaId: "your-media-id",
-  updateTrackRequest: {
-    url:
-      "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
-    languageCode: "fr",
-    languageName: "french",
-  },
+  trackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+  mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+  body: {},
 };
 ```
 
 ## Fields
 
-| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       | Example                                                                                                           |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `trackId`                                                                                                         | *string*                                                                                                          | :heavy_check_mark:                                                                                                | When creating the media, FastPix assigns a universally unique identifier with a maximum length of 255 characters. | 4fa85f64-5717-4562-b3fc-2c963f66afa6                                                                              |
-| `mediaId`                                                                                                         | *string*                                                                                                          | :heavy_check_mark:                                                                                                | When creating the media, FastPix assigns a universally unique identifier with a maximum length of 255 characters. | 4fa85f64-5717-4562-b3fc-2c963f66afa6                                                                              |
-| `updateTrackRequest`                                                                                              | [models.UpdateTrackRequest](../../models/updatetrackrequest.md)                                                   | :heavy_check_mark:                                                                                                | N/A                                                                                                               |                                                                                                                   |
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `trackId`                                                                                 | *string*                                                                                  | :heavy_check_mark:                                                                        | The unique identifier assigned to the media when created. The value must be a valid UUID. | 4fa85f64-5717-4562-b3fc-2c963f66afa6                                                      |
+| `mediaId`                                                                                 | *string*                                                                                  | :heavy_check_mark:                                                                        | The unique identifier assigned to the media when created. The value must be a valid UUID. | 4fa85f64-5717-4562-b3fc-2c963f66afa6                                                      |
+| `body`                                                                                    | [models.UpdateTrackRequest](../../models/updatetrackrequest.md)                           | :heavy_check_mark:                                                                        | N/A                                                                                       |                                                                                           |

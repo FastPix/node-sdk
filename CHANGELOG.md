@@ -1,16 +1,22 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [2.0.4]
+### Fixed
+- Fixed missing parameters in multiple API methods.
+- Improved overall developer experience through more accurate typings.
 
 ## [2.0.3]
 ### Changed
 - Updated npm authentication from Classic token to Granular token for improved security and fine-grained permissions.
 
 ## [2.0.2]
+### Fixed
 - Adjusted the code samples in the README.md
 - Modified `getDrmConfiguration` method as a bug fix.
 
 ## [2.0.1]
+### Changed
 - Added keywords to `package.json` and updated the README.md redirection link.
 
 ## [2.0.0] - Major Feature Release

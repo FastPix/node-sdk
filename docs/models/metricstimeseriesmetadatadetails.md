@@ -1,13 +1,13 @@
-# MetricsTimeseriesMetaDataDetails
+# MetricsTimeseriesmetadataDetails
 
 Retrieves breakdown values for a specified metric and timespan
 
 ## Example Usage
 
 ```typescript
-import { MetricsTimeseriesMetaDataDetails } from "@fastpix/fastpix-node/models";
+import { MetricsTimeseriesmetadataDetails } from "@fastpix/fastpix-node/models";
 
-let value: MetricsTimeseriesMetaDataDetails = {
+let value: MetricsTimeseriesmetadataDetails = {
   granularity: "day",
   aggregation: "viewEnd",
 };

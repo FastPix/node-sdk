@@ -1,23 +1,52 @@
 # GetPlaybackIdResponse
 
-Successfully retrieved playback ID details
 
-## Example Usage
+## Supported Types
+
+### `operations.GetPlaybackIdResponseBody`
 
 ```typescript
-import { GetPlaybackIdResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: GetPlaybackIdResponse = {
+const value: operations.GetPlaybackIdResponseBody = {
   success: true,
   data: {
-    id: "6ta85f64-5717-4562-b3fc-2c963f66afa6",
+    id: "54fd5e7e-3aa5-4817-b56d-44932f67f6c3",
+    accessPolicy: "public",
+    accessRestrictions: {
+      domains: {
+        defaultPolicy: "allow",
+        allow: [
+          "example.com",
+          "trustedsite.org",
+        ],
+        deny: [
+          "malicioussite.io",
+          "abc.net",
+        ],
+      },
+      userAgents: {
+        defaultPolicy: "deny",
+        allow: [
+          "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36",
+        ],
+        deny: [
+          "PostmanRuntime/7.29.0",
+        ],
+      },
+    },
   },
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `success`                                                                    | *boolean*                                                                    | :heavy_minus_sign:                                                           | Indicates if the request was successful or not.                              | true                                                                         |
-| `data`                                                                       | [operations.GetPlaybackIdData](../../models/operations/getplaybackiddata.md) | :heavy_minus_sign:                                                           | N/A                                                                          |                                                                              |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

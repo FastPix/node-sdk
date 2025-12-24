@@ -8,9 +8,6 @@
 ```typescript
 const value: models.VideoInput = {
   type: "video",
-  url: "https://static.fastpix.io/sample.mp4",
-  startTime: 0,
-  endTime: 60,
   introUrl: "https://static.fastpix.io/sample.mp4",
   outroUrl: "https://static.fastpix.io/sample.mp4",
   expungeSegments: [
@@ -72,7 +69,6 @@ const value: models.SubtitleInput = {
   url:
     "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
   languageName: "english",
-  languageCode: "en-IE",
 };
 ```
 

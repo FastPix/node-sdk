@@ -7,6 +7,7 @@ import { Summary } from "@fastpix/fastpix-node/models/operations";
 
 let value: Summary = {
   generate: true,
+  summaryLength: 100,
 };
 ```
 

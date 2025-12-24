@@ -7,7 +7,7 @@ Language code for content localization
 ```typescript
 import { LanguageCode } from "@fastpix/fastpix-node/models";
 
-let value: LanguageCode = "th-TH";
+let value: LanguageCode = "en-US";
 ```
 
 ## Values

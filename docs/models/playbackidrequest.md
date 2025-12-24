@@ -5,9 +5,7 @@
 ```typescript
 import { PlaybackIdRequest } from "@fastpix/fastpix-node/models";
 
-let value: PlaybackIdRequest = {
-  accessPolicy: "public",
-};
+let value: PlaybackIdRequest = {};
 ```
 
 ## Fields

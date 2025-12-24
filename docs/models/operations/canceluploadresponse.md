@@ -1,13 +1,12 @@
 # CancelUploadResponse
 
-Upload cancelled successfully
 
-## Example Usage
+## Supported Types
+
+### `operations.CancelUploadResponseBody`
 
 ```typescript
-import { CancelUploadResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: CancelUploadResponse = {
+const value: operations.CancelUploadResponseBody = {
   success: true,
   data: {
     uploadId: "beff5537-de85-42e1-a673-2a405cd94177",
@@ -26,9 +25,16 @@ let value: CancelUploadResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `success`                                                         | *boolean*                                                         | :heavy_minus_sign:                                                | Demonstrates whether the request is successful or not.            | true                                                              |
-| `data`                                                            | [models.MediaCancelResponse](../../models/mediacancelresponse.md) | :heavy_minus_sign:                                                | Response returned when an upload is cancelled.                    |                                                                   |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

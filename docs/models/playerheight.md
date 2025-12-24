@@ -9,12 +9,12 @@ Player Height refers to the vertical dimension, measured in pixels, of the video
 ### `string`
 
 ```typescript
-const value: string = "845";
+const value: string = "2856";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = 845;
+const value: number = 2856;
 ```
 

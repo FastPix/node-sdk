@@ -6,13 +6,37 @@
 import { GetPlaybackIdData } from "@fastpix/fastpix-node/models/operations";
 
 let value: GetPlaybackIdData = {
-  id: "6ta85f64-5717-4562-b3fc-2c963f66afa6",
+  id: "54fd5e7e-3aa5-4817-b56d-44932f67f6c3",
+  accessPolicy: "public",
+  accessRestrictions: {
+    domains: {
+      defaultPolicy: "allow",
+      allow: [
+        "example.com",
+        "trustedsite.org",
+      ],
+      deny: [
+        "malicioussite.io",
+        "abc.net",
+      ],
+    },
+    userAgents: {
+      defaultPolicy: "deny",
+      allow: [
+        "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36",
+      ],
+      deny: [
+        "PostmanRuntime/7.29.0",
+      ],
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field                                               | Type                                                | Required                                            | Description                                         | Example                                             |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `id`                                                | *string*                                            | :heavy_minus_sign:                                  | The unique identifier for the playback ID.          | 6ta85f64-5717-4562-b3fc-2c963f66afa6                |
-| `accessPolicy`                                      | [models.AccessPolicy](../../models/accesspolicy.md) | :heavy_minus_sign:                                  | Access policy for media content                     |                                                     |
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                     | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | Unique identifier of the playback ID.                                                                    | 54fd5e7e-3aa5-4817-b56d-44932f67f6c3                                                                     |
+| `accessPolicy`                                                                                           | [operations.GetPlaybackIdAccessPolicy](../../models/operations/getplaybackidaccesspolicy.md)             | :heavy_minus_sign:                                                                                       | The access policy set for the playback ID.                                                               | public                                                                                                   |
+| `accessRestrictions`                                                                                     | [operations.GetPlaybackIdAccessRestrictions](../../models/operations/getplaybackidaccessrestrictions.md) | :heavy_minus_sign:                                                                                       | Restrictions applied to this playback ID.                                                                |                                                                                                          |

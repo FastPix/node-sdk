@@ -1,13 +1,12 @@
 # AddMediaTrackResponse
 
-Media details updated successfully
 
-## Example Usage
+## Supported Types
+
+### `operations.AddMediaTrackResponseBody`
 
 ```typescript
-import { AddMediaTrackResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: AddMediaTrackResponse = {
+const value: operations.AddMediaTrackResponseBody = {
   success: true,
   data: {
     id: "ace60fc7-e876-4fc6-b9d9-c33fa242f84b",
@@ -19,9 +18,16 @@ let value: AddMediaTrackResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                       | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `success`                                                   | *boolean*                                                   | :heavy_minus_sign:                                          | Demonstrates whether the request is successful or not.      | true                                                        |
-| `data`                                                      | [models.AddTrackResponse](../../models/addtrackresponse.md) | :heavy_minus_sign:                                          | Contains details about the track that was added or updated. |                                                             |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

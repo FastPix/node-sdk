@@ -20,35 +20,34 @@ specific category of applications.
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { inputVideoCreateMedia } from "@fastpix/fastpix-node/funcs/inputVideoCreateMedia.js";
+import { inputVideoCreate } from "@fastpix/fastpix-node/funcs/inputVideoCreate.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
-  const res = await inputVideoCreateMedia(fastpix, {
+  const res = await inputVideoCreate(fastpix, {
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.io/sample.mp4",
+        url: "https://static.fastpix.io/fp-sample-video.mp4",
       },
     ],
     metadata: {
       "key1": "value1",
     },
-    accessPolicy: "public",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("inputVideoCreateMedia failed:", res.error);
+    console.log("inputVideoCreate failed:", res.error);
   }
 }
 

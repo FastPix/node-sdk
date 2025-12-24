@@ -12,7 +12,6 @@ let value: SubtitleInput = {
   url:
     "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
   languageName: "english",
-  languageCode: "en-IE",
 };
 ```
 
@@ -23,4 +22,4 @@ let value: SubtitleInput = {
 | `type`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | Defines the type of input.<br/>                                                  | subtitle                                                                         |
 | `url`                                                                            | *string*                                                                         | :heavy_check_mark:                                                               | The direct URL of the subtitle file.                                             | http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt |
 | `languageName`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | Name of the language in which the subtitles will be generated.                   | english                                                                          |
-| `languageCode`                                                                   | [models.LanguageCode](../models/languagecode.md)                                 | :heavy_check_mark:                                                               | Language code for content localization                                           |                                                                                  |
+| `languageCode`                                                                   | [models.LanguageCode](../models/languagecode.md)                                 | :heavy_minus_sign:                                                               | Language code for content localization                                           | en-US                                                                            |

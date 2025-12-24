@@ -1,13 +1,14 @@
 # Errors
-(*errors*)
 
 ## Overview
 
+Operations involving errors
+
 ### Available Operations
 
-* [listErrors](#listerrors) - List errors
+* [list](#list) - List errors
 
-## listErrors
+## list
 
 This endpoint returns the total number of playback errors that occurred, along with the total number of views captured, based on the specified timespan and filters. It provides insights into the overall playback quality and helps identify potential issues that may impact viewer experience. 
 
@@ -35,15 +36,15 @@ Related guide: <a href="https://docs.fastpix.io/docs/track-playback-errors">Trou
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.errors.listErrors({
-    timespan: "7:days",
+  const result = await fastpix.errors.list({
+    timespan: "24:hours",
     filterby: "browser_name:Chrome",
   });
 
@@ -59,7 +60,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { errorsListErrors } from "@fastpix/fastpix-node/funcs/errorsListErrors.js";
+import { errorsList } from "@fastpix/fastpix-node/funcs/errorsList.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -71,15 +72,15 @@ const fastpix = new FastpixCore({
 });
 
 async function run() {
-  const res = await errorsListErrors(fastpix, {
-    timespan: "7:days",
+  const res = await errorsList(fastpix, {
+    timespan: "24:hours",
     filterby: "browser_name:Chrome",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("errorsListErrors failed:", res.error);
+    console.log("errorsList failed:", res.error);
   }
 }
 
@@ -101,9 +102,6 @@ run();
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.InvalidPermissionError  | 401                            | application/json               |
-| errors.ViewNotFoundError       | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |

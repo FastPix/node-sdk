@@ -1,13 +1,12 @@
 # ListByTopContentResponse
 
-Get the list of Views
 
-## Example Usage
+## Supported Types
+
+### `operations.ListByTopContentResponseBody`
 
 ```typescript
-import { ListByTopContentResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: ListByTopContentResponse = {
+const value: operations.ListByTopContentResponseBody = {
   success: true,
   data: [
     {
@@ -16,12 +15,23 @@ let value: ListByTopContentResponse = {
       uniqueViews: 40,
     },
   ],
+  timespan: [
+    1712910924,
+    1713515724,
+  ],
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `success`                                                                     | *boolean*                                                                     | :heavy_minus_sign:                                                            | It demonstrates whether the request is successful or not.                     |
-| `data`                                                                        | [models.ViewsByTopContentDetails](../../models/viewsbytopcontentdetails.md)[] | :heavy_minus_sign:                                                            | Displays the result of the request.                                           |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

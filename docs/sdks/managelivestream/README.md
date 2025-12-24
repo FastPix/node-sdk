@@ -1,127 +1,16 @@
 # ManageLiveStream
-(*manageLiveStream*)
 
 ## Overview
 
 ### Available Operations
 
-* [getAllStreams](#getallstreams) - Get all live streams
-* [getLiveStreamViewerCountById](#getlivestreamviewercountbyid) - Get stream views by ID
-* [getLiveStreamById](#getlivestreambyid) - Get stream by ID
-* [deleteLiveStream](#deletelivestream) - Delete a stream
-* [updateLiveStream](#updatelivestream) - Update a stream
-* [enableLiveStream](#enablelivestream) - Enable a stream
-* [disableLiveStream](#disablelivestream) - Disable a stream
-* [completeLiveStream](#completelivestream) - Complete a stream
+* [getViewerCount](#getviewercount) - Get stream views by ID
+* [get](#get) - Get stream by ID
+* [update](#update) - Update a stream
+* [disable](#disable) - Disable a stream
+* [complete](#complete) - Complete a stream
 
-## getAllStreams
-
-Retrieves a list of all live streams associated with the current workspace. It provides an overview of both current and past live streams, including details like `streamId`, `metadata`, `status`, `createdAt` and more.
-
-
-#### How it works
-
-Use the access token and secret key related to the workspace in the request header. When called, the API provides a paginated response containing all the live streams in that specific workspace. This is helpful for retrieving a large volume of streams and managing content in bulk.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get-all-streams" method="get" path="/live/streams" -->
-```typescript
-import { Fastpix } from "@fastpix/fastpix-node";
-
-const fastpix = new Fastpix({
-  security: {
-    username: "your-access-token",
-    password: "your-secret-key",
-  },
-});
-
-async function run() {
-  try {
-    console.log('Starting FastPix Server...');
-    
-    // Get all streams first (safer operation)
-    console.log('Getting all streams...');
-    const streams = await fastpix.manageLiveStream.getAllStreams({
-      limit: 20,
-    });
-    console.log('Available streams:', JSON.stringify(streams, null, 2));
-    
-    // Create a playback ID instead of completing the stream
-    console.log('Creating playback ID...');
-    const playbackResult = await fastpix.livePlayback.createPlaybackIdOfStream({
-      streamId: "your-stream-id",
-      playbackIdRequest: {
-        accessPolicy: "public",
-      },
-    });
-    console.log('Playback ID created:', JSON.stringify(playbackResult, null, 2));
-    
-    console.log('Server operations completed successfully!');
-  } catch (error) {
-    console.error('Server error:', error.message);
-    console.error('Error details:', error);
-  }
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { manageLiveStreamGetAllStreams } from "@fastpix/fastpix-node/funcs/manageLiveStreamGetAllStreams.js";
-
-// Use `FastpixCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const fastpix = new FastpixCore({
-  security: {
-    username: "your-access-token",
-    password: "your-secret-key",
-  },
-});
-
-async function run() {
-  const res = await manageLiveStreamGetAllStreams(fastpix, {
-    limit: 20,
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("manageLiveStreamGetAllStreams failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetAllStreamsRequest](../../models/operations/getallstreamsrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.GetStreamsResponse](../../models/getstreamsresponse.md)\>**
-
-### Errors
-
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 401                            | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
-
-## getLiveStreamViewerCountById
+## getViewerCount
 
 This endpoint retrieves the current number of viewers watching a specific live stream, identified by its unique `streamId`.
 
@@ -147,7 +36,7 @@ const fastpix = new Fastpix({
 });
 
 async function run() {
-  const result = await fastpix.manageLiveStream.getLiveStreamViewerCountById({
+  const result = await fastpix.manageLiveStream.getViewerCount({
     streamId: "your-stream-id",
   });
 
@@ -163,7 +52,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { manageLiveStreamGetLiveStreamViewerCountById } from "@fastpix/fastpix-node/funcs/manageLiveStreamGetLiveStreamViewerCountById.js";
+import { manageLiveStreamGetViewerCount } from "@fastpix/fastpix-node/funcs/manageLiveStreamGetViewerCount.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -172,18 +61,17 @@ const fastpix = new FastpixCore({
     username: "your-access-token",
     password: "your-secret-key",
   },
-  },
 });
 
 async function run() {
-  const res = await manageLiveStreamGetLiveStreamViewerCountById(fastpix, {
+  const res = await manageLiveStreamGetViewerCount(fastpix, {
     streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("manageLiveStreamGetLiveStreamViewerCountById failed:", res.error);
+    console.log("manageLiveStreamGetViewerCount failed:", res.error);
   }
 }
 
@@ -201,19 +89,15 @@ run();
 
 ### Response
 
-**Promise\<[models.ViewsCountResponse](../../models/viewscountresponse.md)\>**
+**Promise\<[operations.GetLiveStreamViewerCountByIdResponse](../../models/operations/getlivestreamviewercountbyidresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 401                            | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.LiveNotFoundError       | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
 
-## getLiveStreamById
+## get
 
 This endpoint retrieves details about a specific live stream by its unique `streamId`. It includes data such as the stream’s `status` (idle, preparing, active, disabled), `metadata` (title, description), and more. 
 #### Example
@@ -231,14 +115,14 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "",
-    password: "",
+    username: "your-access-token",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.manageLiveStream.getLiveStreamById({
-    streamId: "61a264dcc447b63da6fb79ef925cd76d",
+  const result = await fastpix.manageLiveStream.get({
+    streamId: "your-stream-id",
   });
 
   console.log(result);
@@ -253,7 +137,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { manageLiveStreamGetLiveStreamById } from "@fastpix/fastpix-node/funcs/manageLiveStreamGetLiveStreamById.js";
+import { manageLiveStreamGet } from "@fastpix/fastpix-node/funcs/manageLiveStreamGet.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -265,14 +149,14 @@ const fastpix = new FastpixCore({
 });
 
 async function run() {
-  const res = await manageLiveStreamGetLiveStreamById(fastpix, {
+  const res = await manageLiveStreamGet(fastpix, {
     streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("manageLiveStreamGetLiveStreamById failed:", res.error);
+    console.log("manageLiveStreamGet failed:", res.error);
   }
 }
 
@@ -290,120 +174,24 @@ run();
 
 ### Response
 
-**Promise\<[models.LivestreamgetResponse](../../models/livestreamgetresponse.md)\>**
+**Promise\<[operations.GetLiveStreamByIdResponse](../../models/operations/getlivestreambyidresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 401                            | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.NotFoundError           | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
 
-## deleteLiveStream
+## update
 
-Permanently removes a specified live stream from the workspace. If the stream is still active, the encoder will be disconnected, and the ingestion will stop. This action cannot be undone, and any future playback attempts will fail. 
-
-  By providing the `streamId`, the API will terminate any active connections to the stream and remove it from the list of available live streams. You can further look for <a href="https://docs.fastpix.io/docs/live-events#videolive_streamdeleted">video.live_stream.deleted</a> webhook to notify your system about the status. 
-
-  #### Example
-
-  For an online concert platform, a trial stream was mistakenly made public. The event manager deletes the stream before the concert begins to avoid confusion among viewers. 
+This endpoint allows you to modify the parameters of an existing live stream, such as its `metadata` (title, description) or the `reconnectWindow`. It’s useful for making changes to a stream that has already been created but not yet ended. After the live stream is disabled, you cannot update a stream. 
 
 
-  Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="delete-live-stream" method="delete" path="/live/streams/{streamId}" -->
-```typescript
-import { Fastpix } from "@fastpix/fastpix-node";
-
-const fastpix = new Fastpix({
-  security: {
-    username: "your-access-token",
-    password: "your-secret-key",
-  },
-});
-
-async function run() {
-  const result = await fastpix.manageLiveStream.deleteLiveStream({
-    streamId: "your-stream-id",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { manageLiveStreamDeleteLiveStream } from "@fastpix/fastpix-node/funcs/manageLiveStreamDeleteLiveStream.js";
-
-// Use `FastpixCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const fastpix = new FastpixCore({
-   security: {
-    username: "your-access-token",
-    password: "your-secret-key",
-  },
-});
-
-async function run() {
-  const res = await manageLiveStreamDeleteLiveStream(fastpix, {
-    streamId: "your-stream-id",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("manageLiveStreamDeleteLiveStream failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteLiveStreamRequest](../../models/operations/deletelivestreamrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.LiveStreamDeleteResponse](../../models/livestreamdeleteresponse.md)\>**
-
-### Errors
-
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 401                            | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.LiveNotFoundError       | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
-
-## updateLiveStream
-
-This endpoint allows you to modify the parameters of an existing live stream, such as its `metadata` (title, description) or the `reconnectWindow`. It’s useful for making changes to a stream that has already been created but not yet ended. Once the live stream is disabled, you cannot update a stream. 
-
-
-  The updated stream parameters and the `streamId` needs to be shared in the request, and FastPix will return the updated stream details. Once updated, <a href="https://docs.fastpix.io/docs/live-events#videolive_streamupdated">video.live_stream.updated</a> webhook event notifies your system. 
+  The updated stream parameters and the `streamId` needs to be shared in the request, and FastPix returns the updated stream details. After the update, <a href="https://docs.fastpix.io/docs/live-events#videolive_streamupdated">video.live_stream.updated</a> webhook event notifies your system.
 
  #### Example
 
- A host realizes they need to extend the reconnect window for their live stream in case they lose connection temporarily during the event. Or suppose during a multi-day online conference, the event organizers need to update the stream title to reflect the next day's session while keeping the same stream ID for continuity. 
+ A host realizes they need to extend the reconnect window for their live stream in case they lose connection temporarily during the event. Or suppose during a multi-day online conference, the event organizers need to update the stream title to reflect the next day"s session while keeping the same stream ID for continuity. 
 
 
 
@@ -416,16 +204,16 @@ This endpoint allows you to modify the parameters of an existing live stream, su
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.manageLiveStream.updateLiveStream({
+  const result = await fastpix.manageLiveStream.update({
     streamId: "your-stream-id",
-    patchLiveStreamRequest: {
+    body: {
       metadata: {
         "livestream_name": "Gaming_stream",
       },
@@ -445,21 +233,21 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { manageLiveStreamUpdateLiveStream } from "@fastpix/fastpix-node/funcs/manageLiveStreamUpdateLiveStream.js";
+import { manageLiveStreamUpdate } from "@fastpix/fastpix-node/funcs/manageLiveStreamUpdate.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const res = await manageLiveStreamUpdateLiveStream(fastpix, {
-    streamId: "your-stream-key",
-    patchLiveStreamRequest: {
+  const res = await manageLiveStreamUpdate(fastpix, {
+    streamId: "your-stream-id",
+    body: {
       metadata: {
         "livestream_name": "Gaming_stream",
       },
@@ -470,7 +258,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("manageLiveStreamUpdateLiveStream failed:", res.error);
+    console.log("manageLiveStreamUpdate failed:", res.error);
   }
 }
 
@@ -488,116 +276,17 @@ run();
 
 ### Response
 
-**Promise\<[models.PatchResponseDTO](../../models/patchresponsedto.md)\>**
+**Promise\<[operations.UpdateLiveStreamResponse](../../models/operations/updatelivestreamresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 401                            | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.LiveNotFoundError       | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
 
-## enableLiveStream
+## disable
 
-This endpoint allows you to enable a livestream by transitioning its status from `disabled` to `idle`. Once enabled, the stream becomes available and ready to accept an incoming broadcast from a streaming tool.
-
-Streams on the trial plan cannot be re-enabled if they are in the `disabled` state.
-
-The `livestreamId` must be provided in the path, and the stream must not already be in an enabled state (`idle`, `preparing`, or `active`).
-
-#### Example
-
-A creator disables a livestream to pause it temporarily. Later, they decide to continue the session. By calling this endpoint with the stream's ID, they can re-enable and restart the same livestream.
-
-Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="enable-live-stream" method="put" path="/live/streams/{streamId}/live-enable" -->
-```typescript
-import { Fastpix } from "@fastpix/fastpix-node";
-
-const fastpix = new Fastpix({
-  security: {
-    username: "your-access-token",
-    password: "your-secret-key",
-  },
-});
-
-async function run() {
-  const result = await fastpix.manageLiveStream.enableLiveStream({
-    streamId: "your-stream-id",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { manageLiveStreamEnableLiveStream } from "@fastpix/fastpix-node/funcs/manageLiveStreamEnableLiveStream.js";
-
-// Use `FastpixCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const fastpix = new FastpixCore({
-   security: {
-    username: "your-access-token",
-    password: "your-secret-key",
-  },
-});
-
-async function run() {
-  const res = await manageLiveStreamEnableLiveStream(fastpix, {
-    streamId: "your-stream-id",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("manageLiveStreamEnableLiveStream failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.EnableLiveStreamRequest](../../models/operations/enablelivestreamrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.LiveStreamDeleteResponse](../../models/livestreamdeleteresponse.md)\>**
-
-### Errors
-
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.TrialPlanRestrictionError | 400                              | application/json                 |
-| errors.StreamAlreadyEnabledError | 400                              | application/json                 |
-| errors.UnauthorizedError         | 401                              | application/json                 |
-| errors.InvalidPermissionError    | 403                              | application/json                 |
-| errors.NotFoundError             | 404                              | application/json                 |
-| errors.ValidationErrorResponse   | 422                              | application/json                 |
-| errors.FastpixDefaultError       | 4XX, 5XX                         | \*/\*                            |
-
-## disableLiveStream
-
-This endpoint disables a livestream by setting its status to `disabled`. Use this to stop a livestream when it's no longer needed or should be taken offline intentionally.
+This endpoint disables a livestream by setting its status to `disabled`. Use this to stop a livestream when it's no longer needed or must be taken offline intentionally.
 
 A disabled stream can later be re-enabled using the enable endpoint — however, if you're on a trial plan, re-enabling is not allowed once the stream is disabled.
 
@@ -614,14 +303,14 @@ Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage strea
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.manageLiveStream.disableLiveStream({
+  const result = await fastpix.manageLiveStream.disable({
     streamId: "your-stream-id",
   });
 
@@ -637,26 +326,26 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { manageLiveStreamDisableLiveStream } from "@fastpix/fastpix-node/funcs/manageLiveStreamDisableLiveStream.js";
+import { manageLiveStreamDisable } from "@fastpix/fastpix-node/funcs/manageLiveStreamDisable.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const res = await manageLiveStreamDisableLiveStream(fastpix, {
+  const res = await manageLiveStreamDisable(fastpix, {
     streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("manageLiveStreamDisableLiveStream failed:", res.error);
+    console.log("manageLiveStreamDisable failed:", res.error);
   }
 }
 
@@ -674,20 +363,15 @@ run();
 
 ### Response
 
-**Promise\<[models.LiveStreamDeleteResponse](../../models/livestreamdeleteresponse.md)\>**
+**Promise\<[operations.DisableLiveStreamResponse](../../models/operations/disablelivestreamresponse.md)\>**
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.StreamAlreadyDisabledError | 400                               | application/json                  |
-| errors.UnauthorizedError          | 401                               | application/json                  |
-| errors.InvalidPermissionError     | 403                               | application/json                  |
-| errors.LiveNotFoundError          | 404                               | application/json                  |
-| errors.ValidationErrorResponse    | 422                               | application/json                  |
-| errors.FastpixDefaultError        | 4XX, 5XX                          | \*/\*                             |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
 
-## completeLiveStream
+## complete
 
 This endpoint marks a livestream as completed by stopping the active stream and transitioning its status to `idle`. It is typically used after a livestream session has ended.
 
@@ -708,14 +392,14 @@ Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage strea
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.manageLiveStream.completeLiveStream({
+  const result = await fastpix.manageLiveStream.complete({
     streamId: "your-stream-id",
   });
 
@@ -731,26 +415,26 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { manageLiveStreamCompleteLiveStream } from "@fastpix/fastpix-node/funcs/manageLiveStreamCompleteLiveStream.js";
+import { manageLiveStreamComplete } from "@fastpix/fastpix-node/funcs/manageLiveStreamComplete.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const res = await manageLiveStreamCompleteLiveStream(fastpix, {
+  const res = await manageLiveStreamComplete(fastpix, {
     streamId: "your-stream-id",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("manageLiveStreamCompleteLiveStream failed:", res.error);
+    console.log("manageLiveStreamComplete failed:", res.error);
   }
 }
 
@@ -768,14 +452,10 @@ run();
 
 ### Response
 
-**Promise\<[models.LiveStreamDeleteResponse](../../models/livestreamdeleteresponse.md)\>**
+**Promise\<[operations.CompleteLiveStreamResponse](../../models/operations/completelivestreamresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 400, 401                       | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.NotFoundError           | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |

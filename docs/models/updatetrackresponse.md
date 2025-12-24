@@ -8,7 +8,7 @@ Contains details about the track that was added or updated.
 import { UpdateTrackResponse } from "@fastpix/fastpix-node/models";
 
 let value: UpdateTrackResponse = {
-  id: "your-track-id",
+  id: "a5833611-e92c-4ba9-89f0-a42f8e9aef5e",
   type: "subtitle",
   url:
     "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",

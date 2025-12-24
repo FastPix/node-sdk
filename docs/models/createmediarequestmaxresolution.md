@@ -1,6 +1,6 @@
 # CreateMediaRequestMaxResolution
 
-The maximum resolution tier determines the highest quality your media will be available in.
+The maximum resolution tier defines the highest quality at which your media is available.
 
 
 ## Example Usage
@@ -14,5 +14,5 @@ let value: CreateMediaRequestMaxResolution = "1080p";
 ## Values
 
 ```typescript
-"2160p" | "1440p" | "1080p" | "720p" | "480p" | "360p"
+"2160p" | "1440p" | "1080p" | "720p" | "480p"
 ```

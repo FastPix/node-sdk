@@ -1,21 +1,43 @@
 # CreateMediaPlaybackIdResponse
 
-Playback id for an media
 
-## Example Usage
+## Supported Types
+
+### `operations.CreateMediaPlaybackIdResponseBody`
 
 ```typescript
-import { CreateMediaPlaybackIdResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: CreateMediaPlaybackIdResponse = {
+const value: operations.CreateMediaPlaybackIdResponseBody = {
   success: true,
-  data: {},
+  data: {
+    id: "b331e0d8-bef4-4ad2-8760-757fdb2818b7",
+    accessPolicy: "public",
+    accessRestrictions: {
+      domains: {
+        defaultPolicy: "allow",
+        allow: [],
+        deny: [],
+      },
+      userAgents: {
+        defaultPolicy: "allow",
+        allow: [],
+        deny: [],
+      },
+    },
+    resolution: "1080p",
+  },
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `success`                                                                                    | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | Demonstrates whether the request is successful or not.                                       | true                                                                                         |
-| `data`                                                                                       | [operations.CreateMediaPlaybackIdData](../../models/operations/createmediaplaybackiddata.md) | :heavy_minus_sign:                                                                           | Displays the result of the request.                                                          |                                                                                              |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

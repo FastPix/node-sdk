@@ -1,15 +1,14 @@
 # GetTimeseriesDataResponse
 
-Get filter/ dimension value details by dimension name.
 
-## Example Usage
+## Supported Types
+
+### `operations.GetTimeseriesDataResponseBody`
 
 ```typescript
-import { GetTimeseriesDataResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: GetTimeseriesDataResponse = {
+const value: operations.GetTimeseriesDataResponseBody = {
   success: true,
-  metaData: {
+  metadata: {
     granularity: "day",
     aggregation: "view_end",
   },
@@ -27,11 +26,16 @@ let value: GetTimeseriesDataResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `success`                                                                                   | *boolean*                                                                                   | :heavy_minus_sign:                                                                          | It demonstrates whether the request is successful or not.                                   |                                                                                             |
-| `metaData`                                                                                  | [models.MetricsTimeseriesMetaDataDetails](../../models/metricstimeseriesmetadatadetails.md) | :heavy_minus_sign:                                                                          | Retrieves breakdown values for a specified metric and timespan                              |                                                                                             |
-| `data`                                                                                      | [models.MetricsTimeseriesDataDetails](../../models/metricstimeseriesdatadetails.md)[]       | :heavy_minus_sign:                                                                          | Displays the result of the request.                                                         |                                                                                             |
-| `timespan`                                                                                  | *number*[]                                                                                  | :heavy_minus_sign:                                                                          | The timeframe from and to details displayed in the form of unix epoch timestamps.<br/>      | {<br/>"availableValue": [<br/>1610025789,<br/>1610025947<br/>]<br/>}                        |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+
