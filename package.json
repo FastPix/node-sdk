@@ -1,6 +1,6 @@
 {
   "name": "@fastpix/fastpix-node",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": {
     "name": "FastPix-Dev",
     "email": "devs@fastpix.io",
@@ -26,46 +26,27 @@
   "sideEffects": false,
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
+    "validate:get-endpoints": "tsx tests/validate-get-endpoints.ts",
+    "report:get-endpoints:excel": "tsx tests/generate-excel-report.ts",
     "build": "tshy",
-    "test": "node --test --enable-source-maps --loader ts-node/esm tests/**/*.test.ts",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "@types/node": "^24.5.2",
+    "@types/node": "^25.0.2",
     "eslint": "^9.19.0",
+    "exceljs": "^4.4.0",
     "globals": "^15.14.0",
+    "js-yaml": "^4.1.1",
+    "openapi-response-validator": "^12.1.3",
     "tshy": "^2.0.0",
+    "tsx": "^4.21.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.26.0"
   },
   "dependencies": {
-    "ts-node": "^10.9.2",
-    "zod": "^3.20.0"
+    "zod": "^3.25.65 || ^4.0.0"
   },
-  "keywords": [
-    "FastPix API SDK",
-    "FastPix Node.js SDK",
-    "on-demand media API",
-    "signing keys API",
-    "Video Data API",
-    "Live Video data API",
-    "CloudPlayout API",
-    "Simulcasting",
-    "media playback",
-    "live streaming",
-    "video analytics SDK",
-    "real-time video data",
-    "video streaming API",
-    "Node.js video API client",
-    "cloud video playout",
-    "media key generation",
-    "video data integration",
-    "FastPix on-demand video streaming",
-    "FastPix live streaming",
-    "video metadata API",
-    "FastPix live streaming SDK"
-  ],
   "exports": {
     ".": {
       "import": {

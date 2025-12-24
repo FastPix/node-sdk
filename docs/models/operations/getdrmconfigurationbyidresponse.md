@@ -1,23 +1,29 @@
 # GetDrmConfigurationByIdResponse
 
-DRM configuration retrieved successfully
 
-## Example Usage
+## Supported Types
+
+### `operations.GetDrmConfigurationByIdResponseBody`
 
 ```typescript
-import { GetDrmConfigurationByIdResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: GetDrmConfigurationByIdResponse = {
+const value: operations.GetDrmConfigurationByIdResponseBody = {
   success: true,
   data: {
-    id: "your-drm-configuration-id",
+    id: "e3dfdf15-16bb-4835-98b9-484c1e4320cc",
   },
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                 | Type                                                  | Required                                              | Description                                           | Example                                               |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `success`                                             | *boolean*                                             | :heavy_minus_sign:                                    | N/A                                                   | true                                                  |
-| `data`                                                | [models.DrmIdResponse](../../models/drmidresponse.md) | :heavy_minus_sign:                                    | N/A                                                   |                                                       |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

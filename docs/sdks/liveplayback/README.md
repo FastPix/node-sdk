@@ -1,15 +1,14 @@
 # LivePlayback
-(*livePlayback*)
 
 ## Overview
 
 ### Available Operations
 
-* [createPlaybackIdOfStream](#createplaybackidofstream) - Create a playbackId
-* [deletePlaybackIdOfStream](#deleteplaybackidofstream) - Delete a playbackId
-* [getLiveStreamPlaybackId](#getlivestreamplaybackid) - Get playbackId details
+* [createId](#createid) - Create a playbackId
+* [delete](#delete) - Delete a playbackId
+* [get](#get) - Get playbackId details
 
-## createPlaybackIdOfStream
+## createId
 
 Generates a new playback ID for the live stream, allowing viewers to access the stream through this ID. The playback ID can be shared with viewers for direct access to the live broadcast. 
 
@@ -26,18 +25,16 @@ Generates a new playback ID for the live stream, allowing viewers to access the 
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.livePlayback.createPlaybackIdOfStream({
-    streamId: "live-stream-id",
-    playbackIdRequest: {
-      accessPolicy: "public",
-    },
+  const result = await fastpix.livePlayback.createId({
+    streamId: "your-stream-id",
+    body: {},
   });
 
   console.log(result);
@@ -52,29 +49,27 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { livePlaybackCreatePlaybackIdOfStream } from "@fastpix/fastpix-node/funcs/livePlaybackCreatePlaybackIdOfStream.js";
+import { livePlaybackCreateId } from "@fastpix/fastpix-node/funcs/livePlaybackCreateId.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
-  },  
+  },
 });
 
 async function run() {
-  const res = await livePlaybackCreatePlaybackIdOfStream(fastpix, {
-    streamId: "live-stream-id",
-    playbackIdRequest: {
-      accessPolicy: "public",
-    },
+  const res = await livePlaybackCreateId(fastpix, {
+    streamId: "your-stream-id",
+    body: {},
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("livePlaybackCreatePlaybackIdOfStream failed:", res.error);
+    console.log("livePlaybackCreateId failed:", res.error);
   }
 }
 
@@ -92,21 +87,17 @@ run();
 
 ### Response
 
-**Promise\<[models.PlaybackIdSuccessResponse](../../models/playbackidsuccessresponse.md)\>**
+**Promise\<[operations.CreatePlaybackIdOfStreamResponse](../../models/operations/createplaybackidofstreamresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 401                            | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.LiveNotFoundError       | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
 
-## deletePlaybackIdOfStream
+## delete
 
-Deletes a previously created playback ID for a live stream. This will prevent any new viewers from accessing the stream through the playback ID, though current viewers will be able to continue watching for a limited time before being disconnected. By providing the `playbackId`, FastPix deletes the ID and ensures new playback requests will fail. 
+Deletes a previously created playback ID for a live stream.This prevents new viewers from accessing the stream using the playback ID, while current viewers can continue watching for a short period before the connection ends. FastPix deletes the ID and ensures the new playback request fails.
 
 #### Example
 A streaming service wants to prevent new users from joining a live stream that is nearing its end. The host can delete the playback ID to ensure no one can join the stream or replay it once it ends.
@@ -118,15 +109,15 @@ A streaming service wants to prevent new users from joining a live stream that i
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
-   security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.livePlayback.deletePlaybackIdOfStream({
-    streamId: "your-live-stream-id",
+  const result = await fastpix.livePlayback.delete({
+    streamId: "your-stream-id",
     playbackId: "your-playback-id",
   });
 
@@ -142,27 +133,27 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { livePlaybackDeletePlaybackIdOfStream } from "@fastpix/fastpix-node/funcs/livePlaybackDeletePlaybackIdOfStream.js";
+import { livePlaybackDelete } from "@fastpix/fastpix-node/funcs/livePlaybackDelete.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
- security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const res = await livePlaybackDeletePlaybackIdOfStream(fastpix, {
-    streamId: "your-live-stream-id",
+  const res = await livePlaybackDelete(fastpix, {
+    streamId: "your-stream-id",
     playbackId: "your-playback-id",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("livePlaybackDeletePlaybackIdOfStream failed:", res.error);
+    console.log("livePlaybackDelete failed:", res.error);
   }
 }
 
@@ -180,21 +171,17 @@ run();
 
 ### Response
 
-**Promise\<[models.LiveStreamDeleteResponse](../../models/livestreamdeleteresponse.md)\>**
+**Promise\<[operations.DeletePlaybackIdOfStreamResponse](../../models/operations/deleteplaybackidofstreamresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 401                            | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.NotFoundErrorPlaybackId | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
 
-## getLiveStreamPlaybackId
+## get
 
-Retrieves details about a previously created playback ID. If you provide the distinct `playbackId` that was given back to you in the previous stream or <a href="https://docs.fastpix.io/reference/create-playbackid-of-stream">create playbackId</a> request, FastPix will provide the relevant playback details such as the access policy. 
+Retrieves details for an existing playback ID. When you provide the playbackId returned from a previous stream or playback creation request, FastPix returns the associated playback information, including the access policy.
 
 #### Example
 A developer needs to confirm the access policy of the playback ID to ensure whether the stream is public or private for viewers.
@@ -206,15 +193,15 @@ A developer needs to confirm the access policy of the playback ID to ensure whet
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
- security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.livePlayback.getLiveStreamPlaybackId({
-    streamId: "your-live-stream-id",
+  const result = await fastpix.livePlayback.get({
+    streamId: "your-stream-id",
     playbackId: "your-playback-id",
   });
 
@@ -230,27 +217,27 @@ The standalone function version of this method:
 
 ```typescript
 import { FastpixCore } from "@fastpix/fastpix-node/core.js";
-import { livePlaybackGetLiveStreamPlaybackId } from "@fastpix/fastpix-node/funcs/livePlaybackGetLiveStreamPlaybackId.js";
+import { livePlaybackGet } from "@fastpix/fastpix-node/funcs/livePlaybackGet.js";
 
 // Use `FastpixCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const fastpix = new FastpixCore({
- security: {
+  security: {
     username: "your-access-token",
     password: "your-secret-key",
   },
 });
 
 async function run() {
-  const res = await livePlaybackGetLiveStreamPlaybackId(fastpix, {
-    streamId: "your-live-stream-id",
+  const res = await livePlaybackGet(fastpix, {
+    streamId: "your-stream-id",
     playbackId: "your-playback-id",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("livePlaybackGetLiveStreamPlaybackId failed:", res.error);
+    console.log("livePlaybackGet failed:", res.error);
   }
 }
 
@@ -268,14 +255,10 @@ run();
 
 ### Response
 
-**Promise\<[models.PlaybackIdSuccessResponse](../../models/playbackidsuccessresponse.md)\>**
+**Promise\<[operations.GetLiveStreamPlaybackIdResponse](../../models/operations/getlivestreamplaybackidresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.UnauthorizedError       | 401                            | application/json               |
-| errors.InvalidPermissionError  | 403                            | application/json               |
-| errors.NotFoundErrorPlaybackId | 404                            | application/json               |
-| errors.ValidationErrorResponse | 422                            | application/json               |
-| errors.FastpixDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |

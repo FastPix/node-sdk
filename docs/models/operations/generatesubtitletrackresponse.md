@@ -1,26 +1,32 @@
 # GenerateSubtitleTrackResponse
 
-Media details updated successfully
 
-## Example Usage
+## Supported Types
+
+### `operations.GenerateSubtitleTrackResponseBody`
 
 ```typescript
-import { GenerateSubtitleTrackResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: GenerateSubtitleTrackResponse = {
+const value: operations.GenerateSubtitleTrackResponseBody = {
   success: true,
   data: {
-    id: "your-track-id",
+    id: "ace60fc7-e876-4fc6-b9d9-c33fa242f84b",
     type: "subtitle",
-    languageCode: "fr-CH",
+    languageCode: "ro-RO",
     languageName: "Italian",
   },
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `success`                                                             | *boolean*                                                             | :heavy_minus_sign:                                                    | Demonstrates whether the request is successful or not.                | true                                                                  |
-| `data`                                                                | [models.GenerateTrackResponse](../../models/generatetrackresponse.md) | :heavy_minus_sign:                                                    | Represents the response for a successfully generated subtitle track.  |                                                                       |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

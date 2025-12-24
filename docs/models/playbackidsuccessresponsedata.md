@@ -5,7 +5,10 @@
 ```typescript
 import { PlaybackIdSuccessResponseData } from "@fastpix/fastpix-node/models";
 
-let value: PlaybackIdSuccessResponseData = {};
+let value: PlaybackIdSuccessResponseData = {
+  id: "68b7ac0f-2504-4dd5-b7b4-d84ab4fee1bd",
+  accessPolicy: "public",
+};
 ```
 
 ## Fields

@@ -8,41 +8,58 @@ import { PlaylistByIdResponse } from "@fastpix/fastpix-node/models";
 let value: PlaylistByIdResponse = {
   success: true,
   data: {
-    id: "your-playlist-id",
-    name: "okkokk",
+    id: "46d5fce1-683a-457f-86d7-c048bb429505",
+    name: "My Playlist",
     referenceId: "122q",
-    type: "manual",
-    description: "This Playlist contains nothing for now",
+    type: "smart",
+    description: "This Playlist contains videos from December 2024.",
+    playOrder: "createdDate ASC",
+    metadata: {
+      createdDate: {
+        startDate: "2024-12-11T00:00:00Z",
+        endDate: "2024-12-12T00:00:00Z",
+      },
+      updatedDate: {
+        startDate: "2024-12-11T00:00:00Z",
+        endDate: "2024-12-12T00:00:00Z",
+      },
+    },
     mediaList: [
       {
         createdAt: new Date("2025-05-27T09:37:52.445936Z"),
+        creatorId: "FastPix@14612",
         duration: "00:00:10",
-        id: "your-media-id-1",
+        id: "a1cd180e-f9b5-4e99-9d44-b9c9baabad89",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:
           "https://venus-images.fastpix.dev/bed25609-1887-4c49-91a5-5c6b1edeb1a2/thumbnail.png",
+        title: "Media 1",
       },
       {
         createdAt: new Date("2025-04-04T13:26:23.507284Z"),
+        creatorId: "FastPix@14612",
         duration: "00:00:10",
-        id: "your-media-id-2",
+        id: "245800c3-7b73-47d9-a201-e961260dcb30",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:
           "https://mercury-images.fastpix.dev/3c6ceeea-d24b-487f-9dd0-5a16148b5d46/thumbnail.png",
+        title: "Media 2",
       },
       {
         createdAt: new Date("2025-04-04T13:26:12.552840Z"),
+        creatorId: "FastPix@14612",
         duration: "00:00:10",
-        id: "your-media-id-3",
+        id: "41316aac-5396-4278-8f44-08d5f2495b12",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:
           "https://mercury-images.fastpix.dev/8989d0d3-5c5b-41b2-89d5-df6094e6093f/thumbnail.png",
+        title: "Media 3",
       },
     ],
-    workspaceId: "your-workspace-id",
+    workspaceId: "d760b903-86ef-44d6-9b73-334130e0cf2d",
     createdAt: new Date("2025-06-05T09:10:30.655275Z"),
     updatedAt: new Date("2025-06-05T12:23:47.096690Z"),
     mediaCount: 3,
@@ -52,7 +69,7 @@ let value: PlaylistByIdResponse = {
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              | Example                                                                  |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `success`                                                                | *boolean*                                                                | :heavy_minus_sign:                                                       | N/A                                                                      | true                                                                     |
-| `data`                                                                   | [models.PlaylistByIdResponseData](../models/playlistbyidresponsedata.md) | :heavy_minus_sign:                                                       | N/A                                                                      |                                                                          |
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `success`                                                                 | *boolean*                                                                 | :heavy_minus_sign:                                                        | Shows the request status. Returns true for success and false for failure. | true                                                                      |
+| `data`                                                                    | *models.PlaylistByIdResponseData*                                         | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |

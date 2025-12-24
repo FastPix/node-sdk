@@ -6,15 +6,11 @@
 import { CreateLiveStreamRequest } from "@fastpix/fastpix-node/models";
 
 let value: CreateLiveStreamRequest = {
-  playbackSettings: {
-    accessPolicy: "public",
-  },
+  playbackSettings: {},
   inputMediaSettings: {
-    mediaPolicy: "public",
     metadata: {
       "livestream_name": "fastpix_livestream",
     },
-    enableDvrMode: true,
   },
 };
 ```
@@ -24,4 +20,4 @@ let value: CreateLiveStreamRequest = {
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `playbackSettings`                                           | [models.PlaybackSettings](../models/playbacksettings.md)     | :heavy_check_mark:                                           | Displays the result of the playback settings.                |
-| `inputMediaSettings`                                         | [models.InputMediaSettings](../models/inputmediasettings.md) | :heavy_check_mark:                                           | Displays the result of the input Media settings.             |
+| `inputMediaSettings`                                         | [models.InputMediaSettings](../models/inputmediasettings.md) | :heavy_check_mark:                                           | Contains configuration details for input media settings.     |

@@ -21,11 +21,13 @@ let value: LivestreamgetResponse = {
     maxDuration: 28800,
     createdAt: new Date("2024-10-15T08:48:31.551351Z"),
     enableRecording: true,
+    enableDvrMode: false,
     mediaPolicy: "public",
     metadata: {
       "livestream_name": "fastpix_livestream",
     },
-    enableDvrMode: true,
+    lowLatency: true,
+    closedCaptions: false,
     playbackIds: [
       {
         id: "4e43ec52-4775-4f68-a3ff-a57d8a59bba8",
@@ -48,5 +50,5 @@ let value: LivestreamgetResponse = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `success`                                                                            | *boolean*                                                                            | :heavy_minus_sign:                                                                   | It demonstrates whether the request is successful or not.                            | true                                                                                 |
+| `success`                                                                            | *boolean*                                                                            | :heavy_minus_sign:                                                                   | Shows the request status. Returns true for success and false for failure.            | true                                                                                 |
 | `data`                                                                               | [models.GetCreateLiveStreamResponseDTO](../models/getcreatelivestreamresponsedto.md) | :heavy_minus_sign:                                                                   | Displays the result of the request.                                                  |                                                                                      |

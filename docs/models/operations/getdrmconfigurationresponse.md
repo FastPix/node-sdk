@@ -1,17 +1,18 @@
 # GetDrmConfigurationResponse
 
-DRM configuration(s) retrieved successfully
 
-## Example Usage
+## Supported Types
+
+### `operations.GetDrmConfigurationResponseBody`
 
 ```typescript
-import { GetDrmConfigurationResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: GetDrmConfigurationResponse = {
+const value: operations.GetDrmConfigurationResponseBody = {
   success: true,
-  data: {
-    id: "your-drm-configuration-id",
-  },
+  data: [
+    {
+      id: "e3dfdf15-16bb-4835-98b9-484c1e4320cc",
+    },
+  ],
   pagination: {
     totalRecords: 100,
     currentOffset: 1,
@@ -20,10 +21,16 @@ let value: GetDrmConfigurationResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `success`                                                                      | *boolean*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            | true                                                                           |
-| `data`                                                                         | [models.DrmIdResponse](../../models/drmidresponse.md)                          | :heavy_minus_sign:                                                             | N/A                                                                            |                                                                                |
-| `pagination`                                                                   | [models.Pagination](../../models/pagination.md)                                | :heavy_minus_sign:                                                             | Pagination organizes content into pages for better readability and navigation. |                                                                                |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

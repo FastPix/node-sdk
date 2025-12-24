@@ -1,13 +1,12 @@
 # ListErrorsResponse
 
-Get filter/ dimension value details by dimension name.
 
-## Example Usage
+## Supported Types
+
+### `operations.ListErrorsResponseBody`
 
 ```typescript
-import { ListErrorsResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: ListErrorsResponse = {
+const value: operations.ListErrorsResponseBody = {
   success: true,
   data: {
     errors: [
@@ -31,8 +30,6 @@ let value: ListErrorsResponse = {
         message:
           "com.fastpix.stats.sdk.h71.a - android.media.mediadrm$mediadrmstateexception: failed to handle key response: drm vendor-defined error: -2998",
         lastSeen: "2023-12-01T11:31:07Z",
-        id: "9pa85f64-5717-4562-b3fc-2c963f66afa6",
-        description: "a description of the specific error",
         count: 4,
         code: "1003",
       },
@@ -45,10 +42,16 @@ let value: ListErrorsResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `success`                                                                          | *boolean*                                                                          | :heavy_minus_sign:                                                                 | It demonstrates whether the request is successful or not.                          |                                                                                    |
-| `data`                                                                             | [operations.ListErrorsData](../../models/operations/listerrorsdata.md)             | :heavy_minus_sign:                                                                 | Displays the result of the request.                                                |                                                                                    |
-| `timespan`                                                                         | *number*[]                                                                         | :heavy_minus_sign:                                                                 | The timeframe from and to details displayed in the form of unix epoch timestamps.<br/> | {<br/>"availableValue": [<br/>1610025789,<br/>1610025947<br/>]<br/>}               |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

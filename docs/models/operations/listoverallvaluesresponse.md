@@ -1,15 +1,14 @@
 # ListOverallValuesResponse
 
-Get filter/ dimension value details by dimension name.
 
-## Example Usage
+## Supported Types
+
+### `operations.ListOverallValuesResponseBody`
 
 ```typescript
-import { ListOverallValuesResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: ListOverallValuesResponse = {
+const value: operations.ListOverallValuesResponseBody = {
   success: true,
-  metaData: {
+  metadata: {
     aggregation: "view_end",
   },
   data: {
@@ -27,11 +26,16 @@ let value: ListOverallValuesResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `success`                                                                             | *boolean*                                                                             | :heavy_minus_sign:                                                                    | It demonstrates whether the request is successful or not.                             |                                                                                       |
-| `metaData`                                                                            | [models.MetricsOverallMetaDataDetails](../../models/metricsoverallmetadatadetails.md) | :heavy_minus_sign:                                                                    | Metadata that has to be paased for metric calculations.                               |                                                                                       |
-| `data`                                                                                | [models.MetricsOverallDataDetails](../../models/metricsoveralldatadetails.md)         | :heavy_minus_sign:                                                                    | Retrieves overall values for a specified metric                                       |                                                                                       |
-| `timespan`                                                                            | *number*[]                                                                            | :heavy_minus_sign:                                                                    | The timeframe from and to details displayed in the form of unix epoch timestamps.<br/> | {<br/>"availableValue": [<br/>1610025789,<br/>1610025947<br/>]<br/>}                  |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

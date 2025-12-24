@@ -1,13 +1,13 @@
-# MetricsOverallMetaDataDetails
+# MetricsOverallmetadataDetails
 
-Metadata that has to be paased for metric calculations.
+metadata that has to be paased for metric calculations.
 
 ## Example Usage
 
 ```typescript
-import { MetricsOverallMetaDataDetails } from "@fastpix/fastpix-node/models";
+import { MetricsOverallmetadataDetails } from "@fastpix/fastpix-node/models";
 
-let value: MetricsOverallMetaDataDetails = {
+let value: MetricsOverallmetadataDetails = {
   aggregation: "viewEnd",
 };
 ```

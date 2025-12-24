@@ -1,19 +1,26 @@
 # DeleteMediaTrackResponse
 
-Delete a video media
 
-## Example Usage
+## Supported Types
+
+### `operations.DeleteMediaTrackResponseBody`
 
 ```typescript
-import { DeleteMediaTrackResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: DeleteMediaTrackResponse = {
+const value: operations.DeleteMediaTrackResponseBody = {
   success: true,
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            | Example                                                |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `success`                                              | *boolean*                                              | :heavy_minus_sign:                                     | Demonstrates whether the request is successful or not. | true                                                   |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

@@ -13,8 +13,6 @@
     "tsx": "^4.19.2"
   },
   "dependencies": {
-    "@fastpix/fastpix-node": "file:..",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "@fastpix/fastpix-node": "file:.."
   }
 }

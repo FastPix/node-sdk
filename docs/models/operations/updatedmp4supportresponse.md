@@ -1,13 +1,12 @@
 # UpdatedMp4SupportResponse
 
-Media details updated successfully
 
-## Example Usage
+## Supported Types
+
+### `operations.UpdatedMp4SupportResponseBody`
 
 ```typescript
-import { UpdatedMp4SupportResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: UpdatedMp4SupportResponse = {
+const value: operations.UpdatedMp4SupportResponseBody = {
   success: true,
   data: {
     thumbnail:
@@ -17,7 +16,8 @@ let value: UpdatedMp4SupportResponse = {
     metadata: {
       "key1": "value1",
     },
-    status: "ready",
+    mediaQuality: "standard",
+    status: "Ready",
     mp4Support: "capped_4k",
     sourceAccess: true,
     playbackIds: [
@@ -45,11 +45,13 @@ let value: UpdatedMp4SupportResponse = {
         width: 1920,
         height: 1080,
         frameRate: "30/1",
-        closedCaptions: false,
+        status: "available",
       },
     ],
+    generatedSubtitles: [],
+    isAudioOnly: false,
+    subtitleAvailable: false,
     duration: "00:00:10",
-    frameRate: "30/1",
     aspectRatio: "16:9",
     createdAt: new Date("2024-12-06T03:47:26.489888Z"),
     updatedAt: new Date("2024-12-06T03:47:47.593400Z"),
@@ -57,9 +59,16 @@ let value: UpdatedMp4SupportResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            | Example                                                |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `success`                                              | *boolean*                                              | :heavy_minus_sign:                                     | Demonstrates whether the request is successful or not. | true                                                   |
-| `data`                                                 | [models.Media](../../models/media.md)                  | :heavy_minus_sign:                                     | N/A                                                    |                                                        |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

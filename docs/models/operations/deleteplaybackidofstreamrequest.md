@@ -6,8 +6,8 @@
 import { DeletePlaybackIdOfStreamRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: DeletePlaybackIdOfStreamRequest = {
-  streamId: "your-stream-id",
-  playbackId: "your-playback-id",
+  streamId: "8717422d89288ad5958d4a86e9afe2a2",
+  playbackId: "88b7ac0f-2504-4dd5-b7b4-d84ab4fee1bd",
 };
 ```
 

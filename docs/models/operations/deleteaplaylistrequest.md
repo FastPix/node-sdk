@@ -6,7 +6,7 @@
 import { DeleteAPlaylistRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: DeleteAPlaylistRequest = {
-  playlistId: "<id>",
+  playlistId: "your-playlist-id",
 };
 ```
 

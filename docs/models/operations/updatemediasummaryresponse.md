@@ -1,23 +1,30 @@
 # UpdateMediaSummaryResponse
 
-Media details updated successfully with the generated summary
 
-## Example Usage
+## Supported Types
+
+### `operations.UpdateMediaSummaryResponseBody`
 
 ```typescript
-import { UpdateMediaSummaryResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: UpdateMediaSummaryResponse = {
+const value: operations.UpdateMediaSummaryResponseBody = {
   success: true,
   data: {
-    mediaId: "your-media-id",
+    mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+    isSummaryEnabled: true,
   },
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                     | Type                                                      | Required                                                  | Description                                               | Example                                                   |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `success`                                                 | *boolean*                                                 | :heavy_minus_sign:                                        | Indicates if the request was successful or not.           | true                                                      |
-| `data`                                                    | [models.SummaryResponse](../../models/summaryresponse.md) | :heavy_minus_sign:                                        | N/A                                                       |                                                           |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

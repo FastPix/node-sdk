@@ -7,12 +7,15 @@ Date range with start and end dates.
 ```typescript
 import { DateRange } from "@fastpix/fastpix-node/models";
 
-let value: DateRange = {};
+let value: DateRange = {
+  startDate: "2024-11-11",
+  endDate: "2024-11-11",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `startDate`        | *string*           | :heavy_minus_sign: | N/A                |
-| `endDate`          | *string*           | :heavy_minus_sign: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `startDate`        | *string*           | :heavy_minus_sign: | N/A                | 2024-11-11         |
+| `endDate`          | *string*           | :heavy_minus_sign: | N/A                | 2024-11-11         |

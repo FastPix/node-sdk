@@ -12,6 +12,8 @@ let value: AccessPolicy = "private";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"public" | "private" | "drm"
+"public" | "private" | "drm" | Unrecognized<string>
 ```

@@ -3,24 +3,22 @@
 
 ## Supported Types
 
-### `models.VideoInput`
+### `models.PullVideoInput`
 
 ```typescript
-const value: models.VideoInput = {
-  type: "video",
-  url: "https://static.fastpix.io/sample.mp4",
+const value: models.PullVideoInput = {
   startTime: 0,
   endTime: 60,
-  introUrl: "https://static.fastpix.io/sample.mp4",
-  outroUrl: "https://static.fastpix.io/sample.mp4",
+  introUrl: "https://static.fastpix.io/fp-sample-video.mp4",
+  outroUrl: "https://static.fastpix.io/fp-sample-video.mp4",
   expungeSegments: [
     "4-6",
     "15-19",
   ],
   segments: [
     {
-      url: "https://storage.googleapis.com/gtv-videos-mp4",
-      insertAtEnd: true,
+      url: "https://storage.googleapis.com/gtv-videos-mp4/sample-segment.mp4",
+      insertAt: 2,
     },
   ],
 };
@@ -72,7 +70,6 @@ const value: models.SubtitleInput = {
   url:
     "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
   languageName: "english",
-  languageCode: "en-IE",
 };
 ```
 

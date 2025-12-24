@@ -22,13 +22,16 @@ let value: PatchResponseDTO = {
     createdAt: new Date("2024-10-15T08:48:31.551351Z"),
     reconnectWindow: 100,
     enableRecording: true,
+    enableDvrMode: false,
     mediaPolicy: "public",
     metadata: {
       "livestream_name": "Gaming_stream",
     },
+    lowLatency: true,
+    closedCaptions: false,
     playbackIds: [
       {
-        id: "your-playback-id",
+        id: "4e43ec52-4775-4f68-a3ff-a57d8a59bba8",
         accessPolicy: "public",
       },
     ],
@@ -43,7 +46,7 @@ let value: PatchResponseDTO = {
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                | Example                                                    |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `success`                                                  | *boolean*                                                  | :heavy_minus_sign:                                         | It demonstrates whether the request is successful or not.  | true                                                       |
-| `data`                                                     | [models.PatchResponseData](../models/patchresponsedata.md) | :heavy_minus_sign:                                         | Displays the result of the request.                        |                                                            |
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `success`                                                                 | *boolean*                                                                 | :heavy_minus_sign:                                                        | Shows the request status. Returns true for success and false for failure. | true                                                                      |
+| `data`                                                                    | [models.PatchResponseData](../models/patchresponsedata.md)                | :heavy_minus_sign:                                                        | Displays the result of the request.                                       |                                                                           |

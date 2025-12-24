@@ -6,8 +6,8 @@
 import { UpdateAPlaylistRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: UpdateAPlaylistRequest = {
-  playlistId: "<id>",
-  updatePlaylistRequest: {
+  playlistId: "your-playlist-id",
+  body: {
     name: "updated name",
     description: "updated description",
   },
@@ -19,4 +19,4 @@ let value: UpdateAPlaylistRequest = {
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `playlistId`                                                          | *string*                                                              | :heavy_check_mark:                                                    | The unique id of the playlist you want to retrieve.                   |                                                                       |
-| `updatePlaylistRequest`                                               | [models.UpdatePlaylistRequest](../../models/updateplaylistrequest.md) | :heavy_check_mark:                                                    | N/A                                                                   | {<br/>"name": "updated name",<br/>"description": "updated description"<br/>} |
+| `body`                                                                | [models.UpdatePlaylistRequest](../../models/updateplaylistrequest.md) | :heavy_check_mark:                                                    | N/A                                                                   | {<br/>"name": "updated name",<br/>"description": "updated description"<br/>} |

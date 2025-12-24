@@ -2,7 +2,6 @@
 
 A robust, type-safe Node.js SDK designed for seamless integration with the FastPix API platform.
 
-<!-- Start Summary [summary] -->
 ## Introduction
 
 The FastPix Node.js SDK simplifies integration with the FastPix platform. It provides a clean, TypeScript interface for secure and efficient communication with the FastPix API, enabling easy management of media uploads, live streaming, on‑demand content, playlists, video analytics, and signing keys for secure access and token management. It is intended for use with Node.js 18 and above.
@@ -11,37 +10,19 @@ The FastPix Node.js SDK simplifies integration with the FastPix platform. It pro
 
 ### Environment and Version Support
 
-<table>
-<tr>
-<th>Requirement</th>
-<th>Version</th>
-<th>Description</th>
-</tr>
-<tr>
-<td><strong>Node.js</strong></td>
-<td><code>18+</code></td>
-<td>Core runtime environment</td> 
-</tr>
-<tr>
-<td><strong>npm/yarn/pnpm</strong></td>
-<td><code>Latest</code></td>
-<td>Package manager for dependencies</td>
-</tr>
-<tr>
-<td><strong>Internet</strong></td>
-<td><code>Required</code></td>
-<td>API communication and authentication</td>
-</tr>
-</table>
+| Requirement | Version | Description |
+|---|---:|---|
+| Node.js | `18+` | Core runtime environment |
+| npm/yarn/pnpm | `Latest` | Package manager for dependencies |
+| Internet | `Required` | API communication and authentication |
 
-> **Pro Tip:** We recommend using Node.js 20+ for optimal performance and the latest language features.
+> Pro Tip: We recommend using Node.js 20+ for optimal performance and the latest language features.
 
 ### Getting Started with FastPix
 
-To get started with the **FastPix Node.js SDK**, ensure you have the following:
+To get started with the FastPix Node.js SDK, ensure you have the following:
 
 - The FastPix APIs are authenticated using a **Username** and a **Password**. You must generate these credentials to use the SDK.
-
 - Follow the steps in the [Authentication with Basic Auth](https://docs.fastpix.io/docs/basic-authentication) guide to obtain your credentials.
 
 ### Environment Variables (Optional)
@@ -54,23 +35,22 @@ export FASTPIX_USERNAME="your-access-token"
 export FASTPIX_PASSWORD="your-secret-key"
 ```
 
-> **Security Note:** Never commit your credentials to version control. Use environment variables or secure credential management systems.
+> Security Note: Never commit your credentials to version control. Use environment variables or secure credential management systems.
 
-<!-- Start Table of Contents [toc] -->
 ## Table of Contents
-<!-- $toc-max-depth=2 -->
+
 * [Fastpix Node.js SDK](#fastpix-nodejs-sdk)
   * [Setup](#setup)
   * [Example Usage](#example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
+  * [Standalone functions](#standalone-functions)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Debugging](#debugging)
   * [Development](#development)
 
-<!-- End Table of Contents [toc] -->
-
-<!-- Start Setup [setup] -->
 ## Setup
 
 ### Installation
@@ -98,31 +78,23 @@ bun add @fastpix/fastpix-node
 ```bash
 yarn add @fastpix/fastpix-node
 ```
+
 ### Imports
 
 This SDK supports both **ES modules** and **CommonJS**. Examples in this documentation use ES module syntax as it's the preferred format, but you can use either approach.
 
 #### ES Modules (Recommended)
 ```typescript
-// Basic imports
 import { Fastpix } from "@fastpix/fastpix-node";
 import type { CreateMediaRequest } from "@fastpix/fastpix-node/models/operations";
 ```
 
 #### CommonJS
 ```javascript
-// CommonJS require syntax
 const { Fastpix } = require("@fastpix/fastpix-node");
 ```
 
-> **Why ES Modules?** ES modules provide better tree-shaking, static analysis, and are the modern JavaScript standard. They enable smaller bundle sizes and better development tooling support.
-
-> **Note:** This SDK automatically provides both module formats. If you encounter import errors in your project, you may need to add `"type": "module"` to your `package.json` file to enable ES modules support.
-
-> **Security Note:** For production applications, it's recommended to make API calls from your backend server rather than directly from the browser to:
-> - Keep credentials secure
-> - Avoid CORS issues  
-> - Implement proper authentication.
+> Why ES Modules? ES modules provide better tree-shaking, static analysis, and are the modern JavaScript standard.
 
 ### Initialization
 
@@ -152,12 +124,7 @@ const fastpix = new Fastpix({
 });
 ```
 
-<!-- End Setup [setup] -->
-
-<!-- Start Example Usage [example-usage] -->
 ## Example Usage
-
-### Example
 
 ```typescript
 import { Fastpix } from "@fastpix/fastpix-node";
@@ -170,29 +137,24 @@ const fastpix = new Fastpix({
 });
 
 async function run() {
-  const result = await fastpix.inputVideo.createMedia({
+  const result = await fastpix.inputVideo.create({
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.io/sample.mp4",
+        url: "https://static.fastpix.io/fp-sample-video.mp4",
       },
     ],
     metadata: {
       "key1": "value1",
     },
-    accessPolicy: "public",
   });
 
-    // handle response
-    console.log(result);
-
+  console.log(result);
 }
 
 run();
 ```
-<!-- End Example Usage [example-usage] -->
 
-<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 Comprehensive Node.js SDK for FastPix platform integration with full API coverage.
@@ -204,108 +166,94 @@ Upload, manage, and transform video content with comprehensive media management 
 For detailed documentation, see [FastPix Video on Demand Overview](https://docs.fastpix.io/docs/video-on-demand-overview).
 
 #### Input Video
-- [Create from URL](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/inputvideo/README.md#createmedia) - Upload video content from external URL
-- [Upload from Device](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/inputvideo/README.md#directuploadvideomedia) - Upload video files directly from device
+- [Create from URL](docs/sdks/inputvideo/README.md#create) - Upload video content from external URL
+- [Upload from Device](docs/sdks/inputvideo/README.md#upload) - Upload video files directly from device
 
 #### Manage Videos
-- [List All Media](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#listmedia) - Retrieve complete list of all media files
-- [Get Media by ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#getmedia) - Get detailed information for specific media
-- [Update Media](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#updatedmedia) - Modify media metadata and settings
-- [Delete Media](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#deletemedia) - Remove media files from library
-- [Cancel Upload](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#cancelupload) - Stop ongoing media upload process
-- [Get Input Info](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#retrievemediainputinfo) - Retrieve detailed input information
-- [List Uploads](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managevideos/README.md#listuploads) - Get all available upload URLs
+- [List All Media](docs/sdks/media/README.md#list) - Retrieve complete list of all media files
+- [Get Media by ID](docs/sdks/managevideos/README.md#get) - Get detailed information for specific media
+- [Update Media](docs/sdks/managevideos/README.md#update) - Modify media metadata and settings
+- [Delete Media](docs/sdks/managevideos/README.md#delete) - Remove media files from library
+- [Cancel Upload](docs/sdks/managevideos/README.md#cancelupload) - Stop ongoing media upload process
+- [Get Input Info](docs/sdks/managevideos/README.md#retrievemediainputinfo) - Retrieve detailed input information
+- [List Uploads](docs/sdks/managevideos/README.md#listuploads) - Get all available upload URLs
 
 #### Playback
-- [Create Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#createmediaplaybackid) - Generate secure playback identifier
-- [Delete Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#deletemediaplaybackid) - Remove playback access
-- [Get Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playback/README.md#getplaybackid) - Retrieve playback configuration details
-
-#### Play Specific Segments
-- Stream only a portion of a video by appending `start`/`end` parameters to the playback URL. Explore: [Play specific segments](https://docs.fastpix.io/docs/play-your-videos#play-specific-segments). For creating reusable assets instead, see [Create clips from existing media](https://docs.fastpix.io/docs/create-clips-from-existing-media).
-- Try it: `https://stream.fastpix.io/{PLAYBACK_ID}.m3u8?start=20&end=60` (replace `{PLAYBACK_ID}` and tweak times).
-
-#### Create Clips from Existing Media
-- Create reusable, shareable clip assets from a source video with precise start/end control. Explore: [Create clips from existing media](https://docs.fastpix.io/docs/create-clips-from-existing-media).
-- Try it: use the clipping API from the guide to generate a new clip asset, then retrieve it via Media Clips to validate.
+- [Create Playback ID](docs/sdks/playback/README.md#create) - Generate secure playback identifier
+- [Delete Playback ID](docs/sdks/playback/README.md#delete) - Remove playback access
+- [Get Playback ID](docs/sdks/playback/README.md#get) - Retrieve playback configuration details
 
 #### Playlist
-- [Create Playlist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#createaplaylist) - Create new video playlist
-- [List Playlists](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#getallplaylists) - Get all available playlists
-- [Get Playlist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#getplaylistbyid) - Retrieve specific playlist details
-- [Update Playlist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#updateaplaylist) - Modify playlist settings and metadata
-- [Delete Playlist](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#deleteaplaylist) - Remove playlist from library
-- [Add Media](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#addmediatoplaylist) - Add media items to playlist
-- [Reorder Media](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#changemediaorderinplaylist) - Change order of media in playlist
-- [Remove Media](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/playlist/README.md#deletemediafromplaylist) - Remove media from playlist
+- [Create Playlist](docs/sdks/playlist/README.md#create) - Create new video playlist
+- [List Playlists](docs/sdks/playlist/README.md#list) - Get all available playlists
+- [Get Playlist](docs/sdks/playlist/README.md#get) - Retrieve specific playlist details
+- [Update Playlist](docs/sdks/playlist/README.md#update) - Modify playlist settings and metadata
+- [Delete Playlist](docs/sdks/playlist/README.md#delete) - Remove playlist from library
+- [Add Media](docs/sdks/playlists/README.md#addmedia) - Add media items to playlist
+- [Reorder Media](docs/sdks/playlist/README.md#updatemediaorder) - Change order of media in playlist
+- [Remove Media](docs/sdks/playlists/README.md#deletemedia) - Remove media from playlist
 
 #### Signing Keys
-- [Create Key](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md#createsigningkey) - Generate new signing key pair
-- [List Keys](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md#listsigningkeys) - Get all available signing keys
-- [Delete Key](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md#deletesigningkey) - Remove signing key from system
-- [Get Key](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/signingkeys/README.md#getsigningkeybyid) - Retrieve specific signing key details
+- [Create Key](docs/sdks/signingkeys/README.md#create) - Generate new signing key pair
+- [List Keys](docs/sdks/signingkeys/README.md#list) - Get all available signing keys
+- [Delete Key](docs/sdks/signingkeys/README.md#delete) - Remove signing key from system
+- [Get Key](docs/sdks/signingkeys/README.md#getbyid) - Retrieve specific signing key details
 
 #### DRM Configurations
-- [List DRM Configs](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/drmconfigurations/README.md#getdrmconfiguration) - Get all DRM configuration options
-- [Get DRM Config](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/drmconfigurations/README.md#getdrmconfigurationbyid) - Retrieve specific DRM configuration
+- [List DRM Configs](docs/sdks/drmconfigurations/README.md#list) - Get all DRM configuration options
+- [Get DRM Config](docs/sdks/drmconfigurations/README.md#get) - Retrieve specific DRM configuration
 
-### Live API 
+### Live API
 
 Stream, manage, and transform live video content with real-time broadcasting capabilities.
 
 For detailed documentation, see [FastPix Live Stream Overview](https://docs.fastpix.io/docs/live-stream-overview).
 
-
-
 #### Start Live Stream
-- [Create Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/startlivestream/README.md#createnewstream) - Initialize new live streaming session with **DVR mode support**
+- [Create Stream](docs/sdks/livestreams/README.md#create) - Initialize new live streaming session with DVR mode support
 
 #### Manage Live Stream
-- [List Streams](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#getallstreams) - Retrieve all active live streams
-- [Get Viewer Count](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#getlivestreamviewercountbyid) - Get real-time viewer statistics
-- [Get Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#getlivestreambyid) - Retrieve detailed stream information
-- [Delete Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#deletelivestream) - Terminate and remove live stream
-- [Update Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#updatelivestream) - Modify stream settings and configuration
-- [Enable Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#enablelivestream) - Activate live streaming
-- [Disable Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#disablelivestream) - Pause live streaming
-- [Complete Stream](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/managelivestream/README.md#completelivestream) - Finalize and archive stream
+- [List Streams](docs/sdks/livestreams/README.md#list) - Retrieve all active live streams
+- [Get Viewer Count](docs/sdks/managelivestream/README.md#getviewercount) - Get real-time viewer statistics
+- [Get Stream](docs/sdks/managelivestream/README.md#get) - Retrieve detailed stream information
+- [Delete Stream](docs/sdks/livestreams/README.md#delete) - Terminate and remove live stream
+- [Update Stream](docs/sdks/managelivestream/README.md#update) - Modify stream settings and configuration
+- [Enable Stream](docs/sdks/managelivestream/README.md#enable) - Activate live streaming
+- [Disable Stream](docs/sdks/managelivestream/README.md#disable) - Pause live streaming
+- [Complete Stream](docs/sdks/managelivestream/README.md#complete) - Finalize and archive stream
 
 #### Live Playback
-- [Create Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#createplaybackidofstream) - Generate secure live playback access
-- [Delete Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#deleteplaybackidofstream) - Revoke live playback access
-- [Get Playback ID](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/liveplayback/README.md#getlivestreamplaybackid) - Retrieve live playback configuration
-
-#### Live Clipping
-- Explore instant live clipping during a live stream to capture key moments without creating new assets. See the Live Clipping guide: [Instant Live Clipping](https://docs.fastpix.io/docs/instant-live-clipping).
-- Try it: enable a test live stream and capture a highlight clip while broadcasting to see it appear instantly.
+- [Create Playback ID](docs/sdks/liveplayback/README.md#createid) - Generate secure live playback access
+- [Delete Playback ID](docs/sdks/liveplayback/README.md#delete) - Revoke live playback access
+- [Get Playback ID](docs/sdks/liveplayback/README.md#get) - Retrieve live playback configuration
 
 #### Simulcast Stream
-- [Create Simulcast](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#createsimulcastofstream) - Set up multi-platform streaming
-- [Delete Simulcast](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#deletesimulcastofstream) - Remove simulcast configuration
-- [Get Simulcast](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#getspecificsimulcastofstream) - Retrieve simulcast settings
-- [Update Simulcast](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/simulcaststream/README.md#updatespecificsimulcastofstream) - Modify simulcast parameters
+- [Create Simulcast](docs/sdks/simulcasts/README.md#create) - Set up multi-platform streaming
+- [Delete Simulcast](docs/sdks/simulcaststreams/README.md#delete) - Remove simulcast configuration
+- [Get Simulcast](docs/sdks/simulcasts/README.md#get) - Retrieve simulcast settings
+- [Update Simulcast](docs/sdks/simulcasts/README.md#update) - Modify simulcast parameters
 
-### Video Data API 
+### Video Data API
 
 Monitor video performance and quality with comprehensive analytics and real-time metrics.
 
 For detailed documentation, see [FastPix Video Data Overview](https://docs.fastpix.io/docs/video-data-overview).
 
 #### Metrics
-- [List Breakdown Values](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#listbreakdownvalues) - Get detailed breakdown of metrics by dimension
-- [List Overall Values](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#listoverallvalues) - Get aggregated metric values across all content
-- [Get Timeseries Data](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/metrics/README.md#gettimeseriesdata) - Retrieve time-based metric trends and patterns
+- [List Breakdown Values](docs/sdks/metrics/README.md#listbreakdownvalues) - Get detailed breakdown of metrics by dimension
+- [List Overall Values](docs/sdks/metrics/README.md#listoverallvalues) - Get aggregated metric values across all content
+- [Get Timeseries Data](docs/sdks/metrics/README.md#gettimeseriesdata) - Retrieve time-based metric trends and patterns
 
 #### Views
-- [List Video Views](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#listvideoviews) - Get comprehensive list of video viewing sessions
-- [Get View Details](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#getvideoviewdetails) - Retrieve detailed information about specific video views
-- [List Top Content](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#listbytopcontent) - Find your most popular and engaging content
-- [Get Concurrent Viewers](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#getdataviewlistcurrentviewsgettimeseriesviews) - Monitor real-time viewer counts over time
-- [Get Viewer Breakdown](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/views/README.md#getdataviewlistcurrentviewsfilter) - Analyze viewers by device, location, and other dimensions
+- [List Video Views](docs/sdks/views/README.md#list) - Get comprehensive list of video viewing sessions
+- [Get View Details](docs/sdks/views/README.md#getdetails) - Retrieve detailed information about specific video views
+- [List Top Content](docs/sdks/views/README.md#listtopcontent) - Find your most popular and engaging content
+- [Get Concurrent Viewers](docs/sdks/metrics/README.md#listcompares) - Monitor real-time viewer counts over time
+- [Get Viewer Breakdown](docs/sdks/metrics/README.md#listbreakdownvalues) - Analyze viewers by device, location, and other dimensions
 
 #### Dimensions
-- [List Dimensions](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/dimensions/README.md#listdimensions) - Get available data dimensions for filtering and analysis
-- [List Filter Values](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/dimensions/README.md#listfiltervaluesfordimension) - Get specific values for a particular dimension
+- [List Dimensions](docs/sdks/dimensions/README.md#list) - Get available data dimensions for filtering and analysis
+- [List Filter Values](docs/sdks/dimensions/README.md#listfiltervalues) - Get specific values for a particular dimension
 
 ### Transformations
 
@@ -315,67 +263,130 @@ Transform and enhance your video content with powerful AI and editing capabiliti
 
 Enhance video content with AI-powered features including moderation, summarization, and intelligent categorization.
 
-For detailed documentation, see [Video Moderation Guide](https://docs.fastpix.io/docs/using-nsfw-and-profanity-filter-for-video-moderation).
-
-- [Generate Summary](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/in-video-ai/README.md#updatemediasummary) - Create AI-generated video summaries
-- [Create Chapters](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/in-video-ai/README.md#updatemediachapters) - Automatically generate video chapter markers
-- [Extract Entities](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/in-video-ai/README.md#updatemedianamedentities) - Identify and extract named entities from content
-- [Enable Moderation](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/in-video-ai/README.md#updatemediamoderation) - Activate content moderation and safety checks
+- [Update Summary](docs/sdks/aifeatures/README.md#updatesummary) - Create AI-generated video summaries
+- [Create Chapters](docs/sdks/invideoaifeatures/README.md#generatechapters) - Automatically generate video chapter markers
+- [Extract Entities](docs/sdks/aifeatures/README.md#generatenamedentities) - Identify and extract named entities from content
+- [Enable Moderation](docs/sdks/invideoai/README.md#updatemoderation) - Activate content moderation and safety checks
 
 #### Media Clips
 
-Retrieve and manage media clips created from your source content.
-
-For detailed documentation, see [Create clips from existing media](https://docs.fastpix.io/docs/create-clips-from-existing-media).
-
-- [Get Media Clips](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/get-clips/README.md#getmediaclips) - Retrieve all clips associated with a source media
+- [Get Media Clips](docs/sdks/media/README.md#getclips) - Retrieve all clips associated with a source media
 
 #### Subtitles
 
-Generate automatic subtitles for enhanced accessibility and user experience.
-
-For detailed documentation, see [Generate subtitles](https://docs.fastpix.io/docs/generate-subtitles).
-
-- [Generate Subtitles](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/subtitles/README.md#generatesubtitletrack) - Create automatic subtitles for media
+- [Generate Subtitles](docs/sdks/managevideos/README.md#generatesubtitletrack) - Create automatic subtitles for media
 
 #### Media Tracks
 
-Add, update, and manage audio and subtitle tracks for your media content.
-
-For detailed documentation, see [Add tracks](https://docs.fastpix.io/docs/add-tracks).
-
-- [Add Track](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/tracks/README.md#addmediatrack) - Add audio or subtitle tracks to media
-- [Update Track](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/tracks/README.md#updatemediatrack) - Modify existing audio or subtitle tracks
-- [Delete Track](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/tracks/README.md#deletemediatrack) - Remove audio or subtitle tracks
+- [Add Track](docs/sdks/managevideos/README.md#addtrack) - Add audio or subtitle tracks to media
+- [Update Track](docs/sdks/managevideos/README.md#updatetrack) - Modify existing audio or subtitle tracks
+- [Delete Track](docs/sdks/media/README.md#deletetrack) - Remove audio or subtitle tracks
 
 #### Access Control
 
-Control access permissions and visibility for your media content.
-
-For detailed documentation, see [Access control](https://docs.fastpix.io/docs/access-control).
-
-- [Update Source Access](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/access-control/README.md#updatesourceaccess) - Control access permissions for media source
+- [Update Source Access](docs/sdks/media/README.md#updatesourceaccess) - Control access permissions for media source
 
 #### Format Support
 
-Configure download capabilities and format support for your media content.
+- [Update MP4 Support](docs/sdks/managevideos/README.md#updatemp4support) - Configure MP4 download capabilities
 
-For detailed documentation, see [MP4 support](https://docs.fastpix.io/docs/mp4-support).
 
-- [Update MP4 Support](https://github.com/FastPix/node-sdk/blob/main/docs/transformations/format-support/README.md#updatemp4support) - Configure MP4 download capabilities
 
-### Error Handling
 
-Handle and manage errors with comprehensive error handling capabilities and detailed error information for all API operations.
-
-- [List Errors](https://github.com/FastPix/node-sdk/blob/main/docs/sdks/errors/README.md#listerrors) - Retrieve comprehensive error logs and diagnostics
 
 <!-- End Available Resources and Operations [operations] -->
+
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [`aiFeaturesGenerateNamedEntities`](docs/sdks/aifeatures/README.md#generatenamedentities) - Generate named entities
+- [`aiFeaturesUpdateSummary`](docs/sdks/aifeatures/README.md#updatesummary) - Generate video summary
+- [`dimensionsList`](docs/sdks/dimensions/README.md#list) - List the dimensions
+- [`dimensionsListFilterValues`](docs/sdks/dimensions/README.md#listfiltervalues) - List the filter values for a dimension
+- [`drmConfigurationsGet`](docs/sdks/drmconfigurations/README.md#get) - Get DRM configuration by ID
+- [`drmConfigurationsList`](docs/sdks/drmconfigurations/README.md#list) - Get list of DRM configuration IDs
+- [`errorsList`](docs/sdks/errors/README.md#list) - List errors
+- [`inputVideoCreate`](docs/sdks/inputvideo/README.md#create) - Create media from URL
+- [`inputVideoUpload`](docs/sdks/inputvideo/README.md#upload) - Upload media from device
+- [`inVideoAIfeaturesGenerateChapters`](docs/sdks/invideoaifeatures/README.md#generatechapters) - Generate video chapters
+- [`inVideoAIUpdateModeration`](docs/sdks/invideoai/README.md#updatemoderation) - Enable video moderation
+- [`livePlaybackCreateId`](docs/sdks/liveplayback/README.md#createid) - Create a playbackId
+- [`livePlaybackDelete`](docs/sdks/liveplayback/README.md#delete) - Delete a playbackId
+- [`livePlaybackGet`](docs/sdks/liveplayback/README.md#get) - Get playbackId details
+- [`liveStreamsCreate`](docs/sdks/livestreams/README.md#create) - Create a new stream
+- [`liveStreamsDelete`](docs/sdks/livestreams/README.md#delete) - Delete a stream
+- [`liveStreamsEnable`](docs/sdks/livestreams/README.md#enable) - Enable a stream
+- [`liveStreamsList`](docs/sdks/livestreams/README.md#list) - Get all live streams
+- [`liveStreamsListClips`](docs/sdks/livestreams/README.md#listclips) - Get all clips of a live stream
+- [`manageLiveStreamComplete`](docs/sdks/managelivestream/README.md#complete) - Complete a stream
+- [`manageLiveStreamDisable`](docs/sdks/managelivestream/README.md#disable) - Disable a stream
+- [`manageLiveStreamGet`](docs/sdks/managelivestream/README.md#get) - Get stream by ID
+- [`manageLiveStreamGetViewerCount`](docs/sdks/managelivestream/README.md#getviewercount) - Get stream views by ID
+- [`manageLiveStreamUpdate`](docs/sdks/managelivestream/README.md#update) - Update a stream
+- [`manageVideosAddTrack`](docs/sdks/managevideos/README.md#addtrack) - Add audio / subtitle track
+- [`manageVideosCancelUpload`](docs/sdks/managevideos/README.md#cancelupload) - Cancel ongoing upload
+- [`manageVideosDelete`](docs/sdks/managevideos/README.md#delete) - Delete a media by ID
+- [`manageVideosGenerateSubtitleTrack`](docs/sdks/managevideos/README.md#generatesubtitletrack) - Generate track subtitle
+- [`manageVideosGet`](docs/sdks/managevideos/README.md#get) - Get a media by ID
+- [`manageVideosGetSummary`](docs/sdks/managevideos/README.md#getsummary) - Get the summary of a video
+- [`manageVideosListUploads`](docs/sdks/managevideos/README.md#listuploads) - Get all unused upload URLs
+- [`manageVideosRetrieveMediaInputInfo`](docs/sdks/managevideos/README.md#retrievemediainputinfo) - Get info of media inputs
+- [`manageVideosUpdate`](docs/sdks/managevideos/README.md#update) - Update a media by ID
+- [`manageVideosUpdateMp4Support`](docs/sdks/managevideos/README.md#updatemp4support) - Update the mp4Support of a media by ID
+- [`manageVideosUpdateTrack`](docs/sdks/managevideos/README.md#updatetrack) - Update audio / subtitle track
+- [`mediaDeleteTrack`](docs/sdks/media/README.md#deletetrack) - Delete audio / subtitle track
+- [`mediaGetClips`](docs/sdks/media/README.md#getclips) - Get all clips of a media
+- [`mediaList`](docs/sdks/media/README.md#list) - Get list of all media
+- [`mediaUpdateSourceAccess`](docs/sdks/media/README.md#updatesourceaccess) - Update the source access of a media by ID
+- [`metricsGetTimeseriesData`](docs/sdks/metrics/README.md#gettimeseriesdata) - Get timeseries data
+- [`metricsListBreakdownValues`](docs/sdks/metrics/README.md#listbreakdownvalues) - List breakdown values
+- [`metricsListCompares`](docs/sdks/metrics/README.md#listcompares) - List comparison values
+- [`metricsListOverallValues`](docs/sdks/metrics/README.md#listoverallvalues) - List overall values
+- [`playbackCreate`](docs/sdks/playback/README.md#create) - Create a playback ID
+- [`playbackDelete`](docs/sdks/playback/README.md#delete) - Delete a playback ID
+- [`playbackGet`](docs/sdks/playback/README.md#get) - Get a playback ID
+- [`playbackListIds`](docs/sdks/playback/README.md#listids) - Get all playback IDs details for a media
+- [`playbackUpdateDomainRestrictions`](docs/sdks/playback/README.md#updatedomainrestrictions) - Update domain restrictions for a playback ID
+- [`playbackUpdateUserAgentRestrictions`](docs/sdks/playback/README.md#updateuseragentrestrictions) - Update user-agent restrictions for a playback ID
+- [`playlistCreate`](docs/sdks/playlist/README.md#create) - Create a new playlist
+- [`playlistDelete`](docs/sdks/playlist/README.md#delete) - Delete a playlist by ID
+- [`playlistGet`](docs/sdks/playlist/README.md#get) - Get a playlist by ID
+- [`playlistList`](docs/sdks/playlist/README.md#list) - Get all playlists
+- [`playlistsAddMedia`](docs/sdks/playlists/README.md#addmedia) - Add media to a playlist by ID
+- [`playlistsDeleteMedia`](docs/sdks/playlists/README.md#deletemedia) - Delete media in a playlist by ID
+- [`playlistUpdate`](docs/sdks/playlist/README.md#update) - Update a playlist by ID
+- [`playlistUpdateMediaOrder`](docs/sdks/playlist/README.md#updatemediaorder) - Change media order in a playlist by ID
+- [`signingKeysCreate`](docs/sdks/signingkeys/README.md#create) - Create a signing key
+- [`signingKeysDelete`](docs/sdks/signingkeys/README.md#delete) - Delete a signing key
+- [`signingKeysGetById`](docs/sdks/signingkeys/README.md#getbyid) - Get signing key by ID
+- [`signingKeysList`](docs/sdks/signingkeys/README.md#list) - Get list of signing key
+- [`simulcastsCreate`](docs/sdks/simulcasts/README.md#create) - Create a simulcast
+- [`simulcastsGet`](docs/sdks/simulcasts/README.md#get) - Get a specific simulcast
+- [`simulcastStreamsDelete`](docs/sdks/simulcaststreams/README.md#delete) - Delete a simulcast
+- [`simulcastsUpdate`](docs/sdks/simulcasts/README.md#update) - Update a simulcast
+- [`viewsGetDetails`](docs/sdks/views/README.md#getdetails) - Get details of video view
+- [`viewsList`](docs/sdks/views/README.md#list) - List video views
+- [`viewsListTopContent`](docs/sdks/views/README.md#listtopcontent) - List by top content
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
 
-Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 ```typescript
@@ -384,22 +395,21 @@ import { Fastpix } from "@fastpix/fastpix-node";
 const fastpix = new Fastpix({
   security: {
     username: "your-access-token",
-    password: "secret-key",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.inputVideo.createMedia({
+  const result = await fastpix.inputVideo.create({
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.io/sample.mp4",
+        url: "https://static.fastpix.io/fp-sample-video.mp4",
       },
     ],
     metadata: {
       "key1": "value1",
     },
-    accessPolicy: "public",
   }, {
     retries: {
       strategy: "backoff",
@@ -437,22 +447,21 @@ const fastpix = new Fastpix({
   },
   security: {
     username: "your-access-token",
-    password: "secret-key",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.inputVideo.createMedia({
+  const result = await fastpix.inputVideo.create({
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.io/sample.mp4",
+        url: "https://static.fastpix.io/fp-sample-video.mp4",
       },
     ],
     metadata: {
       "key1": "value1",
     },
-    accessPolicy: "public",
   });
 
   console.log(result);
@@ -461,19 +470,20 @@ async function run() {
 run();
 
 ```
+<!-- End Retries [retries] -->
 
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 [`FastpixError`](./src/models/errors/fastpixerror.ts) is the base class for all HTTP error responses. It has the following properties:
 
-| Property            | Type       | Description                                                                             |
-| ------------------- | ---------- | --------------------------------------------------------------------------------------- |
-| `error.message`     | `string`   | Error message                                                                           |
-| `error.statusCode`  | `number`   | HTTP response status code eg `404`                                                      |
-| `error.headers`     | `Headers`  | HTTP response headers                                                                   |
-| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned.                                  |
-| `error.rawResponse` | `Response` | Raw HTTP response                                                                       |
-| `error.data$`       |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
+| Property            | Type       | Description                                            |
+| ------------------- | ---------- | ------------------------------------------------------ |
+| `error.message`     | `string`   | Error message                                          |
+| `error.statusCode`  | `number`   | HTTP response status code eg `404`                     |
+| `error.headers`     | `Headers`  | HTTP response headers                                  |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned. |
+| `error.rawResponse` | `Response` | Raw HTTP response                                      |
 
 ### Example
 ```typescript
@@ -483,39 +493,31 @@ import * as errors from "@fastpix/fastpix-node/models/errors";
 const fastpix = new Fastpix({
   security: {
     username: "your-access-token",
-    password: "secret-key",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
   try {
-    const result = await fastpix.inputVideo.createMedia({
+    const result = await fastpix.inputVideo.create({
       inputs: [
         {
           type: "video",
-          url: "https://static.fastpix.io/sample.mp4",
+          url: "https://static.fastpix.io/fp-sample-video.mp4",
         },
       ],
       metadata: {
         "key1": "value1",
       },
-      accessPolicy: "public",
     });
 
     console.log(result);
   } catch (error) {
-    // The base class for HTTP error responses
     if (error instanceof errors.FastpixError) {
       console.log(error.message);
       console.log(error.statusCode);
       console.log(error.body);
       console.log(error.headers);
-
-      // Depending on the method different errors may be thrown
-      if (error instanceof errors.BadRequestError) {
-        console.log(error.data$.success); // boolean
-        console.log(error.data$.error); // models.BadRequestError
-      }
     }
   }
 }
@@ -525,12 +527,10 @@ run();
 ```
 
 ### Error Classes
-**Primary errors:**
+**Primary error:**
 * [`FastpixError`](./src/models/errors/fastpixerror.ts): The base class for HTTP error responses.
-  * [`InvalidPermissionError`](./src/models/errors/invalidpermissionerror.ts): *
-  * [`ValidationErrorResponse`](./src/models/errors/validationerrorresponse.ts): Status code `422`. *
 
-<details><summary>Less common errors (28)</summary>
+<details><summary>Less common errors (6)</summary>
 
 <br />
 
@@ -543,34 +543,12 @@ run();
 
 
 **Inherit from [`FastpixError`](./src/models/errors/fastpixerror.ts)**:
-* [`ForbiddenError`](./src/models/errors/forbiddenerror.ts): Status code `403`. Applicable to 26 of 66 methods.*
-* [`UnauthorizedError`](./src/models/errors/unauthorizederror.ts): Applicable to 24 of 66 methods.*
-* [`MediaNotFoundError`](./src/models/errors/medianotfounderror.ts): Status code `404`. Applicable to 17 of 66 methods.*
-* [`BadRequestError`](./src/models/errors/badrequesterror.ts): Bad Request. Status code `400`. Applicable to 10 of 66 methods.*
-* [`NotFoundError`](./src/models/errors/notfounderror.ts): Status code `404`. Applicable to 8 of 66 methods.*
-* [`ViewNotFoundError`](./src/models/errors/viewnotfounderror.ts): View Not Found. Status code `404`. Applicable to 7 of 66 methods.*
-* [`LiveNotFoundError`](./src/models/errors/livenotfounderror.ts): Stream Not Found. Status code `404`. Applicable to 6 of 66 methods.*
-* [`InvalidPlaylistIdResponseError`](./src/models/errors/invalidplaylistidresponseerror.ts): Payload Validation Failed. Status code `422`. Applicable to 6 of 66 methods.*
-* [`UnAuthorizedResponseError`](./src/models/errors/unauthorizedresponseerror.ts): response for unauthorized request. Status code `401`. Applicable to 4 of 66 methods.*
-* [`ForbiddenResponseError`](./src/models/errors/forbiddenresponseerror.ts): response for forbidden request. Status code `403`. Applicable to 4 of 66 methods.*
-* [`TrackDuplicateRequestError`](./src/models/errors/trackduplicaterequesterror.ts): Duplicate language name. Status code `400`. Applicable to 3 of 66 methods.*
-* [`NotFoundErrorSimulcast`](./src/models/errors/notfounderrorsimulcast.ts): Stream/Simulcast Not Found. Status code `404`. Applicable to 3 of 66 methods.*
-* [`MediaOrPlaybackNotFoundError`](./src/models/errors/mediaorplaybacknotfounderror.ts): Status code `404`. Applicable to 2 of 66 methods.*
-* [`NotFoundErrorPlaybackId`](./src/models/errors/notfounderrorplaybackid.ts): Status code `404`. Applicable to 2 of 66 methods.*
-* [`SigningKeyNotFoundError`](./src/models/errors/signingkeynotfounderror.ts): Bad Request. Status code `404`. Applicable to 2 of 66 methods.*
-* [`DuplicateMp4SupportError`](./src/models/errors/duplicatemp4supporterror.ts): Mp4Support value already exists. Status code `400`. Applicable to 1 of 66 methods.*
-* [`TrialPlanRestrictionError`](./src/models/errors/trialplanrestrictionerror.ts): Bad Request – Stream is either already enabled or cannot be enabled on trial plan. Status code `400`. Applicable to 1 of 66 methods.*
-* [`StreamAlreadyEnabledError`](./src/models/errors/streamalreadyenablederror.ts): Bad Request – Stream is either already enabled or cannot be enabled on trial plan. Status code `400`. Applicable to 1 of 66 methods.*
-* [`StreamAlreadyDisabledError`](./src/models/errors/streamalreadydisablederror.ts): Stream already disabled. Status code `400`. Applicable to 1 of 66 methods.*
-* [`SimulcastUnavailableError`](./src/models/errors/simulcastunavailableerror.ts): Simulcast is not available for trial streams. Status code `400`. Applicable to 1 of 66 methods.*
-* [`MediaClipNotFoundError`](./src/models/errors/mediaclipnotfounderror.ts): media workspace relation not found. Status code `404`. Applicable to 1 of 66 methods.*
-* [`DuplicateReferenceIdErrorResponse`](./src/models/errors/duplicatereferenceiderrorresponse.ts): Displays the result of the request. Status code `409`. Applicable to 1 of 66 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
+<!-- End Error Handling [errors] -->
 
-\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
-
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Override Server URL Per-Client
@@ -583,22 +561,21 @@ const fastpix = new Fastpix({
   serverURL: "https://api.fastpix.io/v1/",
   security: {
     username: "your-access-token",
-    password: "secret-key",
+    password: "your-secret-key",
   },
 });
 
 async function run() {
-  const result = await fastpix.inputVideo.createMedia({
+  const result = await fastpix.inputVideo.create({
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.io/sample.mp4",
+        url: "https://static.fastpix.io/fp-sample-video.mp4",
       },
     ],
     metadata: {
       "key1": "value1",
     },
-    accessPolicy: "public",
   });
 
   console.log(result);
@@ -607,7 +584,9 @@ async function run() {
 run();
 
 ```
+<!-- End Server Selection [server] -->
 
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
 The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
@@ -654,6 +633,28 @@ httpClient.addHook("requestError", (error, request) => {
 
 const sdk = new Fastpix({ httpClient: httpClient });
 ```
+<!-- End Custom HTTP Client [http-client] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+You can setup your SDK to emit debug logs for SDK requests and responses.
+
+You can pass a logger that matches `console`'s interface as an SDK option.
+
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const sdk = new Fastpix({ debugLogger: console });
+```
+
+You can also enable a default debug logger by setting an environment variable `FASTPIX_DEBUG` to true.
+<!-- End Debugging [debug] -->
+
+<!-- Placeholder for Future fastpix SDK Sections -->
 
 # Development
 
@@ -666,4 +667,3 @@ We value community contributions and feedback. Feel free to submit pull requests
 For comprehensive understanding of each API's functionality, including detailed request and response specifications, parameter descriptions, and additional examples, please refer to the [FastPix API Reference](https://docs.fastpix.io/reference/signingkeys-overview).
 
 The API reference offers complete documentation for all available endpoints and features, enabling developers to integrate and leverage FastPix APIs effectively.
-

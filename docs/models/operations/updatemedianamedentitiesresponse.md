@@ -1,23 +1,30 @@
 # UpdateMediaNamedEntitiesResponse
 
-Media details updated successfully with the named entity extraction feature enabled or disabled
 
-## Example Usage
+## Supported Types
+
+### `operations.UpdateMediaNamedEntitiesResponseBody`
 
 ```typescript
-import { UpdateMediaNamedEntitiesResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: UpdateMediaNamedEntitiesResponse = {
+const value: operations.UpdateMediaNamedEntitiesResponseBody = {
   success: true,
   data: {
-    mediaId: "your-media-id",
+    mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+    isNamedEntitiesEnabled: true,
   },
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `success`                                                             | *boolean*                                                             | :heavy_minus_sign:                                                    | Indicates if the request was successful or not.                       | true                                                                  |
-| `data`                                                                | [models.NamedEntitiesResponse](../../models/namedentitiesresponse.md) | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

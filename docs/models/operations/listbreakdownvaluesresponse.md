@@ -1,14 +1,16 @@
 # ListBreakdownValuesResponse
 
-Get filter/ dimension value details by dimension name.
 
-## Example Usage
+## Supported Types
+
+### `operations.ListBreakdownValuesResponseBody`
 
 ```typescript
-import { ListBreakdownValuesResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: ListBreakdownValuesResponse = {
+const value: operations.ListBreakdownValuesResponseBody = {
   success: true,
+  metadata: {
+    aggregation: "view_end",
+  },
   data: [
     {
       views: 3,
@@ -25,6 +27,11 @@ let value: ListBreakdownValuesResponse = {
       field: "Chrome",
     },
   ],
+  pagination: {
+    totalRecords: 2,
+    currentOffset: 1,
+    offsetCount: 1,
+  },
   timespan: [
     1712915263,
     1713520063,
@@ -32,11 +39,16 @@ let value: ListBreakdownValuesResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `success`                                                                                   | *boolean*                                                                                   | :heavy_minus_sign:                                                                          | It demonstrates whether the request is successful or not.                                   |                                                                                             |
-| `metaData`                                                                                  | [models.MetricsTimeseriesMetaDataDetails](../../models/metricstimeseriesmetadatadetails.md) | :heavy_minus_sign:                                                                          | Retrieves breakdown values for a specified metric and timespan                              |                                                                                             |
-| `data`                                                                                      | [models.MetricsBreakdownDetails](../../models/metricsbreakdowndetails.md)[]                 | :heavy_minus_sign:                                                                          | Retrieves breakdown values for a specified metric and timespan                              |                                                                                             |
-| `timespan`                                                                                  | *number*[]                                                                                  | :heavy_minus_sign:                                                                          | The timeframe from and to details displayed in the form of unix epoch timestamps.<br/>      | {<br/>"availableValue": [<br/>1610025789,<br/>1610025947<br/>]<br/>}                        |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

@@ -1,13 +1,12 @@
 # ListLiveClipsResponse
 
-List of video media
 
-## Example Usage
+## Supported Types
+
+### `operations.ListLiveClipsResponseBody`
 
 ```typescript
-import { ListLiveClipsResponse } from "@fastpix/fastpix-node/models/operations";
-
-let value: ListLiveClipsResponse = {
+const value: operations.ListLiveClipsResponseBody = {
   success: true,
   data: [
     {
@@ -15,9 +14,7 @@ let value: ListLiveClipsResponse = {
         "https://images.fastpix.io/837f028b-dcaf-4c23-b368-3748641f74ac/thumbnail.png",
       id: "cfeec1a3-6cbd-40df-a425-2ed7f8f72ced",
       workspaceId: "6dc2b4e0-0615-42fd-a580-1f4aad932dfe",
-      metadata: {
-        "key1": "value1",
-      },
+      streamId: "98f28be5ac9bd7a4205634691a1a096b",
       status: "Ready",
       sourceAccess: false,
       playbackIds: [
@@ -45,11 +42,12 @@ let value: ListLiveClipsResponse = {
           width: 1920,
           height: 1080,
           frameRate: "30/1",
-          closedCaptions: false,
+          status: "available",
         },
       ],
+      isAudioOnly: false,
+      subtitleAvailable: true,
       duration: "00:00:10",
-      frameRate: "30/1",
       aspectRatio: "16:9",
       createdAt: new Date("2025-01-09T06:44:44.617138Z"),
       updatedAt: new Date("2025-01-09T06:44:53.742648Z"),
@@ -63,10 +61,16 @@ let value: ListLiveClipsResponse = {
 };
 ```
 
-## Fields
+### `models.DefaultError`
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `success`                                                                      | *boolean*                                                                      | :heavy_minus_sign:                                                             | Demonstrates whether the request is successful or not.                         | true                                                                           |
-| `data`                                                                         | [models.Media](../../models/media.md)[]                                        | :heavy_minus_sign:                                                             | Displays the result of the request.                                            |                                                                                |
-| `pagination`                                                                   | [models.Pagination](../../models/pagination.md)                                | :heavy_minus_sign:                                                             | Pagination organizes content into pages for better readability and navigation. |                                                                                |
+```typescript
+const value: models.DefaultError = {
+  success: false,
+  error: {
+    code: NaN,
+    message: "Message describing the error",
+    description: "Detailed explanation of why the request failed",
+  },
+};
+```
+

@@ -6,12 +6,7 @@
 import { AddMediaTrackRequestBody } from "@fastpix/fastpix-node/models/operations";
 
 let value: AddMediaTrackRequestBody = {
-  tracks: {
-    url: "https://static.fastpix.io/music-1.mp3",
-    type: "audio",
-    languageCode: "it",
-    languageName: "Italian",
-  },
+  tracks: {},
 };
 ```
 
@@ -19,4 +14,4 @@ let value: AddMediaTrackRequestBody = {
 
 | Field                                                           | Type                                                            | Required                                                        | Description                                                     |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `tracks`                                                        | [models.AddTrackRequest](../../models/addtrackrequest.md)       | :heavy_minus_sign:                                              | Contains details about the track being added to the media file. |
+| `tracks`                                                        | [models.AddTrackRequest](../../models/addtrackrequest.md)       | :heavy_check_mark:                                              | Contains details about the track being added to the media file. |
