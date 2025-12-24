@@ -86,7 +86,7 @@ This SDK supports both **ES modules** and **CommonJS**. Examples in this documen
 #### ES Modules (Recommended)
 ```typescript
 import { Fastpix } from "@fastpix/fastpix-node";
-import type { CreateMediaRequest } from "@fastpix/fastpix-node/models/operations";
+import type { CreateMediaRequest } from "@fastpix/fastpix-node/models";
 ```
 
 #### CommonJS
