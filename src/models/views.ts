@@ -969,12 +969,8 @@ export const Event$inboundSchema: z.ZodMiniType<Event, unknown> = z.pipe(
     player_playhead_time: z.optional(z.nullable(types.number())),
     event_name: z.optional(z.nullable(types.string())),
     event_details: types.optional(z.record(z.string(), z.any())),
-    viewer_time: z.optional(
-      z.nullable(smartUnion([types.string(), types.number()])),
-    ),
-    event_time: z.optional(
-      z.nullable(smartUnion([types.string(), types.number()])),
-    ),
+    viewer_time: z.optional(smartUnion([types.string(), types.number()])),
+    event_time: z.optional(smartUnion([types.string(), types.number()])),
   }),
   z.transform((v) => {
     return remap$(v, {
