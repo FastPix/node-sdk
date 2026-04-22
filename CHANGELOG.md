@@ -1,6 +1,10 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [2.0.5]
+### Fixed
+- Fixed `views.getDetails` `data.events[]` returning empty objects and emitting phantom `null` timestamps.
+   
 ## [2.0.4]
 ### Fixed
 - Fixed missing parameters in multiple API methods.

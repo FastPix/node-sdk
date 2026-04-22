@@ -67,8 +67,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "1.0.0",
-  sdkVersion: "2.0.4",
+  sdkVersion: "2.0.5",
   genVersion: "2.781.2",
   userAgent:
-    "fastpix-sdk/typescript 2.0.4 2.781.2 1.0.0 @fastpix/fastpix-node",
+    "fastpix-sdk/typescript 2.0.5 2.781.2 1.0.0 @fastpix/fastpix-node",
 } as const;

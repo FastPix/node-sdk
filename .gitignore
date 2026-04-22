@@ -36,3 +36,9 @@ desktop.ini
 coverage/
 *.lcov
 .nyc_output/
+
+# Tool caches
+.eslintcache
+
+# tshy generated build config
+.tshy/
