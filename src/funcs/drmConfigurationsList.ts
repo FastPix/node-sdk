@@ -42,7 +42,7 @@ import { Result } from "../types/fp.js";
  * **Example:**
  * A media service provider may retrieve DRM configuration for a workspace to create DRM content.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/secure-playback-with-drm">Manage DRM configuration</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/secure-playback-with-drm">Manage DRM configuration</a>
  */
 export function drmConfigurationsList(
   client: FastpixCore,

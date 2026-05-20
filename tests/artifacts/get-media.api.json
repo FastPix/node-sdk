@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "data": {
+    "thumbnail": "https://images.fastpix.com/fad6fa6b-c7bc-42aa-85f7-3105d71b5f98/thumbnail.png",
+    "id": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36",
+    "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
+    "metadata": {},
+    "mediaQuality": "pro",
+    "title": "720p_3min4sec_h264_",
+    "maxResolution": "720p",
+    "sourceResolution": "720",
+    "status": "Ready",
+    "sourceAccess": false,
+    "playbackIds": [
+      {
+        "id": "fad6fa6b-c7bc-42aa-85f7-3105d71b5f98",
+        "accessPolicy": "public",
+        "accessRestrictions": {
+          "domains": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          },
+          "userAgents": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          }
+        }
+      }
+    ],
+    "tracks": [
+      {
+        "id": "d1e3ae30-f6ef-440d-8714-3a63bc89a84c",
+        "type": "audio",
+        "status": "available",
+        "languageCode": "und",
+        "languageName": "default"
+      },
+      {
+        "id": "d521c8f0-73df-434c-99bf-e7ba6e537b94",
+        "type": "video",
+        "width": 1280,
+        "height": 720,
+        "frameRate": "24.000",
+        "status": "available"
+      }
+    ],
+    "generatedSubtitles": [],
+    "isAudioOnly": false,
+    "subtitleAvailable": false,
+    "duration": "00:03:03",
+    "aspectRatio": "16:9",
+    "createdAt": "2026-05-20T09:06:43.064393Z",
+    "updatedAt": "2026-05-20T09:06:49.921122Z"
+  }
+}

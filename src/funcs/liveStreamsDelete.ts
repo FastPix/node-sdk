@@ -33,13 +33,13 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Permanently deletes a specified live stream from the workspace. If the stream is active, the encoder is disconnected and ingestion stops immediately. This action is irreversible, and any future playback attempts fail as a result.
  *
- *   Provide the `streamId` in the request to terminate active connections and remove the stream from the workspace. You can further look for <a href="https://docs.fastpix.io/docs/live-events#videolive_streamdeleted">video.live_stream.deleted</a> webhook to notify your system about the status.
+ *   Provide the `streamId` in the request to terminate active connections and remove the stream from the workspace. You can further look for <a href="https://docs.fastpix.com/docs/live-events#videolive_streamdeleted">video.live_stream.deleted</a> webhook to notify your system about the status.
  *
  *   #### Example
  *
  *   For an online concert platform, a trial stream was mistakenly made public. The event manager deletes the stream before the concert begins to avoid confusion among viewers.
  *
- *   Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+ *   Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
 export function liveStreamsDelete(
   client: FastpixCore,

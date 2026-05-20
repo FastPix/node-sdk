@@ -41,7 +41,7 @@ import { Result } from "../types/fp.js";
  *
  * A virtual event ends, and the system or host needs to close the livestream to prevent further streaming. This endpoint ensures the livestream status is changed from `active` to `idle`, indicating it's officially completed.
  *
- * Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+ * Related guide <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
 export function manageLiveStreamComplete(
   client: FastpixCore,

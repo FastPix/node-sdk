@@ -39,7 +39,7 @@ import { Result } from "../types/fp.js";
  *
  * If a developer receives a report of a poor viewing experience for a specific user. By using this endpoint with the users `viewId`, the developer can retrieve metrics like buffering duration, playback errors, and session length. This data allows the developer to pinpoint issues (such as poor connectivity or a browser-specific problem) and take steps to improve the user experience.
  *
- * Related guide: <a href="https://docs.fastpix.io/page/what-video-data-do-we-capture#/">What Video Data do we capture?</a>
+ * Related guide: <a href="https://docs.fastpix.com/page/what-video-data-do-we-capture#/">What Video Data do we capture?</a>
  */
 export function viewsGetDetails(
   client: FastpixCore,

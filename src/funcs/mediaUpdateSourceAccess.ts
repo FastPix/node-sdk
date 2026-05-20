@@ -40,7 +40,7 @@ import { Result } from "../types/fp.js";
  * 2. Include the updated `sourceAccess` parameter in the request body.
  *
  * 3. You receive a response confirming the update to the media’s source access status.
- * 4. Webhook events: <a href="https://docs.fastpix.io/docs/transform-media-events#videomediasourceready">video.media.source.ready</a>, <a href="https://docs.fastpix.io/docs/transform-media-events#videomediasourcedeleted">video.media.source.deleted</a>
+ * 4. Webhook events: <a href="https://docs.fastpix.com/docs/transform-media-events#videomediasourceready">video.media.source.ready</a>, <a href="https://docs.fastpix.com/docs/transform-media-events#videomediasourcedeleted">video.media.source.deleted</a>
  */
 export function mediaUpdateSourceAccess(
   client: FastpixCore,

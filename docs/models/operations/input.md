@@ -8,8 +8,8 @@
 ```typescript
 const value: models.VideoInput = {
   type: "video",
-  introUrl: "https://static.fastpix.io/sample.mp4",
-  outroUrl: "https://static.fastpix.io/sample.mp4",
+  introUrl: "https://static.fastpix.com/sample.mp4",
+  outroUrl: "https://static.fastpix.com/sample.mp4",
   expungeSegments: [
     "4-6",
     "15-19",
@@ -28,7 +28,7 @@ const value: models.VideoInput = {
 ```typescript
 const value: models.WatermarkInput = {
   type: "watermark",
-  url: "https://static.fastpix.io/watermark-4k.png",
+  url: "https://static.fastpix.com/watermark-4k.png",
   placement: {
     xAlign: "left",
     xMargin: "10%",

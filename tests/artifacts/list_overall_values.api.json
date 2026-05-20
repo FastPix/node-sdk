@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "metadata": {
+    "aggregation": "view_end"
+  },
+  "data": {
+    "value": 0.7999003730402684,
+    "totalWatchTime": 69200,
+    "totalViews": 10,
+    "totalPlayTime": 68039,
+    "uniqueViews": 2,
+    "globalValue": 0.7999003730402684
+  },
+  "timespan": [
+    1779193817,
+    1779280217
+  ]
+}

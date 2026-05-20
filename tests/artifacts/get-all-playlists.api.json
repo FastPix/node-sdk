@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "a7d637c0-de36-417a-9545-f84ae20c3344",
+      "name": "Non-GET Validator Playlist",
+      "type": "manual",
+      "referenceId": "nonGetValidatorPlaylist",
+      "createdAt": "2026-05-20T10:09:58.926778Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd",
+      "name": "srabanijhqdhguq",
+      "type": "manual",
+      "referenceId": "1234567890",
+      "createdAt": "2026-05-20T09:48:18.605088Z",
+      "mediaCount": 0
+    }
+  ],
+  "pagination": {
+    "totalRecords": 2,
+    "currentOffset": 1,
+    "offsetCount": 1
+  }
+}

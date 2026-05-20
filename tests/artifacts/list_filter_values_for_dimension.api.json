@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "data": [
+    {
+      "value": "Chrome",
+      "uniqueCount": 2,
+      "count": 10
+    }
+  ],
+  "timespan": [
+    1779193815,
+    1779280215
+  ]
+}

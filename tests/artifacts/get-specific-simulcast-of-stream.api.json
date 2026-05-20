@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "data": {
+    "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
+    "url": "rtmp://hyd01.contribute.live-video.net/app/",
+    "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+    "isEnabled": true,
+    "metadata": {
+      "livestream_name": "Tech-Connect Summit"
+    }
+  }
+}

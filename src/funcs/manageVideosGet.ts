@@ -41,7 +41,7 @@ import { Result } from "../types/fp.js";
  *    - **status** – Indicates whether the media is still *Processing* or has transitioned to *Ready*.
  *    - **playbackId** – A unique identifier that allows you to stream the media once it is *Ready*.
  *      You can construct the stream URL as follows:
- *      `https://stream.fastpix.io/<playbackId>.m3u8`
+ *      `https://stream.fastpix.com/<playbackId>.m3u8`
  *
  * #### Example
  *

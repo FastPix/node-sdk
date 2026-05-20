@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "data": [],
+  "pagination": {
+    "totalRecords": 0,
+    "currentOffset": 1,
+    "offsetCount": 0
+  }
+}

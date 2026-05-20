@@ -41,7 +41,7 @@ import { Result } from "../types/fp.js";
  *
  * A creator disables a livestream to pause it temporarily. Later, they decide to continue the session. By calling this endpoint with the stream's ID, they can re-enable and restart the same livestream.
  *
- * Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+ * Related guide <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
 export function liveStreamsEnable(
   client: FastpixCore,

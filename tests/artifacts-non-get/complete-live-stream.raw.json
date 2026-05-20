@@ -1,0 +1,8 @@
+{
+  "success": false,
+  "error": {
+    "code": 400,
+    "message": "stream cannot be completed",
+    "description": "Only active streams can be marked as completed."
+  }
+}

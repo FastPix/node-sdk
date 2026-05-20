@@ -45,11 +45,11 @@ import { Result } from "../types/fp.js";
  *
  * After updating a track, your system must receive webhook notifications:
  *
- * 1. After successfully updating a track, your system must receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediatrackupdated">video.media.track.updated</a>.
+ * 1. After successfully updating a track, your system must receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediatrackupdated">video.media.track.updated</a>.
  *
- * 2. Once the new track is processed and ready, you must receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediatrackready">video.media.track.ready</a>.
+ * 2. Once the new track is processed and ready, you must receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediatrackready">video.media.track.ready</a>.
  *
- * 3. Once the media file is updated with the new track details, a <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
+ * 3. Once the media file is updated with the new track details, a <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
  *
  * #### Example
  * Suppose you previously added a French subtitle track to a video but now need to update it with a different file. By calling this API, you can replace the existing subtitle file (.vtt) with a new one while keeping the same track ID. This is useful when:
@@ -57,7 +57,7 @@ import { Result } from "../types/fp.js";
  *   - The original track file has errors and needs correction.
  *   - You want to improve subtitle translations or replace an audio track with a better-quality version.
  *
- * Related guides: <a href="https://docs.fastpix.io/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.io/docs/manage-audio-tracks">Add own audio tracks</a>
+ * Related guides: <a href="https://docs.fastpix.com/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.com/docs/manage-audio-tracks">Add own audio tracks</a>
  */
 export function manageVideosUpdateTrack(
   client: FastpixCore,

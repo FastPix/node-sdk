@@ -1,0 +1,26 @@
+{
+  "name": "FastpixDefaultError",
+  "message": "API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"DRM ID does not exist\",\"description\":\"The DRM configuration ID does not exist for the workspace.\"}}",
+  "stack": "FastpixDefaultError: API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"DRM ID does not exist\",\"description\":\"The DRM configuration ID does not exist for the workspace.\"}}\n    at matchFunc (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/lib/matchers.ts:263:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async $do (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/funcs/drmConfigurationsList.ts:173:20)",
+  "statusCode": 400,
+  "contentType": "application/json;charset=UTF-8",
+  "body": "{\"success\":false,\"error\":{\"code\":400,\"message\":\"DRM ID does not exist\",\"description\":\"The DRM configuration ID does not exist for the workspace.\"}}",
+  "bodyJson": {
+    "success": false,
+    "error": {
+      "code": 400,
+      "message": "DRM ID does not exist",
+      "description": "The DRM configuration ID does not exist for the workspace."
+    }
+  },
+  "headers": {
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9feb59c2ab7cb089-HYD",
+    "connection": "keep-alive",
+    "content-length": "147",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Wed, 20 May 2026 12:30:05 GMT",
+    "server": "cloudflare"
+  },
+  "url": "https://api.fastpix.com/v1/on-demand/drm-configurations?limit=10&offset=1"
+}

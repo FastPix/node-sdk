@@ -88,7 +88,7 @@ Error: FastPix API Error: 400 Bad Request
 ```http
 # Raw HTTP request (remove sensitive headers)
 POST /v1/media HTTP/1.1
-Host: api.fastpix.io
+Host: api.fastpix.com
 Authorization: Basic ***
 Content-Type: application/json
 
@@ -112,7 +112,7 @@ Content-Type: application/json
 ```typescript
 // Please share your SDK configuration (remove sensitive information)
 const fastpix = new Fastpix({
-  serverURL: 'https://api.fastpix.io/v1/',
+  serverURL: 'https://api.fastpix.com/v1/',
   security: {
     username: 'your',
     password: '***',

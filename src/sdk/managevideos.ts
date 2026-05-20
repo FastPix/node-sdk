@@ -34,7 +34,7 @@ export class ManageVideos extends ClientSDK {
    *    - **status** – Indicates whether the media is still *Processing* or has transitioned to *Ready*.
    *    - **playbackId** – A unique identifier that allows you to stream the media once it is *Ready*.
    *      You can construct the stream URL as follows:
-   *      `https://stream.fastpix.io/<playbackId>.m3u8`
+   *      `https://stream.fastpix.com/<playbackId>.m3u8`
    *
    * #### Example
    *
@@ -65,7 +65,7 @@ export class ManageVideos extends ClientSDK {
    *
    * 3. The response returns the updated media data, confirming the changes.
    *
-   * 4. Monitor the <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> webhook event to track the update status in your system.
+   * 4. Monitor the <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> webhook event to track the update status in your system.
    *
    * #### Example
    * If a user uploads a video and later needs to change the title, add a new description, or update tags, you can use this endpoint to update the media metadata without re-uploading the entire video.
@@ -93,7 +93,7 @@ export class ManageVideos extends ClientSDK {
    *
    * 2. This action is irreversible. Make sure you no longer need the media before proceeding. Once deleted, the media can’t be retrieved or played back.
    *
-   * 3. Monitor the following webhook event: <a href="https://docs.fastpix.io/docs/media-events#videomediadeleted">video.media.deleted</a>
+   * 3. Monitor the following webhook event: <a href="https://docs.fastpix.com/docs/media-events#videomediadeleted">video.media.deleted</a>
    *
    * #### Example
    * A user on a video-sharing platform decides to remove an old video from their profile, or suppose you're running a content moderation system, and one of the videos uploaded by a user violates your platform's policies. Using this endpoint, the media is permanently deleted from your library, ensuring it's no longer accessible or viewable by other users.
@@ -125,16 +125,16 @@ export class ManageVideos extends ClientSDK {
    *
    * #### Webhook events
    *
-   * 1. After successfully adding a track, your system must receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediatrackcreated">video.media.track.created</a>.
+   * 1. After successfully adding a track, your system must receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediatrackcreated">video.media.track.created</a>.
    *
-   * 2. Once the track is processed and ready, you must receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediatrackready">video.media.track.ready</a>.
+   * 2. Once the track is processed and ready, you must receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediatrackready">video.media.track.ready</a>.
    *
-   * 3. Finally, an update event <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> must notify your system about the media's updated status.
+   * 3. Finally, an update event <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> must notify your system about the media's updated status.
    *
    * #### Example
-   * Suppose you have a video uploaded to the FastPix platform, and you want to add an Italian audio track to it. By calling this API, you can attach an external audio file (https://static.fastpix.io/music-1.mp3) to the media file. Similarly, if you need to add subtitles in different languages, you can specify type: `subtitle` with the corresponding subtitle `url`, `languageCode` and `languageName`.
+   * Suppose you have a video uploaded to the FastPix platform, and you want to add an Italian audio track to it. By calling this API, you can attach an external audio file (https://static.fastpix.com/music-1.mp3) to the media file. Similarly, if you need to add subtitles in different languages, you can specify type: `subtitle` with the corresponding subtitle `url`, `languageCode` and `languageName`.
    *
-   * Related guides: <a href="https://docs.fastpix.io/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.io/docs/manage-audio-tracks">Add own audio tracks</a>
+   * Related guides: <a href="https://docs.fastpix.com/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.com/docs/manage-audio-tracks">Add own audio tracks</a>
    */
   async addTrack(
     request: operations.AddMediaTrackRequest,
@@ -160,7 +160,7 @@ export class ManageVideos extends ClientSDK {
    *
    * #### Webhook Events
    *
-   * Once the upload is cancelled, you must receive the webhook event <a href="https://docs.fastpix.io/docs/media-events#videomediauploadcancelled">video.media.upload.cancelled</a>.
+   * Once the upload is cancelled, you must receive the webhook event <a href="https://docs.fastpix.com/docs/media-events#videomediauploadcancelled">video.media.upload.cancelled</a>.
    *
    * #### Example
    *
@@ -195,11 +195,11 @@ export class ManageVideos extends ClientSDK {
    *
    * After updating a track, your system must receive webhook notifications:
    *
-   * 1. After successfully updating a track, your system must receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediatrackupdated">video.media.track.updated</a>.
+   * 1. After successfully updating a track, your system must receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediatrackupdated">video.media.track.updated</a>.
    *
-   * 2. Once the new track is processed and ready, you must receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediatrackready">video.media.track.ready</a>.
+   * 2. Once the new track is processed and ready, you must receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediatrackready">video.media.track.ready</a>.
    *
-   * 3. Once the media file is updated with the new track details, a <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
+   * 3. Once the media file is updated with the new track details, a <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
    *
    * #### Example
    * Suppose you previously added a French subtitle track to a video but now need to update it with a different file. By calling this API, you can replace the existing subtitle file (.vtt) with a new one while keeping the same track ID. This is useful when:
@@ -207,7 +207,7 @@ export class ManageVideos extends ClientSDK {
    *   - The original track file has errors and needs correction.
    *   - You want to improve subtitle translations or replace an audio track with a better-quality version.
    *
-   * Related guides: <a href="https://docs.fastpix.io/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.io/docs/manage-audio-tracks">Add own audio tracks</a>
+   * Related guides: <a href="https://docs.fastpix.com/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.com/docs/manage-audio-tracks">Add own audio tracks</a>
    */
   async updateTrack(
     request: operations.UpdateMediaTrackRequest,
@@ -236,11 +236,11 @@ export class ManageVideos extends ClientSDK {
    *
    * #### Webhook Events
    *
-   * 1. After the subtitle track is generated and ready, you receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediasubtitlegeneratedready">video.media.subtitle.generated.ready</a>.
+   * 1. After the subtitle track is generated and ready, you receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediasubtitlegeneratedready">video.media.subtitle.generated.ready</a>.
    *
-   * 2. Finally the <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> event notifies your system about the media’s updated status.
+   * 2. Finally the <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> event notifies your system about the media’s updated status.
    *
-   * </br> Related guide: <a href="https://docs.fastpix.io/docs/add-auto-generated-subtitles-to-videos">Add auto-generated subtitles</a>
+   * </br> Related guide: <a href="https://docs.fastpix.com/docs/add-auto-generated-subtitles-to-videos">Add auto-generated subtitles</a>
    */
   async generateSubtitleTrack(
     request: operations.GenerateSubtitleTrackRequest,
@@ -307,12 +307,12 @@ export class ManageVideos extends ClientSDK {
    *
    * #### Webhook events
    *
-   * - <a href="https://docs.fastpix.io/docs/transform-media-events#videomediamp4supportready">video.media.mp4Support.ready</a> – Triggered when the MP4 support setting is successfully updated.
+   * - <a href="https://docs.fastpix.com/docs/transform-media-events#videomediamp4supportready">video.media.mp4Support.ready</a> – Triggered when the MP4 support setting is successfully updated.
    *
    * #### Example
-   * Suppose you have a video uploaded to the FastPix platform, and you want to allow users to download the video in MP4 format. By setting "mp4Support": "capped_4k", the system generates an MP4 rendition of the video up to 4K resolution, making it available for download through the stream URL(`https://stream.fastpix.io/{playbackId}/{capped-4k.mp4 | audio.m4a}`). If you want users to stream only the audio from the media file, you can set "mp4Support": "audioOnly". This provides an audio-only stream URL that allows users to listen to the media without video. By setting "mp4Support": "audioOnly,capped_4k", both options are enabled. Users can download the MP4 video and also stream just the audio version of the media.
+   * Suppose you have a video uploaded to the FastPix platform, and you want to allow users to download the video in MP4 format. By setting "mp4Support": "capped_4k", the system generates an MP4 rendition of the video up to 4K resolution, making it available for download through the stream URL(`https://stream.fastpix.com/{playbackId}/{capped-4k.mp4 | audio.m4a}`). If you want users to stream only the audio from the media file, you can set "mp4Support": "audioOnly". This provides an audio-only stream URL that allows users to listen to the media without video. By setting "mp4Support": "audioOnly,capped_4k", both options are enabled. Users can download the MP4 video and also stream just the audio version of the media.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/mp4-support-for-offline-viewing">Use MP4 support for offline viewing</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/mp4-support-for-offline-viewing">Use MP4 support for offline viewing</a>
    */
   async updateMp4Support(
     request: operations.UpdatedMp4SupportRequest,

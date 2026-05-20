@@ -1,0 +1,8 @@
+{
+  "success": false,
+  "error": {
+    "code": 400,
+    "message": "DRM ID does not exist",
+    "description": "The DRM configuration ID does not exist for the workspace."
+  }
+}

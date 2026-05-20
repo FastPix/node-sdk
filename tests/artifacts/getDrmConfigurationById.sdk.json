@@ -1,0 +1,31 @@
+{
+  "name": "FastpixDefaultError",
+  "message": "API error occurred: Status 422 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"drmConfigurationId\",\"message\":\"is invalid\"}]}}",
+  "stack": "FastpixDefaultError: API error occurred: Status 422 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"drmConfigurationId\",\"message\":\"is invalid\"}]}}\n    at matchFunc (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/lib/matchers.ts:263:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async $do (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/funcs/drmConfigurationsGet.ts:170:20)",
+  "statusCode": 422,
+  "contentType": "application/json;charset=UTF-8",
+  "body": "{\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"drmConfigurationId\",\"message\":\"is invalid\"}]}}",
+  "bodyJson": {
+    "success": false,
+    "error": {
+      "code": 422,
+      "message": "payload validation failed",
+      "fields": [
+        {
+          "field": "drmConfigurationId",
+          "message": "is invalid"
+        }
+      ]
+    }
+  },
+  "headers": {
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9feb59c6ebd6b089-HYD",
+    "connection": "keep-alive",
+    "content-length": "141",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Wed, 20 May 2026 12:30:06 GMT",
+    "server": "cloudflare"
+  },
+  "url": "https://api.fastpix.com/v1/on-demand/drm-configurations/your-drm-configuration-id"
+}

@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "f92cdbe4-8970-4523-996c-d4388aa4f958",
+      "createdAt": "2026-05-20T10:10:01.090258Z"
+    },
+    {
+      "id": "3186f963-75ea-4ad3-819f-6a6ad3caf6db",
+      "createdAt": "2026-05-20T07:25:04.098908Z"
+    },
+    {
+      "id": "7c1a1f5f-a009-43f2-8d9e-ad667ea19c88",
+      "createdAt": "2026-05-20T06:15:54.106740Z"
+    }
+  ],
+  "pagination": {
+    "totalRecords": 3,
+    "currentOffset": 1,
+    "offsetCount": 1
+  }
+}

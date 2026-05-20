@@ -28,7 +28,7 @@ export class Errors extends ClientSDK {
    * * **count:** The number of occurrences of the specific error.
    * * **code:** The error code associated with the specific error.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/track-playback-errors">Troubleshoot errors</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/track-playback-errors">Troubleshoot errors</a>
    */
   async list(
     request?: operations.ListErrorsRequest | undefined,

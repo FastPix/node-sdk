@@ -12,7 +12,7 @@ let value: AddMediaTrackResponseBody = {
   data: {
     id: "ace60fc7-e876-4fc6-b9d9-c33fa242f84b",
     type: "audio",
-    url: "https://static.fastpix.io/music-1.mp3",
+    url: "https://static.fastpix.com/music-1.mp3",
     languageCode: "it",
     languageName: "Italian",
   },

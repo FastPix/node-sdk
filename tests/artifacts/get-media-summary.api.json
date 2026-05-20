@@ -1,0 +1,8 @@
+{
+  "success": false,
+  "error": {
+    "code": 400,
+    "message": "Summary not enabled",
+    "description": "Summary is not enabled for the requested media"
+  }
+}

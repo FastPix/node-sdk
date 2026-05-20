@@ -1,6 +1,46 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## [2.0.6]
+
+### ⚠️ Important — FastPix is migrating from `.io` to `.com`
+
+All FastPix hosts and documentation links are moving to the `.com` TLD:
+
+| Old (`.io`) | New (`.com`) |
+|---|---|
+| `api.fastpix.io` | `api.fastpix.com` |
+| `stream.fastpix.io` | `stream.fastpix.com` |
+| `images.fastpix.io` | `images.fastpix.com` |
+| `dashboard.fastpix.io` | `dashboard.fastpix.com` |
+| `www.fastpix.io` | `www.fastpix.com` |
+| `docs.fastpix.io/...` | `fastpix.com/docs/...` |
+
+The `.io` hosts continue to serve traffic during the transition, but **they are slated for deprecation soon** — please update any hard-coded references in your application as part of your next deploy. **We strongly recommend upgrading to this SDK release (or later) across every language you use** — every official FastPix SDK is being rolled out with the same migration.
+
+What this means for users of `@fastpix/fastpix-node`:
+
+- **If you rely on SDK defaults**, no code change is required. The default `serverURL` is `https://api.fastpix.com/v1/`, so bumping to `2.0.6` and running `npm install` is enough.
+- **If you have an explicit `serverURL` override** (e.g. `new Fastpix({ serverURL: "https://api.fastpix.io/v1/" })`), change it to `https://api.fastpix.com/v1/`.
+- **If you reference FastPix asset URLs directly** in your app (HLS playback URLs, image CDN, dashboard deep links), update those to the `.com` equivalents before `.io` is decommissioned.
+
+All README and per-SDK doc links in this package have been updated to point at the new `https://fastpix.com/docs/...` URLs.
+
+### Fixed (SDK ↔ API parity)
+
+- `views.list` (`/data/viewlist`): added the previously-missing `errorId` field on each view entry, and stopped renaming `QoeScore` to `qoeScore` so the SDK output matches the API response byte-for-byte.
+- `views.getDetails`: `data.fpSdk` / `data.fpSdkVersion` are no longer renamed to `fpSDK` / `fpSDKVersion` — the SDK now preserves the wire-format casing returned by the API.
+- `media.list` (`/on-demand`): tracks now include `frameRate`, which was being silently dropped by the previous SDK build.
+- `playback.create` (`/on-demand/{mediaId}/playback-ids`): response `data.resolution` is now correctly modelled as nullable — it is `null` when no resolution constraint was set at create time.
+- `signingKeys.delete`: response shape now includes the optional `data.message` confirmation string the API has been returning.
+- OpenAPI `tracks[].type` field for `VideoTrack` / `VideoTrackForGetAll` / `AudioTrack` / `SubtitleTrack` is now a proper `enum` (`video` / `audio` / `subtitle`) so language generators can discriminate the union correctly.
+- OpenAPI `maxDuration.minimum` on live-stream schemas relaxed from `60` to `0` to reflect the API's "unbounded" sentinel value.
+
+### Docs
+
+- All README and per-service documentation pages updated from `docs.fastpix.io/...` and `docs.fastpix.com/...` to the new `https://fastpix.com/docs/...` URL structure.
+
 ## [2.0.5]
 ### Fixed
 - Fixed `views.getDetails` `data.events[]` returning empty objects and emitting phantom `null` timestamps.

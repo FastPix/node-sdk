@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "data": {
+    "streamId": "91b8484250e5a1ed03fd4e100b807082",
+    "streamKey": "ba016466451c770511d5992ec54bb271k91b8484250e5a1ed03fd4e100b807082",
+    "srtSecret": "b0a434dfeb98f5ad3c18ed27b2ea1972k91b8484250e5a1ed03fd4e100b807082",
+    "trial": false,
+    "status": "idle",
+    "maxResolution": "1080p",
+    "maxDuration": 0,
+    "createdAt": "2026-05-20T12:50:15.267Z",
+    "reconnectWindow": 60,
+    "enableRecording": true,
+    "enableDvrMode": false,
+    "mediaPolicy": "public",
+    "metadata": {
+      "name": "sdk-validate"
+    },
+    "lowLatency": false,
+    "closedCaptions": false,
+    "playbackIds": [
+      {
+        "id": "b957a4c3-094e-4986-b89c-2bec49b01266",
+        "accessPolicy": "public"
+      }
+    ],
+    "srtPlaybackResponse": {
+      "srtPlaybackStreamId": "play91b8484250e5a1ed03fd4e100b807082",
+      "srtPlaybackSecret": "df43bc6e03598e1af7828b061784f9f5k91b8484250e5a1ed03fd4e100b807082"
+    }
+  }
+}

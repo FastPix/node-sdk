@@ -15,7 +15,7 @@ let value: ListPlaybackIdsAccessRestrictions = {
       "trustedsite.org",
     ],
     deny: [
-      "malicioussite.io",
+      "malicioussite.com",
       "abc.net",
     ],
   },

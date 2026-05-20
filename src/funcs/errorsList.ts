@@ -45,7 +45,7 @@ import { Result } from "../types/fp.js";
  * * **count:** The number of occurrences of the specific error.
  * * **code:** The error code associated with the specific error.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/track-playback-errors">Troubleshoot errors</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/track-playback-errors">Troubleshoot errors</a>
  */
 export function errorsList(
   client: FastpixCore,

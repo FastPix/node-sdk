@@ -351,13 +351,13 @@ export type Views = {
    *
    * @remarks
    */
-  fpSDK?: string | null | undefined;
+  fpSdk?: string | null | undefined;
   /**
    * FastPix SDK Version specifies the version of the FastPix Player SDK integrated into the player.
    *
    * @remarks
    */
-  fpSDKVersion?: string | null | undefined;
+  fpSdkVersion?: string | null | undefined;
   /**
    * Represents a unique, anonymized identifier assigned to each viewer by the FastPix SDK. This ID helps correlate multiple playback sessions or events to the same viewer across sessions or devices without exposing any personal information.
    *
@@ -527,7 +527,7 @@ export type Views = {
    */
   playerSoftwareVersion?: string | null | undefined;
   /**
-   * Specifies the domain or source from which the player was loaded or embedded (for example, stream.fastpix.io or a customer’s custom domain). This helps identify the playback origin and differentiate between various deployment environments.
+   * Specifies the domain or source from which the player was loaded or embedded (for example, stream.fastpix.com or a customer’s custom domain). This helps identify the playback origin and differentiate between various deployment environments.
    *
    * @remarks
    */
@@ -994,8 +994,7 @@ export function eventFromJSON(
 }
 
 /** @internal */
-export const Views$inboundSchema: z.ZodMiniType<Views, unknown> = z.pipe(
-  z.object({
+export const Views$inboundSchema: z.ZodMiniType<Views, unknown> = z.object({
     asnId: z.optional(z.nullable(types.number())),
     asnName: z.optional(z.nullable(types.string())),
     averageBitrate: z.optional(z.nullable(types.number())),
@@ -1125,14 +1124,7 @@ export const Views$inboundSchema: z.ZodMiniType<Views, unknown> = z.pipe(
     watchTime: z.optional(z.nullable(types.number())),
     workspaceId: types.optional(types.string()),
     events: types.optional(z.array(z.lazy(() => Event$inboundSchema))),
-  }),
-  z.transform((v) => {
-    return remap$(v, {
-      "fpSdk": "fpSDK",
-      "fpSdkVersion": "fpSDKVersion",
-    });
-  }),
-);
+  });
 
 export function viewsFromJSON(
   jsonString: string,

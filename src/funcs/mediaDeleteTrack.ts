@@ -43,7 +43,7 @@ import { Result } from "../types/fp.js";
  *
  * 1. After successfully deleting a track, your system must receive the webhook event **video.media.track.deleted**.
  *
- * 2. Once the media file is updated to reflect the track removal, a <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
+ * 2. Once the media file is updated to reflect the track removal, a <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
  *
  * #### Example
  * Suppose you uploaded an audio track in Italian for a video but later realize it's incorrect or no longer needed. By calling this API, you can remove the specific track while keeping the rest of the media file unchanged. This is useful when:
@@ -52,7 +52,7 @@ import { Result } from "../types/fp.js";
  *   - The content owner requests the removal of a specific subtitle or audio track.
  *   - A new version of the track gets uploaded to replace the existing one.
  *
- * Related guides: <a href="https://docs.fastpix.io/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.io/docs/manage-audio-tracks">Add own audio tracks</a>
+ * Related guides: <a href="https://docs.fastpix.com/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.com/docs/manage-audio-tracks">Add own audio tracks</a>
  */
 export function mediaDeleteTrack(
   client: FastpixCore,

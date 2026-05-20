@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "data": {
+    "defaultPolicy": "allow",
+    "allow": [
+      "example.com"
+    ],
+    "deny": []
+  }
+}

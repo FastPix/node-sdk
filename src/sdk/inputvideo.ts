@@ -44,13 +44,13 @@ export class InputVideo extends ClientSDK {
    *
    * 3. Receive a response containing the unique id for the newly created media item.
    *
-   * 4. Use the id in subsequent API calls, such as checking the status of the media with the <a href="https://docs.fastpix.io/reference/get-media">Get Media by ID</a> endpoint to determine when the media is ready for playback.
+   * 4. Use the id in subsequent API calls, such as checking the status of the media with the <a href="https://docs.fastpix.com/reference/get-media">Get Media by ID</a> endpoint to determine when the media is ready for playback.
    *
-   * FastPix uses webhooks to tell your application about things that happen in the background, outside of the API regular request flow. For instance, after the media file is created (but not yet processed or encoded), FastPix sends a `POST` request to your specified webhook URL with the event <a href="https://docs.fastpix.io/docs/media-events#videomediacreated">video.media.created</a>.
+   * FastPix uses webhooks to tell your application about things that happen in the background, outside of the API regular request flow. For instance, after the media file is created (but not yet processed or encoded), FastPix sends a `POST` request to your specified webhook URL with the event <a href="https://docs.fastpix.com/docs/media-events#videomediacreated">video.media.created</a>.
    *
-   * After processing completes, monitor the events <a href="https://docs.fastpix.io/docs/media-events#videomediaready">video.media.ready</a> and <a href="https://docs.fastpix.io/docs/media-events#videomediafailed">video.media.failed</a> to track the status of the media file.
+   * After processing completes, monitor the events <a href="https://docs.fastpix.com/docs/media-events#videomediaready">video.media.ready</a> and <a href="https://docs.fastpix.com/docs/media-events#videomediafailed">video.media.failed</a> to track the status of the media file.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/upload-videos-from-url">Upload videos from URL</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/upload-videos-from-url">Upload videos from URL</a>
    */
   async create(
     request: models.CreateMediaRequest,
@@ -71,7 +71,7 @@ export class InputVideo extends ClientSDK {
    *
    * > **NOTE**
    * >
-   * > This version now supports uploads with no file size limitations and offers faster uploads. The previous endpoint (which had a 500MB size limit) is now deprecated. You can find details in the [changelog](https://docs.fastpix.io/changelog/api-update-direct-upload-media-from-device).
+   * > This version now supports uploads with no file size limitations and offers faster uploads. The previous endpoint (which had a 500MB size limit) is now deprecated. You can find details in the [changelog](https://docs.fastpix.com/changelog/api-update-direct-upload-media-from-device).
    *
    * #### How it works
    *
@@ -79,19 +79,19 @@ export class InputVideo extends ClientSDK {
    *
    * 2. The response includes an `uploadId` and a signed `url` for direct video file upload.
    *
-   * 3. Upload your video file to the provided url by making a PUT request. The API accepts the media file from your device and uploads it to the FastPix platform. (Refer to <a href="https://docs.fastpix.io/docs/upload-videos-directly#step-3-initiate-the-upload">Step 3: Initiate the upload</a> for complete instructions.)
+   * 3. Upload your video file to the provided url by making a PUT request. The API accepts the media file from your device and uploads it to the FastPix platform. (Refer to <a href="https://docs.fastpix.com/docs/upload-videos-directly#step-3-initiate-the-upload">Step 3: Initiate the upload</a> for complete instructions.)
    *
    * 4. Once uploaded, the media undergoes processing and is assigned a unique ID for tracking. Retain this `uploadId` for any future operations related to this upload.
    *
-   * After uploading, you can use the <a href="https://docs.fastpix.io/reference/get-media">Get Media by ID</a> endpoint to check the status of the uploaded media asset and see if it has transitioned to a `Ready` status for playback.
+   * After uploading, you can use the <a href="https://docs.fastpix.com/reference/get-media">Get Media by ID</a> endpoint to check the status of the uploaded media asset and see if it has transitioned to a `Ready` status for playback.
    *
-   * To notify your application about the status of this API request check for the webhooks for <a href="https://docs.fastpix.io/docs/webhooks-collection#media-related-events">media related events</a>.
+   * To notify your application about the status of this API request check for the webhooks for <a href="https://docs.fastpix.com/docs/webhooks-collection#media-related-events">media related events</a>.
    *
    * #### Example
    *
    * A social media platform allows users to upload video content directly from their phones or computers. This endpoint facilitates the upload process. For example, if you are developing a video-sharing app where users can upload short clips from their mobile devices, this endpoint enables them to select a video, upload it to the platform.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/upload-videos-directly">Upload videos directly</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/upload-videos-directly">Upload videos directly</a>
    */
   async upload(
     request?: operations.DirectUploadVideoMediaRequest | undefined,

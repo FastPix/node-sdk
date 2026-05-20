@@ -1,0 +1,13 @@
+{
+  "success": false,
+  "error": {
+    "code": 422,
+    "message": "payload validation failed",
+    "fields": [
+      {
+        "field": "drmConfigurationId",
+        "message": "is invalid"
+      }
+    ]
+  }
+}

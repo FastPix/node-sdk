@@ -17,7 +17,7 @@ This endpoint allows you to generate the summary for an existing media.
 3. Include the `summaryLength` parameter, specify the desired length of the summary in words (for example, 120 words), this determines how concise or detailed the summary will be. If no specific summary length is provided, the default length will be 100 words.
 4. The response includes the updated media data and confirmation of the changes applied.
 
-You can use the <a href="https://docs.fastpix.io/docs/ai-events#videomediaaisummaryready">video.mediaAI.summary.ready</a> webhook event to track and notify about the summary generation.
+You can use the <a href="https://fastpix.com/docs/ai-events/in-video-ai-events#videomediaaisummaryready">video.mediaAI.summary.ready</a> webhook event to track and notify about the summary generation.
 
 
 
@@ -25,7 +25,7 @@ You can use the <a href="https://docs.fastpix.io/docs/ai-events#videomediaaisumm
 
 **Use case**: This is particularly useful when a user uploads a video and later chooses to generate a summary without needing to re-upload the video.
 
-Related guide: <a href="https://docs.fastpix.io/docs/generate-video-summary">Video summary</a>
+Related guide: <a href="https://fastpix.com/docs/video-intelligence/generate-a-video-summary">Video summary</a>
 
 
 ### Example Usage
@@ -123,11 +123,11 @@ Named Entity Recognition (NER) is a fundamental natural language processing (NLP
 2. Include the `namedEntities` parameter in the request body to enable.
 3. Receive a response containing the updated media data, confirming the changes made.
 
-You can use the <a href="https://docs.fastpix.io/docs/ai-events#videomediaainamedentitiesready">video.mediaAI.named-entities.ready</a> webhook event to track and notify about the named entities extraction.
+You can use the <a href="https://fastpix.com/docs/ai-events/in-video-ai-events#videomediaainamedentitiesready">video.mediaAI.named-entities.ready</a> webhook event to track and notify about the named entities extraction.
 
 **Use case:** If a user uploads a video and later decides to enable named entity extraction without re-uploading the entire video.
 
-Related guide: <a href="https://docs.fastpix.io/docs/generate-named-entities">Named entities</a>
+Related guide: <a href="https://fastpix.com/docs/video-intelligence/extract-named-entities-from-a-video">Named entities</a>
 
 
 ### Example Usage

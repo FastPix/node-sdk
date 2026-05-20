@@ -40,7 +40,7 @@ import { Result } from "../types/fp.js";
  *
  * #### Webhook Events
  *
- * Once the upload is cancelled, you must receive the webhook event <a href="https://docs.fastpix.io/docs/media-events#videomediauploadcancelled">video.media.upload.cancelled</a>.
+ * Once the upload is cancelled, you must receive the webhook event <a href="https://docs.fastpix.com/docs/media-events#videomediauploadcancelled">video.media.upload.cancelled</a>.
  *
  * #### Example
  *

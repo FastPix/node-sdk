@@ -11,7 +11,7 @@ let value: UpdatedMediaResponseBody = {
   success: true,
   data: {
     thumbnail:
-      "https://images.fastpix.io/837f028b-dcaf-4c23-b368-3748641f74ac/thumbnail.png",
+      "https://images.fastpix.com/837f028b-dcaf-4c23-b368-3748641f74ac/thumbnail.png",
     id: "cfeec1a3-6cbd-40df-a425-2ed7f8f72ced",
     workspaceId: "6dc2b4e0-0615-42fd-a580-1f4aad932dfe",
     metadata: {

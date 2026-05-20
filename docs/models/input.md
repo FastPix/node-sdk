@@ -9,8 +9,8 @@
 const value: models.PullVideoInput = {
   startTime: 0,
   endTime: 60,
-  introUrl: "https://static.fastpix.io/fp-sample-video.mp4",
-  outroUrl: "https://static.fastpix.io/fp-sample-video.mp4",
+  introUrl: "https://static.fastpix.com/fp-sample-video.mp4",
+  outroUrl: "https://static.fastpix.com/fp-sample-video.mp4",
   expungeSegments: [
     "4-6",
     "15-19",
@@ -29,7 +29,7 @@ const value: models.PullVideoInput = {
 ```typescript
 const value: models.WatermarkInput = {
   type: "watermark",
-  url: "https://static.fastpix.io/watermark-4k.png",
+  url: "https://static.fastpix.com/watermark-4k.png",
   placement: {
     xAlign: "left",
     xMargin: "10%",

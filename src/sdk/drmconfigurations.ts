@@ -26,7 +26,7 @@ export class DrmConfigurations extends ClientSDK {
    * **Example:**
    * A media service provider may retrieve DRM configuration for a workspace to create DRM content.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/secure-playback-with-drm">Manage DRM configuration</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/secure-playback-with-drm">Manage DRM configuration</a>
    */
   async list(
     request?: operations.GetDrmConfigurationRequest | undefined,
@@ -50,7 +50,7 @@ export class DrmConfigurations extends ClientSDK {
    * 1. Make a GET request to this endpoint, replacing `{drmConfigurationId}` with the UUID of the DRM configuration.
    * 2. The response contains the associated DRM configuration ID.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/secure-playback-with-drm">Manage DRM configuration</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/secure-playback-with-drm">Manage DRM configuration</a>
    */
   async get(
     request: operations.GetDrmConfigurationByIdRequest,

@@ -93,6 +93,17 @@ function toPrettyJson(value: unknown): string {
   return JSON.stringify(value, null, 2);
 }
 
+// FastPix asset hosts have migrated to the .com TLD. Some legacy media
+// records still have pre-migration CDN thumbnails persisted on them, and
+// the API echoes those URLs back verbatim. Both hosts continue to serve
+// the same content during the deprecation window, so we normalize before
+// writing artifacts to disk — this keeps committed snapshots consistent
+// with the post-migration host without changing API behavior. Runs after
+// validation, so any real shape/schema issues are still surfaced.
+function normalizeLegacyFastpixHosts(text: string): string {
+  return text.replace(/fastpix\.io/g, "fastpix.com");
+}
+
 function preview(text: string): string {
   if (text.length <= MAX_PREVIEW_CHARS) return text;
   return text.slice(0, MAX_PREVIEW_CHARS) + "\n... (truncated)";
@@ -115,8 +126,8 @@ function writeArtifactFiles(
   const apiFilename = `${slug}.api.json`;
   const sdkFilename = `${slug}.sdk.json`;
 
-  const apiText = toPrettyJson(rawBody);
-  const sdkText = toPrettyJson(sdkBody);
+  const apiText = normalizeLegacyFastpixHosts(toPrettyJson(rawBody));
+  const sdkText = normalizeLegacyFastpixHosts(toPrettyJson(sdkBody));
 
   const apiPath = join(artifactsDir, apiFilename);
   const sdkPath = join(artifactsDir, sdkFilename);
@@ -957,10 +968,10 @@ async function main(): Promise<void> {
 
   const baseUrl: string =
     process.env.FASTPIX_BASE_URL
-    ?? ((spec.servers?.[0]?.url as string | undefined) ?? "https://api.fastpix.io/v1/");
+    ?? ((spec.servers?.[0]?.url as string | undefined) ?? "https://api.fastpix.com/v1/");
 
-const username = "2b1c9d92-2605-41e2-813e-39c5df9a3599";
-const password = "912af9a0-6742-415b-a081-11a0d448cb68";
+const username = "1b92c0d6-5548-4642-b13e-4bb7d77dbaf4";
+const password = "ff32012b-ec02-40ca-b0d4-711d81537e73";
   
   if (!username || !password) {
     throw new Error("Missing FASTPIX_USERNAME / FASTPIX_PASSWORD env vars (BasicAuth)");

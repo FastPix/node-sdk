@@ -45,7 +45,7 @@ import { Fastpix } from '@fastpix/fastpix-node';
 ```typescript
 // Your current SDK configuration (remove sensitive information)
 const fastpix = new Fastpix({
-  serverURL: 'https://api.fastpix.io/v1/',
+  serverURL: 'https://api.fastpix.com/v1/',
   security: {
     username: '***',
     password: '***',
@@ -116,6 +116,6 @@ Before submitting, please ensure:
 **We'll do our best to help you get unstuck! 🚀**
 
 **For urgent issues, please also consider:**
-- [FastPix Documentation](https://docs.fastpix.io/)
+- [FastPix Documentation](https://fastpix.com/docs/)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/fastpix)
 - [GitHub Discussions](https://github.com/FastPix/node-sdk/discussions)

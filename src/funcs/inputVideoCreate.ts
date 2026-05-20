@@ -60,13 +60,13 @@ import { Result } from "../types/fp.js";
  *
  * 3. Receive a response containing the unique id for the newly created media item.
  *
- * 4. Use the id in subsequent API calls, such as checking the status of the media with the <a href="https://docs.fastpix.io/reference/get-media">Get Media by ID</a> endpoint to determine when the media is ready for playback.
+ * 4. Use the id in subsequent API calls, such as checking the status of the media with the <a href="https://docs.fastpix.com/reference/get-media">Get Media by ID</a> endpoint to determine when the media is ready for playback.
  *
- * FastPix uses webhooks to tell your application about things that happen in the background, outside of the API regular request flow. For instance, after the media file is created (but not yet processed or encoded), FastPix sends a `POST` request to your specified webhook URL with the event <a href="https://docs.fastpix.io/docs/media-events#videomediacreated">video.media.created</a>.
+ * FastPix uses webhooks to tell your application about things that happen in the background, outside of the API regular request flow. For instance, after the media file is created (but not yet processed or encoded), FastPix sends a `POST` request to your specified webhook URL with the event <a href="https://docs.fastpix.com/docs/media-events#videomediacreated">video.media.created</a>.
  *
- * After processing completes, monitor the events <a href="https://docs.fastpix.io/docs/media-events#videomediaready">video.media.ready</a> and <a href="https://docs.fastpix.io/docs/media-events#videomediafailed">video.media.failed</a> to track the status of the media file.
+ * After processing completes, monitor the events <a href="https://docs.fastpix.com/docs/media-events#videomediaready">video.media.ready</a> and <a href="https://docs.fastpix.com/docs/media-events#videomediafailed">video.media.failed</a> to track the status of the media file.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/upload-videos-from-url">Upload videos from URL</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/upload-videos-from-url">Upload videos from URL</a>
  */
 export function inputVideoCreate(
   client: FastpixCore,

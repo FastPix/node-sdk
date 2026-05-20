@@ -42,7 +42,7 @@ import { Result } from "../types/fp.js";
  * #### Use case
  * Suppose you’re hosting a live gaming event and want to showcase key moments from the stream — such as top plays or final match highlights. You can use this endpoint to fetch all clips generated from that livestream, display them in your dashboard, or use them for post-event editing and sharing.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/instant-live-clipping">Instant live clipping</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/instant-live-clipping">Instant live clipping</a>
  */
 export function liveStreamsListClips(
   client: FastpixCore,

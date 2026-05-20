@@ -1,10 +1,10 @@
 {
   "name": "@fastpix/fastpix-node",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "author": {
     "name": "FastPix-Dev",
-    "email": "devs@fastpix.io",
-    "url": "https://www.fastpix.io/"
+    "email": "devs@fastpix.com",
+    "url": "https://www.fastpix.com/"
   },
   "license": "MIT",
   "type": "module",
@@ -27,12 +27,15 @@
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "validate:get-endpoints": "tsx tests/validate-get-endpoints.ts",
+    "validate:non-get-endpoints": "tsx tests/validate-non-get-endpoints.ts",
+    "validate:non-get-lifecycle": "tsx tests/validate-non-get-lifecycle.ts",
     "report:get-endpoints:excel": "tsx tests/generate-excel-report.ts",
     "build": "tshy",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^25.0.2",
     "eslint": "^9.19.0",
     "exceljs": "^4.4.0",

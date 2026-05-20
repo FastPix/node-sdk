@@ -1,0 +1,94 @@
+{
+  "success": true,
+  "data": {
+    "thumbnail": "https://images.fastpix.io/446315bf-11a7-44d2-92ef-a0c56808d2d0/thumbnail.png",
+    "id": "3123e275-3f7f-4abf-9655-7a8f5a7dbc61",
+    "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
+    "metadata": {
+      "updated": "true"
+    },
+    "mediaQuality": "standard",
+    "creatorId": "8fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "title": "sdk validate title",
+    "maxResolution": "720p",
+    "sourceResolution": "1080",
+    "status": "Ready",
+    "sourceAccess": false,
+    "playbackIds": [
+      {
+        "id": "446315bf-11a7-44d2-92ef-a0c56808d2d0",
+        "accessPolicy": "public",
+        "accessRestrictions": {
+          "domains": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          },
+          "userAgents": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          }
+        }
+      },
+      {
+        "id": "ca3fb5ce-b9de-432c-80b9-e332569c735c",
+        "accessPolicy": "public",
+        "accessRestrictions": {
+          "domains": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          },
+          "userAgents": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          }
+        }
+      }
+    ],
+    "tracks": [
+      {
+        "id": "237e7472-0fac-458b-9dd4-209844533803",
+        "type": "subtitle",
+        "status": "preparing",
+        "languageCode": "en-US",
+        "languageName": "English"
+      },
+      {
+        "id": "58ccc04e-dbbc-4ed2-bc04-f128106034a2",
+        "type": "audio",
+        "status": "available",
+        "languageCode": "it",
+        "languageName": "Italian"
+      },
+      {
+        "id": "5cf0ba86-4615-4bd6-a04a-f0c0e89610df",
+        "type": "video",
+        "width": 1920,
+        "height": 1080,
+        "frameRate": "60.000",
+        "status": "available"
+      },
+      {
+        "id": "c1926bee-969c-431f-b7c5-d321eb9460d3",
+        "type": "audio",
+        "status": "available",
+        "languageCode": "und",
+        "languageName": "default"
+      }
+    ],
+    "generatedSubtitles": [
+      {
+        "status": "preparing"
+      }
+    ],
+    "isAudioOnly": false,
+    "subtitleAvailable": false,
+    "duration": "00:00:10",
+    "aspectRatio": "16:9",
+    "createdAt": "2026-05-20T12:50:15.662960Z",
+    "updatedAt": "2026-05-20T12:54:15.432133Z"
+  }
+}

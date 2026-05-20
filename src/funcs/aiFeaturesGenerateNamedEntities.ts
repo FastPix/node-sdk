@@ -43,11 +43,11 @@ import { Result } from "../types/fp.js";
  * 2. Include the `namedEntities` parameter in the request body to enable.
  * 3. Receive a response containing the updated media data, confirming the changes made.
  *
- * You can use the <a href="https://docs.fastpix.io/docs/ai-events#videomediaainamedentitiesready">video.mediaAI.named-entities.ready</a> webhook event to track and notify about the named entities extraction.
+ * You can use the <a href="https://docs.fastpix.com/docs/ai-events#videomediaainamedentitiesready">video.mediaAI.named-entities.ready</a> webhook event to track and notify about the named entities extraction.
  *
  * **Use case:** If a user uploads a video and later decides to enable named entity extraction without re-uploading the entire video.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/generate-named-entities">Named entities</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/generate-named-entities">Named entities</a>
  */
 export function aiFeaturesGenerateNamedEntities(
   client: FastpixCore,

@@ -59,7 +59,7 @@ export const AddTrackRequest$outboundSchema: z.ZodMiniType<
   AddTrackRequest$Outbound,
   AddTrackRequest
 > = z.object({
-  url: z._default(z.string(), "https://static.fastpix.io/music-1.mp3"),
+  url: z._default(z.string(), "https://static.fastpix.com/music-1.mp3"),
   type: z._default(AddTrackRequestType$outboundSchema, "audio"),
   languageCode: z._default(z.string(), "it"),
   languageName: z._default(z.string(), "Italian"),

@@ -41,7 +41,7 @@ import { Result } from "../types/fp.js";
  *
  * 3. The response returns the updated media data, confirming the changes.
  *
- * 4. Monitor the <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> webhook event to track the update status in your system.
+ * 4. Monitor the <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> webhook event to track the update status in your system.
  *
  * #### Example
  * If a user uploads a video and later needs to change the title, add a new description, or update tags, you can use this endpoint to update the media metadata without re-uploading the entire video.

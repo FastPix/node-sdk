@@ -35,7 +35,7 @@ import { Result } from "../types/fp.js";
  *
  * #### How it works
  *
- *   1. Before using this endpoint, you can call the <a href="https://docs.fastpix.io/reference/list_dimensions">List Dimensions</a> endpoint to retrieve all available dimensions that can be used in your query.
+ *   1. Before using this endpoint, you can call the <a href="https://docs.fastpix.com/reference/list_dimensions">List Dimensions</a> endpoint to retrieve all available dimensions that can be used in your query.
  *
  *   2. Send a `GET` request to this endpoint with the required `metricId` and other query parameters.
  *
@@ -57,7 +57,7 @@ import { Result } from "../types/fp.js";
  *   * **totalPlayTime:** Total time spent playing the video, represented in milliseconds.
  *   * **field:** The grouping field value based on the groupBy parameter.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/metrics-overview">Understand data definitions</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/metrics-overview">Understand data definitions</a>
  */
 export function metricsListBreakdownValues(
   client: FastpixCore,

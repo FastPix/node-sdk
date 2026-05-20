@@ -46,7 +46,7 @@ import { Result } from "../types/fp.js";
  *
  * Imagine you’re managing a video editing platform where users upload full-length videos and create short clips for social media sharing. To keep track of all clips linked to a particular video, you call this API with the sourceMediaId. The response provides a list of all associated clips, allowing you to manage, edit, or repurpose them as needed.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/create-clips-from-existing-media">Create clips from existing media</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/create-clips-from-existing-media">Create clips from existing media</a>
  */
 export function mediaGetClips(
   client: FastpixCore,

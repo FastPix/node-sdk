@@ -31,6 +31,10 @@ export type VideoTrackForGetAll = {
    */
   height?: number | undefined;
   /**
+   * Frame rate quantifies the speed at which frames are displayed per second. It represents the range of frames available for a specific track. The indeterminable frame rate of the input file is indicated by a value of -1.
+   */
+  frameRate?: string | undefined;
+  /**
    * Indicates the current state of the track. 'available' means the track has been processed successfully and is ready to be used or played.
    */
   status?: string | undefined;
@@ -45,6 +49,7 @@ export const VideoTrackForGetAll$inboundSchema: z.ZodMiniType<
   type: types.optional(types.string()),
   width: types.optional(types.number()),
   height: types.optional(types.number()),
+  frameRate: types.optional(types.string()),
   status: types.optional(types.string()),
 });
 

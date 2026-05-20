@@ -1,0 +1,84 @@
+{
+  "success": true,
+  "data": [
+    {
+      "viewId": "dcf0ae08-16a7-4a8c-805d-993f309dbf96",
+      "operatingSystem": "Android",
+      "application": "Chrome",
+      "viewStartTime": "2026-05-20T09:50:42.361",
+      "viewEndTime": "2026-05-20T09:51:01.157",
+      "videoTitle": "Audio Track Switching Demo",
+      "errorCode": null,
+      "errorMessage": null,
+      "errorId": null,
+      "country": "IN",
+      "viewWatchTime": 17607,
+      "QoeScore": 0.9998969136573785
+    },
+    {
+      "viewId": "5d4c6560-58d6-45f9-9f1e-5b95eb116adc",
+      "operatingSystem": "MacOS",
+      "application": "Chrome",
+      "viewStartTime": "2026-05-20T09:51:01.665",
+      "viewEndTime": "2026-05-20T09:52:47.556",
+      "videoTitle": "Audio Track Switching Demo",
+      "errorCode": null,
+      "errorMessage": null,
+      "errorId": null,
+      "country": "IN",
+      "viewWatchTime": 1513,
+      "QoeScore": 0.9999312671832044
+    },
+    {
+      "viewId": "bc8406f3-2884-4793-a1e4-63688f8a771f",
+      "operatingSystem": "MacOS",
+      "application": "Chrome",
+      "viewStartTime": "2026-05-20T09:52:55.195",
+      "viewEndTime": "2026-05-20T09:53:18.107",
+      "videoTitle": "Audio Track Switching Demo",
+      "errorCode": null,
+      "errorMessage": null,
+      "errorId": null,
+      "country": "IN",
+      "viewWatchTime": 619,
+      "QoeScore": 0.9999312671832044
+    },
+    {
+      "viewId": "2bdb1132-baad-4d1c-a90e-d8469579dd6b",
+      "operatingSystem": "MacOS",
+      "application": "Chrome",
+      "viewStartTime": "2026-05-20T09:53:18.648",
+      "viewEndTime": "2026-05-20T09:53:35.966",
+      "videoTitle": "Audio Track Switching Demo",
+      "errorCode": null,
+      "errorMessage": null,
+      "errorId": null,
+      "country": "IN",
+      "viewWatchTime": 10114,
+      "QoeScore": 0.9999312671832044
+    },
+    {
+      "viewId": "3dd40d8c-4303-45dd-8745-cb1bd74f39db",
+      "operatingSystem": "MacOS",
+      "application": "Chrome",
+      "viewStartTime": "2026-05-20T09:53:36.582",
+      "viewEndTime": "2026-05-20T09:54:55.771",
+      "videoTitle": "Audio Track Switching Demo",
+      "errorCode": null,
+      "errorMessage": null,
+      "errorId": null,
+      "country": "IN",
+      "viewWatchTime": 499,
+      "QoeScore": 0.9999312671832044
+    }
+  ],
+  "pagination": {
+    "totalRecords": 10,
+    "currentOffset": 1,
+    "offsetCount": 2
+  },
+  "timespan": [
+    1779193812,
+    1779280212
+  ]
+}

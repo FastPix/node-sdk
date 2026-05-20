@@ -39,7 +39,7 @@ import { Result } from "../types/fp.js";
  *
  * Suppose a content creator is hosting a live concert and wants to display the number of live viewers on their dashboard. This endpoint can be queried to show up-to-date viewer statistics.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
 export function manageLiveStreamGetViewerCount(
   client: FastpixCore,

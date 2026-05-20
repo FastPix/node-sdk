@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "data": {
+    "streamId": "04f2ff997551bfeb99db3e099e8e85c8",
+    "streamKey": "e72eaef58b2c3d79a0c9e848797faeb7k04f2ff997551bfeb99db3e099e8e85c8",
+    "srtSecret": "d2c92f912b717af780c030356246e4adk04f2ff997551bfeb99db3e099e8e85c8",
+    "trial": false,
+    "status": "idle",
+    "maxResolution": "1080p",
+    "maxDuration": 0,
+    "createdAt": "2026-05-20T09:48:32.763926Z",
+    "reconnectWindow": 60,
+    "enableRecording": true,
+    "enableDvrMode": true,
+    "mediaPolicy": "public",
+    "metadata": {
+      "name": "fastpix_livestream"
+    },
+    "lowLatency": false,
+    "closedCaptions": false,
+    "playbackIds": [
+      {
+        "id": "e3d28adb-df80-4a57-adf5-46522ffa3eff",
+        "accessPolicy": "public"
+      }
+    ],
+    "simulcastResponses": [
+      {
+        "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
+      }
+    ],
+    "srtPlaybackResponse": {
+      "srtPlaybackStreamId": "play04f2ff997551bfeb99db3e099e8e85c8",
+      "srtPlaybackSecret": "261f28e903c7a3259fc1846f11bb304ek04f2ff997551bfeb99db3e099e8e85c8"
+    }
+  }
+}

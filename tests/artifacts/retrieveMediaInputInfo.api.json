@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "data": {
+    "configuration": {
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub%40fastpix-vms.iam.gserviceaccount.com%2F20260520%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260520T090626Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host%3Bx-goog-resumable&X-Goog-Signature=adeb7cbb6d80e8cc7a770ba13e974593f22ea01e88d210fb90e1370feaf05a662b81f29e0491a43971d197782b9fe8a9fc45f31a8d62c26b9828b6255e89ec25e3410091b48058d4c843d3204e91ad09d203664ac7deb8db238182602c72208f7063dd77548d5c1532809a91339647fd31e4176dc6a98b9ca950918c3869293847e3d33da7d49660ec7f341bcade847cdddc1e8342567173ee2d135ceef0fd79342b487bfe5425f503e6611ef643796b55e36137c284d65c4dcdce52a1e40d3f25ce6b0379a073f5a2c7e51ec73c5db7b514fa37e4df5de0f4b053ac6ff196d62eacd0e46938c1f5eefe513d35b22b1250ad07462b42da999f1ff23ce1bc9e04"
+    },
+    "file": {
+      "containerFormat": "com%2F20260520%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260520T090626Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host%3Bx-goog-resumable&X-Goog-Signature=adeb7cbb6d80e8cc7a770ba13e974593f22ea01e88d210fb90e1370feaf05a662b81f29e0491a43971d197782b9fe8a9fc45f31a8d62c26b9828b6255e89ec25e3410091b48058d4c843d3204e91ad09d203664ac7deb8db238182602c72208f7063dd77548d5c1532809a91339647fd31e4176dc6a98b9ca950918c3869293847e3d33da7d49660ec7f341bcade847cdddc1e8342567173ee2d135ceef0fd79342b487bfe5425f503e6611ef643796b55e36137c284d65c4dcdce52a1e40d3f25ce6b0379a073f5a2c7e51ec73c5db7b514fa37e4df5de0f4b053ac6ff196d62eacd0e46938c1f5eefe513d35b22b1250ad07462b42da999f1ff23ce1bc9e04",
+      "tracks": [
+        {
+          "id": "d1e3ae30-f6ef-440d-8714-3a63bc89a84c",
+          "type": "audio",
+          "status": "available",
+          "languageCode": "und",
+          "languageName": "default"
+        },
+        {
+          "id": "d521c8f0-73df-434c-99bf-e7ba6e537b94",
+          "type": "video",
+          "width": 1280,
+          "height": 720,
+          "frameRate": "24.000",
+          "status": "available"
+        }
+      ]
+    }
+  }
+}

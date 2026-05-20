@@ -43,16 +43,16 @@ import { Result } from "../types/fp.js";
  *
  * #### Webhook events
  *
- * 1. After successfully adding a track, your system must receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediatrackcreated">video.media.track.created</a>.
+ * 1. After successfully adding a track, your system must receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediatrackcreated">video.media.track.created</a>.
  *
- * 2. Once the track is processed and ready, you must receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediatrackready">video.media.track.ready</a>.
+ * 2. Once the track is processed and ready, you must receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediatrackready">video.media.track.ready</a>.
  *
- * 3. Finally, an update event <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> must notify your system about the media's updated status.
+ * 3. Finally, an update event <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> must notify your system about the media's updated status.
  *
  * #### Example
- * Suppose you have a video uploaded to the FastPix platform, and you want to add an Italian audio track to it. By calling this API, you can attach an external audio file (https://static.fastpix.io/music-1.mp3) to the media file. Similarly, if you need to add subtitles in different languages, you can specify type: `subtitle` with the corresponding subtitle `url`, `languageCode` and `languageName`.
+ * Suppose you have a video uploaded to the FastPix platform, and you want to add an Italian audio track to it. By calling this API, you can attach an external audio file (https://static.fastpix.com/music-1.mp3) to the media file. Similarly, if you need to add subtitles in different languages, you can specify type: `subtitle` with the corresponding subtitle `url`, `languageCode` and `languageName`.
  *
- * Related guides: <a href="https://docs.fastpix.io/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.io/docs/manage-audio-tracks">Add own audio tracks</a>
+ * Related guides: <a href="https://docs.fastpix.com/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.com/docs/manage-audio-tracks">Add own audio tracks</a>
  */
 export function manageVideosAddTrack(
   client: FastpixCore,

@@ -21,7 +21,7 @@ export class Metrics extends ClientSDK {
    *
    * #### How it works
    *
-   *   1. Before using this endpoint, you can call the <a href="https://docs.fastpix.io/reference/list_dimensions">List Dimensions</a> endpoint to retrieve all available dimensions that can be used in your query.
+   *   1. Before using this endpoint, you can call the <a href="https://docs.fastpix.com/reference/list_dimensions">List Dimensions</a> endpoint to retrieve all available dimensions that can be used in your query.
    *
    *   2. Send a `GET` request to this endpoint with the required `metricId` and other query parameters.
    *
@@ -43,7 +43,7 @@ export class Metrics extends ClientSDK {
    *   * **totalPlayTime:** Total time spent playing the video, represented in milliseconds.
    *   * **field:** The grouping field value based on the groupBy parameter.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/metrics-overview">Understand data definitions</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/metrics-overview">Understand data definitions</a>
    */
   async listBreakdownValues(
     request: operations.ListBreakdownValuesRequest,
@@ -64,7 +64,7 @@ export class Metrics extends ClientSDK {
    *
    * #### How it works
    *
-   *   1. Before using this endpoint, you can call the <a href="https://docs.fastpix.io/reference/list_dimensions">list dimensions</a> endpoint to retrieve all available dimensions that can be used in your query.
+   *   1. Before using this endpoint, you can call the <a href="https://docs.fastpix.com/reference/list_dimensions">list dimensions</a> endpoint to retrieve all available dimensions that can be used in your query.
    *
    *   2. Send a `GET` request to this endpoint with the required `metricId` and other query parameters.
    *
@@ -79,7 +79,7 @@ export class Metrics extends ClientSDK {
    *   * **totalPlayTime:** Total time spent playing the video, represented in milliseconds.
    *   * **globalValue:** A global metric value that reflects the overall performance of the specified metric across the entire dataset for the given timespan. This value is not affected by specific filters.
    *
-   *   Related guide: <a href="https://docs.fastpix.io/docs/metrics-overview">Understand data definitions</a>
+   *   Related guide: <a href="https://docs.fastpix.com/docs/metrics-overview">Understand data definitions</a>
    */
   async listOverallValues(
     request: operations.ListOverallValuesRequest,
@@ -132,13 +132,13 @@ export class Metrics extends ClientSDK {
    *
    * #### How it works
    *
-   *   1. Before making a request to this endpoint, call the <a href="https://docs.fastpix.io/reference/list_dimensions">list dimensions</a> endpoint to obtain all available dimensions that can be used for comparison.
+   *   1. Before making a request to this endpoint, call the <a href="https://docs.fastpix.com/reference/list_dimensions">list dimensions</a> endpoint to obtain all available dimensions that can be used for comparison.
    *
    *   2. Send a `GET` request to this endpoint with the desired metrics specified in the query parameters.
    *
    *   3. You Receive a response containing the comparison values for the specified metrics across the selected dimensions.
    *
-   *   Related guide: <a href="https://docs.fastpix.io/docs/understand-dashboard-ui#compare-metrics">Compare metrics in dashboard</a>
+   *   Related guide: <a href="https://docs.fastpix.com/docs/understand-dashboard-ui#compare-metrics">Compare metrics in dashboard</a>
    */
   async listCompares(
     request?: operations.ListComparisonValuesRequest | undefined,

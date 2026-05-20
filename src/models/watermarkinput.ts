@@ -69,7 +69,7 @@ export type Placement = {
  * @remarks
  * The watermark is placed over the media content during processing.
  * For detailed setup steps and customization options, refer to the
- * <a href="https://docs.fastpix.io/docs/watermark-your-videos" target="_blank">FastPix Watermark Guide</a>.
+ * <a href="https://docs.fastpix.com/docs/watermark-your-videos" target="_blank">FastPix Watermark Guide</a>.
  */
 export type WatermarkInput = {
   /**

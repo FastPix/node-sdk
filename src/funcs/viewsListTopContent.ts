@@ -45,7 +45,7 @@ import { Result } from "../types/fp.js";
  *
  *   5. You receive a response containing the list of top video views matching the specified criteria.
  *
- *   Related guide: <a href="https://docs.fastpix.io/page/how-to-get-top-performing-content">Get top-performing content</a>
+ *   Related guide: <a href="https://docs.fastpix.com/page/how-to-get-top-performing-content">Get top-performing content</a>
  */
 export function viewsListTopContent(
   client: FastpixCore,

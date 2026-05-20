@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "metadata": {
+    "aggregation": "view_end"
+  },
+  "data": [
+    {
+      "views": 10,
+      "value": 0.7999003730402684,
+      "totalWatchTime": 69200,
+      "totalPlayingTime": 32875,
+      "field": "Chrome"
+    }
+  ],
+  "pagination": {
+    "totalRecords": 1,
+    "currentOffset": 1,
+    "offsetCount": 1
+  },
+  "timespan": [
+    1779193816,
+    1779280216
+  ]
+}

@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  *
  *   Suppose a news agency is broadcasting a live event and wants to track the configurations set for the live stream while also checking the stream's status.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
 export function manageLiveStreamGet(
   client: FastpixCore,

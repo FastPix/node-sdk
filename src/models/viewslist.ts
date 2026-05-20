@@ -5,7 +5,6 @@
  */
 
 import * as z from "zod/v4-mini";
-import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -61,6 +60,12 @@ export type ViewsList = {
    */
   errorMessage?: string | null | undefined;
   /**
+   * The unique identifier for the error that occurred during playback.
+   *
+   * @remarks
+   */
+  errorId?: string | null | undefined;
+  /**
    * Country of the viewer.
    *
    * @remarks
@@ -77,31 +82,25 @@ export type ViewsList = {
    *
    * @remarks
    */
-  qoeScore?: number | null | undefined;
+  QoeScore?: number | null | undefined;
 };
 
 /** @internal */
 export const ViewsList$inboundSchema: z.ZodMiniType<ViewsList, unknown> = z
-  .pipe(
-    z.object({
-      viewId: types.optional(types.string()),
-      operatingSystem: z.optional(z.nullable(types.string())),
-      application: z.optional(z.nullable(types.string())),
-      viewStartTime: z.optional(z.nullable(types.string())),
-      viewEndTime: z.optional(z.nullable(types.string())),
-      videoTitle: z.optional(z.nullable(types.string())),
-      errorCode: z.optional(z.nullable(types.string())),
-      errorMessage: z.optional(z.nullable(types.string())),
-      country: z.optional(z.nullable(types.string())),
-      viewWatchTime: z.optional(z.nullable(types.number())),
-      QoeScore: z.optional(z.nullable(types.number())),
-    }),
-    z.transform((v) => {
-      return remap$(v, {
-        "QoeScore": "qoeScore",
-      });
-    }),
-  );
+  .object({
+    viewId: types.optional(types.string()),
+    operatingSystem: z.optional(z.nullable(types.string())),
+    application: z.optional(z.nullable(types.string())),
+    viewStartTime: z.optional(z.nullable(types.string())),
+    viewEndTime: z.optional(z.nullable(types.string())),
+    videoTitle: z.optional(z.nullable(types.string())),
+    errorCode: z.optional(z.nullable(types.string())),
+    errorMessage: z.optional(z.nullable(types.string())),
+    errorId: z.optional(z.nullable(types.string())),
+    country: z.optional(z.nullable(types.string())),
+    viewWatchTime: z.optional(z.nullable(types.number())),
+    QoeScore: z.optional(z.nullable(types.number())),
+  });
 
 export function viewsListFromJSON(
   jsonString: string,

@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "data": [
+    {
+      "videoTitle": "Audio Track Switching Demo",
+      "views": 9,
+      "uniqueViews": 1
+    },
+    {
+      "videoTitle": "null",
+      "views": 1,
+      "uniqueViews": 1
+    }
+  ],
+  "timespan": [
+    1779193814,
+    1779280214
+  ]
+}

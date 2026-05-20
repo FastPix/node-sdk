@@ -184,7 +184,7 @@ export const PullVideoInput$outboundSchema: z.ZodMiniType<
   PullVideoInput
 > = z.object({
   type: z._default(z.string(), "video"),
-  url: z._default(z.string(), "https://static.fastpix.io/fp-sample-video.mp4"),
+  url: z._default(z.string(), "https://static.fastpix.com/fp-sample-video.mp4"),
   startTime: z.optional(z.int()),
   endTime: z.optional(z.int()),
   introUrl: z.optional(z.string()),

@@ -33,13 +33,13 @@ import { Result } from "../types/fp.js";
  * @remarks
  * This endpoint allows you to modify the parameters of an existing live stream, such as its `metadata` (title, description) or the `reconnectWindow`. It’s useful for making changes to a stream that has already been created but not yet ended. After the live stream is disabled, you cannot update a stream.
  *
- *   The updated stream parameters and the `streamId` needs to be shared in the request, and FastPix returns the updated stream details. After the update, <a href="https://docs.fastpix.io/docs/live-events#videolive_streamupdated">video.live_stream.updated</a> webhook event notifies your system.
+ *   The updated stream parameters and the `streamId` needs to be shared in the request, and FastPix returns the updated stream details. After the update, <a href="https://docs.fastpix.com/docs/live-events#videolive_streamupdated">video.live_stream.updated</a> webhook event notifies your system.
  *
  *  #### Example
  *
  *  A host realizes they need to extend the reconnect window for their live stream in case they lose connection temporarily during the event. Or suppose during a multi-day online conference, the event organizers need to update the stream title to reflect the next day"s session while keeping the same stream ID for continuity.
  *
- *   Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+ *   Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
 export function manageLiveStreamUpdate(
   client: FastpixCore,

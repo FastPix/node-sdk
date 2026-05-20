@@ -43,11 +43,11 @@ import { Result } from "../types/fp.js";
  *
  * #### Webhook Events
  *
- * 1. After the subtitle track is generated and ready, you receive the webhook event <a href="https://docs.fastpix.io/docs/transform-media-events#videomediasubtitlegeneratedready">video.media.subtitle.generated.ready</a>.
+ * 1. After the subtitle track is generated and ready, you receive the webhook event <a href="https://docs.fastpix.com/docs/transform-media-events#videomediasubtitlegeneratedready">video.media.subtitle.generated.ready</a>.
  *
- * 2. Finally the <a href="https://docs.fastpix.io/docs/media-events#videomediaupdated">video.media.updated</a> event notifies your system about the media’s updated status.
+ * 2. Finally the <a href="https://docs.fastpix.com/docs/media-events#videomediaupdated">video.media.updated</a> event notifies your system about the media’s updated status.
  *
- * </br> Related guide: <a href="https://docs.fastpix.io/docs/add-auto-generated-subtitles-to-videos">Add auto-generated subtitles</a>
+ * </br> Related guide: <a href="https://docs.fastpix.com/docs/add-auto-generated-subtitles-to-videos">Add auto-generated subtitles</a>
  */
 export function manageVideosGenerateSubtitleTrack(
   client: FastpixCore,

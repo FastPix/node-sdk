@@ -12,7 +12,7 @@ let value: DirectUploadVideoMediaAccessRestrictions = {
       "trustedsite.org",
     ],
     deny: [
-      "malicioussite.io",
+      "malicioussite.com",
       "spamdomain.net",
     ],
   },

@@ -1,0 +1,350 @@
+{
+  "success": true,
+  "data": [
+    {
+      "value": 10,
+      "type": "number",
+      "name": "Views",
+      "metric": "views",
+      "measurement": "count",
+      "items": [
+        {
+          "value": 2,
+          "type": "number",
+          "name": "Unique Viewers",
+          "metric": "unique_viewers",
+          "measurement": "count",
+          "items": null
+        },
+        {
+          "value": 68039,
+          "type": "milliseconds",
+          "name": "Playing Time (total)",
+          "metric": "playing_time",
+          "measurement": "sum",
+          "items": null
+        },
+        {
+          "value": 1511,
+          "type": "milliseconds",
+          "name": "Playing Time (median)",
+          "metric": "playing_time",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 7559.888888888889,
+          "type": "milliseconds",
+          "name": "Playing Time (average)",
+          "metric": "playing_time",
+          "measurement": "avg",
+          "items": null
+        }
+      ]
+    },
+    {
+      "value": 0.9998754663003355,
+      "type": "number",
+      "name": "Overall Score",
+      "metric": "overall_score",
+      "measurement": "avg",
+      "items": null
+    },
+    {
+      "value": 1,
+      "type": "number",
+      "name": "Playback Success Score",
+      "metric": "playback_success_score",
+      "measurement": "avg",
+      "items": [
+        {
+          "value": 0.2,
+          "type": "percentage",
+          "name": "Playback Failure Percentage",
+          "metric": "playback_failure_percentage",
+          "measurement": null,
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "percentage",
+          "name": "Video Startup Failure Percentage",
+          "metric": "video_startup_failure_percentage",
+          "measurement": null,
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "percentage",
+          "name": "Exits Before Video Start",
+          "metric": "exit_before_video_start",
+          "measurement": null,
+          "items": null
+        }
+      ]
+    },
+    {
+      "value": 0.9995003296022185,
+      "type": "number",
+      "name": "Startup Time Score",
+      "metric": "startup_score",
+      "measurement": null,
+      "items": [
+        {
+          "value": 3,
+          "type": "milliseconds",
+          "name": "Video Startup Time (median)",
+          "metric": "video_startup_time",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 8,
+          "type": "milliseconds",
+          "name": "Video Startup Time (95th percentile)",
+          "metric": "video_startup_time",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "milliseconds",
+          "name": "Player Startup Time (median)",
+          "metric": "player_startup_time",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "milliseconds",
+          "name": "Player Startup Time (95th percentile)",
+          "metric": "player_startup_time",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 122,
+          "type": "milliseconds",
+          "name": "Page Load Time (median)",
+          "metric": "page_load_time",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 425,
+          "type": "milliseconds",
+          "name": "Page Load Time (95th percentile)",
+          "metric": "page_load_time",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 128,
+          "type": "milliseconds",
+          "name": "Total Startup Time (median)",
+          "metric": "total_startup_time",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 425,
+          "type": "milliseconds",
+          "name": "Total Startup Time (95th percentile)",
+          "metric": "total_startup_time",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 317.5,
+          "type": "milliseconds",
+          "name": "Jump Latency",
+          "metric": "jump_latency",
+          "measurement": "avg",
+          "items": null
+        }
+      ]
+    },
+    {
+      "value": 1,
+      "type": "number",
+      "name": "Stability Score",
+      "metric": "stability_score",
+      "measurement": null,
+      "items": [
+        {
+          "value": 0,
+          "type": "percentage",
+          "name": "Buffer Ratio",
+          "metric": "buffer_ratio",
+          "measurement": null,
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "number",
+          "name": "Buffer Frequency",
+          "metric": "buffer_frequency",
+          "measurement": null,
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "milliseconds",
+          "name": "Buffer Fill (median)",
+          "metric": "buffer_fill",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "milliseconds",
+          "name": "Buffer Fill (95th percentile)",
+          "metric": "buffer_fill",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "number",
+          "name": "Buffer Count (median)",
+          "metric": "buffer_count",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "number",
+          "name": "Buffer Count (95th percentile)",
+          "metric": "buffer_count",
+          "measurement": "95th",
+          "items": null
+        }
+      ]
+    },
+    {
+      "value": 1,
+      "type": "number",
+      "name": "Render Quality Score",
+      "metric": "render_quality_score",
+      "measurement": null,
+      "items": [
+        {
+          "value": 0,
+          "type": "percentage",
+          "name": "Upscale Percentage (median)",
+          "metric": "upscale_percentage",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "percentage",
+          "name": "Upscale Percentage (95th percentile)",
+          "metric": "upscale_percentage",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "percentage",
+          "name": "Upscale Percentage (average)",
+          "metric": "upscale_percentage",
+          "measurement": "avg",
+          "items": null
+        },
+        {
+          "value": 0.7027778,
+          "type": "percentage",
+          "name": "Downscale Percentage (median)",
+          "metric": "downscale_percentage",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 0.7317475,
+          "type": "percentage",
+          "name": "Downscale Percentage (95th percentile)",
+          "metric": "downscale_percentage",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 0.6962137818336487,
+          "type": "percentage",
+          "name": "Downscale Percentage (average)",
+          "metric": "downscale_percentage",
+          "measurement": "avg",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "percentage",
+          "name": "Max Upscale Percentage (median)",
+          "metric": "max_upscale_percentage",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 0,
+          "type": "percentage",
+          "name": "Max Upscale Percentage (95th percentile)",
+          "metric": "max_upscale_percentage",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 0.7027778,
+          "type": "percentage",
+          "name": "Max Downscale Percentage (median)",
+          "metric": "max_downscale_percentage",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 0.80972224,
+          "type": "percentage",
+          "name": "Max Downscale Percentage (95th percentile)",
+          "metric": "max_downscale_percentage",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": 2890281,
+          "type": "mbps",
+          "name": "Average Bitrate (median)",
+          "metric": "average_bitrate",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": 2890281,
+          "type": "mbps",
+          "name": "Average Bitrate (95th percentile)",
+          "metric": "average_bitrate",
+          "measurement": "95th",
+          "items": null
+        },
+        {
+          "value": -9223372036854776000,
+          "type": "milliseconds",
+          "name": "Live Stream Latency (median)",
+          "metric": "live_stream_latency",
+          "measurement": "median",
+          "items": null
+        },
+        {
+          "value": -9223372036854776000,
+          "type": "milliseconds",
+          "name": "Live Stream Latency (95th percentile)",
+          "metric": "live_stream_latency",
+          "measurement": "95th",
+          "items": null
+        }
+      ]
+    }
+  ],
+  "timespan": [
+    1779193818,
+    1779280218
+  ]
+}

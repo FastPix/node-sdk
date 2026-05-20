@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "data": {
+    "id": "67fef841-2857-4e90-95d9-698858af1353",
+    "name": "sdk validate updated",
+    "referenceId": "sdkValidatempe27p0n",
+    "type": "manual",
+    "description": "updated by validator",
+    "mediaList": [
+      {
+        "createdAt": "2026-05-20T12:50:15.662960Z",
+        "duration": "00:00:10",
+        "id": "3123e275-3f7f-4abf-9655-7a8f5a7dbc61",
+        "sourceResolution": "1080",
+        "status": "Ready",
+        "thumbnail": "https://images.fastpix.io/446315bf-11a7-44d2-92ef-a0c56808d2d0/thumbnail.png"
+      }
+    ],
+    "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
+    "createdAt": "2026-05-20T12:50:13.467598Z",
+    "updatedAt": "2026-05-20T12:54:20.268570Z",
+    "mediaCount": 1
+  }
+}

@@ -33,13 +33,13 @@ import { Result } from "../types/fp.js";
  * @remarks
  * This endpoint returns the filter values associated with a specific dimension, along with the total number of video views for each value. For example, it can list all `browser_name` (dimension) and show how many views occurred for all available browsers like Chrome, Safari (filter values).
  *
- * In order to use the <a href="https://docs.fastpix.io/docs/custom-business-metadata">Custom Dimensions</a>, you must enable them in the dashboard under settings option based on the plan you have opted for.
+ * In order to use the <a href="https://docs.fastpix.com/docs/custom-business-metadata">Custom Dimensions</a>, you must enable them in the dashboard under settings option based on the plan you have opted for.
  *
  * #### Example
  *
  * A developer wants to know how their video content performs across different browsers. By calling this endpoint for the `device_type` dimension, they can retrieve a breakdown of video views by each device (for example, Desktop, Mobile, Tablet). This data helps the developer understand where optimizations or troubleshooting is necessary.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/understand-dashboard-ui#filters-and-timeframes">Filters and timespan</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/understand-dashboard-ui#filters-and-timeframes">Filters and timespan</a>
  */
 export function dimensionsListFilterValues(
   client: FastpixCore,

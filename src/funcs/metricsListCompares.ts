@@ -44,13 +44,13 @@ import { Result } from "../types/fp.js";
  *
  * #### How it works
  *
- *   1. Before making a request to this endpoint, call the <a href="https://docs.fastpix.io/reference/list_dimensions">list dimensions</a> endpoint to obtain all available dimensions that can be used for comparison.
+ *   1. Before making a request to this endpoint, call the <a href="https://docs.fastpix.com/reference/list_dimensions">list dimensions</a> endpoint to obtain all available dimensions that can be used for comparison.
  *
  *   2. Send a `GET` request to this endpoint with the desired metrics specified in the query parameters.
  *
  *   3. You Receive a response containing the comparison values for the specified metrics across the selected dimensions.
  *
- *   Related guide: <a href="https://docs.fastpix.io/docs/understand-dashboard-ui#compare-metrics">Compare metrics in dashboard</a>
+ *   Related guide: <a href="https://docs.fastpix.com/docs/understand-dashboard-ui#compare-metrics">Compare metrics in dashboard</a>
  */
 export function metricsListCompares(
   client: FastpixCore,

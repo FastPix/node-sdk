@@ -38,11 +38,11 @@ import { Result } from "../types/fp.js";
  * 2. Include the `chapters` parameter in the request body to enable.
  * 3. The response contains the updated media data, confirming the changes made.
  *
- * You can use the <a href="https://docs.fastpix.io/docs/ai-events#videomediaaichaptersready">video.mediaAI.chapters.ready</a> webhook event to track and notify about the chapters generation.
+ * You can use the <a href="https://docs.fastpix.com/docs/ai-events#videomediaaichaptersready">video.mediaAI.chapters.ready</a> webhook event to track and notify about the chapters generation.
  *
  * **Use case:** This is particularly useful when a user uploads a video and later decides to enable chapters without re-uploading the entire video.
  *
- * Related guide: <a href="https://docs.fastpix.io/docs/generate-video-chapters">Video chapters</a>
+ * Related guide: <a href="https://docs.fastpix.com/docs/generate-video-chapters">Video chapters</a>
  */
 export function inVideoAIfeaturesGenerateChapters(
   client: FastpixCore,

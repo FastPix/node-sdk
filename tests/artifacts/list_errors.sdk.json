@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "data": {
+    "errors": [
+      {
+        "percentage": 0.1,
+        "notes": "",
+        "message": "manifestLoadError",
+        "lastSeen": "2026-05-20 09:54:56.561",
+        "id": "1",
+        "description": "url: https://stream.fastpix.com/2125094c-db43-4748-90e1-18539f2ccf98.m3u8\nerror: Error: A network error (status 0) occurred while loading manifest",
+        "count": 1,
+        "code": "networkError"
+      },
+      {
+        "percentage": 0.1,
+        "notes": "",
+        "message": "fragLoadError",
+        "lastSeen": "2026-05-20 09:55:36.02",
+        "id": "1",
+        "description": "url: https://cdn.fastpix.com/1WjqqsDiTWvy2xax6rHOX9o9QN6dyYf14g%2F%2FBM0u3MwPTQl%2BRhB3iiGOD909h15oFXq8QeY6w%2FIa%2FqVFyxLLRN2wzYFYf0en2td4NeGAT9pSZaUXubTP13tqVN9EzUGkl%2BoyF4z3TaTg495ApHSz6O%2B6AV3GAuHkub3vqUC40ZqCHR5nEMen%2FTajyXZMHHkFbFIhkFpTyPjZeAwHj6%2BFYY5bSLS8qDAv2JoOjSKMb7gFgMo88I7U6kCgy0cb9%2FnsPAhbVudl%2F1PFKLdeNSNViU%2F9yQs%3D/text/English/4.vtt?cdn=cloudflare&expires=1781862930&signature=JkuZVtkP1%2Bf0a7LEuAJyby7uJrfg%2BwoKi%2BLe1RTFHKQ%3D\nerror: Error: HTTP Error 0",
+        "count": 1,
+        "code": "networkError"
+      }
+    ],
+    "topErrors": [
+      {
+        "percentage": 0.1,
+        "uniqueViewersEffectedPercentage": 0.5,
+        "notes": "",
+        "message": "manifestLoadError",
+        "lastSeen": "2026-05-20 09:54:56.561",
+        "count": 1,
+        "code": "networkError"
+      },
+      {
+        "percentage": 0.1,
+        "uniqueViewersEffectedPercentage": 0.5,
+        "notes": "",
+        "message": "fragLoadError",
+        "lastSeen": "2026-05-20 09:55:36.02",
+        "count": 1,
+        "code": "networkError"
+      }
+    ]
+  },
+  "timespan": [
+    1779193819,
+    1779280219
+  ]
+}

@@ -302,7 +302,7 @@ export type CreateMediaRequest = {
    * Add one input object at a time. For example, first add a **VideoInput** object.   If you also need a watermark, click **Add item** again and select **WatermarkInput**.   Repeat this process for **AudioInput** or **SubtitleInput** as needed. For a complete explanation of how media uploads from URL and processing work, refer to the
    *
    * @remarks
-   *         <a href="https://docs.fastpix.io/docs/video-on-demand-overview" target="_blank">FastPix Video on Demand Overview</a>.
+   *         <a href="https://docs.fastpix.com/docs/video-on-demand-overview" target="_blank">FastPix Video on Demand Overview</a>.
    */
   inputs: Array<SubtitleInput | WatermarkInput | AudioInput | PullVideoInput>;
   /**

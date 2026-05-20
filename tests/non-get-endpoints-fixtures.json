@@ -1,0 +1,328 @@
+{
+  "_help": "Fixtures for validate-non-get-endpoints.ts. Each entry's `request` is passed verbatim as the second arg to the SDK method invoker (the SDK accepts a single object combining path params, query params, and body). Set `skip: true` to keep the entry for documentation but not execute it. Operations not listed here are skipped by default.",
+  "operations": {
+    "create-media": {
+      "description": "Create a new on-demand media asset from a public URL.",
+      "request": {
+        "inputs": [
+          {
+            "type": "video",
+            "url": "https://static.fastpix.com/fp-sample-video.mp4"
+          }
+        ],
+        "metadata": { "source": "non-get-validator" },
+        "accessPolicy": "public",
+        "maxResolution": "720p"
+      }
+    },
+
+    "direct-upload-video-media": {
+      "description": "Mint a signed URL for a direct browser upload. Non-destructive.",
+      "request": {
+        "corsOrigin": "*",
+        "pushMediaSettings": {
+          "accessPolicy": "public",
+          "metadata": { "source": "non-get-validator" }
+        }
+      }
+    },
+
+    "create-a-playlist": {
+      "description": "Create a manual playlist.",
+      "request": {
+        "name": "Non-GET Validator Playlist",
+        "type": "manual",
+        "referenceId": "nonGetValidatorPlaylist",
+        "description": "Created by validate non get endpoints",
+        "mediaIds": [],
+        "metadata": {}
+      }
+    },
+
+    "create-new-stream": {
+      "description": "Create a new live stream. Costs nothing until it goes live.",
+      "request": {
+        "metadata": { "source": "non-get-validator" },
+        "playbackSettings": { "accessPolicy": "public" },
+        "inputMediaSettings": {
+          "maxResolution": "1080p",
+          "reconnectWindow": 60,
+          "mediaPolicy": "public"
+        }
+      }
+    },
+
+    "create_signing_key": {
+      "description": "Create a new signing key for JWT minting.",
+      "request": {}
+    },
+
+    "updated-media": {
+      "description": "Update metadata on an existing media. Needs a real mediaId.",
+      "skip": true,
+      "reason": "Set mediaId to a real ID, then remove `skip` to enable.",
+      "request": {
+        "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
+        "metadata": { "updatedBy": "non-get-validator" }
+      }
+    },
+
+    "delete-media": {
+      "description": "Permanently deletes a media.",
+      "skip": true,
+      "reason": "Destructive. Provide a real, expendable mediaId before enabling.",
+      "request": { "mediaId": "REPLACE_WITH_REAL_MEDIA_ID" }
+    },
+
+    "Add-media-track": {
+      "description": "Attach a subtitle/audio track to an existing media.",
+      "skip": true,
+      "reason": "Needs a real mediaId and a publicly-reachable track URL.",
+      "request": {
+        "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
+        "url": "https://static.fastpix.com/sample.vtt",
+        "type": "subtitle",
+        "languageCode": "en",
+        "languageName": "English",
+        "closedCaptions": true
+      }
+    },
+
+    "cancel-upload": {
+      "description": "Cancel an in-progress resumable upload.",
+      "skip": true,
+      "reason": "Needs a real uploadId from a still-active upload session.",
+      "request": { "uploadId": "REPLACE_WITH_REAL_UPLOAD_ID" }
+    },
+
+    "update-media-track": {
+      "description": "Replace the URL or language on an existing track.",
+      "skip": true,
+      "reason": "Needs real mediaId + trackId.",
+      "request": {
+        "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
+        "trackId": "REPLACE_WITH_REAL_TRACK_ID",
+        "url": "https://static.fastpix.com/sample.vtt",
+        "languageCode": "en",
+        "languageName": "English"
+      }
+    },
+
+    "delete-media-track": {
+      "description": "Remove a track from a media.",
+      "skip": true,
+      "reason": "Destructive. Needs real mediaId + trackId.",
+      "request": {
+        "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
+        "trackId": "REPLACE_WITH_REAL_TRACK_ID"
+      }
+    },
+
+    "Generate-subtitle-track": {
+      "description": "Trigger subtitle generation on an audio track.",
+      "skip": true,
+      "reason": "Needs a real mediaId + audio trackId.",
+      "request": {
+        "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
+        "trackId": "REPLACE_WITH_REAL_TRACK_ID",
+        "languageCode": "en",
+        "languageName": "English"
+      }
+    },
+
+    "update-media-summary": {
+      "skip": true,
+      "reason": "Needs real mediaId.",
+      "request": {
+        "mediaId": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36",
+        "generate": true,
+        "summaryLength": 100
+      }
+    },
+    "update-media-chapters": {
+      "skip": true,
+      "reason": "Needs real mediaId.",
+      "request": { "mediaId": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36", "generate": true }
+    },
+    "update-media-named-entities": {
+      "skip": true,
+      "reason": "Needs real mediaId.",
+      "request": { "mediaId": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36", "generate": true }
+    },
+    "update-media-moderation": {
+      "skip": true,
+      "reason": "Needs real mediaId.",
+      "request": { "mediaId": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36", "generate": true }
+    },
+
+    "updated-source-access": {
+      "skip": true,
+      "reason": "Needs real mediaId.",
+      "request": {
+        "mediaId": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36",
+        "sourceAccess": true
+      }
+    },
+    "updated-mp4Support": {
+      "skip": true,
+      "reason": "Needs real mediaId.",
+      "request": {
+        "mediaId": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36",
+        "mp4Support": "capped_4k"
+      }
+    },
+
+    "create-media-playback-id": {
+      "skip": true,
+      "reason": "Needs real mediaId.",
+      "request": {
+        "mediaId": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36",
+        "accessPolicy": "public"
+      }
+    },
+    "delete-media-playback-id": {
+      "skip": true,
+      "reason": "Destructive. Needs real mediaId + playbackId.",
+      "request": {
+        "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
+        "playbackId": "REPLACE_WITH_REAL_PLAYBACK_ID"
+      }
+    },
+
+    "update-a-playlist": {
+      "skip": true,
+      "reason": "Needs real playlistId.",
+      "request": {
+        "playlistId": "323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd",
+        "name": "Updated by validator"
+      }
+    },
+    "delete-a-playlist": {
+      "skip": true,
+      "reason": "Destructive. Needs real playlistId.",
+      "request": { "playlistId": "REPLACE_WITH_REAL_PLAYLIST_ID" }
+    },
+    "change-media-order-in-playlist": {
+      "skip": true,
+      "reason": "Needs real playlistId + mediaIds in desired order.",
+      "request": {
+        "playlistId": "323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd",
+        "mediaIds": ["REPLACE_WITH_MEDIA_ID_A", "REPLACE_WITH_MEDIA_ID_B"]
+      }
+    },
+    "add-media-to-playlist": {
+      "skip": true,
+      "reason": "Needs real playlistId + mediaIds.",
+      "request": {
+        "playlistId": "REPLACE_WITH_REAL_PLAYLIST_ID",
+        "mediaIds": ["REPLACE_WITH_MEDIA_ID_A"]
+      }
+    },
+    "delete-media-from-playlist": {
+      "skip": true,
+      "reason": "Destructive. Needs real playlistId + mediaIds.",
+      "request": {
+        "playlistId": "REPLACE_WITH_REAL_PLAYLIST_ID",
+        "mediaIds": ["REPLACE_WITH_MEDIA_ID_A"]
+      }
+    },
+
+    "update-domain-restrictions": {
+      "skip": true,
+      "reason": "Needs real mediaId + playbackId.",
+      "request": {
+        "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
+        "playbackId": "REPLACE_WITH_REAL_PLAYBACK_ID",
+        "domains": { "defaultPolicy": "allow", "allow": [], "deny": [] }
+      }
+    },
+    "update-user-agent-restrictions": {
+      "skip": true,
+      "reason": "Needs real mediaId + playbackId.",
+      "request": {
+        "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
+        "playbackId": "REPLACE_WITH_REAL_PLAYBACK_ID",
+        "userAgents": { "defaultPolicy": "allow", "allow": [], "deny": [] }
+      }
+    },
+
+    "update-live-stream": {
+      "skip": true,
+      "reason": "Needs real streamId.",
+      "request": {
+        "streamId": "REPLACE_WITH_REAL_STREAM_ID",
+        "metadata": { "updatedBy": "non-get-validator" }
+      }
+    },
+    "delete-live-stream": {
+      "skip": true,
+      "reason": "Destructive. Needs real streamId.",
+      "request": { "streamId": "REPLACE_WITH_REAL_STREAM_ID" }
+    },
+    "enable-live-stream": {
+      "skip": true,
+      "reason": "Needs real streamId.",
+      "request": { "streamId": "REPLACE_WITH_REAL_STREAM_ID" }
+    },
+    "disable-live-stream": {
+      "skip": true,
+      "reason": "Needs real streamId.",
+      "request": { "streamId": "REPLACE_WITH_REAL_STREAM_ID" }
+    },
+    "complete-live-stream": {
+      "skip": true,
+      "reason": "Ends a live stream early. Needs real streamId.",
+      "request": { "streamId": "REPLACE_WITH_REAL_STREAM_ID" }
+    },
+
+    "create-playbackId-of-stream": {
+      "skip": true,
+      "reason": "Needs real streamId.",
+      "request": {
+        "streamId": "REPLACE_WITH_REAL_STREAM_ID",
+        "accessPolicy": "public"
+      }
+    },
+    "delete-playbackId-of-stream": {
+      "skip": true,
+      "reason": "Destructive. Needs real streamId + playbackId.",
+      "request": {
+        "streamId": "REPLACE_WITH_REAL_STREAM_ID",
+        "playbackId": "REPLACE_WITH_REAL_PLAYBACK_ID"
+      }
+    },
+
+    "create-simulcast-of-stream": {
+      "skip": true,
+      "reason": "Needs real streamId + valid RTMP destination.",
+      "request": {
+        "streamId": "REPLACE_WITH_REAL_STREAM_ID",
+        "url": "rtmp://example.com/live",
+        "streamKey": "REPLACE_WITH_REAL_STREAM_KEY"
+      }
+    },
+    "update-specific-simulcast-of-stream": {
+      "skip": true,
+      "reason": "Needs real streamId + simulcastId.",
+      "request": {
+        "streamId": "REPLACE_WITH_REAL_STREAM_ID",
+        "simulcastId": "REPLACE_WITH_REAL_SIMULCAST_ID",
+        "isEnabled": true
+      }
+    },
+    "delete-simulcast-of-stream": {
+      "skip": true,
+      "reason": "Destructive. Needs real streamId + simulcastId.",
+      "request": {
+        "streamId": "REPLACE_WITH_REAL_STREAM_ID",
+        "simulcastId": "REPLACE_WITH_REAL_SIMULCAST_ID"
+      }
+    },
+
+    "delete_signing_key": {
+      "skip": true,
+      "reason": "Destructive. Needs real signingKeyId.",
+      "request": { "signingKeyId": "REPLACE_WITH_REAL_SIGNING_KEY_ID" }
+    }
+  }
+}

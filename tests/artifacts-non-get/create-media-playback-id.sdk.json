@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "data": {
+    "id": "ca3fb5ce-b9de-432c-80b9-e332569c735c",
+    "accessPolicy": "public",
+    "accessRestrictions": {
+      "domains": {
+        "defaultPolicy": "allow",
+        "allow": [],
+        "deny": []
+      },
+      "userAgents": {
+        "defaultPolicy": "allow",
+        "allow": [],
+        "deny": []
+      }
+    }
+  }
+}

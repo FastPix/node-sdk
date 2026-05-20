@@ -26,7 +26,7 @@ export class ManageLiveStream extends ClientSDK {
    *
    * Suppose a content creator is hosting a live concert and wants to display the number of live viewers on their dashboard. This endpoint can be queried to show up-to-date viewer statistics.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
    */
   async getViewerCount(
     request: operations.GetLiveStreamViewerCountByIdRequest,
@@ -48,7 +48,7 @@ export class ManageLiveStream extends ClientSDK {
    *
    *   Suppose a news agency is broadcasting a live event and wants to track the configurations set for the live stream while also checking the stream's status.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
    */
   async get(
     request: operations.GetLiveStreamByIdRequest,
@@ -67,13 +67,13 @@ export class ManageLiveStream extends ClientSDK {
    * @remarks
    * This endpoint allows you to modify the parameters of an existing live stream, such as its `metadata` (title, description) or the `reconnectWindow`. It’s useful for making changes to a stream that has already been created but not yet ended. After the live stream is disabled, you cannot update a stream.
    *
-   *   The updated stream parameters and the `streamId` needs to be shared in the request, and FastPix returns the updated stream details. After the update, <a href="https://docs.fastpix.io/docs/live-events#videolive_streamupdated">video.live_stream.updated</a> webhook event notifies your system.
+   *   The updated stream parameters and the `streamId` needs to be shared in the request, and FastPix returns the updated stream details. After the update, <a href="https://docs.fastpix.com/docs/live-events#videolive_streamupdated">video.live_stream.updated</a> webhook event notifies your system.
    *
    *  #### Example
    *
    *  A host realizes they need to extend the reconnect window for their live stream in case they lose connection temporarily during the event. Or suppose during a multi-day online conference, the event organizers need to update the stream title to reflect the next day"s session while keeping the same stream ID for continuity.
    *
-   *   Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+   *   Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
    */
   async update(
     request: operations.UpdateLiveStreamRequest,
@@ -98,7 +98,7 @@ export class ManageLiveStream extends ClientSDK {
    *
    * A speaker finishes their live session and wants to prevent the stream from being mistakenly started again. By calling this endpoint, the stream is transitioned to a `disabled` state, ensuring it's permanently stopped (unless re-enabled on a paid plan).
    *
-   * Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+   * Related guide <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
    */
   async disable(
     request: operations.DisableLiveStreamRequest,
@@ -125,7 +125,7 @@ export class ManageLiveStream extends ClientSDK {
    *
    * A virtual event ends, and the system or host needs to close the livestream to prevent further streaming. This endpoint ensures the livestream status is changed from `active` to `idle`, indicating it's officially completed.
    *
-   * Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+   * Related guide <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
    */
   async complete(
     request: operations.CompleteLiveStreamRequest,

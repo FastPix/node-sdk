@@ -43,7 +43,7 @@ import { Result } from "../types/fp.js";
  * {
  *   "kid": "359302ee-2446-4afe-9348-8b4656b9ddb1",
  *   "aud": "media:6cee6f85-9334-4a51-9ce3-e0241d94ceef",
- *   "iss": "fastpix.io",
+ *   "iss": "fastpix.com",
  *   "sub": "",
  *   "iat": 1706703204,
  *   "exp": 1735626783
@@ -53,7 +53,7 @@ import { Result } from "../types/fp.js";
  *
  * * **kid:** The key ID of the signing key.
  * * **aud:** The audience for which the token is intended, enter the playbackId here.
- * * **iss:**  The issuer of the token (for example, "fastpix.io ").
+ * * **iss:**  The issuer of the token (for example, "fastpix.com ").
  * * **sub:** The subject of the token, typically representing the user or entity the token is issued for. In this case, use the workspaceId fetched from the "Get Signing Key by ID" endpoint.
  * * **groups:** An array of groups the subject belongs to (for example, ["user"]).
  * * **iat:** The issued-at timestamp, indicating when the token was created.

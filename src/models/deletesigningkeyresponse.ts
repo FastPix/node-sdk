@@ -10,11 +10,22 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
+export type DeleteSigningKeyResponseData = {
+  /**
+   * Human-readable confirmation message returned by the API on successful deletion.
+   */
+  message?: string | undefined;
+};
+
 export type DeleteSigningKeyResponse = {
   /**
    * Shows the request status. Returns true for success and false for failure.
    */
   success?: boolean | undefined;
+  /**
+   * Optional informational payload returned by the API on successful deletion.
+   */
+  data?: DeleteSigningKeyResponseData | undefined;
 };
 
 /** @internal */
@@ -23,6 +34,9 @@ export const DeleteSigningKeyResponse$inboundSchema: z.ZodMiniType<
   unknown
 > = z.object({
   success: types.optional(types.boolean()),
+  data: types.optional(
+    z.object({ message: types.optional(types.string()) }),
+  ),
 });
 
 export function deleteSigningKeyResponseFromJSON(

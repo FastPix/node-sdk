@@ -39,7 +39,7 @@ import { Result } from "../types/fp.js";
  *
  * 2. This action is irreversible. Make sure you no longer need the media before proceeding. Once deleted, the media can’t be retrieved or played back.
  *
- * 3. Monitor the following webhook event: <a href="https://docs.fastpix.io/docs/media-events#videomediadeleted">video.media.deleted</a>
+ * 3. Monitor the following webhook event: <a href="https://docs.fastpix.com/docs/media-events#videomediadeleted">video.media.deleted</a>
  *
  * #### Example
  * A user on a video-sharing platform decides to remove an old video from their profile, or suppose you're running a content moderation system, and one of the videos uploaded by a user violates your platform's policies. Using this endpoint, the media is permanently deleted from your library, ensuring it's no longer accessible or viewable by other users.

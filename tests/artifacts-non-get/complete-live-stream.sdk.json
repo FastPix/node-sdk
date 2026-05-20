@@ -1,0 +1,13 @@
+{
+  "name": "FastpixDefaultError",
+  "message": "API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"stream cannot be completed\",\"description\":\"Only active streams can be marked as completed.\"}}",
+  "statusCode": 400,
+  "bodyJson": {
+    "success": false,
+    "error": {
+      "code": 400,
+      "message": "stream cannot be completed",
+      "description": "Only active streams can be marked as completed."
+    }
+  }
+}

@@ -30,7 +30,7 @@ export class LiveStreams extends ClientSDK {
    * #### Use case
    * Suppose you’re hosting a live gaming event and want to showcase key moments from the stream — such as top plays or final match highlights. You can use this endpoint to fetch all clips generated from that livestream, display them in your dashboard, or use them for post-event editing and sharing.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/instant-live-clipping">Instant live clipping</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/instant-live-clipping">Instant live clipping</a>
    */
   async listClips(
     request: operations.ListLiveClipsRequest,
@@ -47,7 +47,7 @@ export class LiveStreams extends ClientSDK {
    * Create a new stream
    *
    * @remarks
-   * Creates a new <a href="https://docs.fastpix.io/docs/get-started-with-live-streaming">RTMPS</a> or <a href="https://docs.fastpix.io/docs/using-srt-to-live-stream">SRT</a> live stream in FastPix. When you create a stream, FastPix generates a unique `streamKey` and `srtSecret` that you can use with broadcasting software such as OBS to connect to FastPix RTMPS or SRT servers. Use SRT for live streaming in unstable network conditions, as it provides error correction and encryption for a more reliable and secure broadcast.
+   * Creates a new <a href="https://docs.fastpix.com/docs/get-started-with-live-streaming">RTMPS</a> or <a href="https://docs.fastpix.com/docs/using-srt-to-live-stream">SRT</a> live stream in FastPix. When you create a stream, FastPix generates a unique `streamKey` and `srtSecret` that you can use with broadcasting software such as OBS to connect to FastPix RTMPS or SRT servers. Use SRT for live streaming in unstable network conditions, as it provides error correction and encryption for a more reliable and secure broadcast.
    *
    * Leverage SRT for live streaming in environments with unstable networks, taking advantage of its error correction and encryption features for a resilient and secure broadcast.
    *
@@ -57,13 +57,13 @@ export class LiveStreams extends ClientSDK {
    *
    * 2. FastPix returns the stream details for both RTMPS and SRT configurations. These keys and IDs from the stream details are essential for connecting the broadcasting software to FastPix’s servers and transmitting the live stream to viewers.
    *
-   * 3. After the live stream is created, FastPix sends a `POST` request to your specified webhook endpoint with the event <a href="https://docs.fastpix.io/docs/live-events#videolive_streamcreated">video.live_stream.created</a>.
+   * 3. After the live stream is created, FastPix sends a `POST` request to your specified webhook endpoint with the event <a href="https://docs.fastpix.com/docs/live-events#videolive_streamcreated">video.live_stream.created</a>.
    *
    * **Example:**
    *
    *   Imagine a gaming platform that allows users to live stream gameplay directly from their dashboard. The API creates a new stream, provides the necessary stream key, and sets it to "private" so that only specific viewers can access it.
    *
-   * Related guide: <a href="https://docs.fastpix.io/docs/how-to-livestream">How to live stream</a>
+   * Related guide: <a href="https://docs.fastpix.com/docs/how-to-livestream">How to live stream</a>
    */
   async create(
     request: models.CreateLiveStreamRequest,
@@ -103,13 +103,13 @@ export class LiveStreams extends ClientSDK {
    * @remarks
    * Permanently deletes a specified live stream from the workspace. If the stream is active, the encoder is disconnected and ingestion stops immediately. This action is irreversible, and any future playback attempts fail as a result.
    *
-   *   Provide the `streamId` in the request to terminate active connections and remove the stream from the workspace. You can further look for <a href="https://docs.fastpix.io/docs/live-events#videolive_streamdeleted">video.live_stream.deleted</a> webhook to notify your system about the status.
+   *   Provide the `streamId` in the request to terminate active connections and remove the stream from the workspace. You can further look for <a href="https://docs.fastpix.com/docs/live-events#videolive_streamdeleted">video.live_stream.deleted</a> webhook to notify your system about the status.
    *
    *   #### Example
    *
    *   For an online concert platform, a trial stream was mistakenly made public. The event manager deletes the stream before the concert begins to avoid confusion among viewers.
    *
-   *   Related guide: <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+   *   Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
    */
   async delete(
     request: operations.DeleteLiveStreamRequest,
@@ -136,7 +136,7 @@ export class LiveStreams extends ClientSDK {
    *
    * A creator disables a livestream to pause it temporarily. Later, they decide to continue the session. By calling this endpoint with the stream's ID, they can re-enable and restart the same livestream.
    *
-   * Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+   * Related guide <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
    */
   async enable(
     request: operations.EnableLiveStreamRequest,

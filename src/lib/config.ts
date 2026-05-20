@@ -17,7 +17,7 @@ export const ServerList = [
   /**
    * FastPix Video APIs
    */
-  "https://api.fastpix.io/v1/",
+  "https://api.fastpix.com/v1/",
 ] as const;
 
 export type SDKOptions = {

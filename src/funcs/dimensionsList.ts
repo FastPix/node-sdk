@@ -30,9 +30,9 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieves a list of dimensions that can be used as query parameters across various data endpoints. Each dimension has a unique id that can be used to filter data effectively.
  *
- * The dimensions retrieved from this endpoint can be used in conjunction with the <a href="https://docs.fastpix.io/reference/list_video_views">list video views</a> and <a href="https://docs.fastpix.io/reference/list_by_top_content">list by top content</a> endpoints to filter results based on specific criteria. For example, you can filter views by `browser_name`, `os_name`, `device_type`, and more.
+ * The dimensions retrieved from this endpoint can be used in conjunction with the <a href="https://docs.fastpix.com/reference/list_video_views">list video views</a> and <a href="https://docs.fastpix.com/reference/list_by_top_content">list by top content</a> endpoints to filter results based on specific criteria. For example, you can filter views by `browser_name`, `os_name`, `device_type`, and more.
  *
- * Related guides: <a href="https://docs.fastpix.io/page/what-video-data-do-we-capture#/">What Video Data do we capture?</a> ,   <a href="https://docs.fastpix.io/docs/user-passable-metadata-1">Use passable dimensions</a>
+ * Related guides: <a href="https://docs.fastpix.com/page/what-video-data-do-we-capture#/">What Video Data do we capture?</a> ,   <a href="https://docs.fastpix.com/docs/user-passable-metadata-1">Use passable dimensions</a>
  */
 export function dimensionsList(
   client: FastpixCore,

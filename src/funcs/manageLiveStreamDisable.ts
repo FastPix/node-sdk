@@ -39,7 +39,7 @@ import { Result } from "../types/fp.js";
  *
  * A speaker finishes their live session and wants to prevent the stream from being mistakenly started again. By calling this endpoint, the stream is transitioned to a `disabled` state, ensuring it's permanently stopped (unless re-enabled on a paid plan).
  *
- * Related guide <a href="https://docs.fastpix.io/docs/manage-streams">Manage streams</a>
+ * Related guide <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
 export function manageLiveStreamDisable(
   client: FastpixCore,

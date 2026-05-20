@@ -27,7 +27,7 @@ async function main() {
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.io/fp-sample-video.mp4",
+        url: "https://static.fastpix.com/fp-sample-video.mp4",
       },
     ],
     metadata: {
