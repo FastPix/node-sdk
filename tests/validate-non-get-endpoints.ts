@@ -370,8 +370,8 @@ async function main(): Promise<void> {
     ((spec.servers?.[0]?.url as string | undefined) ??
       "https://api.fastpix.com/v1/");
 
-  const username = "eb4cc5ac-ced5-416b-b3ca-3d82b00c50b9";
-  const password = "6629fc38-aba8-452a-b2ef-0a4e5cc49a10";
+  const username = process.env.FASTPIX_USERNAME ?? "";
+  const password = process.env.FASTPIX_PASSWORD ?? "";
 
   if (!username || !password) {
     throw new Error(

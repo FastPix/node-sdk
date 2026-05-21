@@ -970,8 +970,8 @@ async function main(): Promise<void> {
     process.env.FASTPIX_BASE_URL
     ?? ((spec.servers?.[0]?.url as string | undefined) ?? "https://api.fastpix.com/v1/");
 
-const username = "1b92c0d6-5548-4642-b13e-4bb7d77dbaf4";
-const password = "ff32012b-ec02-40ca-b0d4-711d81537e73";
+const username = process.env.FASTPIX_USERNAME ?? "your-access-token";
+const password = process.env.FASTPIX_PASSWORD ?? "your-secret-key";
   
   if (!username || !password) {
     throw new Error("Missing FASTPIX_USERNAME / FASTPIX_PASSWORD env vars (BasicAuth)");

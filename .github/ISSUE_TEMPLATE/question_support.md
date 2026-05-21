@@ -117,5 +117,4 @@ Before submitting, please ensure:
 
 **For urgent issues, please also consider:**
 - [FastPix Documentation](https://fastpix.com/docs/)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/fastpix)
-- [GitHub Discussions](https://github.com/FastPix/node-sdk/discussions)
+- [GitHub Discussions](https://github.com/FastPix/node-sdk/issues)
