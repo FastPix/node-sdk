@@ -35,7 +35,7 @@ This directory contains the GET endpoints validator script and generated reports
 The script uses `get-endpoints-fixtures.json` to provide real IDs for path parameters. If missing, placeholder UUIDs are used.
 
 <!-- BEGIN GET_ENDPOINTS_CONSOLIDATED -->
-Last generated: 2026-05-20T12:30:19.618Z
+Last generated: 2026-06-04T06:43:38.313Z
 
 - **Total GET endpoints**: 30
 - **PASS**: 26
@@ -65,7 +65,7 @@ Last generated: 2026-05-20T12:30:19.618Z
 | `/iam/signing-keys` | `list_signing_keys` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/iam/signing-keys/{signingKeyId}` | `get-signing_key_by_id` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/data/viewlist` | `list_video_views` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/data/viewlist/{viewId}` | `get_video_view_details` | ✅ | ✅ | `data.events[].d`, `data.events[].d.br`, `data.events[].d.cd`, `data.events[].d.fps`, `data.events[].d.h`, `data.events[].d.w`, `data.events[].e`, `data.events[].pt`, `data.events[].vt` | None | None | ❌ FAIL |
+| `/data/viewlist/{viewId}` | `get_video_view_details` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/data/viewlist/top-content` | `list_by_top_content` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/data/dimensions` | `list_dimensions` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/data/dimensions/{dimensionsId}` | `list_filter_values_for_dimension` | ✅ | ✅ | None | None | None | ✅ PASS |
@@ -183,7 +183,7 @@ Last generated: 2026-05-20T12:30:19.618Z
   - **Empty arrays omitted by SDK**: None
   - **Empty arrays omitted by API**: None
 - **get_video_view_details** (`/data/viewlist/{viewId}`)
-  - **Missing in SDK (present in API)**: `data.events[].d`, `data.events[].d.br`, `data.events[].d.cd`, `data.events[].d.fps`, `data.events[].d.h`, `data.events[].d.w`, `data.events[].e`, `data.events[].pt`, `data.events[].vt`
+  - **Missing in SDK (present in API)**: None
   - **Missing in API (present in SDK)**: None
   - **Empty arrays omitted by SDK**: None
   - **Empty arrays omitted by API**: None

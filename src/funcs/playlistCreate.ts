@@ -47,21 +47,22 @@ import { Result } from "../types/fp.js";
  * #### Example
  * An e-learning platform creates a new playlist titled Beginner Python Series through the API. The response returns a unique playlist ID. The platform uses this ID to add a series of video tutorials to the playlist in a defined order. The playlist appears on the frontend as a structured learning path for learners.
  */
-export function playlistCreate(
-  client: FastpixCore,
-  request: models.CreatePlaylistRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CreateAPlaylistResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playlistCreate(
+  client: FastpixCore,
+  request: models.CreatePlaylistRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CreateAPlaylistResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -78,15 +79,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.CreateAPlaylistResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.CreateAPlaylistResponse,MyError
     >,
     APICall,
   ]
@@ -165,15 +158,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.CreateAPlaylistResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.CreateAPlaylistResponse,MyError
   >(
     M.json(201, operations.CreateAPlaylistResponse$inboundSchema),
     M.fail("4XX"),

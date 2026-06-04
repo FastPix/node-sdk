@@ -34,13 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * Related guides: <a href="https://docs.fastpix.com/page/what-video-data-do-we-capture#/">What Video Data do we capture?</a> ,   <a href="https://docs.fastpix.com/docs/user-passable-metadata-1">Use passable dimensions</a>
  */
-export function dimensionsList(
-  client: FastpixCore,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListDimensionsResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
@@ -48,6 +43,12 @@ export function dimensionsList(
     | InvalidRequestError
     | UnexpectedClientError
     | SDKValidationError
+export function dimensionsList(
+  client: FastpixCore,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListDimensionsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -62,15 +63,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListDimensionsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListDimensionsResponse,MyError
     >,
     APICall,
   ]
@@ -136,15 +129,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListDimensionsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListDimensionsResponse,MyError
   >(
     M.json(200, operations.ListDimensionsResponse$inboundSchema),
     M.fail("4XX"),

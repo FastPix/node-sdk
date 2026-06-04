@@ -52,21 +52,23 @@ import { Result } from "../types/fp.js";
  *
  *   Related guide: <a href="https://docs.fastpix.com/docs/metrics-overview">Understand data definitions</a>
  */
-export function metricsListOverallValues(
-  client: FastpixCore,
-  request: operations.ListOverallValuesRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListOverallValuesResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function metricsListOverallValues(
+  client: FastpixCore,
+  request: operations.ListOverallValuesRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListOverallValuesResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -83,15 +85,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListOverallValuesResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListOverallValuesResponse,MyError
     >,
     APICall,
   ]
@@ -184,15 +178,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListOverallValuesResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListOverallValuesResponse,MyError
   >(
     M.json(200, operations.ListOverallValuesResponse$inboundSchema),
     M.fail("4XX"),

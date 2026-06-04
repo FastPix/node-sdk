@@ -45,21 +45,22 @@ import { Result } from "../types/fp.js";
  *
  * This endpoint is particularly useful for ensuring that all necessary tracks (video and audio) have been correctly associated with the media during the upload or media creation process.
  */
-export function manageVideosRetrieveMediaInputInfo(
-  client: FastpixCore,
-  request: operations.RetrieveMediaInputInfoRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.RetrieveMediaInputInfoResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosRetrieveMediaInputInfo(
+  client: FastpixCore,
+  request: operations.RetrieveMediaInputInfoRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.RetrieveMediaInputInfoResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -76,15 +77,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.RetrieveMediaInputInfoResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.RetrieveMediaInputInfoResponse,MyError
     >,
     APICall,
   ]
@@ -170,15 +163,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.RetrieveMediaInputInfoResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.RetrieveMediaInputInfoResponse,MyError
   >(
     M.json(200, operations.RetrieveMediaInputInfoResponse$inboundSchema),
     M.fail("4XX"),

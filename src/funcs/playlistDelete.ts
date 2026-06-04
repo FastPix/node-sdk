@@ -38,21 +38,23 @@ import { Result } from "../types/fp.js";
  * #### Example
  * An e-learning platform deletes an outdated playlist titled "Old Python Tutorials" by providing its unique playlist ID. The platform receives confirmation that the playlist has been removed, ensuring learners no longer see the obsolete content.
  */
-export function playlistDelete(
-  client: FastpixCore,
-  request: operations.DeleteAPlaylistRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeleteAPlaylistResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playlistDelete(
+  client: FastpixCore,
+  request: operations.DeleteAPlaylistRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeleteAPlaylistResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -69,15 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteAPlaylistResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DeleteAPlaylistResponse,MyError
     >,
     APICall,
   ]
@@ -162,15 +156,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.DeleteAPlaylistResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.DeleteAPlaylistResponse,MyError
   >(
     M.json(200, operations.DeleteAPlaylistResponse$inboundSchema),
     M.fail("4XX"),

@@ -48,21 +48,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/create-clips-from-existing-media">Create clips from existing media</a>
  */
-export function mediaGetClips(
-  client: FastpixCore,
-  request: operations.GetMediaClipsRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetMediaClipsResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function mediaGetClips(
+  client: FastpixCore,
+  request: operations.GetMediaClipsRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetMediaClipsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -79,15 +81,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetMediaClipsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetMediaClipsResponse,MyError
     >,
     APICall,
   ]
@@ -179,15 +173,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetMediaClipsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetMediaClipsResponse,MyError
   >(
     M.json(200, operations.GetMediaClipsResponse$inboundSchema),
     M.fail("4XX"),

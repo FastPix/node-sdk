@@ -50,21 +50,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/how-to-livestream">How to live stream</a>
  */
-export function liveStreamsCreate(
-  client: FastpixCore,
-  request: models.CreateLiveStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CreateNewStreamResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function liveStreamsCreate(
+  client: FastpixCore,
+  request: models.CreateLiveStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CreateNewStreamResponse,MyError
   >
 > {
   return new APIPromise($do(

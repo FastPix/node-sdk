@@ -40,21 +40,22 @@ import { Result } from "../types/fp.js";
  *
  *   An e-learning platform requests all playlists within a workspace to display an overview of available learning paths. The response includes multiple playlists like "Beginner Python Series" and "Advanced Java Tutorials," enabling the platform to show users a catalog of curated content collections.
  */
-export function playlistList(
-  client: FastpixCore,
-  request?: operations.GetAllPlaylistsRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetAllPlaylistsResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playlistList(
+  client: FastpixCore,
+  request?: operations.GetAllPlaylistsRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetAllPlaylistsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -71,15 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetAllPlaylistsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetAllPlaylistsResponse,MyError
     >,
     APICall,
   ]
@@ -167,15 +160,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetAllPlaylistsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetAllPlaylistsResponse,MyError
   >(
     M.json(200, operations.GetAllPlaylistsResponse$inboundSchema),
     M.fail("4XX"),

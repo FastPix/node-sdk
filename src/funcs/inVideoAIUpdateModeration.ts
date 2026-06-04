@@ -44,21 +44,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/using-nsfw-and-profanity-filter-for-video-moderation">Moderate NSFW & Profanity</a>
  */
-export function inVideoAIUpdateModeration(
-  client: FastpixCore,
-  request: operations.UpdateMediaModerationRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateMediaModerationResponse,
-    | FastpixError
+
+ type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function inVideoAIUpdateModeration(
+  client: FastpixCore,
+  request: operations.UpdateMediaModerationRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateMediaModerationResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -75,15 +77,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateMediaModerationResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateMediaModerationResponse,MyError
     >,
     APICall,
   ]
@@ -170,14 +164,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdateMediaModerationResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
+    operations.UpdateMediaModerationResponse,MyError
     | SDKValidationError
   >(
     M.json(200, operations.UpdateMediaModerationResponse$inboundSchema),

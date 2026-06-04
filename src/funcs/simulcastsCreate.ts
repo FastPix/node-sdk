@@ -43,21 +43,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/simulcast-to-3rd-party-platforms">Simulcast to 3rd party platforms</a>
  */
-export function simulcastsCreate(
-  client: FastpixCore,
-  request: operations.CreateSimulcastOfStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CreateSimulcastOfStreamResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function simulcastsCreate(
+  client: FastpixCore,
+  request: operations.CreateSimulcastOfStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CreateSimulcastOfStreamResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -74,15 +76,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.CreateSimulcastOfStreamResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.CreateSimulcastOfStreamResponse,MyError
     >,
     APICall,
   ]
@@ -169,15 +163,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.CreateSimulcastOfStreamResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.CreateSimulcastOfStreamResponse,MyError
   >(
     M.json(201, operations.CreateSimulcastOfStreamResponse$inboundSchema),
     M.fail("4XX"),

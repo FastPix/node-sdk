@@ -36,21 +36,24 @@ import { Result } from "../types/fp.js";
  * #### Example
  * A streaming service wants to prevent new users from joining a live stream that is nearing its end. The host can delete the playback ID to ensure no one can join the stream or replay it once it ends.
  */
-export function livePlaybackDelete(
-  client: FastpixCore,
-  request: operations.DeletePlaybackIdOfStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeletePlaybackIdOfStreamResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function livePlaybackDelete(
+  client: FastpixCore,
+  request: operations.DeletePlaybackIdOfStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeletePlaybackIdOfStreamResponse,MyError
+
   >
 > {
   return new APIPromise($do(

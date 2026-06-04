@@ -44,21 +44,23 @@ import { Result } from "../types/fp.js";
  * #### Example
  * A user on a video-sharing platform decides to remove an old video from their profile, or suppose you're running a content moderation system, and one of the videos uploaded by a user violates your platform's policies. Using this endpoint, the media is permanently deleted from your library, ensuring it's no longer accessible or viewable by other users.
  */
-export function manageVideosDelete(
-  client: FastpixCore,
-  request: operations.DeleteMediaRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeleteMediaResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosDelete(
+  client: FastpixCore,
+  request: operations.DeleteMediaRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeleteMediaResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -75,15 +77,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteMediaResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DeleteMediaResponse,MyError
     >,
     APICall,
   ]
@@ -168,15 +162,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.DeleteMediaResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.DeleteMediaResponse,MyError
   >(
     M.json(200, operations.DeleteMediaResponse$inboundSchema),
     M.fail("4XX"),

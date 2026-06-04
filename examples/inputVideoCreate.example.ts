@@ -17,8 +17,8 @@ import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "your-access-token",
-    password: "your-secret-key",
+    username: "FASTPIX_TOKEN",
+    password: "SECRET-KEY",
   },
 });
 

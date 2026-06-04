@@ -44,21 +44,22 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/generate-video-chapters">Video chapters</a>
  */
-export function inVideoAIfeaturesGenerateChapters(
-  client: FastpixCore,
-  request: operations.UpdateMediaChaptersRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateMediaChaptersResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function inVideoAIfeaturesGenerateChapters(
+  client: FastpixCore,
+  request: operations.UpdateMediaChaptersRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateMediaChaptersResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -75,15 +76,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateMediaChaptersResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateMediaChaptersResponse,MyError
     >,
     APICall,
   ]
@@ -170,15 +163,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdateMediaChaptersResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdateMediaChaptersResponse,MyError
   >(
     M.json(200, operations.UpdateMediaChaptersResponse$inboundSchema),
     M.fail("4XX"),

@@ -57,21 +57,22 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/upload-videos-directly">Upload videos directly</a>
  */
-export function inputVideoUpload(
-  client: FastpixCore,
-  request?: operations.DirectUploadVideoMediaRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DirectUploadVideoMediaResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function inputVideoUpload(
+  client: FastpixCore,
+  request?: operations.DirectUploadVideoMediaRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DirectUploadVideoMediaResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -88,15 +89,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DirectUploadVideoMediaResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DirectUploadVideoMediaResponse,MyError
     >,
     APICall,
   ]
@@ -181,15 +174,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.DirectUploadVideoMediaResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.DirectUploadVideoMediaResponse,MyError
   >(
     M.json(201, operations.DirectUploadVideoMediaResponse$inboundSchema),
     M.fail("4XX"),

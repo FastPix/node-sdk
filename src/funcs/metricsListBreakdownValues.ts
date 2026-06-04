@@ -59,21 +59,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/metrics-overview">Understand data definitions</a>
  */
-export function metricsListBreakdownValues(
-  client: FastpixCore,
-  request: operations.ListBreakdownValuesRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListBreakdownValuesResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function metricsListBreakdownValues(
+  client: FastpixCore,
+  request: operations.ListBreakdownValuesRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListBreakdownValuesResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -196,15 +198,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListBreakdownValuesResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListBreakdownValuesResponse,MyError
   >(
     M.json(200, operations.ListBreakdownValuesResponse$inboundSchema),
     M.fail("4XX"),

@@ -41,21 +41,23 @@ import { Result } from "../types/fp.js";
  *
  *   Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
-export function liveStreamsDelete(
-  client: FastpixCore,
-  request: operations.DeleteLiveStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeleteLiveStreamResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function liveStreamsDelete(
+  client: FastpixCore,
+  request: operations.DeleteLiveStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeleteLiveStreamResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -72,15 +74,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteLiveStreamResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DeleteLiveStreamResponse,MyError
     >,
     APICall,
   ]
@@ -166,15 +160,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.DeleteLiveStreamResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.DeleteLiveStreamResponse,MyError
   >(
     M.json(200, operations.DeleteLiveStreamResponse$inboundSchema),
     M.fail("4XX"),

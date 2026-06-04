@@ -36,21 +36,23 @@ import { Result } from "../types/fp.js";
  * #### Example
  * A developer needs to confirm the access policy of the playback ID to ensure whether the stream is public or private for viewers.
  */
-export function livePlaybackGet(
-  client: FastpixCore,
-  request: operations.GetLiveStreamPlaybackIdRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetLiveStreamPlaybackIdResponse,
-    | FastpixError
+  
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function livePlaybackGet(
+  client: FastpixCore,
+  request: operations.GetLiveStreamPlaybackIdRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetLiveStreamPlaybackIdResponse,MyError
   >
 > {
   return new APIPromise($do(

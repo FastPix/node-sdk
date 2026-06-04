@@ -36,21 +36,23 @@ import { Result } from "../types/fp.js";
  * #### Example
  * This endpoint can be used to verify the status of the simulcast on external platforms before the live stream begins. For example, before starting a live gaming event, the organizer wants to ensure that the simulcast to Twitch is set up correctly. They retrieve the simulcast information to confirm that everything is properly configured.
  */
-export function simulcastsGet(
-  client: FastpixCore,
-  request: operations.GetSpecificSimulcastOfStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetSpecificSimulcastOfStreamResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function simulcastsGet(
+  client: FastpixCore,
+  request: operations.GetSpecificSimulcastOfStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetSpecificSimulcastOfStreamResponse,MyError
   >
 > {
   return new APIPromise($do(

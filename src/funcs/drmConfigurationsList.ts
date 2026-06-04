@@ -44,21 +44,25 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/secure-playback-with-drm">Manage DRM configuration</a>
  */
-export function drmConfigurationsList(
-  client: FastpixCore,
-  request?: operations.GetDrmConfigurationRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetDrmConfigurationResponse,
-    | FastpixError
+
+type MyError=
+| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError; 
+
+export function drmConfigurationsList(
+  client: FastpixCore,
+  request?: operations.GetDrmConfigurationRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetDrmConfigurationResponse,MyError
+    
   >
 > {
   return new APIPromise($do(
@@ -75,15 +79,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetDrmConfigurationResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetDrmConfigurationResponse,MyError
     >,
     APICall,
   ]
@@ -171,15 +167,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetDrmConfigurationResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetDrmConfigurationResponse,MyError
   >(
     M.json(200, operations.GetDrmConfigurationResponse$inboundSchema),
     M.fail("4XX"),

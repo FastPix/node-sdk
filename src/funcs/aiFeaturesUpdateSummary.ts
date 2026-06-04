@@ -45,21 +45,22 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/generate-video-summary">Video summary</a>
  */
+type MyError=| FastpixError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError;
+
 export function aiFeaturesUpdateSummary(
   client: FastpixCore,
   request: operations.UpdateMediaSummaryRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.UpdateMediaSummaryResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdateMediaSummaryResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -76,15 +77,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateMediaSummaryResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateMediaSummaryResponse,MyError
     >,
     APICall,
   ]
@@ -171,15 +164,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdateMediaSummaryResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdateMediaSummaryResponse,MyError
   >(
     M.json(200, operations.UpdateMediaSummaryResponse$inboundSchema),
     M.fail("4XX"),

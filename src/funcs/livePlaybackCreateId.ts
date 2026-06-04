@@ -39,21 +39,23 @@ import { Result } from "../types/fp.js";
  *
  *   A media platform needs to distribute a unique playback ID to users for an exclusive live concert. The platform can also embed the stream on various partner websites.
  */
-export function livePlaybackCreateId(
-  client: FastpixCore,
-  request: operations.CreatePlaybackIdOfStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CreatePlaybackIdOfStreamResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function livePlaybackCreateId(
+  client: FastpixCore,
+  request: operations.CreatePlaybackIdOfStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CreatePlaybackIdOfStreamResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -70,15 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.CreatePlaybackIdOfStreamResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.CreatePlaybackIdOfStreamResponse,MyError
     >,
     APICall,
   ]

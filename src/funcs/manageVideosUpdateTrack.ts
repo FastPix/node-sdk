@@ -59,21 +59,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guides: <a href="https://docs.fastpix.com/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.com/docs/manage-audio-tracks">Add own audio tracks</a>
  */
-export function manageVideosUpdateTrack(
-  client: FastpixCore,
-  request: operations.UpdateMediaTrackRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateMediaTrackResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosUpdateTrack(
+  client: FastpixCore,
+  request: operations.UpdateMediaTrackRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateMediaTrackResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -90,15 +92,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateMediaTrackResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateMediaTrackResponse,MyError
     >,
     APICall,
   ]
@@ -189,15 +183,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdateMediaTrackResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdateMediaTrackResponse,MyError
   >(
     M.json(200, operations.UpdateMediaTrackResponse$inboundSchema),
     M.fail("4XX"),

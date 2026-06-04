@@ -41,21 +41,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
-export function manageLiveStreamGetViewerCount(
-  client: FastpixCore,
-  request: operations.GetLiveStreamViewerCountByIdRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetLiveStreamViewerCountByIdResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageLiveStreamGetViewerCount(
+  client: FastpixCore,
+  request: operations.GetLiveStreamViewerCountByIdRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetLiveStreamViewerCountByIdResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -72,15 +74,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetLiveStreamViewerCountByIdResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetLiveStreamViewerCountByIdResponse,MyError
     >,
     APICall,
   ]
@@ -169,15 +163,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetLiveStreamViewerCountByIdResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetLiveStreamViewerCountByIdResponse,MyError
   >(
     M.json(200, operations.GetLiveStreamViewerCountByIdResponse$inboundSchema),
     M.fail("4XX"),

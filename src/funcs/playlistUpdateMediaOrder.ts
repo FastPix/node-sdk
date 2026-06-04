@@ -39,21 +39,22 @@ import { Result } from "../types/fp.js";
  * #### Example
  * An e-learning platform rearranges the "Beginner Python Series" playlist by submitting a reordered list of media IDs. The playlist now follows the new sequence, providing learners with a better structured learning path.
  */
-export function playlistUpdateMediaOrder(
-  client: FastpixCore,
-  request: operations.ChangeMediaOrderInPlaylistRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ChangeMediaOrderInPlaylistResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playlistUpdateMediaOrder(
+  client: FastpixCore,
+  request: operations.ChangeMediaOrderInPlaylistRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ChangeMediaOrderInPlaylistResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -70,15 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ChangeMediaOrderInPlaylistResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ChangeMediaOrderInPlaylistResponse,MyError
     >,
     APICall,
   ]
@@ -170,15 +163,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ChangeMediaOrderInPlaylistResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ChangeMediaOrderInPlaylistResponse,MyError
   >(
     M.json(200, operations.ChangeMediaOrderInPlaylistResponse$inboundSchema),
     M.fail("4XX"),

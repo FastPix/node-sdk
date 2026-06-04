@@ -52,21 +52,23 @@ import { Result } from "../types/fp.js";
  *
  *   Related guide: <a href="https://docs.fastpix.com/docs/understand-dashboard-ui#compare-metrics">Compare metrics in dashboard</a>
  */
-export function metricsListCompares(
-  client: FastpixCore,
-  request?: operations.ListComparisonValuesRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListComparisonValuesResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function metricsListCompares(
+  client: FastpixCore,
+  request?: operations.ListComparisonValuesRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListComparisonValuesResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -83,15 +85,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListComparisonValuesResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListComparisonValuesResponse,MyError
     >,
     APICall,
   ]
@@ -181,15 +175,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListComparisonValuesResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListComparisonValuesResponse,MyError
   >(
     M.json(200, operations.ListComparisonValuesResponse$inboundSchema),
     M.fail("4XX"),

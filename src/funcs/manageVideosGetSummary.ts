@@ -43,22 +43,22 @@ import { Result } from "../types/fp.js";
  * - Supporting accessibility and content discovery without requiring users to watch the full video.
  *
  * If the summary has not been generated or the feature is disabled for the requested media, the endpoint returns an error indicating that the summary is unavailable.
- */
-export function manageVideosGetSummary(
-  client: FastpixCore,
-  request: operations.GetMediaSummaryRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetMediaSummaryResponse,
-    | FastpixError
+ */type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosGetSummary(
+  client: FastpixCore,
+  request: operations.GetMediaSummaryRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetMediaSummaryResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -75,15 +75,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetMediaSummaryResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetMediaSummaryResponse,MyError
     >,
     APICall,
   ]
@@ -168,15 +160,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetMediaSummaryResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetMediaSummaryResponse,MyError
   >(
     M.json(200, operations.GetMediaSummaryResponse$inboundSchema),
     M.fail("4XX"),

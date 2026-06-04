@@ -47,21 +47,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/track-playback-errors">Troubleshoot errors</a>
  */
-export function errorsList(
-  client: FastpixCore,
-  request?: operations.ListErrorsRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListErrorsResponse,
-    | FastpixError
+
+type MyError= | FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function errorsList(
+  client: FastpixCore,
+  request?: operations.ListErrorsRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListErrorsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -78,15 +80,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListErrorsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListErrorsResponse,MyError
     >,
     APICall,
   ]
@@ -172,15 +166,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListErrorsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListErrorsResponse,MyError
   >(
     M.json(200, operations.ListErrorsResponse$inboundSchema),
     M.fail("4XX"),

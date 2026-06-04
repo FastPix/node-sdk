@@ -68,21 +68,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/upload-videos-from-url">Upload videos from URL</a>
  */
-export function inputVideoCreate(
-  client: FastpixCore,
-  request: models.CreateMediaRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CreateMediaResponse,
-    | FastpixError
+
+type MyError= | FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function inputVideoCreate(
+  client: FastpixCore,
+  request: models.CreateMediaRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CreateMediaResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -99,15 +101,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.CreateMediaResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.CreateMediaResponse,MyError
     >,
     APICall,
   ]
@@ -186,15 +180,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.CreateMediaResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.CreateMediaResponse,MyError
   >(
     M.json(201, operations.CreateMediaResponse$inboundSchema),
     M.fail("4XX"),

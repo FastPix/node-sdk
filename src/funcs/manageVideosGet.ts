@@ -47,21 +47,22 @@ import { Result } from "../types/fp.js";
  *
  * If your platform provides users with a dashboard to manage uploaded content, a user might want to check whether a video has finished processing and is ready for playback. You can use the media ID to retrieve the information from FastPix and display it in the user’s dashboard.
  */
-export function manageVideosGet(
-  client: FastpixCore,
-  request: operations.GetMediaRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetMediaResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosGet(
+  client: FastpixCore,
+  request: operations.GetMediaRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetMediaResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -78,15 +79,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetMediaResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetMediaResponse,MyError
     >,
     APICall,
   ]

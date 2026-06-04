@@ -60,21 +60,22 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/mp4-support-for-offline-viewing">Use MP4 support for offline viewing</a>
  */
-export function manageVideosUpdateMp4Support(
-  client: FastpixCore,
-  request: operations.UpdatedMp4SupportRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdatedMp4SupportResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosUpdateMp4Support(
+  client: FastpixCore,
+  request: operations.UpdatedMp4SupportRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdatedMp4SupportResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -91,15 +92,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdatedMp4SupportResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdatedMp4SupportResponse,MyError
     >,
     APICall,
   ]
@@ -186,15 +179,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdatedMp4SupportResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdatedMp4SupportResponse,MyError
   >(
     M.json(200, operations.UpdatedMp4SupportResponse$inboundSchema),
     M.fail("4XX"),

@@ -46,21 +46,23 @@ import { Result } from "../types/fp.js";
  * #### Example
  * A video streaming service generates playback IDs for each media file when users request to view specific content. The video player then uses the playback ID to stream the video.
  */
-export function playbackCreate(
-  client: FastpixCore,
-  request: operations.CreateMediaPlaybackIdRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CreateMediaPlaybackIdResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playbackCreate(
+  client: FastpixCore,
+  request: operations.CreateMediaPlaybackIdRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CreateMediaPlaybackIdResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -77,15 +79,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.CreateMediaPlaybackIdResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.CreateMediaPlaybackIdResponse,MyError
     >,
     APICall,
   ]
@@ -172,15 +166,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.CreateMediaPlaybackIdResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.CreateMediaPlaybackIdResponse,MyError
   >(
     M.json(201, operations.CreateMediaPlaybackIdResponse$inboundSchema),
     M.fail("4XX"),

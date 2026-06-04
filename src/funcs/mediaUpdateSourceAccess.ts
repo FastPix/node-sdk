@@ -42,21 +42,22 @@ import { Result } from "../types/fp.js";
  * 3. You receive a response confirming the update to the media’s source access status.
  * 4. Webhook events: <a href="https://docs.fastpix.com/docs/transform-media-events#videomediasourceready">video.media.source.ready</a>, <a href="https://docs.fastpix.com/docs/transform-media-events#videomediasourcedeleted">video.media.source.deleted</a>
  */
-export function mediaUpdateSourceAccess(
-  client: FastpixCore,
-  request: operations.UpdatedSourceAccessRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdatedSourceAccessResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function mediaUpdateSourceAccess(
+  client: FastpixCore,
+  request: operations.UpdatedSourceAccessRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdatedSourceAccessResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -73,15 +74,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdatedSourceAccessResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdatedSourceAccessResponse,MyError
     >,
     APICall,
   ]
@@ -168,15 +161,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdatedSourceAccessResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdatedSourceAccessResponse,MyError
   >(
     M.json(200, operations.UpdatedSourceAccessResponse$inboundSchema),
     M.fail("4XX"),

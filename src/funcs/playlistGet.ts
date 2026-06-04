@@ -36,21 +36,23 @@ import { Result } from "../types/fp.js";
  * #### Example
  * An e-learning platform requests details for the playlist "Beginner Python Series" by providing its unique `playlistId`. The response includes the playlist"s title, creation mode, and the ordered list of video tutorials contained within, enabling the platform to present the full learning path to users.
  */
-export function playlistGet(
-  client: FastpixCore,
-  request: operations.GetPlaylistByIdRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetPlaylistByIdResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playlistGet(
+  client: FastpixCore,
+  request: operations.GetPlaylistByIdRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetPlaylistByIdResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -67,15 +69,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetPlaylistByIdResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetPlaylistByIdResponse,MyError
     >,
     APICall,
   ]
@@ -160,15 +154,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetPlaylistByIdResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetPlaylistByIdResponse,MyError
   >(
     M.json(200, operations.GetPlaylistByIdResponse$inboundSchema),
     M.fail("4XX"),

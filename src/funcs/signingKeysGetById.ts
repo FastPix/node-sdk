@@ -65,21 +65,22 @@ import { Result } from "../types/fp.js";
  *
  * **Detailed example:**  You’re working on a streaming platform and realize you haven’t checked the status of a signing key that was used for playback access several months ago. By fetching the key details using its ID, you can confirm whether it’s still active, when it was created, and if it’s nearing expiration. This allows you to plan a rotation or deactivation if needed.
  */
-export function signingKeysGetById(
-  client: FastpixCore,
-  request: operations.GetSigningKeyByIdRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetSigningKeyByIdResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function signingKeysGetById(
+  client: FastpixCore,
+  request: operations.GetSigningKeyByIdRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetSigningKeyByIdResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -96,15 +97,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetSigningKeyByIdResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetSigningKeyByIdResponse,MyError
     >,
     APICall,
   ]
@@ -190,15 +183,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetSigningKeyByIdResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetSigningKeyByIdResponse,MyError
   >(
     M.json(200, operations.GetSigningKeyByIdResponse$inboundSchema),
     M.fail("4XX"),
