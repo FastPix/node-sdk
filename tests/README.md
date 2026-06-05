@@ -35,23 +35,23 @@ This directory contains the GET endpoints validator script and generated reports
 The script uses `get-endpoints-fixtures.json` to provide real IDs for path parameters. If missing, placeholder UUIDs are used.
 
 <!-- BEGIN GET_ENDPOINTS_CONSOLIDATED -->
-Last generated: 2026-06-05T11:42:21.075Z
+Last generated: 2026-06-05T13:42:06.150Z
 
 - **Total GET endpoints**: 30
-- **PASS**: 15
-- **FAIL**: 15
+- **PASS**: 19
+- **FAIL**: 11
 - **SKIP**: 0
 
 | Endpoint | OperationId | OpenAPI valid | SDK parse | Missing in SDK (present in API) | Missing in API (present in SDK) | Empty arrays omitted by SDK | Status |
 |---|---|---:|---:|---|---|---|---|
 | `/on-demand` | `list-media` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/on-demand/{livestreamId}/live-clips` | `list-live-clips` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/on-demand/{mediaId}` | `get-media` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/on-demand/{mediaId}` | `get-media` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/on-demand/{mediaId}/summary` | `get-media-summary` | ✅ | ❌ | None | None | None | ❌ FAIL |
-| `/on-demand/{mediaId}/input-info` | `retrieveMediaInputInfo` | ✅ | ❌ | None | None | None | ❌ FAIL |
-| `/on-demand/{mediaId}/playback-ids` | `list-playback-ids` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/on-demand/{mediaId}/input-info` | `retrieveMediaInputInfo` | ✅ | ✅ | None | None | None | ✅ PASS |
+| `/on-demand/{mediaId}/playback-ids` | `list-playback-ids` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/on-demand/uploads` | `list-uploads` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/on-demand/{mediaId}/media-clips` | `get-media-clips` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/on-demand/{mediaId}/media-clips` | `get-media-clips` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/on-demand/playlists` | `get-all-playlists` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/on-demand/playlists/{playlistId}` | `get-playlist-by-id` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/on-demand/{mediaId}/playback-ids/{playbackId}` | `get-playback-id` | ✅ | ❌ | None | None | None | ❌ FAIL |

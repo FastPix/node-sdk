@@ -13,12 +13,12 @@ export type APICall =
   | {
       status: "request-error";
       request: Request;
-      response?: undefined;
+      response?: never;
     }
   | {
       status: "invalid";
-      request?: undefined;
-      response?: undefined;
+      request?: never;
+      response?: never;
     };
 
 export class APIPromise<T> extends Promise<T> {
@@ -33,7 +33,10 @@ export class APIPromise<T> extends Promise<T> {
     return Promise;
   }
 
-  constructor(p: [T, APICall] | Promise<[T, APICall]>) {
+  // A Promise subclass must set up resolution in its constructor via
+  // super(executor); the deferred .then() lives inside the executor closure and
+  // does not run during construction, so there is no real async work here.
+  constructor(p: [T, APICall] | Promise<[T, APICall]>) { // NOSONAR(typescript:S7059) - required Promise subclass wiring
     const inspect = APIPromise.#asInspect(p);
     super(APIPromise.#executor(inspect));
     this.#inspect = inspect;
