@@ -11,25 +11,15 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
-/**
- * views affected by the specific errors.
- */
-export type TopErrorDetailsPercentage = number | number;
-
-/**
- * percentage of unique viewers affected by the specific error.
- */
-export type UniqueViewersEffectedPercentage = number | number;
-
 export type TopErrorDetails = {
   /**
    * views affected by the specific errors.
    */
-  percentage?: number | number | null | undefined;
+  percentage?: number | null | undefined;
   /**
    * percentage of unique viewers affected by the specific error.
    */
-  uniqueViewersEffectedPercentage?: number | number | null | undefined;
+  uniqueViewersEffectedPercentage?: number | null | undefined;
   /**
    * Information about the specific error.
    */
@@ -54,13 +44,13 @@ export type TopErrorDetails = {
 
 /** @internal */
 export const TopErrorDetailsPercentage$inboundSchema: z.ZodMiniType<
-  TopErrorDetailsPercentage,
+  number,
   unknown
 > = smartUnion([types.number(), types.number()]);
 
 export function topErrorDetailsPercentageFromJSON(
   jsonString: string,
-): SafeParseResult<TopErrorDetailsPercentage, SDKValidationError> {
+): SafeParseResult<number, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) => TopErrorDetailsPercentage$inboundSchema.parse(JSON.parse(x)),
@@ -70,13 +60,13 @@ export function topErrorDetailsPercentageFromJSON(
 
 /** @internal */
 export const UniqueViewersEffectedPercentage$inboundSchema: z.ZodMiniType<
-  UniqueViewersEffectedPercentage,
+  number,
   unknown
 > = smartUnion([types.number(), types.number()]);
 
 export function uniqueViewersEffectedPercentageFromJSON(
   jsonString: string,
-): SafeParseResult<UniqueViewersEffectedPercentage, SDKValidationError> {
+): SafeParseResult<number, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) => UniqueViewersEffectedPercentage$inboundSchema.parse(JSON.parse(x)),

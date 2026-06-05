@@ -71,7 +71,14 @@ for (const file of mdFiles) {
 }
 if (remaining.size) {
   console.log(`\nStill-unresolved docs.fastpix URLs:`);
-  for (const u of [...remaining].sort()) console.log(`  ${u}`);
+  const byCodeUnit = (a, b) => {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  };
+  for (const u of [...remaining].sort(byCodeUnit)) {
+    console.log(`  ${u}`);
+  }
 } else {
   console.log(`\n✅  Zero docs.fastpix URLs remain in any markdown file.`);
 }

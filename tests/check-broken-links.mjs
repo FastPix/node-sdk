@@ -32,7 +32,12 @@ for (const f of mdFiles) {
   }
 }
 
-const urls = [...urlToFiles.keys()].sort();
+const byCodeUnit = (a, b) => {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+};
+const urls = [...urlToFiles.keys()].sort(byCodeUnit);
 console.log(`Checking ${urls.length} unique URLs across ${mdFiles.length} markdown files...\n`);
 
 async function checkUrl(url) {

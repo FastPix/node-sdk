@@ -43,12 +43,10 @@ export function dlv<T = any>(
   obj: any,
   key: string | string[],
   def?: T,
-  p?: number,
   undef?: never,
 ): T | undefined {
   key = Array.isArray(key) ? key : key.split(".");
-  for (p = 0; p < key.length; p++) {
-    const k = key[p];
+  for (const k of key) {
     obj = k != null && obj ? obj[k] : undef;
   }
   return obj === undef ? def : obj;

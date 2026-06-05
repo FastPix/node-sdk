@@ -181,6 +181,95 @@ export type MatchFunc<T, E> = (
   options?: { resultKey?: string; extraFields?: Record<string, unknown> },
 ) => Promise<[result: Result<T, E>, raw: unknown]>;
 
+function selectMatcher<T, E>(
+  response: Response,
+  matchers: Array<Matcher<T, E>>,
+): Matcher<T, E> | undefined {
+  for (const match of matchers) {
+    const { codes } = match;
+    const ctpattern = "ctype" in match
+      ? match.ctype
+      : DEFAULT_CONTENT_TYPES[match.enc];
+    const matched = ctpattern
+      ? matchResponse(response, codes, ctpattern)
+      : matchStatusCode(response, codes);
+    if (matched) {
+      return match;
+    }
+  }
+  return undefined;
+}
+
+async function decodeResponseBody(
+  encoding: Encoding,
+  response: Response,
+): Promise<{ body: string; raw: unknown }> {
+  let body = "";
+  let raw: unknown;
+  switch (encoding) {
+    case "json":
+      body = await response.text();
+      raw = JSON.parse(body);
+      break;
+    case "jsonl":
+    case "stream":
+    case "sse":
+      raw = response.body;
+      break;
+    case "bytes":
+      raw = new Uint8Array(await response.arrayBuffer());
+      break;
+    case "text":
+    case "fail":
+      body = await response.text();
+      raw = body;
+      break;
+    case "nil":
+      body = await response.text();
+      raw = undefined;
+      break;
+    default:
+      encoding satisfies never;
+      throw new Error(`Unsupported response type: ${encoding}`);
+  }
+  return { body, raw };
+}
+
+function buildResponseData<T, E>(
+  matcher: ValueMatcher<T> | ErrorMatcher<E>,
+  raw: unknown,
+  context: {
+    request: Request;
+    response: Response;
+    body: string;
+    resultKey?: string | undefined;
+    extraFields?: Record<string, unknown> | undefined;
+  },
+): unknown {
+  const { request, response, body, resultKey, extraFields } = context;
+  const headers = matcher.hdrs
+    ? { Headers: unpackHeaders(response.headers) }
+    : null;
+
+  if ("err" in matcher) {
+    return {
+      ...extraFields,
+      ...headers,
+      ...(isPlainObject(raw) ? raw : null),
+      request$: request,
+      response$: response,
+      body$: body,
+    };
+  }
+  if (resultKey) {
+    return { ...extraFields, ...headers, [resultKey]: raw };
+  }
+  if (matcher.hdrs) {
+    return { ...extraFields, ...headers, ...(isPlainObject(raw) ? raw : null) };
+  }
+  return raw;
+}
+
 export function match<T, E>(
   ...matchers: Array<Matcher<T, E>>
 ): MatchFunc<T, E | FastpixDefaultError | ResponseValidationError> {
@@ -194,21 +283,7 @@ export function match<T, E>(
       raw: unknown,
     ]
   > {
-    let raw: unknown;
-    let matcher: Matcher<T, E> | undefined;
-    for (const match of matchers) {
-      const { codes } = match;
-      const ctpattern = "ctype" in match
-        ? match.ctype
-        : DEFAULT_CONTENT_TYPES[match.enc];
-      if (ctpattern && matchResponse(response, codes, ctpattern)) {
-        matcher = match;
-        break;
-      } else if (!ctpattern && matchStatusCode(response, codes)) {
-        matcher = match;
-        break;
-      }
-    }
+    const matcher = selectMatcher(response, matchers);
 
     if (!matcher) {
       return [{
@@ -218,44 +293,10 @@ export function match<T, E>(
           request,
           body: await response.text().catch(() => ""),
         }),
-      }, raw];
+      }, undefined];
     }
 
-    const encoding = matcher.enc;
-    let body = "";
-    switch (encoding) {
-      case "json":
-        body = await response.text();
-        raw = JSON.parse(body);
-        break;
-      case "jsonl":
-        raw = response.body;
-        break;
-      case "bytes":
-        raw = new Uint8Array(await response.arrayBuffer());
-        break;
-      case "stream":
-        raw = response.body;
-        break;
-      case "text":
-        body = await response.text();
-        raw = body;
-        break;
-      case "sse":
-        raw = response.body;
-        break;
-      case "nil":
-        body = await response.text();
-        raw = undefined;
-        break;
-      case "fail":
-        body = await response.text();
-        raw = body;
-        break;
-      default:
-        encoding satisfies never;
-        throw new Error(`Unsupported response type: ${encoding}`);
-    }
+    const { body, raw } = await decodeResponseBody(matcher.enc, response);
 
     if (matcher.enc === "fail") {
       return [{
@@ -268,33 +309,13 @@ export function match<T, E>(
       }, raw];
     }
 
-    const resultKey = matcher.key || options?.resultKey;
-    let data: unknown;
-
-    if ("err" in matcher) {
-      data = {
-        ...options?.extraFields,
-        ...(matcher.hdrs ? { Headers: unpackHeaders(response.headers) } : null),
-        ...(isPlainObject(raw) ? raw : null),
-        request$: request,
-        response$: response,
-        body$: body,
-      };
-    } else if (resultKey) {
-      data = {
-        ...options?.extraFields,
-        ...(matcher.hdrs ? { Headers: unpackHeaders(response.headers) } : null),
-        [resultKey]: raw,
-      };
-    } else if (matcher.hdrs) {
-      data = {
-        ...options?.extraFields,
-        ...(matcher.hdrs ? { Headers: unpackHeaders(response.headers) } : null),
-        ...(isPlainObject(raw) ? raw : null),
-      };
-    } else {
-      data = raw;
-    }
+    const data = buildResponseData(matcher, raw, {
+      request,
+      response,
+      body,
+      resultKey: matcher.key || options?.resultKey,
+      extraFields: options?.extraFields,
+    });
 
     if ("err" in matcher) {
       const result = safeParseResponse(

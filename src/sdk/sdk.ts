@@ -29,101 +29,121 @@ import { Views } from "./views.js";
 export class Fastpix extends ClientSDK {
   private _inputVideo?: InputVideo;
   get inputVideo(): InputVideo {
-    return (this._inputVideo ??= new InputVideo(this._options));
+    this._inputVideo ??= new InputVideo(this._options);
+    return this._inputVideo;
   }
 
   private _media?: Media;
   get media(): Media {
-    return (this._media ??= new Media(this._options));
+    this._media ??= new Media(this._options);
+    return this._media;
   }
 
   private _liveStreams?: LiveStreams;
   get liveStreams(): LiveStreams {
-    return (this._liveStreams ??= new LiveStreams(this._options));
+    this._liveStreams ??= new LiveStreams(this._options);
+    return this._liveStreams;
   }
 
   private _manageVideos?: ManageVideos;
   get manageVideos(): ManageVideos {
-    return (this._manageVideos ??= new ManageVideos(this._options));
+    this._manageVideos ??= new ManageVideos(this._options);
+    return this._manageVideos;
   }
 
   private _aiFeatures?: AiFeatures;
   get aiFeatures(): AiFeatures {
-    return (this._aiFeatures ??= new AiFeatures(this._options));
+    this._aiFeatures ??= new AiFeatures(this._options);
+    return this._aiFeatures;
   }
 
   private _inVideoAIfeatures?: InVideoAIfeatures;
   get inVideoAIfeatures(): InVideoAIfeatures {
-    return (this._inVideoAIfeatures ??= new InVideoAIfeatures(this._options));
+    this._inVideoAIfeatures ??= new InVideoAIfeatures(this._options);
+    return this._inVideoAIfeatures;
   }
 
   private _inVideoAI?: InVideoAI;
   get inVideoAI(): InVideoAI {
-    return (this._inVideoAI ??= new InVideoAI(this._options));
+    this._inVideoAI ??= new InVideoAI(this._options);
+    return this._inVideoAI;
   }
 
   private _playback?: Playback;
   get playback(): Playback {
-    return (this._playback ??= new Playback(this._options));
+    this._playback ??= new Playback(this._options);
+    return this._playback;
   }
 
   private _playlist?: Playlist;
   get playlist(): Playlist {
-    return (this._playlist ??= new Playlist(this._options));
+    this._playlist ??= new Playlist(this._options);
+    return this._playlist;
   }
 
   private _playlists?: Playlists;
   get playlists(): Playlists {
-    return (this._playlists ??= new Playlists(this._options));
+    this._playlists ??= new Playlists(this._options);
+    return this._playlists;
   }
 
   private _drmConfigurations?: DrmConfigurations;
   get drmConfigurations(): DrmConfigurations {
-    return (this._drmConfigurations ??= new DrmConfigurations(this._options));
+    this._drmConfigurations ??= new DrmConfigurations(this._options);
+    return this._drmConfigurations;
   }
 
   private _manageLiveStream?: ManageLiveStream;
   get manageLiveStream(): ManageLiveStream {
-    return (this._manageLiveStream ??= new ManageLiveStream(this._options));
+    this._manageLiveStream ??= new ManageLiveStream(this._options);
+    return this._manageLiveStream;
   }
 
   private _livePlayback?: LivePlayback;
   get livePlayback(): LivePlayback {
-    return (this._livePlayback ??= new LivePlayback(this._options));
+    this._livePlayback ??= new LivePlayback(this._options);
+    return this._livePlayback;
   }
 
   private _simulcasts?: Simulcasts;
   get simulcasts(): Simulcasts {
-    return (this._simulcasts ??= new Simulcasts(this._options));
+    this._simulcasts ??= new Simulcasts(this._options);
+    return this._simulcasts;
   }
 
   private _simulcastStreams?: SimulcastStreams;
   get simulcastStreams(): SimulcastStreams {
-    return (this._simulcastStreams ??= new SimulcastStreams(this._options));
+    this._simulcastStreams ??= new SimulcastStreams(this._options);
+    return this._simulcastStreams;
   }
 
   private _signingKeys?: SigningKeys;
   get signingKeys(): SigningKeys {
-    return (this._signingKeys ??= new SigningKeys(this._options));
+    this._signingKeys ??= new SigningKeys(this._options);
+    return this._signingKeys;
   }
 
   private _views?: Views;
   get views(): Views {
-    return (this._views ??= new Views(this._options));
+    this._views ??= new Views(this._options);
+    return this._views;
   }
 
   private _dimensions?: Dimensions;
   get dimensions(): Dimensions {
-    return (this._dimensions ??= new Dimensions(this._options));
+    this._dimensions ??= new Dimensions(this._options);
+    return this._dimensions;
   }
 
   private _metrics?: Metrics;
   get metrics(): Metrics {
-    return (this._metrics ??= new Metrics(this._options));
+    this._metrics ??= new Metrics(this._options);
+    return this._metrics;
   }
 
   private _errors?: Errors;
   get errors(): Errors {
-    return (this._errors ??= new Errors(this._options));
+    this._errors ??= new Errors(this._options);
+    return this._errors;
   }
 }

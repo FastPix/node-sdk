@@ -35,35 +35,35 @@ This directory contains the GET endpoints validator script and generated reports
 The script uses `get-endpoints-fixtures.json` to provide real IDs for path parameters. If missing, placeholder UUIDs are used.
 
 <!-- BEGIN GET_ENDPOINTS_CONSOLIDATED -->
-Last generated: 2026-06-04T06:43:38.313Z
+Last generated: 2026-06-05T11:42:21.075Z
 
 - **Total GET endpoints**: 30
-- **PASS**: 26
-- **FAIL**: 4
+- **PASS**: 15
+- **FAIL**: 15
 - **SKIP**: 0
 
 | Endpoint | OperationId | OpenAPI valid | SDK parse | Missing in SDK (present in API) | Missing in API (present in SDK) | Empty arrays omitted by SDK | Status |
 |---|---|---:|---:|---|---|---|---|
 | `/on-demand` | `list-media` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/on-demand/{livestreamId}/live-clips` | `list-live-clips` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/on-demand/{mediaId}` | `get-media` | ✅ | ✅ | None | None | None | ✅ PASS |
+| `/on-demand/{mediaId}` | `get-media` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/on-demand/{mediaId}/summary` | `get-media-summary` | ✅ | ❌ | None | None | None | ❌ FAIL |
-| `/on-demand/{mediaId}/input-info` | `retrieveMediaInputInfo` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/on-demand/{mediaId}/playback-ids` | `list-playback-ids` | ✅ | ✅ | None | None | None | ✅ PASS |
+| `/on-demand/{mediaId}/input-info` | `retrieveMediaInputInfo` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/on-demand/{mediaId}/playback-ids` | `list-playback-ids` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/on-demand/uploads` | `list-uploads` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/on-demand/{mediaId}/media-clips` | `get-media-clips` | ✅ | ✅ | None | None | None | ✅ PASS |
+| `/on-demand/{mediaId}/media-clips` | `get-media-clips` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/on-demand/playlists` | `get-all-playlists` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/on-demand/playlists/{playlistId}` | `get-playlist-by-id` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/on-demand/{mediaId}/playback-ids/{playbackId}` | `get-playback-id` | ✅ | ✅ | None | None | None | ✅ PASS |
+| `/on-demand/playlists/{playlistId}` | `get-playlist-by-id` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/on-demand/{mediaId}/playback-ids/{playbackId}` | `get-playback-id` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/on-demand/drm-configurations` | `getDrmConfiguration` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/on-demand/drm-configurations/{drmConfigurationId}` | `getDrmConfigurationById` | ✅ | ❌ | `error.fields`, `error.fields[]`, `error.fields[].field`, `error.fields[].message` | None | None | ❌ FAIL |
 | `/live/streams` | `get-all-streams` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/live/streams/{streamId}/viewer-count` | `get-live-stream-viewer-count-by-id` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/live/streams/{streamId}` | `get-live-stream-by-id` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/live/streams/{streamId}/playback-ids/{playbackId}` | `get-live-stream-playback-id` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/live/streams/{streamId}/simulcast/{simulcastId}` | `get-specific-simulcast-of-stream` | ✅ | ✅ | None | None | None | ✅ PASS |
+| `/live/streams/{streamId}/viewer-count` | `get-live-stream-viewer-count-by-id` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/live/streams/{streamId}` | `get-live-stream-by-id` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/live/streams/{streamId}/playback-ids/{playbackId}` | `get-live-stream-playback-id` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/live/streams/{streamId}/simulcast/{simulcastId}` | `get-specific-simulcast-of-stream` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/iam/signing-keys` | `list_signing_keys` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/iam/signing-keys/{signingKeyId}` | `get-signing_key_by_id` | ✅ | ✅ | None | None | None | ✅ PASS |
+| `/iam/signing-keys/{signingKeyId}` | `get-signing_key_by_id` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/data/viewlist` | `list_video_views` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/data/viewlist/{viewId}` | `get_video_view_details` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/data/viewlist/top-content` | `list_by_top_content` | ✅ | ✅ | None | None | None | ✅ PASS |

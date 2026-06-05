@@ -7,7 +7,7 @@
 const dateRE = /^\d{4}-\d{2}-\d{2}$/;
 
 export class RFCDate {
-  private serialized: string;
+  private readonly serialized: string;
 
   /**
    * Creates a new RFCDate instance using today's date.
@@ -34,7 +34,7 @@ export class RFCDate {
     }
 
     const value = new Date(date);
-    if (isNaN(+value)) {
+    if (Number.isNaN(+value)) {
       throw new RangeError("RFCDate: invalid date provided: " + date);
     }
 

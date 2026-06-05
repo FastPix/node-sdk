@@ -13,14 +13,15 @@ export class HTTPClientError extends Error {
   override name = "HTTPClientError";
   constructor(message: string, opts?: { cause?: unknown }) {
     let msg = message;
-    if (opts?.cause) {
-      msg += `: ${opts.cause}`;
+    if (opts?.cause != null) {
+      const { cause } = opts;
+      msg += `: ${cause instanceof Error ? cause.toString() : JSON.stringify(cause)}`;
     }
 
     super(msg, opts);
     // In older runtimes, the cause field would not have been assigned through
     // the super() call.
-    if (typeof this.cause === "undefined") {
+    if (this.cause === undefined) {
       this.cause = opts?.cause;
     }
   }

@@ -43,13 +43,13 @@ export type RequestErrorHook = (err: unknown, req: Request) => Awaitable<void>;
 export type ResponseHook = (res: Response, req: Request) => Awaitable<void>;
 
 export class HTTPClient {
-  private fetcher: Fetcher;
+  private readonly fetcher: Fetcher;
   private requestHooks: BeforeRequestHook[] = [];
   private requestErrorHooks: RequestErrorHook[] = [];
   private responseHooks: ResponseHook[] = [];
 
-  constructor(private options: HTTPClientOptions = {}) {
-    this.fetcher = options.fetcher || DEFAULT_FETCHER;
+  constructor(private readonly options: HTTPClientOptions = {}) {
+    this.fetcher = options.fetcher ?? DEFAULT_FETCHER;
   }
 
   async request(request: Request): Promise<Response> {
@@ -135,7 +135,7 @@ export class HTTPClient {
       throw new Error(`Invalid hook type: ${args[0]}`);
     }
 
-    const index = target.findIndex((v) => v === args[1]);
+    const index = target.indexOf(args[1]);
     if (index >= 0) {
       target.splice(index, 1);
     }
@@ -207,7 +207,7 @@ export function matchContentType(response: Response, pattern: string): boolean {
   return true;
 }
 
-const codeRangeRE = new RegExp("^[0-9]xx$", "i");
+const codeRangeRE = /^\dxx$/i;
 
 export function matchStatusCode(
   response: Response,

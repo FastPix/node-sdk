@@ -16,6 +16,40 @@ function canonicalKey(k) {
   return camel.replaceAll("SDK", "Sdk").replaceAll("API", "Api");
 }
 
+// Classify a value into the kind label used in the path map.
+function kindOf(v) {
+  if (v === null) return "null";
+  if (typeof v === "object") return "object";
+  return "value";
+}
+
+// Stable string comparator matching the default lexicographic sort order.
+function cmpStr(a, b) {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+}
+
+function collectArrayPaths(value, prefix, out) {
+  // treat [] same as missing — skip empty arrays for comparison
+  if (value.length === 0) return out;
+  const p = prefix ? `${prefix}[]` : "[]";
+  out.set(p, "array");
+  for (const item of value) collectPaths(item, p, out);
+  return out;
+}
+
+function collectObjectPaths(value, prefix, out) {
+  for (const [k, v] of Object.entries(value)) {
+    if (Array.isArray(v) && v.length === 0) continue;
+    const ck = canonicalKey(k);
+    const p = prefix ? `${prefix}.${ck}` : ck;
+    out.set(p, kindOf(v));
+    collectPaths(v, p, out);
+  }
+  return out;
+}
+
 // Collect leaf+intermediate paths. For SDK side, also track which paths have a
 // null value so we can isolate "field exists but value is null" cases.
 function collectPaths(value, prefix = "", out = new Map()) {
@@ -28,22 +62,8 @@ function collectPaths(value, prefix = "", out = new Map()) {
     if (prefix) out.set(prefix, "value");
     return out;
   }
-  if (Array.isArray(value)) {
-    // treat [] same as missing — skip empty arrays for comparison
-    if (value.length === 0) return out;
-    const p = prefix ? `${prefix}[]` : "[]";
-    out.set(p, "array");
-    for (const item of value) collectPaths(item, p, out);
-    return out;
-  }
-  for (const [k, v] of Object.entries(value)) {
-    if (Array.isArray(v) && v.length === 0) continue;
-    const ck = canonicalKey(k);
-    const p = prefix ? `${prefix}.${ck}` : ck;
-    out.set(p, v === null ? "null" : typeof v === "object" ? "object" : "value");
-    collectPaths(v, p, out);
-  }
-  return out;
+  if (Array.isArray(value)) return collectArrayPaths(value, prefix, out);
+  return collectObjectPaths(value, prefix, out);
 }
 
 const files = readdirSync(ARTIFACTS);
@@ -54,7 +74,7 @@ for (const f of files) {
 }
 
 const report = [];
-for (const op of [...ops].sort()) {
+for (const op of [...ops].sort(cmpStr)) {
   const apiPath = join(ARTIFACTS, `${op}.api.json`);
   const sdkPath = join(ARTIFACTS, `${op}.sdk.json`);
   let api, sdk;
@@ -77,7 +97,7 @@ for (const op of [...ops].sort()) {
 
   if (missingInSDK.length === 0 && nullInSDKNotInAPI.length === 0) continue;
 
-  report.push({ op, missingInSDK: missingInSDK.sort(), nullInSDKNotInAPI: nullInSDKNotInAPI.sort() });
+  report.push({ op, missingInSDK: missingInSDK.toSorted(cmpStr), nullInSDKNotInAPI: nullInSDKNotInAPI.toSorted(cmpStr) });
 }
 
 // Print compact summary

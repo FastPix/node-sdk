@@ -38,15 +38,16 @@ export class PermanentError extends Error {
 
   constructor(message: string, options?: { cause?: unknown }) {
     let msg = message;
-    if (options?.cause) {
-      msg += `: ${options.cause}`;
+    if (options?.cause != null) {
+      const { cause } = options;
+      msg += `: ${cause instanceof Error ? cause.toString() : JSON.stringify(cause)}`;
     }
 
     super(msg, options);
     this.name = "PermanentError";
     // In older runtimes, the cause field would not have been assigned through
     // the super() call.
-    if (typeof this.cause === "undefined") {
+    if (this.cause === undefined) {
       this.cause = options?.cause;
     }
 
@@ -78,18 +79,16 @@ export async function retry(
     statusCodes: string[];
   },
 ): Promise<Response> {
-  switch (options.config.strategy) {
-    case "backoff":
-      return retryBackoff(
-        wrapFetcher(fetchFn, {
-          statusCodes: options.statusCodes,
-          retryConnectionErrors: !!options.config.retryConnectionErrors,
-        }),
-        options.config.backoff ?? defaultBackoff,
-      );
-    default:
-      return await fetchFn();
+  if (options.config.strategy === "backoff") {
+    return retryBackoff(
+      wrapFetcher(fetchFn, {
+        statusCodes: options.statusCodes,
+        retryConnectionErrors: !!options.config.retryConnectionErrors,
+      }),
+      options.config.backoff ?? defaultBackoff,
+    );
   }
+  return await fetchFn();
 }
 
 function wrapFetcher(
@@ -127,7 +126,7 @@ function wrapFetcher(
   };
 }
 
-const codeRangeRE = new RegExp("^[0-9]xx$", "i");
+const codeRangeRE = /^\dxx$/i;
 
 function isRetryableResponse(res: Response, statusCodes: string[]): boolean {
   const actual = `${res.status}`;
@@ -151,45 +150,64 @@ function isRetryableResponse(res: Response, statusCodes: string[]): boolean {
   });
 }
 
+type RetryDecision =
+  | { kind: "wait"; delay: number }
+  | { kind: "return"; response: Response }
+  | { kind: "throw"; error: unknown };
+
+function nextRetryDecision(
+  err: unknown,
+  elapsed: number,
+  strategy: BackoffStrategy,
+  attempt: number,
+): RetryDecision {
+  if (err instanceof PermanentError) {
+    return { kind: "throw", error: err.cause };
+  }
+
+  if (elapsed > strategy.maxElapsedTime) {
+    return err instanceof TemporaryError
+      ? { kind: "return", response: err.response }
+      : { kind: "throw", error: err };
+  }
+
+  let retryInterval =
+    err instanceof TemporaryError
+      ? retryIntervalFromResponse(err.response)
+      : 0;
+
+  if (retryInterval <= 0) {
+    retryInterval =
+      strategy.initialInterval * Math.pow(attempt, strategy.exponent) +
+      Math.random() * 1000;
+  }
+
+  return {
+    kind: "wait",
+    delay: Math.min(retryInterval, strategy.maxInterval),
+  };
+}
+
 async function retryBackoff(
   fn: () => Promise<Response>,
   strategy: BackoffStrategy,
 ): Promise<Response> {
-  const { maxElapsedTime, initialInterval, exponent, maxInterval } = strategy;
-
   const start = Date.now();
   let x = 0;
 
   while (true) {
     try {
-      const res = await fn();
-      return res;
+      return await fn();
     } catch (err: unknown) {
-      if (err instanceof PermanentError) {
-        throw err.cause;
+      const decision = nextRetryDecision(err, Date.now() - start, strategy, x);
+      if (decision.kind === "return") {
+        return decision.response;
       }
-      const elapsed = Date.now() - start;
-      if (elapsed > maxElapsedTime) {
-        if (err instanceof TemporaryError) {
-          return err.response;
-        }
-
-        throw err;
+      if (decision.kind === "throw") {
+        throw decision.error;
       }
 
-      let retryInterval = 0;
-      if (err instanceof TemporaryError) {
-        retryInterval = retryIntervalFromResponse(err.response);
-      }
-
-      if (retryInterval <= 0) {
-        retryInterval =
-          initialInterval * Math.pow(x, exponent) + Math.random() * 1000;
-      }
-
-      const d = Math.min(retryInterval, maxInterval);
-
-      await delay(d);
+      await delay(decision.delay);
       x++;
     }
   }
