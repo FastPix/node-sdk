@@ -179,6 +179,9 @@ function nextRetryDecision(
   if (retryInterval <= 0) {
     retryInterval =
       strategy.initialInterval * Math.pow(attempt, strategy.exponent) +
+      // NOSONAR(typescript:S2245) - non-security use: random jitter added to
+      // retry backoff to avoid thundering-herd; cryptographic randomness is
+      // unnecessary here.
       Math.random() * 1000;
   }
 

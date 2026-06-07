@@ -67,10 +67,9 @@ for (const file of mdFiles) {
   for (const oldUrl of sortedKeys) {
     const newUrl = urlMap.get(oldUrl);
     if (content.includes(oldUrl)) {
-      const count = (
-        content.match(new RegExp(oldUrl.replace(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`), "g")) || []
-      ).length;
-      content = content.split(oldUrl).join(newUrl);
+      const parts = content.split(oldUrl);
+      const count = parts.length - 1;
+      content = parts.join(newUrl);
       totalReplacements += count;
       fileCount += count;
       changed = true;

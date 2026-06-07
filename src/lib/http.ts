@@ -156,8 +156,12 @@ export class HTTPClient {
 export type StatusCodePredicate = number | string | (number | string)[];
 
 // A semicolon surrounded by optional whitespace characters is used to separate
-// segments in a media type string.
-const mediaParamSeparator = /\s*;\s*/g;
+// segments in a media type string. Splitting on the literal `;` and trimming
+// each segment avoids the super-linear backtracking of a `/\s*;\s*/` regex while
+// producing identical results for the (already trimmed) inputs used below.
+function splitMediaTypeSegments(value: string): string[] {
+  return value.split(";").map((segment) => segment.trim());
+}
 
 export function matchContentType(response: Response, pattern: string): boolean {
   // `*` is a special case which means anything is acceptable.
@@ -169,14 +173,14 @@ export function matchContentType(response: Response, pattern: string): boolean {
     response.headers.get("content-type")?.trim() || "application/octet-stream";
   contentType = contentType.toLowerCase();
 
-  const wantParts = pattern.toLowerCase().trim().split(mediaParamSeparator);
+  const wantParts = splitMediaTypeSegments(pattern.toLowerCase().trim());
   const [wantType = "", ...wantParams] = wantParts;
 
   if (wantType.split("/").length !== 2) {
     return false;
   }
 
-  const gotParts = contentType.split(mediaParamSeparator);
+  const gotParts = splitMediaTypeSegments(contentType);
   const [gotType = "", ...gotParams] = gotParts;
 
   const [type = "", subtype = ""] = gotType.split("/");

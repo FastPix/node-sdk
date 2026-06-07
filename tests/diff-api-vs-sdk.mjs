@@ -69,7 +69,7 @@ function collectPaths(value, prefix = "", out = new Map()) {
 const files = readdirSync(ARTIFACTS);
 const ops = new Set();
 for (const f of files) {
-  const m = f.match(/^(.+)\.(api|sdk)\.json$/);
+  const m = /^(.+)\.(api|sdk)\.json$/.exec(f);
   if (m) ops.add(m[1]);
 }
 

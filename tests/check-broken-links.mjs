@@ -21,6 +21,8 @@ function walk(dir, out = []) {
 
 const mdFiles = walk(ROOT);
 const urlToFiles = new Map(); // url -> Set(files)
+// NOSONAR(javascript:S5852) - linear: a single negated character class with `+`
+// and no following token cannot backtrack, so it is not vulnerable to ReDoS.
 const urlRe = /https?:\/\/[^\s"'<>()[\]`]+/g;
 
 for (const f of mdFiles) {

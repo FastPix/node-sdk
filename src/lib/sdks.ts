@@ -186,7 +186,14 @@ export class ClientSDK {
 
     const url = serverURLFromOptions(options);
     if (url) {
-      url.pathname = url.pathname.replace(/\/+$/, "") + "/";
+      // Strip trailing slashes with a linear scan (avoids the super-linear
+      // backtracking of a `/\/+$/` regex), then ensure exactly one trailing "/".
+      const pathname = url.pathname;
+      let end = pathname.length;
+      while (end > 0 && pathname.codePointAt(end - 1) === 47 /* "/" */) {
+        end--;
+      }
+      url.pathname = pathname.slice(0, end) + "/";
     }
     this._baseURL = url;
     this.#httpClient = options.httpClient || defaultHttpClient;
@@ -341,9 +348,12 @@ export class ClientSDK {
   }
 }
 
-const jsonLikeContentTypeRE = /(application|text)\/.*?\+*json.*/;
+// Single greedy `.*` before the literal/word avoids the super-linear
+// backtracking of the previous `.*?\+*…` form while matching the same inputs
+// (these are only used with `.test()`, so the trailing `.*` was redundant).
+const jsonLikeContentTypeRE = /(application|text)\/.*json/;
 const jsonlLikeContentTypeRE =
-  /(application|text)\/(.*?\+*\bjsonl\b.*|.*?\+*\bx-ndjson\b.*)/;
+  /(application|text)\/(.*\bjsonl\b|.*\bx-ndjson\b)/;
 async function logRequest(logger: Logger | undefined, req: Request) {
   if (!logger) {
     return;
