@@ -132,7 +132,9 @@ export function literalBigInt<T extends bigint>(value: T): z.ZodMiniType<T> {
   return z.pipe(
     z.literal(String(value)),
     z.transform(BigInt as (value: string) => bigint),
-  ) as any;
+    // cast required: `T` is a `bigint` subtype the pipe's inferred output
+    // (`bigint`) is not assignable to, so the assertion cannot be removed.
+  ) as any; // NOSONAR(typescript:S4325)
 }
 
 export function optional<T extends z.ZodMiniType>(t: T) {
