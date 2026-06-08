@@ -26,12 +26,12 @@ stages:
         organization: 'fastpix'
         scannerMode: 'CLI'
         configMode: 'manual'
-        cliProjectKey: 'FastPix_node-language-sdk'
-        cliProjectName: 'node-language-sdk'
+        cliProjectKey: 'FastPix_nodejs-sdk'
+        cliProjectName: 'nodejs-sdk'
         extraProperties: |
-          sonar.projectKey=FastPix_node-language-sdk
+          sonar.projectKey=FastPix_nodejs-sdk
           sonar.organization=fastpix
-          sonar.projectName=node-language-sdk
+          sonar.projectName=nodejs-sdk
           sonar.sources=.
           sonar.sourceEncoding=UTF-8
     - script: |
