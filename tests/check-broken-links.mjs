@@ -21,9 +21,10 @@ function walk(dir, out = []) {
 
 const mdFiles = walk(ROOT);
 const urlToFiles = new Map(); // url -> Set(files)
-// linear: a single negated character class with `+` and no following token
-// cannot backtrack, so it is not vulnerable to ReDoS.
-const urlRe = /https?:\/\/[^\s"'<>()[\]`]+/g; // NOSONAR(javascript:S5852)
+// ReDoS-safe: a single negated character class with `+` and no following token
+// cannot backtrack. S5852 is a Security Hotspot and cannot be suppressed via
+// NOSONAR — review it as "Safe" in the SonarCloud Security Hotspots tab.
+const urlRe = /https?:\/\/[^\s"'<>()[\]`]+/g;
 
 for (const f of mdFiles) {
   const content = readFileSync(f, "utf-8");

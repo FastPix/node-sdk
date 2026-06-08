@@ -35,7 +35,7 @@ This directory contains the GET endpoints validator script and generated reports
 The script uses `get-endpoints-fixtures.json` to provide real IDs for path parameters. If missing, placeholder UUIDs are used.
 
 <!-- BEGIN GET_ENDPOINTS_CONSOLIDATED -->
-Last generated: 2026-06-07T17:43:42.253Z
+Last generated: 2026-06-08T06:25:16.014Z
 
 - **Total GET endpoints**: 30
 - **PASS**: 25
