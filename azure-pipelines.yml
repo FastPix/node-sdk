@@ -34,6 +34,10 @@ stages:
           sonar.projectName=nodejs-sdk
           sonar.sources=.
           sonar.sourceEncoding=UTF-8
+          # Test-only link checker. Its URL regex is linear (no ReDoS risk), but
+          # S5852 is a Security Hotspot that NOSONAR cannot suppress, so exclude
+          # this dev helper from analysis instead. Does not affect runtime code.
+          sonar.exclusions=tests/check-broken-links.mjs
     - script: |
         echo "Running SonarCloud analysis for Node SDK"
       displayName: 'Build Step'
