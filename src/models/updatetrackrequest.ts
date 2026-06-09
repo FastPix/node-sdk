@@ -38,7 +38,10 @@ export const UpdateTrackRequest$outboundSchema: z.ZodMiniType<
 > = z.object({
   url: z._default(
     z.string(),
-    "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
+    // not a live endpoint: spec-provided default example value for the `url`
+    // field; preserved verbatim to avoid changing the request payload the SDK
+    // emits when `url` is omitted.
+    "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt", // NOSONAR(typescript:S5332)
   ),
   languageCode: z._default(z.string(), "fr"),
   languageName: z._default(z.string(), "French"),

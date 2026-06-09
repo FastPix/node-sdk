@@ -46,21 +46,23 @@ import { Result } from "../types/fp.js";
  *
  * Suppose a user starts uploading a large video file but decides to cancel before completion. By calling this API, you can immediately stop the upload and free up resources.
  */
-export function manageVideosCancelUpload(
-  client: FastpixCore,
-  request: operations.CancelUploadRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CancelUploadResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosCancelUpload(
+  client: FastpixCore,
+  request: operations.CancelUploadRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CancelUploadResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -77,15 +79,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.CancelUploadResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.CancelUploadResponse,MyError
     >,
     APICall,
   ]

@@ -1,3 +1,4 @@
+ 
 {
   "operations": {
     "list-media": {
@@ -9,27 +10,27 @@
     },
     "list-live-clips": {
       "pathParams": {
-        "livestreamId": "your_livestream_id"
+        "livestreamId": "5874e71e3738f1bc5f569874d43e99fa"
       }
     },
     "get-media": {
       "pathParams": {
-        "mediaId": "your_media_id"
+        "mediaId": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1"
       }
     },
     "get-media-summary": {
       "pathParams": {
-        "mediaId": "your_media_id"
+        "mediaId": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1"
       }
     },
     "retrieveMediaInputInfo": {
       "pathParams": {
-        "mediaId": "your_media_id"
+        "mediaId": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1"
       }
     },
     "list-playback-ids": {
       "pathParams": {
-        "mediaId": "your_media_id"
+        "mediaId": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1"
       }
     },
     "list-uploads": {
@@ -41,7 +42,7 @@
     },
     "get-media-clips": {
       "pathParams": {
-        "mediaId": "your_media_id"
+        "mediaId": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1"
       }
     },
     "get-all-playlists": {
@@ -52,13 +53,13 @@
     },
     "get-playback-id": {
       "pathParams": {
-        "mediaId": "your_media_id",
-        "playbackId": "your_playback_id"
+        "mediaId": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1",
+        "playbackId": "82af62f9-64e8-4fe6-b72b-1ccc42d9874e"
       }
     },
     "get-playlist-by-id": {
       "pathParams": {
-        "playlistId": "your_playlist_id"
+        "playlistId": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80"
       }
     },
     "getDrmConfiguration": {
@@ -69,7 +70,7 @@
     },
     "getDrmConfigurationById": {
       "pathParams": {
-        "drmConfigurationId": "your_drm_configuration_id"
+        "drmConfigurationId": "your-drm-configuration-id"
       }
     },
     "get-all-streams": {
@@ -81,24 +82,24 @@
     },
     "get-live-stream-by-id": {
       "pathParams": {
-        "streamId": "your_stream_id"
+        "streamId": "5874e71e3738f1bc5f569874d43e99fa"
       }
     },
     "get-live-stream-viewer-count-by-id": {
       "pathParams": {
-        "streamId": "your_stream_id"
+        "streamId": "5874e71e3738f1bc5f569874d43e99fa"
       }
     },
     "get-live-stream-playback-id": {
       "pathParams": {
-        "streamId": "your_stream_id",
-        "playbackId": "your_playback_id"
+        "streamId": "5874e71e3738f1bc5f569874d43e99fa",
+        "playbackId": "db91f971-101b-47d6-8901-efffc86a10e9"
       }
     },
     "get-specific-simulcast-of-stream": {
       "pathParams": {
-        "streamId": "your_stream_id",
-        "simulcastId": "your_simulcast_id"
+        "streamId": "5874e71e3738f1bc5f569874d43e99fa",
+        "simulcastId": "8de51e8b2c420d89491b562b113d210f"
       }
     },
     "list_signing_keys": {
@@ -109,7 +110,7 @@
     },
     "get-signing_key_by_id": {
       "pathParams": {
-        "signingKeyId": "your_signing_key_id"
+        "signingKeyId": "04cf0f41-fd03-4c14-a30a-26f201624061"
       }
     },
     "list_video_views": {
@@ -121,7 +122,7 @@
     },
     "get_video_view_details": {
       "pathParams": {
-        "viewId": "your_view_id"
+        "viewId": "5d4c6560-58d6-45f9-9f1e-5b95eb116adc"
       }
     },
     "list_by_top_content": {
@@ -133,21 +134,21 @@
     "list_dimensions": {},
     "list_filter_values_for_dimension": {
       "pathParams": {
-        "dimensionsId": "your_dimension_id"
+        "dimensionsId": "browser_name"
       }
     },
     "list_breakdown_values": {
       "pathParams": {
-        "metricId": "your_metric_id"
+        "metricId": "quality_of_experience_score"
       },
       "query": {
         "timespan": "24:hours",
-        "groupBy": "group_by"
+        "groupBy": "browser_name"
       }
     },
     "list_overall_values": {
       "pathParams": {
-        "metricId": "your_metric_id"
+        "metricId": "quality_of_experience_score"
       },
       "query": {
         "timespan": "24:hours"
@@ -155,18 +156,18 @@
     },
     "get_timeseries_data": {
       "pathParams": {
-        "metricId": "your_metric_id"
+        "metricId": "quality_of_experience_score"
       },
       "query": {
         "timespan": "24:hours",
-        "groupBy": "group_by"
+        "groupBy": "hour"
       }
     },
     "list_comparison_values": {
       "query": {
         "timespan": "24:hours",
-        "dimension": "dimension",
-        "value": "value"
+        "dimension": "browser_name",
+        "value": "Chrome"
       }
     },
     "list_errors": {
@@ -177,3 +178,5 @@
     }
   }
 }
+ 
+ 

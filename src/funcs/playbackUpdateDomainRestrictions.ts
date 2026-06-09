@@ -42,21 +42,23 @@ import { Result } from "../types/fp.js";
  * **Example:**
  * A streaming service can allow playback only from `example.com` and deny all others by setting: `"defaultPolicy": "deny"` and `"allow": ["example.com"]`.
  */
-export function playbackUpdateDomainRestrictions(
-  client: FastpixCore,
-  request: operations.UpdateDomainRestrictionsRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateDomainRestrictionsResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playbackUpdateDomainRestrictions(
+  client: FastpixCore,
+  request: operations.UpdateDomainRestrictionsRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateDomainRestrictionsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -73,15 +75,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateDomainRestrictionsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateDomainRestrictionsResponse,MyError
     >,
     APICall,
   ]

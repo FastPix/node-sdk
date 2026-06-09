@@ -43,21 +43,23 @@ import { Result } from "../types/fp.js";
  *
  * **Detailed example:**  You manage a multi-region video platform where teams in different regions use their own signing keys. To comply with your organization’s security policies, you regularly review the list of signing keys to verify which ones are still active. You notice that some keys haven’t been used for several months. Based on their creation dates, you decide to rotate those keys.
  */
-export function signingKeysList(
-  client: FastpixCore,
-  request?: operations.ListSigningKeysRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListSigningKeysResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function signingKeysList(
+  client: FastpixCore,
+  request?: operations.ListSigningKeysRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListSigningKeysResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -74,15 +76,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListSigningKeysResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListSigningKeysResponse,MyError
     >,
     APICall,
   ]
@@ -170,15 +164,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListSigningKeysResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListSigningKeysResponse,MyError
   >(
     M.json(200, operations.ListSigningKeysResponse$inboundSchema),
     M.fail("4XX"),

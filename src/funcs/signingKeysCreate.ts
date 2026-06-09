@@ -45,20 +45,21 @@ import { Result } from "../types/fp.js";
  * **Detailed example:**  You are building a video-on-demand platform that restricts access based on user subscriptions. To ensure only subscribed users can stream content, you generate a signing key using this API. Each time a user logs in, you create a JWT signed with the private key. When the user attempts to play a video, FastPix uses the public key to verify the token and confirms that the user is authorized.<br/>
  * Related guide: <a href="https://docs.fastpix.com/docs/secure-playback-with-jwts">Create and use signing keys</a>
  */
-export function signingKeysCreate(
-  client: FastpixCore,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CreateSigningKeyResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function signingKeysCreate(
+  client: FastpixCore,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CreateSigningKeyResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -73,15 +74,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.CreateSigningKeyResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.CreateSigningKeyResponse,MyError
     >,
     APICall,
   ]
@@ -147,15 +140,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.CreateSigningKeyResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.CreateSigningKeyResponse,MyError
   >(
     M.json(201, operations.CreateSigningKeyResponse$inboundSchema),
     M.fail("4XX"),

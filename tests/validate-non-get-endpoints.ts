@@ -74,7 +74,7 @@ const REPORT_FILENAME = "NON_GET_ENDPOINTS_VALIDATION_REPORT.md";
 const NON_GET_METHODS: NonGetMethod[] = ["POST", "PUT", "PATCH", "DELETE"];
 
 function safeFileSlug(input: string): string {
-  return input.replace(/[^a-zA-Z0-9._-]+/g, "_");
+  return input.replaceAll(/[^a-zA-Z0-9._-]+/g, "_");
 }
 
 function toPrettyJson(value: unknown): string {
@@ -85,12 +85,28 @@ function toPrettyJson(value: unknown): string {
 // still have pre-migration CDN URLs persisted on them. Normalize before writing
 // artifacts so committed snapshots are consistent with the post-migration host.
 function normalizeLegacyFastpixHosts(text: string): string {
-  return text.replace(/fastpix\.io/g, "fastpix.com");
+  return text.replaceAll("fastpix.io", "fastpix.com");
 }
 
 function preview(text: string): string {
   if (text.length <= MAX_PREVIEW_CHARS) return text;
   return text.slice(0, MAX_PREVIEW_CHARS) + "\n... (truncated)";
+}
+
+// Race an SDK call against a per-call deadline. Defaults to 120s so a slow but
+// successful call (e.g. a sluggish origin) still resolves instead of being cut
+// off at a hard limit. Override with FASTPIX_SDK_TIMEOUT_MS; set it to 0 to
+// disable the cap entirely.
+function withSdkTimeout<T>(call: Promise<T>): Promise<T> {
+  const timeoutMs = Number(process.env.FASTPIX_SDK_TIMEOUT_MS ?? 120000);
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) return call;
+  const timeout = new Promise<T>((_, reject) =>
+    setTimeout(
+      () => reject(new Error(`SDK call timeout (${timeoutMs / 1000}s)`)),
+      timeoutMs,
+    ),
+  );
+  return Promise.race([call, timeout]);
 }
 
 function writeArtifactFile(
@@ -211,9 +227,9 @@ function normalizeSdkError(err: any): any {
     stack: err?.stack,
   };
 
-  if (typeof err?.statusCode !== "undefined") base.statusCode = err.statusCode;
-  if (typeof err?.contentType !== "undefined") base.contentType = err.contentType;
-  if (typeof err?.body !== "undefined") {
+  if (err?.statusCode !== undefined) base.statusCode = err.statusCode;
+  if (err?.contentType !== undefined) base.contentType = err.contentType;
+  if (err?.body !== undefined) {
     base.body = err.body;
     if (typeof err.body === "string") {
       try {
@@ -229,8 +245,8 @@ function normalizeSdkError(err: any): any {
   if (err?.rawResponse?.url) base.url = err.rawResponse.url;
 
   if (err?.cause) base.cause = err.cause;
-  if (typeof err?.rawMessage !== "undefined") base.rawMessage = err.rawMessage;
-  if (typeof err?.rawValue !== "undefined") base.rawValue = err.rawValue;
+  if (err?.rawMessage !== undefined) base.rawMessage = err.rawMessage;
+  if (err?.rawValue !== undefined) base.rawValue = err.rawValue;
 
   return base;
 }
@@ -279,6 +295,36 @@ function extractNonGetEndpoints(spec: any): EndpointInfo[] {
   return out;
 }
 
+function nonGetSdkCol(r: EndpointResult): string {
+  if (r.status === "SKIP") return "—";
+  return r.sdkCallOk ? "✅" : "❌";
+}
+
+function nonGetStatusLabel(r: EndpointResult): string {
+  if (r.status === "PASS") return "✅ PASS";
+  if (r.status === "FAIL") return "❌ FAIL";
+  return "⏭️ SKIP";
+}
+
+function nonGetTableRow(r: EndpointResult): string {
+  return `| ${r.method} | \`${r.endpoint}\` | \`${r.operationId}\` | ${nonGetSdkCol(r)} | ${nonGetStatusLabel(r)} |`;
+}
+
+function buildNonGetEndpointDetail(r: EndpointResult): string[] {
+  return [
+    `### ${r.operationId} (\`${r.method} ${r.endpoint}\`)`,
+    "",
+    `- **Status**: ${r.status}`,
+    ...(r.note ? [`- **Note**: ${r.note}`] : []),
+    ...(r.sdkResponseFile ? [`- **SDK response file**: \`${r.sdkResponseFile}\``] : []),
+    ...(!r.sdkCallOk && r.sdkCallError ? [`- **SDK error**: ${r.sdkCallError}`] : []),
+    "",
+    ...(r.sdkResponsePreview
+      ? ["**SDK response (preview)**", "", "```json", r.sdkResponsePreview, "```", ""]
+      : []),
+  ];
+}
+
 function writeReport(results: EndpointResult[]) {
   const total = results.length;
   const passed = results.filter((r) => r.status === "PASS").length;
@@ -288,67 +334,30 @@ function writeReport(results: EndpointResult[]) {
   const reportPath = join(__dirname, REPORT_FILENAME);
   const generatedAt = new Date().toISOString();
 
-  const lines: string[] = [];
-  lines.push("# Non-GET Endpoints — SDK Response Validation Report");
-  lines.push("");
-  lines.push(`Generated: ${generatedAt}`);
-  lines.push("");
-  lines.push("## Summary");
-  lines.push("");
-  lines.push(`- **Total non-GET endpoints**: ${total}`);
-  lines.push(`- **PASS**: ${passed}`);
-  lines.push(`- **FAIL**: ${failed}`);
-  lines.push(`- **SKIP**: ${skipped}`);
-  lines.push("");
-  lines.push(
+  const lines: string[] = [
+    "# Non-GET Endpoints — SDK Response Validation Report",
+    "",
+    `Generated: ${generatedAt}`,
+    "",
+    "## Summary",
+    "",
+    `- **Total non-GET endpoints**: ${total}`,
+    `- **PASS**: ${passed}`,
+    `- **FAIL**: ${failed}`,
+    `- **SKIP**: ${skipped}`,
+    "",
     "SKIP = no fixture entry for the operation (or `skip: true`). PASS = SDK call resolved without throwing. FAIL = SDK call threw; see the error in the per-endpoint section.",
-  );
-  lines.push("");
-  lines.push("## Consolidated report");
-  lines.push("");
-  lines.push("| Method | Endpoint | OperationId | SDK call | Status |");
-  lines.push("|---|---|---|---:|---|");
-
-  for (const r of results) {
-    const sdkCol =
-      r.status === "SKIP" ? "—" : r.sdkCallOk ? "✅" : "❌";
-    const statusLabel =
-      r.status === "PASS"
-        ? "✅ PASS"
-        : r.status === "FAIL"
-          ? "❌ FAIL"
-          : "⏭️ SKIP";
-    lines.push(
-      `| ${r.method} | \`${r.endpoint}\` | \`${r.operationId}\` | ${sdkCol} | ${statusLabel} |`,
-    );
-  }
-
-  lines.push("");
-  lines.push("## Per-endpoint details");
-  lines.push("");
-
-  for (const r of results) {
-    lines.push(`### ${r.operationId} (\`${r.method} ${r.endpoint}\`)`);
-    lines.push("");
-    lines.push(`- **Status**: ${r.status}`);
-    if (r.note) lines.push(`- **Note**: ${r.note}`);
-    if (r.sdkResponseFile) {
-      lines.push(`- **SDK response file**: \`${r.sdkResponseFile}\``);
-    }
-    if (!r.sdkCallOk && r.sdkCallError) {
-      lines.push(`- **SDK error**: ${r.sdkCallError}`);
-    }
-    lines.push("");
-
-    if (r.sdkResponsePreview) {
-      lines.push("**SDK response (preview)**");
-      lines.push("");
-      lines.push("```json");
-      lines.push(r.sdkResponsePreview);
-      lines.push("```");
-      lines.push("");
-    }
-  }
+    "",
+    "## Consolidated report",
+    "",
+    "| Method | Endpoint | OperationId | SDK call | Status |",
+    "|---|---|---|---:|---|",
+    ...results.map(nonGetTableRow),
+    "",
+    "## Per-endpoint details",
+    "",
+    ...results.flatMap(buildNonGetEndpointDetail),
+  ];
 
   writeFileSync(reportPath, lines.join("\n"));
 
@@ -358,6 +367,95 @@ function writeReport(results: EndpointResult[]) {
   console.log(
     `Summary: total=${total} pass=${passed} fail=${failed} skip=${skipped}`,
   );
+}
+
+type OpFixture = Fixture["operations"][string];
+
+function buildSkipReason(opFixture: OpFixture | undefined): string {
+  if (opFixture?.skip !== true) {
+    return "No fixture entry — add one to non-get-endpoints-fixtures.json to enable";
+  }
+  const detail = opFixture.reason ? `: ${opFixture.reason}` : "";
+  return `Explicitly skipped${detail}`;
+}
+
+function buildSkipResult(ep: EndpointInfo, opFixture: OpFixture | undefined): EndpointResult {
+  const reason = buildSkipReason(opFixture);
+  // eslint-disable-next-line no-console
+  console.log(`  ⏭️  SKIP — ${reason}`);
+  return {
+    endpoint: ep.path,
+    operationId: ep.operationId,
+    method: ep.method,
+    sdkCallOk: false,
+    status: "SKIP",
+    note: reason,
+  };
+}
+
+async function callSdkInvoker(
+  sdkClient: Fastpix,
+  invoker: SDKInvoker,
+  request: any,
+): Promise<{ sdkCallOk: boolean; sdkCallError?: string; sdkPrinted: any }> {
+  try {
+    const sdkCallPromise = invoker(sdkClient, request);
+    const sdkRes = await withSdkTimeout(sdkCallPromise);
+    return { sdkCallOk: true, sdkCallError: undefined, sdkPrinted: sdkRes };
+  } catch (e: any) {
+    const sdkCallError = e?.message ?? String(e);
+    // eslint-disable-next-line no-console
+    console.error(`  ⚠️  SDK call failed: ${sdkCallError}`);
+    return { sdkCallOk: false, sdkCallError, sdkPrinted: normalizeSdkError(e) };
+  }
+}
+
+async function processEndpoint(
+  ep: EndpointInfo,
+  opFixture: OpFixture | undefined,
+  sdkClient: Fastpix,
+): Promise<EndpointResult> {
+  // Skip when no fixture, no request body, or explicitly skipped.
+  if (!opFixture || opFixture.skip === true || !opFixture.request) {
+    return buildSkipResult(ep, opFixture);
+  }
+
+  const invoker = getSDKInvoker(ep.operationId);
+  if (!invoker) {
+    // eslint-disable-next-line no-console
+    console.error(`  ✗ No SDK invoker for ${ep.operationId}`);
+    return {
+      endpoint: ep.path,
+      operationId: ep.operationId,
+      method: ep.method,
+      sdkCallOk: false,
+      sdkCallError: "No SDK invoker mapping for this operationId",
+      status: "FAIL",
+      note: "Add a mapping in getSDKInvoker() in validate-non-get-endpoints.ts",
+    };
+  }
+
+  const { sdkCallOk, sdkCallError, sdkPrinted } = await callSdkInvoker(
+    sdkClient,
+    invoker,
+    opFixture.request,
+  );
+
+  const artifact = writeArtifactFile(ep.operationId, sdkPrinted);
+
+  // eslint-disable-next-line no-console
+  console.log(`  ${sdkCallOk ? "✓" : "✗"} ${ep.operationId} — ${sdkCallOk ? "PASS" : "FAIL"}`);
+
+  return {
+    endpoint: ep.path,
+    operationId: ep.operationId,
+    method: ep.method,
+    sdkCallOk,
+    sdkCallError,
+    sdkResponseFile: artifact.sdkPath,
+    sdkResponsePreview: artifact.sdkPreview,
+    status: sdkCallOk ? "PASS" : "FAIL",
+  };
 }
 
 async function main(): Promise<void> {
@@ -394,84 +492,18 @@ async function main(): Promise<void> {
       `[${i + 1}/${total}] ${ep.method} ${ep.path} (${ep.operationId})`,
     );
 
-    const opFixture = fixtures.operations?.[ep.operationId];
-
-    // Skip when no fixture, no request body, or explicitly skipped.
-    if (!opFixture || opFixture.skip === true || !opFixture.request) {
-      const reason =
-        opFixture?.skip === true
-          ? `Explicitly skipped${opFixture.reason ? `: ${opFixture.reason}` : ""}`
-          : "No fixture entry — add one to non-get-endpoints-fixtures.json to enable";
-      results.push({
-        endpoint: ep.path,
-        operationId: ep.operationId,
-        method: ep.method,
-        sdkCallOk: false,
-        status: "SKIP",
-        note: reason,
-      });
-      // eslint-disable-next-line no-console
-      console.log(`  ⏭️  SKIP — ${reason}`);
-      continue;
-    }
-
-    const invoker = getSDKInvoker(ep.operationId);
-    if (!invoker) {
-      results.push({
-        endpoint: ep.path,
-        operationId: ep.operationId,
-        method: ep.method,
-        sdkCallOk: false,
-        sdkCallError: "No SDK invoker mapping for this operationId",
-        status: "FAIL",
-        note: "Add a mapping in getSDKInvoker() in validate-non-get-endpoints.ts",
-      });
-      // eslint-disable-next-line no-console
-      console.error(`  ✗ No SDK invoker for ${ep.operationId}`);
-      continue;
-    }
-
-    let sdkCallOk = true;
-    let sdkCallError: string | undefined;
-    let sdkPrinted: any = null;
-
-    try {
-      const sdkCallPromise = invoker(sdkClient, opFixture.request);
-      const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("SDK call timeout (30s)")), 30000),
-      );
-      const sdkRes = await Promise.race([sdkCallPromise, timeoutPromise]);
-      sdkPrinted = sdkRes;
-    } catch (e: any) {
-      sdkCallOk = false;
-      sdkCallError = e?.message ?? String(e);
-      sdkPrinted = normalizeSdkError(e);
-      // eslint-disable-next-line no-console
-      console.error(`  ⚠️  SDK call failed: ${sdkCallError}`);
-    }
-
-    const artifact = writeArtifactFile(ep.operationId, sdkPrinted);
-
-    results.push({
-      endpoint: ep.path,
-      operationId: ep.operationId,
-      method: ep.method,
-      sdkCallOk,
-      sdkCallError,
-      sdkResponseFile: artifact.sdkPath,
-      sdkResponsePreview: artifact.sdkPreview,
-      status: sdkCallOk ? "PASS" : "FAIL",
-    });
-
-    // eslint-disable-next-line no-console
-    console.log(`  ${sdkCallOk ? "✓" : "✗"} ${ep.operationId} — ${sdkCallOk ? "PASS" : "FAIL"}`);
+    results.push(
+      await processEndpoint(ep, fixtures.operations?.[ep.operationId], sdkClient),
+    );
   }
 
   writeReport(results);
 }
 
-main().catch((err) => {
+try {
+  await main();
+} catch (err) {
   // eslint-disable-next-line no-console
   console.error("Fatal error:", err);
   process.exit(1);
-});
+}

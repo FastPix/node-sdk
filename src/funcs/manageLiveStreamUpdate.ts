@@ -41,21 +41,21 @@ import { Result } from "../types/fp.js";
  *
  *   Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
-export function manageLiveStreamUpdate(
-  client: FastpixCore,
-  request: operations.UpdateLiveStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateLiveStreamResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+export function manageLiveStreamUpdate(
+  client: FastpixCore,
+  request: operations.UpdateLiveStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateLiveStreamResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -72,15 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateLiveStreamResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateLiveStreamResponse,MyError
     >,
     APICall,
   ]
@@ -167,15 +159,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdateLiveStreamResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdateLiveStreamResponse,MyError
   >(
     M.json(200, operations.UpdateLiveStreamResponse$inboundSchema),
     M.fail("4XX"),

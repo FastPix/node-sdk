@@ -39,21 +39,23 @@ import { Result } from "../types/fp.js";
  * * **metricValue:** The value of the specified metric at the given interval, reflecting the performance or engagement level during that time.
  * * **numberOfViews:** The total number of views recorded during that interval, providing context for the metric value.
  */
-export function metricsGetTimeseriesData(
-  client: FastpixCore,
-  request: operations.GetTimeseriesDataRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetTimeseriesDataResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function metricsGetTimeseriesData(
+  client: FastpixCore,
+  request: operations.GetTimeseriesDataRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetTimeseriesDataResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -70,15 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetTimeseriesDataResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetTimeseriesDataResponse,MyError
     >,
     APICall,
   ]
@@ -173,15 +167,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetTimeseriesDataResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetTimeseriesDataResponse,MyError
   >(
     M.json(200, operations.GetTimeseriesDataResponse$inboundSchema),
     M.fail("4XX"),

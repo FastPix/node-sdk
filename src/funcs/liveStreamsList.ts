@@ -37,21 +37,23 @@ import { Result } from "../types/fp.js";
  *
  * Use the access token and secret key related to the workspace in the request header. When called, the API provides a paginated response containing all the live streams in that specific workspace. This is helpful for retrieving a large volume of streams and managing content in bulk.
  */
-export function liveStreamsList(
-  client: FastpixCore,
-  request?: operations.GetAllStreamsRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetAllStreamsResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function liveStreamsList(
+  client: FastpixCore,
+  request?: operations.GetAllStreamsRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetAllStreamsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -68,15 +70,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetAllStreamsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetAllStreamsResponse,MyError
     >,
     APICall,
   ]
@@ -165,15 +159,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetAllStreamsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetAllStreamsResponse,MyError
   >(
     M.json(200, operations.GetAllStreamsResponse$inboundSchema),
     M.fail("4XX"),

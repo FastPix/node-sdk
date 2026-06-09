@@ -1,7 +1,7 @@
 {
   "name": "FastpixDefaultError",
   "message": "API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"Summary not enabled\",\"description\":\"Summary is not enabled for the requested media\"}}",
-  "stack": "FastpixDefaultError: API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"Summary not enabled\",\"description\":\"Summary is not enabled for the requested media\"}}\n    at matchFunc (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/lib/matchers.ts:263:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async $do (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/funcs/manageVideosGetSummary.ts:170:20)",
+  "stack": "FastpixDefaultError: API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"Summary not enabled\",\"description\":\"Summary is not enabled for the requested media\"}}\n    at matchFunc (/Users/sumasree/fp-nodejs/node-sdk/src/lib/matchers.ts:304:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async $do (/Users/sumasree/fp-nodejs/node-sdk/src/funcs/manageVideosGetSummary.ts:162:20)",
   "statusCode": 400,
   "contentType": "application/json;charset=UTF-8",
   "body": "{\"success\":false,\"error\":{\"code\":400,\"message\":\"Summary not enabled\",\"description\":\"Summary is not enabled for the requested media\"}}",
@@ -14,13 +14,13 @@
     }
   },
   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "9feb59a2d87db0aa-HYD",
-    "connection": "keep-alive",
+    "cf-ray": "a0860a210c25ab41-BOM",
     "content-length": "133",
     "content-type": "application/json;charset=UTF-8",
-    "date": "Wed, 20 May 2026 12:30:00 GMT",
+    "date": "Mon, 08 Jun 2026 07:03:56 GMT",
     "server": "cloudflare"
   },
-  "url": "https://api.fastpix.com/v1/on-demand/66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36/summary"
+  "url": "https://api.fastpix.com/v1/on-demand/836f8e89-b756-4d8a-9aaf-0ed949e43ec1/summary"
 }

@@ -1,6 +1,8 @@
 {
-  "success": true,
-  "data": {
-    "views": 0
+  "success": false,
+  "error": {
+    "code": 404,
+    "message": "stream details not found",
+    "description": "This error indicates that the stream details could not be found. Please contact support"
   }
 }

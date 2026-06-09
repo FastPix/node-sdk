@@ -54,21 +54,22 @@ import { Result } from "../types/fp.js";
  *
  * Related guides: <a href="https://docs.fastpix.com/docs/manage-subtitle-tracks">Add own subtitle tracks</a>, <a href="https://docs.fastpix.com/docs/manage-audio-tracks">Add own audio tracks</a>
  */
-export function mediaDeleteTrack(
-  client: FastpixCore,
-  request: operations.DeleteMediaTrackRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeleteMediaTrackResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function mediaDeleteTrack(
+  client: FastpixCore,
+  request: operations.DeleteMediaTrackRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeleteMediaTrackResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -85,15 +86,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteMediaTrackResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DeleteMediaTrackResponse,MyError
     >,
     APICall,
   ]

@@ -1,43 +1,50 @@
 {
   "success": true,
   "data": {
-    "streamId": "04f2ff997551bfeb99db3e099e8e85c8",
-    "streamKey": "e72eaef58b2c3d79a0c9e848797faeb7k04f2ff997551bfeb99db3e099e8e85c8",
-    "srtSecret": "d2c92f912b717af780c030356246e4adk04f2ff997551bfeb99db3e099e8e85c8",
+    "streamId": "5874e71e3738f1bc5f569874d43e99fa",
+    "streamKey": "5663784b36a278729a458c82225073e4k5874e71e3738f1bc5f569874d43e99fa",
+    "srtSecret": "00ea44e51cbc3a4673c11df657ebb8cfk5874e71e3738f1bc5f569874d43e99fa",
     "trial": false,
     "status": "idle",
     "maxResolution": "1080p",
     "maxDuration": 0,
-    "createdAt": "2026-05-20T09:48:32.763Z",
+    "createdAt": "2026-06-05T11:46:06.734Z",
     "reconnectWindow": 60,
     "enableRecording": true,
-    "enableDvrMode": true,
+    "enableDvrMode": false,
     "mediaPolicy": "public",
     "metadata": {
-      "name": "fastpix_livestream"
+      "name": "sdk-validate"
     },
     "lowLatency": false,
     "closedCaptions": false,
     "playbackIds": [
       {
-        "id": "e3d28adb-df80-4a57-adf5-46522ffa3eff",
+        "id": "db91f971-101b-47d6-8901-efffc86a10e9",
+        "accessPolicy": "public"
+      },
+      {
+        "id": "ea5fc1b4-f06a-4c9c-944e-c28c05be634f",
         "accessPolicy": "public"
       }
     ],
     "simulcastResponses": [
       {
-        "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
-        "url": "rtmp://hyd01.contribute.live-video.net/app/",
-        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
-        "isEnabled": true,
-        "metadata": {
-          "livestream_name": "Tech-Connect Summit"
-        }
+        "simulcastId": "2cf9a5aa4e5b70b4732397400524cdf6",
+        "url": "rtmp://example.com/live",
+        "streamKey": "sk-mq0uz5nr",
+        "isEnabled": true
+      },
+      {
+        "simulcastId": "8de51e8b2c420d89491b562b113d210f",
+        "url": "rtmp://a.rtmp.youtube.com/live2",
+        "streamKey": "test-dummy-key-1234",
+        "isEnabled": true
       }
     ],
     "srtPlaybackResponse": {
-      "srtPlaybackStreamId": "play04f2ff997551bfeb99db3e099e8e85c8",
-      "srtPlaybackSecret": "261f28e903c7a3259fc1846f11bb304ek04f2ff997551bfeb99db3e099e8e85c8"
+      "srtPlaybackStreamId": "play5874e71e3738f1bc5f569874d43e99fa",
+      "srtPlaybackSecret": "44137e621630b240a3ad3860443066d9k5874e71e3738f1bc5f569874d43e99fa"
     }
   }
 }

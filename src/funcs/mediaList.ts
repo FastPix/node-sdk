@@ -40,21 +40,22 @@ import { Result } from "../types/fp.js";
  * #### Example
  * If you manage a video platform and need to review all uploaded media in your library to ensure that outdated or low-quality content isn’t being served, you can use this endpoint to retrieve a complete list of media. You can then filter, sort, or update items as needed.
  */
-export function mediaList(
-  client: FastpixCore,
-  request?: operations.ListMediaRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListMediaResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function mediaList(
+  client: FastpixCore,
+  request?: operations.ListMediaRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListMediaResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -71,15 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListMediaResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListMediaResponse,MyError
     >,
     APICall,
   ]
@@ -165,15 +158,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListMediaResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListMediaResponse,MyError
   >(
     M.json(200, operations.ListMediaResponse$inboundSchema),
     M.fail("4XX"),

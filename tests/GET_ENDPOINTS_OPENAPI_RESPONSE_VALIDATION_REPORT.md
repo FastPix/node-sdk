@@ -1,12 +1,12 @@
 # GET Endpoints — OpenAPI Response Validation Report
 
-Generated: 2026-05-20T12:30:19.618Z
+Generated: 2026-06-08T07:04:15.881Z
 
 ## Summary
 
 - **Total GET endpoints**: 30
-- **PASS**: 26
-- **FAIL**: 4
+- **PASS**: 25
+- **FAIL**: 5
 - **SKIP**: 0
 
 ## Consolidated report
@@ -27,14 +27,14 @@ Generated: 2026-05-20T12:30:19.618Z
 | `/on-demand/drm-configurations` | `getDrmConfiguration` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/on-demand/drm-configurations/{drmConfigurationId}` | `getDrmConfigurationById` | ✅ | ❌ | `error.fields`, `error.fields[]`, `error.fields[].field`, `error.fields[].message` | None | None | ❌ FAIL |
 | `/live/streams` | `get-all-streams` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/live/streams/{streamId}/viewer-count` | `get-live-stream-viewer-count-by-id` | ✅ | ✅ | None | None | None | ✅ PASS |
+| `/live/streams/{streamId}/viewer-count` | `get-live-stream-viewer-count-by-id` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/live/streams/{streamId}` | `get-live-stream-by-id` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/live/streams/{streamId}/playback-ids/{playbackId}` | `get-live-stream-playback-id` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/live/streams/{streamId}/simulcast/{simulcastId}` | `get-specific-simulcast-of-stream` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/iam/signing-keys` | `list_signing_keys` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/iam/signing-keys/{signingKeyId}` | `get-signing_key_by_id` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/data/viewlist` | `list_video_views` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/data/viewlist/{viewId}` | `get_video_view_details` | ✅ | ✅ | `data.events[].d`, `data.events[].d.br`, `data.events[].d.cd`, `data.events[].d.fps`, `data.events[].d.h`, `data.events[].d.w`, `data.events[].e`, `data.events[].pt`, `data.events[].vt` | None | None | ❌ FAIL |
+| `/data/viewlist/{viewId}` | `get_video_view_details` | ✅ | ✅ | `data.custom.Device`, `data.custom.Device[]`, `data.custom.Device[].dimensionName`, `data.custom.Device[].displayName`, `data.custom.Device[].value`, `data.events[].d`, `data.events[].d.br`, `data.events[].d.cd`, `data.events[].d.fps`, `data.events[].d.h`, `data.events[].d.w`, `data.events[].e`, `data.events[].pt`, `data.events[].vt` | None | None | ❌ FAIL |
 | `/data/viewlist/top-content` | `list_by_top_content` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/data/dimensions` | `list_dimensions` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/data/dimensions/{dimensionsId}` | `list_filter_values_for_dimension` | ✅ | ✅ | None | None | None | ✅ PASS |
@@ -61,20 +61,18 @@ Generated: 2026-05-20T12:30:19.618Z
   "success": true,
   "data": [
     {
-      "thumbnail": "https://images.fastpix.com/2fc5474a-ec6c-4f05-841f-419e6119595f/thumbnail.png",
-      "id": "2bf68fd8-fe56-46a2-b421-15ad76c016d9",
+      "id": "27229043-54e7-4f7b-98ab-14d91aa2bbc6",
       "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
       "metadata": {
-        "source": "non-get-validator"
+        "source": "sdk-validate"
       },
       "mediaQuality": "standard",
       "maxResolution": "720p",
-      "sourceResolution": "1080",
-      "status": "Ready",
+      "status": "Created",
       "sourceAccess": false,
       "playbackIds": [
         {
-          "id": "2fc5474a-ec6c-4f05-841f-419e6119595f",
+          "id": "bfe46630-6017-43a5-b728-27b600dc91ec",
           "accessPolicy": "public",
           "accessRestrictions": {
             "domains": {
@@ -90,36 +88,20 @@ Generated: 2026-05-20T12:30:19.618Z
           }
         }
       ],
-      "tracks": [
-        {
-          "id": "35ee696d-4167-4b78-ac56-6a0346697ae4",
-          "type": "video",
-          "width": 1920,
-          "height": 1080,
-          "frameRate": "60.000",
-          "status": "Ready"
-        },
-        {
-          "id": "561c851f-fd04-4dd8-8bb1-aeba5da8bf14",
-          "type": "audio",
-          "status": "Ready",
-          "languageCode": "und",
-          "languageName": "default"
-        }
-      ],
+      "tracks": [],
       "generatedSubtitles": [],
       "isAudioOnly": false,
       "subtitleAvailable": false,
-      "duration": "00:00:10",
-      "aspectRatio": "16:9",
-      "createdAt": "2026-05-20T10:09:56.609526Z",
-      "updatedAt": "2026-05-20T10:10:07.018422Z"
+      "duration": "00:00:00",
+      "createdAt": "2026-06-08T07:03:49.363580Z",
+      "updatedAt": "2026-06-08T07:03:49.363588Z",
+      "sourceResolution": "1080p"
     }
   ],
   "pagination": {
-    "totalRecords": 15,
+    "totalRecords": 113,
     "currentOffset": 1,
-    "offsetCount": 15
+    "offsetCount": 113
   }
 }
 ```
@@ -131,20 +113,19 @@ Generated: 2026-05-20T12:30:19.618Z
   "success": true,
   "data": [
     {
-      "thumbnail": "https://images.fastpix.com/2fc5474a-ec6c-4f05-841f-419e6119595f/thumbnail.png",
-      "id": "2bf68fd8-fe56-46a2-b421-15ad76c016d9",
+      "id": "27229043-54e7-4f7b-98ab-14d91aa2bbc6",
       "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
       "metadata": {
-        "source": "non-get-validator"
+        "source": "sdk-validate"
       },
       "mediaQuality": "standard",
       "maxResolution": "720p",
-      "sourceResolution": "1080",
-      "status": "Ready",
+      "sourceResolution": "1080p",
+      "status": "Created",
       "sourceAccess": false,
       "playbackIds": [
         {
-          "id": "2fc5474a-ec6c-4f05-841f-419e6119595f",
+          "id": "bfe46630-6017-43a5-b728-27b600dc91ec",
           "accessPolicy": "public",
           "accessRestrictions": {
             "domains": {
@@ -160,36 +141,19 @@ Generated: 2026-05-20T12:30:19.618Z
           }
         }
       ],
-      "tracks": [
-        {
-          "id": "35ee696d-4167-4b78-ac56-6a0346697ae4",
-          "type": "video",
-          "width": 1920,
-          "height": 1080,
-          "frameRate": "60.000",
-          "status": "Ready"
-        },
-        {
-          "id": "561c851f-fd04-4dd8-8bb1-aeba5da8bf14",
-          "type": "audio",
-          "status": "Ready",
-          "languageName": "default",
-          "languageCode": "und"
-        }
-      ],
+      "tracks": [],
       "generatedSubtitles": [],
       "isAudioOnly": false,
       "subtitleAvailable": false,
-      "duration": "00:00:10",
-      "aspectRatio": "16:9",
-      "createdAt": "2026-05-20T10:09:56.609Z",
-      "updatedAt": "2026-05-20T10:10:07.018Z"
+      "duration": "00:00:00",
+      "createdAt": "2026-06-08T07:03:49.363Z",
+      "updatedAt": "2026-06-08T07:03:49.363Z"
     }
   ],
   "pagination": {
-    "totalRecords": 15,
+    "totalRecords": 113,
     "currentOffset": 1,
-    "offsetCount": 15
+    "offsetCount": 113
   }
 }
 ```
@@ -276,19 +240,36 @@ Generated: 2026-05-20T12:30:19.618Z
 {
   "success": true,
   "data": {
-    "thumbnail": "https://images.fastpix.com/fad6fa6b-c7bc-42aa-85f7-3105d71b5f98/thumbnail.png",
-    "id": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36",
+    "thumbnail": "https://images.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/thumbnail.png",
+    "id": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1",
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
-    "metadata": {},
-    "mediaQuality": "pro",
-    "title": "720p_3min4sec_h264_",
+    "metadata": {
+      "source": "sdk-validate"
+    },
+    "mediaQuality": "standard",
     "maxResolution": "720p",
-    "sourceResolution": "720",
+    "sourceResolution": "1080",
     "status": "Ready",
     "sourceAccess": false,
     "playbackIds": [
       {
-        "id": "fad6fa6b-c7bc-42aa-85f7-3105d71b5f98",
+        "id": "82af62f9-64e8-4fe6-b72b-1ccc42d9874e",
+        "accessPolicy": "public",
+        "accessRestrictions": {
+          "domains": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          },
+          "userAgents": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          }
+        }
+      },
+      {
+        "id": "b1808523-e3c7-493d-88a1-a2d24631d78c",
         "accessPolicy": "public",
         "accessRestrictions": {
           "domains": {
@@ -306,28 +287,35 @@ Generated: 2026-05-20T12:30:19.618Z
     ],
     "tracks": [
       {
-        "id": "d1e3ae30-f6ef-440d-8714-3a63bc89a84c",
+        "id": "0d7cf616-8f43-4372-9d7d-cef1b1cf0c58",
+        "type": "video",
+        "width": 1920,
+        "height": 1080,
+        "frameRate": "60.000",
+        "status": "available"
+      },
+      {
+        "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
         "type": "audio",
         "status": "available",
         "languageCode": "und",
         "languageName": "default"
       },
       {
-        "id": "d521c8f0-73df-434c-99bf-e7ba6e537b94",
-        "type": "video",
-        "width": 1280,
-        "height": 720,
-        "frameRate": "24.000",
-        "status": "available"
+        "id": "d0a11388-defb-41d6-8275-1d29964867d9",
+        "type": "audio",
+        "status": "available",
+        "languageCode": "it",
+        "languageName": "Italian"
       }
     ],
     "generatedSubtitles": [],
     "isAudioOnly": false,
     "subtitleAvailable": false,
-    "duration": "00:03:03",
+    "duration": "00:00:10",
     "aspectRatio": "16:9",
-    "createdAt": "2026-05-20T09:06:43.064393Z",
-    "updatedAt": "2026-05-20T09:06:49.921122Z"
+    "createdAt": "2026-06-05T11:46:07.488133Z",
+    "updatedAt": "2026-06-05T11:46:18.149930Z"
   }
 }
 ```
@@ -338,19 +326,36 @@ Generated: 2026-05-20T12:30:19.618Z
 {
   "success": true,
   "data": {
-    "thumbnail": "https://images.fastpix.com/fad6fa6b-c7bc-42aa-85f7-3105d71b5f98/thumbnail.png",
-    "id": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36",
+    "thumbnail": "https://images.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/thumbnail.png",
+    "id": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1",
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
-    "metadata": {},
-    "mediaQuality": "pro",
-    "title": "720p_3min4sec_h264_",
+    "metadata": {
+      "source": "sdk-validate"
+    },
+    "mediaQuality": "standard",
     "maxResolution": "720p",
-    "sourceResolution": "720",
+    "sourceResolution": "1080",
     "status": "Ready",
     "sourceAccess": false,
     "playbackIds": [
       {
-        "id": "fad6fa6b-c7bc-42aa-85f7-3105d71b5f98",
+        "id": "82af62f9-64e8-4fe6-b72b-1ccc42d9874e",
+        "accessPolicy": "public",
+        "accessRestrictions": {
+          "domains": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          },
+          "userAgents": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          }
+        }
+      },
+      {
+        "id": "b1808523-e3c7-493d-88a1-a2d24631d78c",
         "accessPolicy": "public",
         "accessRestrictions": {
           "domains": {
@@ -368,28 +373,35 @@ Generated: 2026-05-20T12:30:19.618Z
     ],
     "tracks": [
       {
-        "id": "d1e3ae30-f6ef-440d-8714-3a63bc89a84c",
+        "id": "0d7cf616-8f43-4372-9d7d-cef1b1cf0c58",
+        "type": "video",
+        "width": 1920,
+        "height": 1080,
+        "frameRate": "60.000",
+        "status": "available"
+      },
+      {
+        "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
         "type": "audio",
         "status": "available",
         "languageName": "default",
         "languageCode": "und"
       },
       {
-        "id": "d521c8f0-73df-434c-99bf-e7ba6e537b94",
-        "type": "video",
-        "width": 1280,
-        "height": 720,
-        "frameRate": "24.000",
-        "status": "available"
+        "id": "d0a11388-defb-41d6-8275-1d29964867d9",
+        "type": "audio",
+        "status": "available",
+        "languageName": "Italian",
+        "languageCode": "it"
       }
     ],
     "generatedSubtitles": [],
     "isAudioOnly": false,
     "subtitleAvailable": false,
-    "duration": "00:03:03",
+    "duration": "00:00:10",
     "aspectRatio": "16:9",
-    "createdAt": "2026-05-20T09:06:43.064Z",
-    "updatedAt": "2026-05-20T09:06:49.921Z"
+    "createdAt": "2026-06-05T11:46:07.488Z",
+    "updatedAt": "2026-06-05T11:46:18.149Z"
   }
 }
 ```
@@ -439,7 +451,7 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
 {
   "name": "FastpixDefaultError",
   "message": "API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"Summary not enabled\",\"description\":\"Summary is not enabled for the requested media\"}}",
-  "stack": "FastpixDefaultError: API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"Summary not enabled\",\"description\":\"Summary is not enabled for the requested media\"}}\n    at matchFunc (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/lib/matchers.ts:263:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async $do (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/funcs/manageVideosGetSummary.ts:170:20)",
+  "stack": "FastpixDefaultError: API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"Summary not enabled\",\"description\":\"Summary is not enabled for the requested media\"}}\n    at matchFunc (/Users/sumasree/fp-nodejs/node-sdk/src/lib/matchers.ts:304:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async $do (/Users/sumasree/fp-nodejs/node-sdk/src/funcs/manageVideosGetSummary.ts:162:20)",
   "statusCode": 400,
   "contentType": "application/json;charset=UTF-8",
   "body": "{\"success\":false,\"error\":{\"code\":400,\"message\":\"Summary not enabled\",\"description\":\"Summary is not enabled for the requested media\"}}",
@@ -452,15 +464,15 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
     }
   },
   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "9feb59a2d87db0aa-HYD",
-    "connection": "keep-alive",
+    "cf-ray": "a0860a210c25ab41-BOM",
     "content-length": "133",
     "content-type": "application/json;charset=UTF-8",
-    "date": "Wed, 20 May 2026 12:30:00 GMT",
+    "date": "Mon, 08 Jun 2026 07:03:56 GMT",
     "server": "cloudflare"
   },
-  "url": "https://api.fastpix.com/v1/on-demand/66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36/summary"
+  "url": "https://api.fastpix.com/v1/on-demand/836f8e89-b756-4d8a-9aaf-0ed949e43ec1/summary"
 }
 ```
 
@@ -495,25 +507,32 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": {
     "configuration": {
-      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub%40fastpix-vms.iam.gserviceaccount.com%2F20260520%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260520T090626Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host%3Bx-goog-resumable&X-Goog-Signature=adeb7cbb6d80e8cc7a770ba13e974593f22ea01e88d210fb90e1370feaf05a662b81f29e0491a43971d197782b9fe8a9fc45f31a8d62c26b9828b6255e89ec25e3410091b48058d4c843d3204e91ad09d203664ac7deb8db238182602c72208f7063dd77548d5c1532809a91339647fd31e4176dc6a98b9ca950918c3869293847e3d33da7d49660ec7f341bcade847cdddc1e8342567173ee2d135ceef0fd79342b487bfe5425f503e6611ef643796b55e36137c284d65c4dcdce52a1e40d3f25ce6b0379a073f5a2c7e51ec73c5db7b514fa37e4df5de0f4b053ac6ff196d62eacd0e46938c1f5eefe513d35b22b1250ad07462b42da999f1ff23ce1bc9e04"
+      "url": "https://static.fastpix.com/fp-sample-video.mp4"
     },
     "file": {
-      "containerFormat": "com%2F20260520%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260520T090626Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host%3Bx-goog-resumable&X-Goog-Signature=adeb7cbb6d80e8cc7a770ba13e974593f22ea01e88d210fb90e1370feaf05a662b81f29e0491a43971d197782b9fe8a9fc45f31a8d62c26b9828b6255e89ec25e3410091b48058d4c843d3204e91ad09d203664ac7deb8db238182602c72208f7063dd77548d5c1532809a91339647fd31e4176dc6a98b9ca950918c3869293847e3d33da7d49660ec7f341bcade847cdddc1e8342567173ee2d135ceef0fd79342b487bfe5425f503e6611ef643796b55e36137c284d65c4dcdce52a1e40d3f25ce6b0379a073f5a2c7e51ec73c5db7b514fa37e4df5de0f4b053ac6ff196d62eacd0e46938c1f5eefe513d35b22b1250ad07462b42da999f1ff23ce1bc9e04",
+      "containerFormat": "mp4",
       "tracks": [
         {
-          "id": "d1e3ae30-f6ef-440d-8714-3a63bc89a84c",
+          "id": "0d7cf616-8f43-4372-9d7d-cef1b1cf0c58",
+          "type": "video",
+          "width": 1920,
+          "height": 1080,
+          "frameRate": "60.000",
+          "status": "available"
+        },
+        {
+          "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
           "type": "audio",
           "status": "available",
           "languageCode": "und",
           "languageName": "default"
         },
         {
-          "id": "d521c8f0-73df-434c-99bf-e7ba6e537b94",
-          "type": "video",
-          "width": 1280,
-          "height": 720,
-          "frameRate": "24.000",
-          "status": "available"
+          "id": "d0a11388-defb-41d6-8275-1d29964867d9",
+          "type": "audio",
+          "status": "available",
+          "languageCode": "it",
+          "languageName": "Italian"
         }
       ]
     }
@@ -528,25 +547,32 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": {
     "configuration": {
-      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub%40fastpix-vms.iam.gserviceaccount.com%2F20260520%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260520T090626Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host%3Bx-goog-resumable&X-Goog-Signature=adeb7cbb6d80e8cc7a770ba13e974593f22ea01e88d210fb90e1370feaf05a662b81f29e0491a43971d197782b9fe8a9fc45f31a8d62c26b9828b6255e89ec25e3410091b48058d4c843d3204e91ad09d203664ac7deb8db238182602c72208f7063dd77548d5c1532809a91339647fd31e4176dc6a98b9ca950918c3869293847e3d33da7d49660ec7f341bcade847cdddc1e8342567173ee2d135ceef0fd79342b487bfe5425f503e6611ef643796b55e36137c284d65c4dcdce52a1e40d3f25ce6b0379a073f5a2c7e51ec73c5db7b514fa37e4df5de0f4b053ac6ff196d62eacd0e46938c1f5eefe513d35b22b1250ad07462b42da999f1ff23ce1bc9e04"
+      "url": "https://static.fastpix.com/fp-sample-video.mp4"
     },
     "file": {
-      "containerFormat": "com%2F20260520%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260520T090626Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host%3Bx-goog-resumable&X-Goog-Signature=adeb7cbb6d80e8cc7a770ba13e974593f22ea01e88d210fb90e1370feaf05a662b81f29e0491a43971d197782b9fe8a9fc45f31a8d62c26b9828b6255e89ec25e3410091b48058d4c843d3204e91ad09d203664ac7deb8db238182602c72208f7063dd77548d5c1532809a91339647fd31e4176dc6a98b9ca950918c3869293847e3d33da7d49660ec7f341bcade847cdddc1e8342567173ee2d135ceef0fd79342b487bfe5425f503e6611ef643796b55e36137c284d65c4dcdce52a1e40d3f25ce6b0379a073f5a2c7e51ec73c5db7b514fa37e4df5de0f4b053ac6ff196d62eacd0e46938c1f5eefe513d35b22b1250ad07462b42da999f1ff23ce1bc9e04",
+      "containerFormat": "mp4",
       "tracks": [
         {
-          "id": "d1e3ae30-f6ef-440d-8714-3a63bc89a84c",
+          "id": "0d7cf616-8f43-4372-9d7d-cef1b1cf0c58",
+          "type": "video",
+          "width": 1920,
+          "height": 1080,
+          "frameRate": "60.000",
+          "status": "available"
+        },
+        {
+          "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
           "type": "audio",
           "status": "available",
           "languageName": "default",
           "languageCode": "und"
         },
         {
-          "id": "d521c8f0-73df-434c-99bf-e7ba6e537b94",
-          "type": "video",
-          "width": 1280,
-          "height": 720,
-          "frameRate": "24.000",
-          "status": "available"
+          "id": "d0a11388-defb-41d6-8275-1d29964867d9",
+          "type": "audio",
+          "status": "available",
+          "languageName": "Italian",
+          "languageCode": "it"
         }
       ]
     }
@@ -585,7 +611,23 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "id": "fad6fa6b-c7bc-42aa-85f7-3105d71b5f98",
+      "id": "82af62f9-64e8-4fe6-b72b-1ccc42d9874e",
+      "accessPolicy": "public",
+      "accessRestrictions": {
+        "domains": {
+          "defaultPolicy": "allow",
+          "allow": [],
+          "deny": []
+        },
+        "userAgents": {
+          "defaultPolicy": "allow",
+          "allow": [],
+          "deny": []
+        }
+      }
+    },
+    {
+      "id": "b1808523-e3c7-493d-88a1-a2d24631d78c",
       "accessPolicy": "public",
       "accessRestrictions": {
         "domains": {
@@ -611,7 +653,23 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "id": "fad6fa6b-c7bc-42aa-85f7-3105d71b5f98",
+      "id": "82af62f9-64e8-4fe6-b72b-1ccc42d9874e",
+      "accessPolicy": "public",
+      "accessRestrictions": {
+        "domains": {
+          "defaultPolicy": "allow",
+          "allow": [],
+          "deny": []
+        },
+        "userAgents": {
+          "defaultPolicy": "allow",
+          "allow": [],
+          "deny": []
+        }
+      }
+    },
+    {
+      "id": "b1808523-e3c7-493d-88a1-a2d24631d78c",
       "accessPolicy": "public",
       "accessRestrictions": {
         "domains": {
@@ -661,10 +719,10 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "uploadId": "21023d2b-5178-4e70-9f4d-1f5761b67763",
+      "uploadId": "cab71c83-d921-4fe1-a260-ddf839d6d748",
       "trial": false,
       "status": "waiting",
-      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/21023d2b-5178-4e70-9f4d-1f5761b67763?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260520/auto/storage/goog4_request&X-Goog-Date=20260520T100957Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=0423a9c31293b9d57e6b150571e069b795398f96083f2be636a5165d17b810b116beee6ab5e392582f3ec710a020025ddbf9d01516710c4f826e9a25f4053af38d8a5bc97ca9db68909733f88db1e9aeb1751e0f48c1a5d500891d6d65e9a91e88700d686d3cde90e754fe443a1de872dd3783ddb8b10ba14535b605b691a56ccee83864cb6fd9cdda21d05a53a6d09ef0ebf0aaafdd12ea1cfcd9c744e04d964d11c4b1446d0b067510f3e92b72497611880e884e2ad4087204d06e7e8783dfc760b9237bb8da41365c7be8f8a7ac48fb53fec1a5ea880d0d7ced91d7638f2acf13b6ee6a3589ce1185a265ba58320c62091f83f4b2556e5613db323475e8b2&upload_id=AAVLpEgeiwaVC8vNa4fYFuquUvPqKqOFbVXgbrG2tRQ4nlDWZ6ZPcBsG257RlvapUgW3tbisc90pULQEubuQBpORE70IQIFADneDDboCs5ZgZfc",
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/cab71c83-d921-4fe1-a260-ddf839d6d748?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260608/auto/storage/goog4_request&X-Goog-Date=20260608T054617Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=0f5979ab18ecc5b114feb853fc300a051e59a8ca98e7f99cb60988df13f69b4987a782e67cc5cd4ddb5fbd42ec914f3707e8ac29bfbfa0582a5962b5df5fed48429a65093e59bf71779366f61b90881f10f031c515cabf6f02d4bcffd1a749e978318e09e3aeeaf621cacbffba730154b2135a744afee780db257f7d9eb7e5d898f85de2dcd4e4943537c610aabeb060dfb4bc4a1d43a5570a8cfac7bb95c33db40911c4df31d3a6fd7c9e2f8853ea71f215fc6fbf61307f6a53e48d62a36b9b6873624c7928fc6b158cecf963d09f2edb25a8944525802aff4c44fffca7050697fcf4bb3dfd229a86b5a899e6901743dcb860a32a5cd103b520517e402025a3&upload_id=AJ5rDhGcgKk6jITuj_6MKAE3SneLe14fBMEoVt8R5_rZgVANRY54RUpxPkKPlWgzWW3A7cxdpoCfdktvaLM_Z6MDSIUgnFR8ZTkH5RhAKizRoBk",
       "timeout": 14400,
       "corsOrigin": "*",
       "pushMediaSettings": {
@@ -686,7 +744,7 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
           }
         ],
         "metadata": {
-          "source": "non-get-validator"
+          "source": "sdk-validate"
         },
         "mediaQuality": "standard",
         "sourceAccess": false,
@@ -709,10 +767,10 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "uploadId": "21023d2b-5178-4e70-9f4d-1f5761b67763",
+      "uploadId": "cab71c83-d921-4fe1-a260-ddf839d6d748",
       "trial": false,
       "status": "waiting",
-      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/21023d2b-5178-4e70-9f4d-1f5761b67763?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260520/auto/storage/goog4_request&X-Goog-Date=20260520T100957Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=0423a9c31293b9d57e6b150571e069b795398f96083f2be636a5165d17b810b116beee6ab5e392582f3ec710a020025ddbf9d01516710c4f826e9a25f4053af38d8a5bc97ca9db68909733f88db1e9aeb1751e0f48c1a5d500891d6d65e9a91e88700d686d3cde90e754fe443a1de872dd3783ddb8b10ba14535b605b691a56ccee83864cb6fd9cdda21d05a53a6d09ef0ebf0aaafdd12ea1cfcd9c744e04d964d11c4b1446d0b067510f3e92b72497611880e884e2ad4087204d06e7e8783dfc760b9237bb8da41365c7be8f8a7ac48fb53fec1a5ea880d0d7ced91d7638f2acf13b6ee6a3589ce1185a265ba58320c62091f83f4b2556e5613db323475e8b2&upload_id=AAVLpEgeiwaVC8vNa4fYFuquUvPqKqOFbVXgbrG2tRQ4nlDWZ6ZPcBsG257RlvapUgW3tbisc90pULQEubuQBpORE70IQIFADneDDboCs5ZgZfc",
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/cab71c83-d921-4fe1-a260-ddf839d6d748?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260608/auto/storage/goog4_request&X-Goog-Date=20260608T054617Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=0f5979ab18ecc5b114feb853fc300a051e59a8ca98e7f99cb60988df13f69b4987a782e67cc5cd4ddb5fbd42ec914f3707e8ac29bfbfa0582a5962b5df5fed48429a65093e59bf71779366f61b90881f10f031c515cabf6f02d4bcffd1a749e978318e09e3aeeaf621cacbffba730154b2135a744afee780db257f7d9eb7e5d898f85de2dcd4e4943537c610aabeb060dfb4bc4a1d43a5570a8cfac7bb95c33db40911c4df31d3a6fd7c9e2f8853ea71f215fc6fbf61307f6a53e48d62a36b9b6873624c7928fc6b158cecf963d09f2edb25a8944525802aff4c44fffca7050697fcf4bb3dfd229a86b5a899e6901743dcb860a32a5cd103b520517e402025a3&upload_id=AJ5rDhGcgKk6jITuj_6MKAE3SneLe14fBMEoVt8R5_rZgVANRY54RUpxPkKPlWgzWW3A7cxdpoCfdktvaLM_Z6MDSIUgnFR8ZTkH5RhAKizRoBk",
       "timeout": 14400,
       "corsOrigin": "*",
       "pushMediaSettings": {
@@ -734,7 +792,7 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
           }
         ],
         "metadata": {
-          "source": "non-get-validator"
+          "source": "sdk-validate"
         },
         "mediaQuality": "standard",
         "sourceAccess": false,
@@ -833,26 +891,50 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "id": "a7d637c0-de36-417a-9545-f84ae20c3344",
-      "name": "Non-GET Validator Playlist",
+      "id": "86ef0d26-9573-4ba6-a785-7374af08ca03",
+      "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "nonGetValidatorPlaylist",
-      "createdAt": "2026-05-20T10:09:58.926778Z",
+      "referenceId": "sdkValidatemq4v7css",
+      "createdAt": "2026-06-08T07:03:46.943297Z",
       "mediaCount": 0
     },
     {
-      "id": "323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd",
-      "name": "srabanijhqdhguq",
+      "id": "e046613e-551b-4c2c-8834-2562fc3455ec",
+      "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "1234567890",
-      "createdAt": "2026-05-20T09:48:18.605088Z",
+      "referenceId": "sdkValidatemq4sf90y",
+      "createdAt": "2026-06-08T05:45:56.795627Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80",
+      "name": "sdk validate playlist",
+      "type": "manual",
+      "referenceId": "sdkValidatemq0uythe",
+      "createdAt": "2026-06-05T11:46:04.069981Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "b2cdf506-5051-471c-8561-eb522c7d6071",
+      "name": "sdk validate playlist",
+      "type": "manual",
+      "referenceId": "sdkValidatemq0ol4zz",
+      "createdAt": "2026-06-05T08:47:28.071848Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "00bda787-d7ed-40a4-9764-ab238bf672b7",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate2847",
+      "createdAt": "2026-06-04T04:46:54.134970Z",
       "mediaCount": 0
     }
   ],
   "pagination": {
-    "totalRecords": 2,
+    "totalRecords": 18,
     "currentOffset": 1,
-    "offsetCount": 1
+    "offsetCount": 4
   }
 }
 ```
@@ -864,26 +946,50 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "id": "a7d637c0-de36-417a-9545-f84ae20c3344",
-      "name": "Non-GET Validator Playlist",
+      "id": "86ef0d26-9573-4ba6-a785-7374af08ca03",
+      "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "nonGetValidatorPlaylist",
-      "createdAt": "2026-05-20T10:09:58.926Z",
+      "referenceId": "sdkValidatemq4v7css",
+      "createdAt": "2026-06-08T07:03:46.943Z",
       "mediaCount": 0
     },
     {
-      "id": "323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd",
-      "name": "srabanijhqdhguq",
+      "id": "e046613e-551b-4c2c-8834-2562fc3455ec",
+      "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "1234567890",
-      "createdAt": "2026-05-20T09:48:18.605Z",
+      "referenceId": "sdkValidatemq4sf90y",
+      "createdAt": "2026-06-08T05:45:56.795Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80",
+      "name": "sdk validate playlist",
+      "type": "manual",
+      "referenceId": "sdkValidatemq0uythe",
+      "createdAt": "2026-06-05T11:46:04.069Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "b2cdf506-5051-471c-8561-eb522c7d6071",
+      "name": "sdk validate playlist",
+      "type": "manual",
+      "referenceId": "sdkValidatemq0ol4zz",
+      "createdAt": "2026-06-05T08:47:28.071Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "00bda787-d7ed-40a4-9764-ab238bf672b7",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate2847",
+      "createdAt": "2026-06-04T04:46:54.134Z",
       "mediaCount": 0
     }
   ],
   "pagination": {
-    "totalRecords": 2,
+    "totalRecords": 18,
     "currentOffset": 1,
-    "offsetCount": 1
+    "offsetCount": 4
   }
 }
 ```
@@ -918,15 +1024,15 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
 {
   "success": true,
   "data": {
-    "id": "323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd",
-    "name": "srabanijhqdhguq",
-    "referenceId": "1234567890",
+    "id": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80",
+    "name": "sdk validate playlist",
+    "referenceId": "sdkValidatemq0uythe",
     "type": "manual",
-    "description": "aDFAS QDWFEWDVA",
+    "description": "sdk validate",
     "mediaList": [],
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
-    "createdAt": "2026-05-20T09:48:18.605088Z",
-    "updatedAt": "2026-05-20T09:48:18.605088Z",
+    "createdAt": "2026-06-05T11:46:04.069981Z",
+    "updatedAt": "2026-06-05T11:46:04.069981Z",
     "mediaCount": 0
   }
 }
@@ -938,15 +1044,15 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
 {
   "success": true,
   "data": {
-    "id": "323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd",
-    "name": "srabanijhqdhguq",
-    "referenceId": "1234567890",
+    "id": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80",
+    "name": "sdk validate playlist",
+    "referenceId": "sdkValidatemq0uythe",
     "type": "manual",
-    "description": "aDFAS QDWFEWDVA",
+    "description": "sdk validate",
     "mediaList": [],
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
-    "createdAt": "2026-05-20T09:48:18.605Z",
-    "updatedAt": "2026-05-20T09:48:18.605Z",
+    "createdAt": "2026-06-05T11:46:04.069Z",
+    "updatedAt": "2026-06-05T11:46:04.069Z",
     "mediaCount": 0
   }
 }
@@ -982,7 +1088,7 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
 {
   "success": true,
   "data": {
-    "id": "fad6fa6b-c7bc-42aa-85f7-3105d71b5f98",
+    "id": "82af62f9-64e8-4fe6-b72b-1ccc42d9874e",
     "accessPolicy": "public",
     "accessRestrictions": {
       "domains": {
@@ -1006,7 +1112,7 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
 {
   "success": true,
   "data": {
-    "id": "fad6fa6b-c7bc-42aa-85f7-3105d71b5f98",
+    "id": "82af62f9-64e8-4fe6-b72b-1ccc42d9874e",
     "accessPolicy": "public",
     "accessRestrictions": {
       "domains": {
@@ -1069,7 +1175,7 @@ Body: {"success":false,"error":{"code":400,"message":"DRM ID does not exist","de
 {
   "name": "FastpixDefaultError",
   "message": "API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"DRM ID does not exist\",\"description\":\"The DRM configuration ID does not exist for the workspace.\"}}",
-  "stack": "FastpixDefaultError: API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"DRM ID does not exist\",\"description\":\"The DRM configuration ID does not exist for the workspace.\"}}\n    at matchFunc (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/lib/matchers.ts:263:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async $do (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/funcs/drmConfigurationsList.ts:173:20)",
+  "stack": "FastpixDefaultError: API error occurred: Status 400 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":400,\"message\":\"DRM ID does not exist\",\"description\":\"The DRM configuration ID does not exist for the workspace.\"}}\n    at matchFunc (/Users/sumasree/fp-nodejs/node-sdk/src/lib/matchers.ts:304:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async $do (/Users/sumasree/fp-nodejs/node-sdk/src/funcs/drmConfigurationsList.ts:169:20)",
   "statusCode": 400,
   "contentType": "application/json;charset=UTF-8",
   "body": "{\"success\":false,\"error\":{\"code\":400,\"message\":\"DRM ID does not exist\",\"description\":\"The DRM configuration ID does not exist for the workspace.\"}}",
@@ -1082,12 +1188,12 @@ Body: {"success":false,"error":{"code":400,"message":"DRM ID does not exist","de
     }
   },
   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "9feb59c2ab7cb089-HYD",
-    "connection": "keep-alive",
+    "cf-ray": "a0860a438dc7ab41-BOM",
     "content-length": "147",
     "content-type": "application/json;charset=UTF-8",
-    "date": "Wed, 20 May 2026 12:30:05 GMT",
+    "date": "Mon, 08 Jun 2026 07:04:02 GMT",
     "server": "cloudflare"
   },
   "url": "https://api.fastpix.com/v1/on-demand/drm-configurations?limit=10&offset=1"
@@ -1144,7 +1250,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "name": "FastpixDefaultError",
   "message": "API error occurred: Status 422 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"drmConfigurationId\",\"message\":\"is invalid\"}]}}",
-  "stack": "FastpixDefaultError: API error occurred: Status 422 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"drmConfigurationId\",\"message\":\"is invalid\"}]}}\n    at matchFunc (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/lib/matchers.ts:263:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async $do (/Users/sravanimaramreddy/Desktop/web-latest-claude/wowww/node-sdk/src/funcs/drmConfigurationsGet.ts:170:20)",
+  "stack": "FastpixDefaultError: API error occurred: Status 422 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"drmConfigurationId\",\"message\":\"is invalid\"}]}}\n    at matchFunc (/Users/sumasree/fp-nodejs/node-sdk/src/lib/matchers.ts:304:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async $do (/Users/sumasree/fp-nodejs/node-sdk/src/funcs/drmConfigurationsGet.ts:164:20)",
   "statusCode": 422,
   "contentType": "application/json;charset=UTF-8",
   "body": "{\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"drmConfigurationId\",\"message\":\"is invalid\"}]}}",
@@ -1162,12 +1268,12 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     }
   },
   "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "9feb59c6ebd6b089-HYD",
-    "connection": "keep-alive",
+    "cf-ray": "a0860a4778e5ab41-BOM",
     "content-length": "141",
     "content-type": "application/json;charset=UTF-8",
-    "date": "Wed, 20 May 2026 12:30:06 GMT",
+    "date": "Mon, 08 Jun 2026 07:04:02 GMT",
     "server": "cloudflare"
   },
   "url": "https://api.fastpix.com/v1/on-demand/drm-configurations/your-drm-configuration-id"
@@ -1208,78 +1314,126 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": [
     {
-      "streamId": "2e5ecebd2883279a1f67c19d8d99fa2a",
-      "streamKey": "ea116d0bcebe016139226eaf30ed4525k2e5ecebd2883279a1f67c19d8d99fa2a",
-      "srtSecret": "021eefe2e8376cbc40033acbb68adee3k2e5ecebd2883279a1f67c19d8d99fa2a",
+      "streamId": "9b58f07729da379874e5ee0cfc0e0aaf",
+      "streamKey": "649a23983e5b1501945ff835391997a3k9b58f07729da379874e5ee0cfc0e0aaf",
+      "srtSecret": "b1626967cb21f59213bef728aeac8c0fk9b58f07729da379874e5ee0cfc0e0aaf",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-05-20T10:10:00.333884Z",
+      "createdAt": "2026-06-08T07:03:48.858337Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
       "mediaPolicy": "public",
-      "lowLatency": false,
-      "closedCaptions": false,
-      "playbackIds": [
-        {
-          "id": "6a019b0c-4794-404a-9bea-1e63cf741b02",
-          "accessPolicy": "public"
-        }
-      ],
-      "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play2e5ecebd2883279a1f67c19d8d99fa2a",
-        "srtPlaybackSecret": "20e0d881b4c6a05f01278bf52d20c01dk2e5ecebd2883279a1f67c19d8d99fa2a"
-      }
-    },
-    {
-      "streamId": "04f2ff997551bfeb99db3e099e8e85c8",
-      "streamKey": "e72eaef58b2c3d79a0c9e848797faeb7k04f2ff997551bfeb99db3e099e8e85c8",
-      "srtSecret": "d2c92f912b717af780c030356246e4adk04f2ff997551bfeb99db3e099e8e85c8",
-      "trial": false,
-      "status": "idle",
-      "maxResolution": "1080p",
-      "maxDuration": 0,
-      "createdAt": "2026-05-20T09:48:32.763926Z",
-      "reconnectWindow": 60,
-      "enableRecording": true,
-      "enableDvrMode": true,
-      "mediaPolicy": "public",
       "metadata": {
-        "name": "fastpix_livestream"
+        "name": "sdk-validate"
       },
       "lowLatency": false,
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "e3d28adb-df80-4a57-adf5-46522ffa3eff",
+          "id": "ef6236a1-05d4-428d-be74-2017180900a3",
+          "accessPolicy": "public"
+        }
+      ],
+      "srtPlaybackResponse": {
+        "srtPlaybackStreamId": "play9b58f07729da379874e5ee0cfc0e0aaf",
+        "srtPlaybackSecret": "2470c60d52d4bfa12cb9b9b18d7524ebk9b58f07729da379874e5ee0cfc0e0aaf"
+      }
+    },
+    {
+      "streamId": "21023d5cae7e9aab6bdbcea8d6f2f504",
+      "streamKey": "51ae2fed821fe7b99d27c6890331aae8k21023d5cae7e9aab6bdbcea8d6f2f504",
+      "srtSecret": "046c49b66740c38a3c8577e634cfde16k21023d5cae7e9aab6bdbcea8d6f2f504",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-08T05:45:58.410112Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "metadata": {
+        "name": "sdk-validate"
+      },
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "07cd00a1-a5e0-405c-ba69-3fb847bde09d",
+          "accessPolicy": "public"
+        },
+        {
+          "id": "c2dbc995-2e1e-47d4-8a99-eb9145cce7a1",
           "accessPolicy": "public"
         }
       ],
       "simulcastResponses": [
         {
-          "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
-          "url": "rtmp://hyd01.contribute.live-video.net/app/",
-          "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
-          "isEnabled": true,
-          "metadata": {
-            "livestream_name": "Tech-Connect Summit"
-          }
+          "simulcastId": "ac9e04f6587d3bc388f4da8595b10ad5",
+          "url": "rtmp://example.com/live",
+          "streamKey": "sk-mq4sfoh8",
+          "isEnabled": true
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play04f2ff997551bfeb99db3e099e8e85c8",
-        "srtPlaybackSecret": "261f28e903c7a3259fc1846f11bb304ek04f2ff997551bfeb99db3e099e8e85c8"
+        "srtPlaybackStreamId": "play21023d5cae7e9aab6bdbcea8d6f2f504",
+        "srtPlaybackSecret": "1725fb57302d6cdb633d0dad7481488fk21023d5cae7e9aab6bdbcea8d6f2f504"
       }
-    }
-  ],
-  "pagination": {
-    "totalRecords": 2,
-    "currentOffset": 1,
-    "offsetCount": 1
-  }
-}
+    },
+    {
+      "streamId": "5874e71e3738f1bc5f569874d43e99fa",
+      "streamKey": "5663784b36a278729a458c82225073e4k5874e71e3738f1bc5f569874d43e99fa",
+      "srtSecret": "00ea44e51cbc3a4673c11df657ebb8cfk5874e71e3738f1bc5f569874d43e99fa",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-05T11:46:06.734585Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "metadata": {
+        "name": "sdk-validate"
+      },
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "db91f971-101b-47d6-8901-efffc86a10e9",
+          "accessPolicy": "public"
+        },
+        {
+          "id": "ea5fc1b4-f06a-4c9c-944e-c28c05be634f",
+          "accessPolicy": "public"
+        }
+      ],
+      "simulcastResponses": [
+        {
+          "simulcastId": "2cf9a5aa4e5b70b4732397400524cdf6",
+          "url": "rtmp://example.com/live",
+          "streamKey": "sk-mq0uz5nr",
+          "isEnabled": true
+        },
+        {
+          "simulcastId": "8de51e8b2c420d89491b562b113d210f",
+          "url": "rtmp://a.rtmp.youtube.com/live2",
+          "streamKey": "test-dummy-key-1234",
+          "isEnabled": true
+        }
+      ],
+      "srtPlaybackResponse": {
+        "srtPlaybackStreamId": "play5874e71e3738f1bc5f569874d43e99fa",
+        "srtPlaybackSecret": "44137e621630b240a3ad3860443066d9k5874e71e3738f1bc5f569874d43e99fa"
+      }
+    },
+    {
+      "streamId": "6a963e6e9ba7ce45951c28a765fa4b39",
+      "streamKey": "c47d7ead4b9b93254ad3fedde86083f4k6a963e6e9b
+... (truncated)
 ```
 
 **SDK response (preview)**
@@ -1289,78 +1443,126 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": [
     {
-      "streamId": "2e5ecebd2883279a1f67c19d8d99fa2a",
-      "streamKey": "ea116d0bcebe016139226eaf30ed4525k2e5ecebd2883279a1f67c19d8d99fa2a",
-      "srtSecret": "021eefe2e8376cbc40033acbb68adee3k2e5ecebd2883279a1f67c19d8d99fa2a",
+      "streamId": "9b58f07729da379874e5ee0cfc0e0aaf",
+      "streamKey": "649a23983e5b1501945ff835391997a3k9b58f07729da379874e5ee0cfc0e0aaf",
+      "srtSecret": "b1626967cb21f59213bef728aeac8c0fk9b58f07729da379874e5ee0cfc0e0aaf",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-05-20T10:10:00.333Z",
+      "createdAt": "2026-06-08T07:03:48.858Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
       "mediaPolicy": "public",
-      "lowLatency": false,
-      "closedCaptions": false,
-      "playbackIds": [
-        {
-          "id": "6a019b0c-4794-404a-9bea-1e63cf741b02",
-          "accessPolicy": "public"
-        }
-      ],
-      "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play2e5ecebd2883279a1f67c19d8d99fa2a",
-        "srtPlaybackSecret": "20e0d881b4c6a05f01278bf52d20c01dk2e5ecebd2883279a1f67c19d8d99fa2a"
-      }
-    },
-    {
-      "streamId": "04f2ff997551bfeb99db3e099e8e85c8",
-      "streamKey": "e72eaef58b2c3d79a0c9e848797faeb7k04f2ff997551bfeb99db3e099e8e85c8",
-      "srtSecret": "d2c92f912b717af780c030356246e4adk04f2ff997551bfeb99db3e099e8e85c8",
-      "trial": false,
-      "status": "idle",
-      "maxResolution": "1080p",
-      "maxDuration": 0,
-      "createdAt": "2026-05-20T09:48:32.763Z",
-      "reconnectWindow": 60,
-      "enableRecording": true,
-      "enableDvrMode": true,
-      "mediaPolicy": "public",
       "metadata": {
-        "name": "fastpix_livestream"
+        "name": "sdk-validate"
       },
       "lowLatency": false,
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "e3d28adb-df80-4a57-adf5-46522ffa3eff",
+          "id": "ef6236a1-05d4-428d-be74-2017180900a3",
+          "accessPolicy": "public"
+        }
+      ],
+      "srtPlaybackResponse": {
+        "srtPlaybackStreamId": "play9b58f07729da379874e5ee0cfc0e0aaf",
+        "srtPlaybackSecret": "2470c60d52d4bfa12cb9b9b18d7524ebk9b58f07729da379874e5ee0cfc0e0aaf"
+      }
+    },
+    {
+      "streamId": "21023d5cae7e9aab6bdbcea8d6f2f504",
+      "streamKey": "51ae2fed821fe7b99d27c6890331aae8k21023d5cae7e9aab6bdbcea8d6f2f504",
+      "srtSecret": "046c49b66740c38a3c8577e634cfde16k21023d5cae7e9aab6bdbcea8d6f2f504",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-08T05:45:58.410Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "metadata": {
+        "name": "sdk-validate"
+      },
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "07cd00a1-a5e0-405c-ba69-3fb847bde09d",
+          "accessPolicy": "public"
+        },
+        {
+          "id": "c2dbc995-2e1e-47d4-8a99-eb9145cce7a1",
           "accessPolicy": "public"
         }
       ],
       "simulcastResponses": [
         {
-          "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
-          "url": "rtmp://hyd01.contribute.live-video.net/app/",
-          "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
-          "isEnabled": true,
-          "metadata": {
-            "livestream_name": "Tech-Connect Summit"
-          }
+          "simulcastId": "ac9e04f6587d3bc388f4da8595b10ad5",
+          "url": "rtmp://example.com/live",
+          "streamKey": "sk-mq4sfoh8",
+          "isEnabled": true
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play04f2ff997551bfeb99db3e099e8e85c8",
-        "srtPlaybackSecret": "261f28e903c7a3259fc1846f11bb304ek04f2ff997551bfeb99db3e099e8e85c8"
+        "srtPlaybackStreamId": "play21023d5cae7e9aab6bdbcea8d6f2f504",
+        "srtPlaybackSecret": "1725fb57302d6cdb633d0dad7481488fk21023d5cae7e9aab6bdbcea8d6f2f504"
       }
-    }
-  ],
-  "pagination": {
-    "totalRecords": 2,
-    "currentOffset": 1,
-    "offsetCount": 1
-  }
-}
+    },
+    {
+      "streamId": "5874e71e3738f1bc5f569874d43e99fa",
+      "streamKey": "5663784b36a278729a458c82225073e4k5874e71e3738f1bc5f569874d43e99fa",
+      "srtSecret": "00ea44e51cbc3a4673c11df657ebb8cfk5874e71e3738f1bc5f569874d43e99fa",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-05T11:46:06.734Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "metadata": {
+        "name": "sdk-validate"
+      },
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "db91f971-101b-47d6-8901-efffc86a10e9",
+          "accessPolicy": "public"
+        },
+        {
+          "id": "ea5fc1b4-f06a-4c9c-944e-c28c05be634f",
+          "accessPolicy": "public"
+        }
+      ],
+      "simulcastResponses": [
+        {
+          "simulcastId": "2cf9a5aa4e5b70b4732397400524cdf6",
+          "url": "rtmp://example.com/live",
+          "streamKey": "sk-mq0uz5nr",
+          "isEnabled": true
+        },
+        {
+          "simulcastId": "8de51e8b2c420d89491b562b113d210f",
+          "url": "rtmp://a.rtmp.youtube.com/live2",
+          "streamKey": "test-dummy-key-1234",
+          "isEnabled": true
+        }
+      ],
+      "srtPlaybackResponse": {
+        "srtPlaybackStreamId": "play5874e71e3738f1bc5f569874d43e99fa",
+        "srtPlaybackSecret": "44137e621630b240a3ad3860443066d9k5874e71e3738f1bc5f569874d43e99fa"
+      }
+    },
+    {
+      "streamId": "6a963e6e9ba7ce45951c28a765fa4b39",
+      "streamKey": "c47d7ead4b9b93254ad3fedde86083f4k6a963e6e9ba7ce45951
+... (truncated)
 ```
 
 **Missing in SDK (present in API) — 0**
@@ -1381,9 +1583,11 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 
 ### get-live-stream-viewer-count-by-id (`/live/streams/{streamId}/viewer-count`)
 
-- **Status**: PASS
+- **Status**: FAIL
 - **OpenAPI valid**: yes
-- **SDK parse**: ok
+- **SDK parse**: failed
+- **SDK parse error**: API error occurred: Status 404 Content-Type application/json;charset=UTF-8
+Body: {"success":false,"error":{"code":404,"message":"stream details not found","description":"This error indicates that the stream details could not be found. Please contact support"}}
 - **API response file**: `tests/artifacts/get-live-stream-viewer-count-by-id.api.json`
 - **SDK response file**: `tests/artifacts/get-live-stream-viewer-count-by-id.sdk.json`
 
@@ -1391,9 +1595,11 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 
 ```json
 {
-  "success": true,
-  "data": {
-    "views": 0
+  "success": false,
+  "error": {
+    "code": 404,
+    "message": "stream details not found",
+    "description": "This error indicates that the stream details could not be found. Please contact support"
   }
 }
 ```
@@ -1402,10 +1608,30 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 
 ```json
 {
-  "success": true,
-  "data": {
-    "views": 0
-  }
+  "name": "FastpixDefaultError",
+  "message": "API error occurred: Status 404 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":404,\"message\":\"stream details not found\",\"description\":\"This error indicates that the stream details could not be found. Please contact support\"}}",
+  "stack": "FastpixDefaultError: API error occurred: Status 404 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":404,\"message\":\"stream details not found\",\"description\":\"This error indicates that the stream details could not be found. Please contact support\"}}\n    at matchFunc (/Users/sumasree/fp-nodejs/node-sdk/src/lib/matchers.ts:304:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async $do (/Users/sumasree/fp-nodejs/node-sdk/src/funcs/manageLiveStreamGetViewerCount.ts:165:20)",
+  "statusCode": 404,
+  "contentType": "application/json;charset=UTF-8",
+  "body": "{\"success\":false,\"error\":{\"code\":404,\"message\":\"stream details not found\",\"description\":\"This error indicates that the stream details could not be found. Please contact support\"}}",
+  "bodyJson": {
+    "success": false,
+    "error": {
+      "code": 404,
+      "message": "stream details not found",
+      "description": "This error indicates that the stream details could not be found. Please contact support"
+    }
+  },
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "a0860a517f92ab41-BOM",
+    "content-encoding": "gzip",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Mon, 08 Jun 2026 07:04:04 GMT",
+    "server": "cloudflare"
+  },
+  "url": "https://api.fastpix.com/v1/live/streams/5874e71e3738f1bc5f569874d43e99fa/viewer-count"
 }
 ```
 
@@ -1439,43 +1665,50 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "streamId": "04f2ff997551bfeb99db3e099e8e85c8",
-    "streamKey": "e72eaef58b2c3d79a0c9e848797faeb7k04f2ff997551bfeb99db3e099e8e85c8",
-    "srtSecret": "d2c92f912b717af780c030356246e4adk04f2ff997551bfeb99db3e099e8e85c8",
+    "streamId": "5874e71e3738f1bc5f569874d43e99fa",
+    "streamKey": "5663784b36a278729a458c82225073e4k5874e71e3738f1bc5f569874d43e99fa",
+    "srtSecret": "00ea44e51cbc3a4673c11df657ebb8cfk5874e71e3738f1bc5f569874d43e99fa",
     "trial": false,
     "status": "idle",
     "maxResolution": "1080p",
     "maxDuration": 0,
-    "createdAt": "2026-05-20T09:48:32.763926Z",
+    "createdAt": "2026-06-05T11:46:06.734585Z",
     "reconnectWindow": 60,
     "enableRecording": true,
-    "enableDvrMode": true,
+    "enableDvrMode": false,
     "mediaPolicy": "public",
     "metadata": {
-      "name": "fastpix_livestream"
+      "name": "sdk-validate"
     },
     "lowLatency": false,
     "closedCaptions": false,
     "playbackIds": [
       {
-        "id": "e3d28adb-df80-4a57-adf5-46522ffa3eff",
+        "id": "db91f971-101b-47d6-8901-efffc86a10e9",
+        "accessPolicy": "public"
+      },
+      {
+        "id": "ea5fc1b4-f06a-4c9c-944e-c28c05be634f",
         "accessPolicy": "public"
       }
     ],
     "simulcastResponses": [
       {
-        "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
-        "url": "rtmp://hyd01.contribute.live-video.net/app/",
-        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
-        "isEnabled": true,
-        "metadata": {
-          "livestream_name": "Tech-Connect Summit"
-        }
+        "simulcastId": "2cf9a5aa4e5b70b4732397400524cdf6",
+        "url": "rtmp://example.com/live",
+        "streamKey": "sk-mq0uz5nr",
+        "isEnabled": true
+      },
+      {
+        "simulcastId": "8de51e8b2c420d89491b562b113d210f",
+        "url": "rtmp://a.rtmp.youtube.com/live2",
+        "streamKey": "test-dummy-key-1234",
+        "isEnabled": true
       }
     ],
     "srtPlaybackResponse": {
-      "srtPlaybackStreamId": "play04f2ff997551bfeb99db3e099e8e85c8",
-      "srtPlaybackSecret": "261f28e903c7a3259fc1846f11bb304ek04f2ff997551bfeb99db3e099e8e85c8"
+      "srtPlaybackStreamId": "play5874e71e3738f1bc5f569874d43e99fa",
+      "srtPlaybackSecret": "44137e621630b240a3ad3860443066d9k5874e71e3738f1bc5f569874d43e99fa"
     }
   }
 }
@@ -1487,43 +1720,50 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "streamId": "04f2ff997551bfeb99db3e099e8e85c8",
-    "streamKey": "e72eaef58b2c3d79a0c9e848797faeb7k04f2ff997551bfeb99db3e099e8e85c8",
-    "srtSecret": "d2c92f912b717af780c030356246e4adk04f2ff997551bfeb99db3e099e8e85c8",
+    "streamId": "5874e71e3738f1bc5f569874d43e99fa",
+    "streamKey": "5663784b36a278729a458c82225073e4k5874e71e3738f1bc5f569874d43e99fa",
+    "srtSecret": "00ea44e51cbc3a4673c11df657ebb8cfk5874e71e3738f1bc5f569874d43e99fa",
     "trial": false,
     "status": "idle",
     "maxResolution": "1080p",
     "maxDuration": 0,
-    "createdAt": "2026-05-20T09:48:32.763Z",
+    "createdAt": "2026-06-05T11:46:06.734Z",
     "reconnectWindow": 60,
     "enableRecording": true,
-    "enableDvrMode": true,
+    "enableDvrMode": false,
     "mediaPolicy": "public",
     "metadata": {
-      "name": "fastpix_livestream"
+      "name": "sdk-validate"
     },
     "lowLatency": false,
     "closedCaptions": false,
     "playbackIds": [
       {
-        "id": "e3d28adb-df80-4a57-adf5-46522ffa3eff",
+        "id": "db91f971-101b-47d6-8901-efffc86a10e9",
+        "accessPolicy": "public"
+      },
+      {
+        "id": "ea5fc1b4-f06a-4c9c-944e-c28c05be634f",
         "accessPolicy": "public"
       }
     ],
     "simulcastResponses": [
       {
-        "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
-        "url": "rtmp://hyd01.contribute.live-video.net/app/",
-        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
-        "isEnabled": true,
-        "metadata": {
-          "livestream_name": "Tech-Connect Summit"
-        }
+        "simulcastId": "2cf9a5aa4e5b70b4732397400524cdf6",
+        "url": "rtmp://example.com/live",
+        "streamKey": "sk-mq0uz5nr",
+        "isEnabled": true
+      },
+      {
+        "simulcastId": "8de51e8b2c420d89491b562b113d210f",
+        "url": "rtmp://a.rtmp.youtube.com/live2",
+        "streamKey": "test-dummy-key-1234",
+        "isEnabled": true
       }
     ],
     "srtPlaybackResponse": {
-      "srtPlaybackStreamId": "play04f2ff997551bfeb99db3e099e8e85c8",
-      "srtPlaybackSecret": "261f28e903c7a3259fc1846f11bb304ek04f2ff997551bfeb99db3e099e8e85c8"
+      "srtPlaybackStreamId": "play5874e71e3738f1bc5f569874d43e99fa",
+      "srtPlaybackSecret": "44137e621630b240a3ad3860443066d9k5874e71e3738f1bc5f569874d43e99fa"
     }
   }
 }
@@ -1559,7 +1799,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "id": "e3d28adb-df80-4a57-adf5-46522ffa3eff",
+    "id": "db91f971-101b-47d6-8901-efffc86a10e9",
     "accessPolicy": "public"
   }
 }
@@ -1571,7 +1811,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "id": "e3d28adb-df80-4a57-adf5-46522ffa3eff",
+    "id": "db91f971-101b-47d6-8901-efffc86a10e9",
     "accessPolicy": "public"
   }
 }
@@ -1607,13 +1847,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
-    "url": "rtmp://hyd01.contribute.live-video.net/app/",
-    "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
-    "isEnabled": true,
-    "metadata": {
-      "livestream_name": "Tech-Connect Summit"
-    }
+    "simulcastId": "8de51e8b2c420d89491b562b113d210f",
+    "url": "rtmp://a.rtmp.youtube.com/live2",
+    "streamKey": "test-dummy-key-1234",
+    "isEnabled": true
   }
 }
 ```
@@ -1624,13 +1861,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "simulcastId": "c0da2202b40efcc3dd25718c40aba9c8",
-    "url": "rtmp://hyd01.contribute.live-video.net/app/",
-    "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
-    "isEnabled": true,
-    "metadata": {
-      "livestream_name": "Tech-Connect Summit"
-    }
+    "simulcastId": "8de51e8b2c420d89491b562b113d210f",
+    "url": "rtmp://a.rtmp.youtube.com/live2",
+    "streamKey": "test-dummy-key-1234",
+    "isEnabled": true
   }
 }
 ```
@@ -1666,22 +1900,30 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": [
     {
-      "id": "f92cdbe4-8970-4523-996c-d4388aa4f958",
-      "createdAt": "2026-05-20T10:10:01.090258Z"
+      "id": "496d4ca6-d3fc-4fef-9460-1cd851db7c22",
+      "createdAt": "2026-06-08T07:03:46.247843Z"
     },
     {
-      "id": "3186f963-75ea-4ad3-819f-6a6ad3caf6db",
-      "createdAt": "2026-05-20T07:25:04.098908Z"
+      "id": "48a3888d-950c-4fc5-9031-5dcaf8916e3b",
+      "createdAt": "2026-06-08T05:45:56.108871Z"
     },
     {
-      "id": "7c1a1f5f-a009-43f2-8d9e-ad667ea19c88",
-      "createdAt": "2026-05-20T06:15:54.106740Z"
+      "id": "04cf0f41-fd03-4c14-a30a-26f201624061",
+      "createdAt": "2026-06-05T11:46:03.378397Z"
+    },
+    {
+      "id": "2dd486ac-b0ee-4ae0-ab1d-90e2f3504f5d",
+      "createdAt": "2026-06-05T11:06:45.999861Z"
+    },
+    {
+      "id": "5d4fc1f9-9845-4d70-9e35-54cea0a53464",
+      "createdAt": "2026-06-05T11:06:00.509464Z"
     }
   ],
   "pagination": {
-    "totalRecords": 3,
+    "totalRecords": 48,
     "currentOffset": 1,
-    "offsetCount": 1
+    "offsetCount": 10
   }
 }
 ```
@@ -1693,22 +1935,30 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": [
     {
-      "id": "f92cdbe4-8970-4523-996c-d4388aa4f958",
-      "createdAt": "2026-05-20T10:10:01.090Z"
+      "id": "496d4ca6-d3fc-4fef-9460-1cd851db7c22",
+      "createdAt": "2026-06-08T07:03:46.247Z"
     },
     {
-      "id": "3186f963-75ea-4ad3-819f-6a6ad3caf6db",
-      "createdAt": "2026-05-20T07:25:04.098Z"
+      "id": "48a3888d-950c-4fc5-9031-5dcaf8916e3b",
+      "createdAt": "2026-06-08T05:45:56.108Z"
     },
     {
-      "id": "7c1a1f5f-a009-43f2-8d9e-ad667ea19c88",
-      "createdAt": "2026-05-20T06:15:54.106Z"
+      "id": "04cf0f41-fd03-4c14-a30a-26f201624061",
+      "createdAt": "2026-06-05T11:46:03.378Z"
+    },
+    {
+      "id": "2dd486ac-b0ee-4ae0-ab1d-90e2f3504f5d",
+      "createdAt": "2026-06-05T11:06:45.999Z"
+    },
+    {
+      "id": "5d4fc1f9-9845-4d70-9e35-54cea0a53464",
+      "createdAt": "2026-06-05T11:06:00.509Z"
     }
   ],
   "pagination": {
-    "totalRecords": 3,
+    "totalRecords": 48,
     "currentOffset": 1,
-    "offsetCount": 1
+    "offsetCount": 10
   }
 }
 ```
@@ -1743,9 +1993,9 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
-    "signingKeyId": "3186f963-75ea-4ad3-819f-6a6ad3caf6db",
-    "publicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4Nt1tlp1uBcwj6v/98h+NgbggC5rapRxze1WJefs4fCsvpuH/fLYOdnLUHn9WLw9j1E49/JxAUo8WCG5F1rSSPMSrR8Ng8z7A10Xg4DMq8QEXCAAWY1dxndf+1suzRKtAJ/Tl/OtxJdeRnwstfdKgpAr3xc+uB8D/Ywws7iqW3M8qGHK0pWALwF8zbOKVZqFQ6DQZk02sDxjfofivDr90fFOcYl+d5uaQ5zikFiYK1sL302Vs/bFygKjCpw4czn4vwR5pl23hNJBBqysibWLleXSteU0ciYuu2k6GgPWnq81E9+gQIagHNQJGQrD/fwtoco+Yw7uKitK0BDBL8dbZwIDAQAB\n-----END PUBLIC KEY-----\n"
+    "signingKeyId": "04cf0f41-fd03-4c14-a30a-26f201624061",
+    "publicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs8Vl0agbiwg6upzJq17ospR6W/vtV5vrWBOdwBifAN1eF3mctq+e32iVZe8X1y3wpIJtlLdXksCOrL1i4wFpOHjZ+a2j+3xINK+9PQfTWV1Q2dBTgrbU4gJJKyW5YC1lXvncmOaQlBrKSyqinE8eGL74PibM2jfXz5jxPhd9j1+lidw0uM+BoYX/J2Q2jekDqEX2Om4bcaPl6MFJWRB+CwN1AXg5Mdxjm/fGd+AfSBzsEkLqjdswgoOd6M9YOI/YgGk8g89jL24uOKLNKQ+MUo+iuEbB24noJ6bJrbmKrU9om6+nPu8aWFrgDsJc8ApI6H9yAlytVdalTf2eXapr6QIDAQAB\n-----END PUBLIC KEY-----\n",
+    "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381"
   }
 }
 ```
@@ -1757,8 +2007,8 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": {
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
-    "signingKeyId": "3186f963-75ea-4ad3-819f-6a6ad3caf6db",
-    "publicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4Nt1tlp1uBcwj6v/98h+NgbggC5rapRxze1WJefs4fCsvpuH/fLYOdnLUHn9WLw9j1E49/JxAUo8WCG5F1rSSPMSrR8Ng8z7A10Xg4DMq8QEXCAAWY1dxndf+1suzRKtAJ/Tl/OtxJdeRnwstfdKgpAr3xc+uB8D/Ywws7iqW3M8qGHK0pWALwF8zbOKVZqFQ6DQZk02sDxjfofivDr90fFOcYl+d5uaQ5zikFiYK1sL302Vs/bFygKjCpw4czn4vwR5pl23hNJBBqysibWLleXSteU0ciYuu2k6GgPWnq81E9+gQIagHNQJGQrD/fwtoco+Yw7uKitK0BDBL8dbZwIDAQAB\n-----END PUBLIC KEY-----\n"
+    "signingKeyId": "04cf0f41-fd03-4c14-a30a-26f201624061",
+    "publicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs8Vl0agbiwg6upzJq17ospR6W/vtV5vrWBOdwBifAN1eF3mctq+e32iVZe8X1y3wpIJtlLdXksCOrL1i4wFpOHjZ+a2j+3xINK+9PQfTWV1Q2dBTgrbU4gJJKyW5YC1lXvncmOaQlBrKSyqinE8eGL74PibM2jfXz5jxPhd9j1+lidw0uM+BoYX/J2Q2jekDqEX2Om4bcaPl6MFJWRB+CwN1AXg5Mdxjm/fGd+AfSBzsEkLqjdswgoOd6M9YOI/YgGk8g89jL24uOKLNKQ+MUo+iuEbB24noJ6bJrbmKrU9om6+nPu8aWFrgDsJc8ApI6H9yAlytVdalTf2eXapr6QIDAQAB\n-----END PUBLIC KEY-----\n"
   }
 }
 ```
@@ -1792,86 +2042,15 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "viewId": "dcf0ae08-16a7-4a8c-805d-993f309dbf96",
-      "operatingSystem": "Android",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:50:42.361",
-      "viewEndTime": "2026-05-20T09:51:01.157",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 17607,
-      "QoeScore": 0.9998969136573785
-    },
-    {
-      "viewId": "5d4c6560-58d6-45f9-9f1e-5b95eb116adc",
-      "operatingSystem": "MacOS",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:51:01.665",
-      "viewEndTime": "2026-05-20T09:52:47.556",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 1513,
-      "QoeScore": 0.9999312671832044
-    },
-    {
-      "viewId": "bc8406f3-2884-4793-a1e4-63688f8a771f",
-      "operatingSystem": "MacOS",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:52:55.195",
-      "viewEndTime": "2026-05-20T09:53:18.107",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 619,
-      "QoeScore": 0.9999312671832044
-    },
-    {
-      "viewId": "2bdb1132-baad-4d1c-a90e-d8469579dd6b",
-      "operatingSystem": "MacOS",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:53:18.648",
-      "viewEndTime": "2026-05-20T09:53:35.966",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 10114,
-      "QoeScore": 0.9999312671832044
-    },
-    {
-      "viewId": "3dd40d8c-4303-45dd-8745-cb1bd74f39db",
-      "operatingSystem": "MacOS",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:53:36.582",
-      "viewEndTime": "2026-05-20T09:54:55.771",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 499,
-      "QoeScore": 0.9999312671832044
-    }
-  ],
+  "data": [],
   "pagination": {
-    "totalRecords": 10,
+    "totalRecords": 0,
     "currentOffset": 1,
-    "offsetCount": 2
+    "offsetCount": 0
   },
   "timespan": [
-    1779193812,
-    1779280212
+    1780815848,
+    1780902248
   ]
 }
 ```
@@ -1881,86 +2060,15 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "viewId": "dcf0ae08-16a7-4a8c-805d-993f309dbf96",
-      "operatingSystem": "Android",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:50:42.361",
-      "viewEndTime": "2026-05-20T09:51:01.157",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 17607,
-      "QoeScore": 0.9998969136573785
-    },
-    {
-      "viewId": "5d4c6560-58d6-45f9-9f1e-5b95eb116adc",
-      "operatingSystem": "MacOS",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:51:01.665",
-      "viewEndTime": "2026-05-20T09:52:47.556",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 1513,
-      "QoeScore": 0.9999312671832044
-    },
-    {
-      "viewId": "bc8406f3-2884-4793-a1e4-63688f8a771f",
-      "operatingSystem": "MacOS",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:52:55.195",
-      "viewEndTime": "2026-05-20T09:53:18.107",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 619,
-      "QoeScore": 0.9999312671832044
-    },
-    {
-      "viewId": "2bdb1132-baad-4d1c-a90e-d8469579dd6b",
-      "operatingSystem": "MacOS",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:53:18.648",
-      "viewEndTime": "2026-05-20T09:53:35.966",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 10114,
-      "QoeScore": 0.9999312671832044
-    },
-    {
-      "viewId": "3dd40d8c-4303-45dd-8745-cb1bd74f39db",
-      "operatingSystem": "MacOS",
-      "application": "Chrome",
-      "viewStartTime": "2026-05-20T09:53:36.582",
-      "viewEndTime": "2026-05-20T09:54:55.771",
-      "videoTitle": "Audio Track Switching Demo",
-      "errorCode": null,
-      "errorMessage": null,
-      "errorId": null,
-      "country": "IN",
-      "viewWatchTime": 499,
-      "QoeScore": 0.9999312671832044
-    }
-  ],
+  "data": [],
   "pagination": {
-    "totalRecords": 10,
+    "totalRecords": 0,
     "currentOffset": 1,
-    "offsetCount": 2
+    "offsetCount": 0
   },
   "timespan": [
-    1779193813,
-    1779280213
+    1780815848,
+    1780902248
   ]
 }
 ```
@@ -1997,10 +2105,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "data": {
     "asnId": 18209,
     "asnName": "BRAS Pools - Secunderabad",
-    "averageBitrate": 2883002.6100247726,
-    "avgDownscaling": 0.7317475,
-    "avgRequestLatency": 221,
-    "avgRequestThroughput": 324375424.31761783,
+    "averageBitrate": 2890281,
+    "avgDownscaling": 0.6824074,
+    "avgRequestLatency": 155,
+    "avgRequestThroughput": 196953269.0763052,
     "avgUpscaling": 0,
     "beaconDomain": "anlytix.io",
     "browserEngine": null,
@@ -2016,11 +2124,19 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "continent": "AS",
     "country": "IN",
     "countryCode": null,
-    "custom": {},
-    "deviceManufacturer": "Samsung",
+    "custom": {
+      "Device": [
+        {
+          "dimensionName": "custom_1",
+          "displayName": "demo_demension",
+          "value": null
+        }
+      ]
+    },
+    "deviceManufacturer": "Apple",
     "deviceModel": null,
-    "deviceName": "Samsung",
-    "deviceType": "Mobile",
+    "deviceName": "Apple",
+    "deviceType": "Desktop",
     "drmType": "none",
     "droppedFrameCount": 0,
     "errorCode": null,
@@ -2037,25 +2153,25 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "fpSdk": "fastpix-hls-monitoring",
     "fpSdkVersion": "1.0.5",
     "fpViewerId": "e4946cd5-0dcb-441b-8cbd-499d8cd426bc",
-    "insertTimestamp": "2026-05-20T09:50:42.361Z",
+    "insertTimestamp": "2026-05-20T09:51:01.665Z",
     "ipAddress": "183.82.105.187",
-    "jumpLatency": 98,
+    "jumpLatency": 0,
     "latitude": "17.38405",
     "liveStreamLatency": null,
     "longitude": "78.45636",
-    "maxDownscaling": 0.80972224,
+    "maxDownscaling": 0.6824074,
     "maxRequestLatency": 0,
     "maxUpscaling": 0,
     "mediaId": "a8c88240-8074-42e3-81cb-cb6a60f595c4",
-    "osName": "Android",
-    "osVersion": "Android 8.0.0",
+    "osName": "MacOS",
+    "osVersion": "MacOS 10.15.7",
     "pageContext": null,
-    "pageLoadTime": 126,
+    "pageLoadTime": 110,
     "playbackScore": 1,
     "playerAutoplayOn": true,
     "playerHeight": 343,
     "playerInitializationTime": 0,
-    "playerInstanceId": "8cd062ee-6121-42d4-9fc4-4a9a8f3982cb",
+    "playerInstanceId": "7855bc8d-88c6-491c-aeb4-f7020695ab95",
     "playerLanguage": "",
     "playerName": null,
     "playerPoster": "",
@@ -2071,18 +2187,18 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "playerViewCount": 1,
     "playerWidth": 800,
     "propertyId": null,
-    "qualityOfExperienceScore": 0.9998969136573785,
+    "qualityOfExperienceScore": 0.9999312671832044,
     "region": "Telangana",
     "renderQualityScore": 1,
     "sessionId": "b608d2e2-9495-40b4-951b-34541939c23a",
     "sign": "1",
     "stabilityScore": 1,
-    "startupScore": 0.9996251405722854,
+    "startupScore": 0.9997500624843788,
     "subPropertyId": null,
-    "totalStartupTime": 129,
-    "updatedTimestamp": "2026-05-20T09:51:01.157Z",
+    "totalStartupTime": 112,
+    "updatedTimestamp": "2026-05-20T09:52:47.556Z",
     "usedFullScreen": false,
-    "userAgent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
     "videoContentType": "video",
     "videoDuration": null,
     "videoEncodingVariant": "none",
@@ -2092,25 +2208,22 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "videoResolution": "1080X1920",
     "videoSeries": "Audio Track Switching Demo",
     "videoSourceDomain": "fastpix.com",
-    "videoSourceDuration": 153751,
+    "videoSourceDuration": 153879,
     "videoSourceHostname": "stream.fastpix.com",
     "videoSourceStreamType": "on-demand",
     "videoSourceType": "application/x-mpegurl",
     "videoSourceUrl": "https://stream.fastpix.com/2125094c-db43-4748-90e1-18539f2ccf98.m3u8",
     "videoStartupFailed": false,
-    "videoStartupTime": 3,
+    "videoStartupTime": 2,
     "videoTitle": "Audio Track Switching Demo",
     "videoVariantId": "video`",
     "videoVariantName": "English",
-    "viewEnd": "2026-05-20T09:51:01.157Z",
+    "viewEnd": "2026-05-20T09:52:47.556Z",
     "viewHasAd": false,
     "viewHasError": false,
-    "viewId": "dcf0ae08-16a7-4a8c-805d-993f309dbf96",
-    "viewMaxPlayheadPosition": 153751,
-    "viewPageUrl": "http://127.0.0.1:5501/demo/audio_subtitle_tracks.html",
-    "viewPlayingTime": 17506,
-    "viewSeekedCount": 1,
-    "viewSeekedDuration": 98,
+    "viewId": "5d4c6560-58d6-45f9-9f1e-5b95eb116adc",
+    "viewMaxPlayheadPosition": 1342,
+    "viewPageUrl": "http://127.0.0.1:5501
 ... (truncated)
 ```
 
@@ -2122,10 +2235,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "data": {
     "asnId": 18209,
     "asnName": "BRAS Pools - Secunderabad",
-    "averageBitrate": 2883002.6100247726,
-    "avgDownscaling": 0.7317475,
-    "avgRequestLatency": 221,
-    "avgRequestThroughput": 324375424.31761783,
+    "averageBitrate": 2890281,
+    "avgDownscaling": 0.6824074,
+    "avgRequestLatency": 155,
+    "avgRequestThroughput": 196953269.0763052,
     "avgUpscaling": 0,
     "beaconDomain": "anlytix.io",
     "browserEngine": null,
@@ -2142,10 +2255,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "country": "IN",
     "countryCode": null,
     "custom": {},
-    "deviceManufacturer": "Samsung",
+    "deviceManufacturer": "Apple",
     "deviceModel": null,
-    "deviceName": "Samsung",
-    "deviceType": "Mobile",
+    "deviceName": "Apple",
+    "deviceType": "Desktop",
     "drmType": "none",
     "droppedFrameCount": 0,
     "errorCode": null,
@@ -2162,25 +2275,25 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "fpSdk": "fastpix-hls-monitoring",
     "fpSdkVersion": "1.0.5",
     "fpViewerId": "e4946cd5-0dcb-441b-8cbd-499d8cd426bc",
-    "insertTimestamp": "2026-05-20T09:50:42.361Z",
+    "insertTimestamp": "2026-05-20T09:51:01.665Z",
     "ipAddress": "183.82.105.187",
-    "jumpLatency": 98,
+    "jumpLatency": 0,
     "latitude": "17.38405",
     "liveStreamLatency": null,
     "longitude": "78.45636",
-    "maxDownscaling": 0.80972224,
+    "maxDownscaling": 0.6824074,
     "maxRequestLatency": 0,
     "maxUpscaling": 0,
     "mediaId": "a8c88240-8074-42e3-81cb-cb6a60f595c4",
-    "osName": "Android",
-    "osVersion": "Android 8.0.0",
+    "osName": "MacOS",
+    "osVersion": "MacOS 10.15.7",
     "pageContext": null,
-    "pageLoadTime": 126,
+    "pageLoadTime": 110,
     "playbackScore": 1,
     "playerAutoplayOn": true,
     "playerHeight": 343,
     "playerInitializationTime": 0,
-    "playerInstanceId": "8cd062ee-6121-42d4-9fc4-4a9a8f3982cb",
+    "playerInstanceId": "7855bc8d-88c6-491c-aeb4-f7020695ab95",
     "playerLanguage": "",
     "playerName": null,
     "playerPoster": "",
@@ -2196,18 +2309,18 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "playerViewCount": 1,
     "playerWidth": 800,
     "propertyId": null,
-    "qualityOfExperienceScore": 0.9998969136573785,
+    "qualityOfExperienceScore": 0.9999312671832044,
     "region": "Telangana",
     "renderQualityScore": 1,
     "sessionId": "b608d2e2-9495-40b4-951b-34541939c23a",
     "sign": "1",
     "stabilityScore": 1,
-    "startupScore": 0.9996251405722854,
+    "startupScore": 0.9997500624843788,
     "subPropertyId": null,
-    "totalStartupTime": 129,
-    "updatedTimestamp": "2026-05-20T09:51:01.157Z",
+    "totalStartupTime": 112,
+    "updatedTimestamp": "2026-05-20T09:52:47.556Z",
     "usedFullScreen": false,
-    "userAgent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
     "videoContentType": "video",
     "videoDuration": null,
     "videoEncodingVariant": "none",
@@ -2217,30 +2330,37 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "videoResolution": "1080X1920",
     "videoSeries": "Audio Track Switching Demo",
     "videoSourceDomain": "fastpix.com",
-    "videoSourceDuration": 153751,
+    "videoSourceDuration": 153879,
     "videoSourceHostname": "stream.fastpix.com",
     "videoSourceStreamType": "on-demand",
     "videoSourceType": "application/x-mpegurl",
     "videoSourceUrl": "https://stream.fastpix.com/2125094c-db43-4748-90e1-18539f2ccf98.m3u8",
     "videoStartupFailed": false,
-    "videoStartupTime": 3,
+    "videoStartupTime": 2,
     "videoTitle": "Audio Track Switching Demo",
     "videoVariantId": "video`",
     "videoVariantName": "English",
-    "viewEnd": "2026-05-20T09:51:01.157Z",
+    "viewEnd": "2026-05-20T09:52:47.556Z",
     "viewHasAd": false,
     "viewHasError": false,
-    "viewId": "dcf0ae08-16a7-4a8c-805d-993f309dbf96",
-    "viewMaxPlayheadPosition": 153751,
+    "viewId": "5d4c6560-58d6-45f9-9f1e-5b95eb116adc",
+    "viewMaxPlayheadPosition": 1342,
     "viewPageUrl": "http://127.0.0.1:5501/demo/audio_subtitle_tracks.html",
-    "viewPlayingTime": 17506,
-    "viewSeekedCount": 1,
-    "viewSeekedDuration": 98,
+    "viewPlayingTime": 1511,
+    "viewSeekedCount": 0,
+    "viewSeekedDuration": 0,
+    "viewSessionId": null,
+    "viewSt
 ... (truncated)
 ```
 
-**Missing in SDK (present in API) — 9**
+**Missing in SDK (present in API) — 14**
 
+- `data.custom.Device`
+- `data.custom.Device[]`
+- `data.custom.Device[].dimensionName`
+- `data.custom.Device[].displayName`
+- `data.custom.Device[].value`
 - `data.events[].d`
 - `data.events[].d.br`
 - `data.events[].d.cd`
@@ -2276,21 +2396,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "videoTitle": "Audio Track Switching Demo",
-      "views": 9,
-      "uniqueViews": 1
-    },
-    {
-      "videoTitle": "null",
-      "views": 1,
-      "uniqueViews": 1
-    }
-  ],
+  "data": [],
   "timespan": [
-    1779193814,
-    1779280214
+    1780815850,
+    1780902250
   ]
 }
 ```
@@ -2300,21 +2409,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "videoTitle": "Audio Track Switching Demo",
-      "views": 9,
-      "uniqueViews": 1
-    },
-    {
-      "videoTitle": "null",
-      "views": 1,
-      "uniqueViews": 1
-    }
-  ],
+  "data": [],
   "timespan": [
-    1779193814,
-    1779280214
+    1780815850,
+    1780902250
   ]
 }
 ```
@@ -2504,16 +2602,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "value": "Chrome",
-      "uniqueCount": 2,
-      "count": 10
-    }
-  ],
+  "data": [],
   "timespan": [
-    1779193815,
-    1779280215
+    1780815851,
+    1780902251
   ]
 }
 ```
@@ -2523,16 +2615,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "value": "Chrome",
-      "uniqueCount": 2,
-      "count": 10
-    }
-  ],
+  "data": [],
   "timespan": [
-    1779193816,
-    1779280216
+    1780815851,
+    1780902251
   ]
 }
 ```
@@ -2569,23 +2655,15 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "metadata": {
     "aggregation": "view_end"
   },
-  "data": [
-    {
-      "views": 10,
-      "value": 0.7999003730402684,
-      "totalWatchTime": 69200,
-      "totalPlayingTime": 32875,
-      "field": "Chrome"
-    }
-  ],
+  "data": [],
   "pagination": {
-    "totalRecords": 1,
+    "totalRecords": 0,
     "currentOffset": 1,
-    "offsetCount": 1
+    "offsetCount": 0
   },
   "timespan": [
-    1779193816,
-    1779280216
+    1780815852,
+    1780902252
   ]
 }
 ```
@@ -2598,23 +2676,15 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "metadata": {
     "aggregation": "view_end"
   },
-  "data": [
-    {
-      "views": 10,
-      "value": 0.7999003730402684,
-      "totalWatchTime": 69200,
-      "totalPlayingTime": 32875,
-      "field": "Chrome"
-    }
-  ],
+  "data": [],
   "pagination": {
-    "totalRecords": 1,
+    "totalRecords": 0,
     "currentOffset": 1,
-    "offsetCount": 1
+    "offsetCount": 0
   },
   "timespan": [
-    1779193816,
-    1779280216
+    1780815852,
+    1780902252
   ]
 }
 ```
@@ -2652,16 +2722,16 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "aggregation": "view_end"
   },
   "data": {
-    "value": 0.7999003730402684,
-    "totalWatchTime": 69200,
-    "totalViews": 10,
-    "totalPlayTime": 68039,
-    "uniqueViews": 2,
-    "globalValue": 0.7999003730402684
+    "value": 0,
+    "totalWatchTime": null,
+    "totalViews": 0,
+    "totalPlayTime": null,
+    "uniqueViews": 0,
+    "globalValue": null
   },
   "timespan": [
-    1779193817,
-    1779280217
+    1780815853,
+    1780902253
   ]
 }
 ```
@@ -2675,16 +2745,16 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "aggregation": "view_end"
   },
   "data": {
-    "value": 0.7999003730402684,
-    "totalWatchTime": 69200,
-    "uniqueViews": 2,
-    "totalViews": 10,
-    "totalPlayTime": 68039,
-    "globalValue": 0.7999003730402684
+    "value": 0,
+    "totalWatchTime": null,
+    "uniqueViews": 0,
+    "totalViews": 0,
+    "totalPlayTime": null,
+    "globalValue": null
   },
   "timespan": [
-    1779193817,
-    1779280217
+    1780815853,
+    1780902253
   ]
 }
 ```
@@ -2722,16 +2792,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "granularity": "hour",
     "aggregation": "view_end"
   },
-  "data": [
-    {
-      "intervalTime": "2026-05-20T09:00:00Z",
-      "metricValue": 0.7999003730402684,
-      "numberOfViews": 10
-    }
-  ],
+  "data": [],
   "timespan": [
-    1779193817000,
-    1779280217000
+    1780815853000,
+    1780902253000
   ]
 }
 ```
@@ -2745,16 +2809,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
     "granularity": "hour",
     "aggregation": "view_end"
   },
-  "data": [
-    {
-      "intervalTime": "2026-05-20T09:00:00.000Z",
-      "metricValue": 0.7999003730402684,
-      "numberOfViews": 10
-    }
-  ],
+  "data": [],
   "timespan": [
-    1779193818000,
-    1779280218000
+    1780815854000,
+    1780902254000
   ]
 }
 ```
@@ -2790,14 +2848,14 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": [
     {
-      "value": 10,
+      "value": 0,
       "type": "number",
       "name": "Views",
       "metric": "views",
       "measurement": "count",
       "items": [
         {
-          "value": 2,
+          "value": 0,
           "type": "number",
           "name": "Unique Viewers",
           "metric": "unique_viewers",
@@ -2805,7 +2863,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 68039,
+          "value": 0,
           "type": "milliseconds",
           "name": "Playing Time (total)",
           "metric": "playing_time",
@@ -2813,7 +2871,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 1511,
+          "value": 0,
           "type": "milliseconds",
           "name": "Playing Time (median)",
           "metric": "playing_time",
@@ -2821,7 +2879,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 7559.888888888889,
+          "value": 0,
           "type": "milliseconds",
           "name": "Playing Time (average)",
           "metric": "playing_time",
@@ -2831,7 +2889,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       ]
     },
     {
-      "value": 0.9998754663003355,
+      "value": 0,
       "type": "number",
       "name": "Overall Score",
       "metric": "overall_score",
@@ -2839,14 +2897,14 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       "items": null
     },
     {
-      "value": 1,
+      "value": 0,
       "type": "number",
       "name": "Playback Success Score",
       "metric": "playback_success_score",
       "measurement": "avg",
       "items": [
         {
-          "value": 0.2,
+          "value": 0,
           "type": "percentage",
           "name": "Playback Failure Percentage",
           "metric": "playback_failure_percentage",
@@ -2872,14 +2930,14 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       ]
     },
     {
-      "value": 0.9995003296022185,
+      "value": 0,
       "type": "number",
       "name": "Startup Time Score",
       "metric": "startup_score",
       "measurement": null,
       "items": [
         {
-          "value": 3,
+          "value": 0,
           "type": "milliseconds",
           "name": "Video Startup Time (median)",
           "metric": "video_startup_time",
@@ -2887,7 +2945,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 8,
+          "value": 0,
           "type": "milliseconds",
           "name": "Video Startup Time (95th percentile)",
           "metric": "video_startup_time",
@@ -2911,7 +2969,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 122,
+          "value": 0,
           "type": "milliseconds",
           "name": "Page Load Time (median)",
           "metric": "page_load_time",
@@ -2919,7 +2977,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 425,
+          "value": 0,
           "type": "milliseconds",
           "name": "Page Load Time (95th percentile)",
           "metric": "page_load_time",
@@ -2927,7 +2985,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 128,
+          "value": 0,
           "type": "milliseconds",
           "name": "Total Startup Time (median)",
           "metric": "total_startup_time",
@@ -2935,9 +2993,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 425,
+          "value": 0,
           "type": "milliseconds",
-          "name": "Total S
+          "name": "Total Startup Time (95th percentile)",
+          "metric": "total_startup_t
 ... (truncated)
 ```
 
@@ -2948,14 +3007,14 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": [
     {
-      "value": 10,
+      "value": 0,
       "type": "number",
       "name": "Views",
       "metric": "views",
       "measurement": "count",
       "items": [
         {
-          "value": 2,
+          "value": 0,
           "type": "number",
           "name": "Unique Viewers",
           "metric": "unique_viewers",
@@ -2963,7 +3022,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 68039,
+          "value": 0,
           "type": "milliseconds",
           "name": "Playing Time (total)",
           "metric": "playing_time",
@@ -2971,7 +3030,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 1511,
+          "value": 0,
           "type": "milliseconds",
           "name": "Playing Time (median)",
           "metric": "playing_time",
@@ -2979,7 +3038,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 7559.888888888889,
+          "value": 0,
           "type": "milliseconds",
           "name": "Playing Time (average)",
           "metric": "playing_time",
@@ -2989,7 +3048,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       ]
     },
     {
-      "value": 0.9998754663003355,
+      "value": 0,
       "type": "number",
       "name": "Overall Score",
       "metric": "overall_score",
@@ -2997,14 +3056,14 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       "items": null
     },
     {
-      "value": 1,
+      "value": 0,
       "type": "number",
       "name": "Playback Success Score",
       "metric": "playback_success_score",
       "measurement": "avg",
       "items": [
         {
-          "value": 0.2,
+          "value": 0,
           "type": "percentage",
           "name": "Playback Failure Percentage",
           "metric": "playback_failure_percentage",
@@ -3030,14 +3089,14 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       ]
     },
     {
-      "value": 0.9995003296022185,
+      "value": 0,
       "type": "number",
       "name": "Startup Time Score",
       "metric": "startup_score",
       "measurement": null,
       "items": [
         {
-          "value": 3,
+          "value": 0,
           "type": "milliseconds",
           "name": "Video Startup Time (median)",
           "metric": "video_startup_time",
@@ -3045,7 +3104,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 8,
+          "value": 0,
           "type": "milliseconds",
           "name": "Video Startup Time (95th percentile)",
           "metric": "video_startup_time",
@@ -3069,7 +3128,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 122,
+          "value": 0,
           "type": "milliseconds",
           "name": "Page Load Time (median)",
           "metric": "page_load_time",
@@ -3077,7 +3136,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 425,
+          "value": 0,
           "type": "milliseconds",
           "name": "Page Load Time (95th percentile)",
           "metric": "page_load_time",
@@ -3085,7 +3144,7 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 128,
+          "value": 0,
           "type": "milliseconds",
           "name": "Total Startup Time (median)",
           "metric": "total_startup_time",
@@ -3093,9 +3152,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
           "items": null
         },
         {
-          "value": 425,
+          "value": 0,
           "type": "milliseconds",
-          "name": "Total S
+          "name": "Total Startup Time (95th percentile)",
+          "metric": "total_startup_t
 ... (truncated)
 ```
 
@@ -3129,52 +3189,12 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "errors": [
-      {
-        "percentage": 0.1,
-        "notes": "",
-        "message": "fragLoadError",
-        "lastSeen": "2026-05-20 09:55:36.02",
-        "id": "1",
-        "description": "url: https://cdn.fastpix.com/1WjqqsDiTWvy2xax6rHOX9o9QN6dyYf14g%2F%2FBM0u3MwPTQl%2BRhB3iiGOD909h15oFXq8QeY6w%2FIa%2FqVFyxLLRN2wzYFYf0en2td4NeGAT9pSZaUXubTP13tqVN9EzUGkl%2BoyF4z3TaTg495ApHSz6O%2B6AV3GAuHkub3vqUC40ZqCHR5nEMen%2FTajyXZMHHkFbFIhkFpTyPjZeAwHj6%2BFYY5bSLS8qDAv2JoOjSKMb7gFgMo88I7U6kCgy0cb9%2FnsPAhbVudl%2F1PFKLdeNSNViU%2F9yQs%3D/text/English/4.vtt?cdn=cloudflare&expires=1781862930&signature=JkuZVtkP1%2Bf0a7LEuAJyby7uJrfg%2BwoKi%2BLe1RTFHKQ%3D\nerror: Error: HTTP Error 0",
-        "count": 1,
-        "code": "networkError"
-      },
-      {
-        "percentage": 0.1,
-        "notes": "",
-        "message": "manifestLoadError",
-        "lastSeen": "2026-05-20 09:54:56.561",
-        "id": "1",
-        "description": "url: https://stream.fastpix.com/2125094c-db43-4748-90e1-18539f2ccf98.m3u8\nerror: Error: A network error (status 0) occurred while loading manifest",
-        "count": 1,
-        "code": "networkError"
-      }
-    ],
-    "topErrors": [
-      {
-        "percentage": 0.1,
-        "uniqueViewersEffectedPercentage": 0.5,
-        "notes": "",
-        "message": "manifestLoadError",
-        "lastSeen": "2026-05-20 09:54:56.561",
-        "count": 1,
-        "code": "networkError"
-      },
-      {
-        "percentage": 0.1,
-        "uniqueViewersEffectedPercentage": 0.5,
-        "notes": "",
-        "message": "fragLoadError",
-        "lastSeen": "2026-05-20 09:55:36.02",
-        "count": 1,
-        "code": "networkError"
-      }
-    ]
+    "errors": [],
+    "topErrors": []
   },
   "timespan": [
-    1779193819,
-    1779280219
+    1780815855,
+    1780902255
   ]
 }
 ```
@@ -3185,52 +3205,12 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
 {
   "success": true,
   "data": {
-    "errors": [
-      {
-        "percentage": 0.1,
-        "notes": "",
-        "message": "manifestLoadError",
-        "lastSeen": "2026-05-20 09:54:56.561",
-        "id": "1",
-        "description": "url: https://stream.fastpix.com/2125094c-db43-4748-90e1-18539f2ccf98.m3u8\nerror: Error: A network error (status 0) occurred while loading manifest",
-        "count": 1,
-        "code": "networkError"
-      },
-      {
-        "percentage": 0.1,
-        "notes": "",
-        "message": "fragLoadError",
-        "lastSeen": "2026-05-20 09:55:36.02",
-        "id": "1",
-        "description": "url: https://cdn.fastpix.com/1WjqqsDiTWvy2xax6rHOX9o9QN6dyYf14g%2F%2FBM0u3MwPTQl%2BRhB3iiGOD909h15oFXq8QeY6w%2FIa%2FqVFyxLLRN2wzYFYf0en2td4NeGAT9pSZaUXubTP13tqVN9EzUGkl%2BoyF4z3TaTg495ApHSz6O%2B6AV3GAuHkub3vqUC40ZqCHR5nEMen%2FTajyXZMHHkFbFIhkFpTyPjZeAwHj6%2BFYY5bSLS8qDAv2JoOjSKMb7gFgMo88I7U6kCgy0cb9%2FnsPAhbVudl%2F1PFKLdeNSNViU%2F9yQs%3D/text/English/4.vtt?cdn=cloudflare&expires=1781862930&signature=JkuZVtkP1%2Bf0a7LEuAJyby7uJrfg%2BwoKi%2BLe1RTFHKQ%3D\nerror: Error: HTTP Error 0",
-        "count": 1,
-        "code": "networkError"
-      }
-    ],
-    "topErrors": [
-      {
-        "percentage": 0.1,
-        "uniqueViewersEffectedPercentage": 0.5,
-        "notes": "",
-        "message": "manifestLoadError",
-        "lastSeen": "2026-05-20 09:54:56.561",
-        "count": 1,
-        "code": "networkError"
-      },
-      {
-        "percentage": 0.1,
-        "uniqueViewersEffectedPercentage": 0.5,
-        "notes": "",
-        "message": "fragLoadError",
-        "lastSeen": "2026-05-20 09:55:36.02",
-        "count": 1,
-        "code": "networkError"
-      }
-    ]
+    "errors": [],
+    "topErrors": []
   },
   "timespan": [
-    1779193819,
-    1779280219
+    1780815855,
+    1780902255
   ]
 }
 ```

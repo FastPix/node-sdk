@@ -2,25 +2,49 @@
   "success": true,
   "data": [
     {
-      "id": "a7d637c0-de36-417a-9545-f84ae20c3344",
-      "name": "Non-GET Validator Playlist",
+      "id": "86ef0d26-9573-4ba6-a785-7374af08ca03",
+      "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "nonGetValidatorPlaylist",
-      "createdAt": "2026-05-20T10:09:58.926Z",
+      "referenceId": "sdkValidatemq4v7css",
+      "createdAt": "2026-06-08T07:03:46.943Z",
       "mediaCount": 0
     },
     {
-      "id": "323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd",
-      "name": "srabanijhqdhguq",
+      "id": "e046613e-551b-4c2c-8834-2562fc3455ec",
+      "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "1234567890",
-      "createdAt": "2026-05-20T09:48:18.605Z",
+      "referenceId": "sdkValidatemq4sf90y",
+      "createdAt": "2026-06-08T05:45:56.795Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80",
+      "name": "sdk validate playlist",
+      "type": "manual",
+      "referenceId": "sdkValidatemq0uythe",
+      "createdAt": "2026-06-05T11:46:04.069Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "b2cdf506-5051-471c-8561-eb522c7d6071",
+      "name": "sdk validate playlist",
+      "type": "manual",
+      "referenceId": "sdkValidatemq0ol4zz",
+      "createdAt": "2026-06-05T08:47:28.071Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "00bda787-d7ed-40a4-9764-ab238bf672b7",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate2847",
+      "createdAt": "2026-06-04T04:46:54.134Z",
       "mediaCount": 0
     }
   ],
   "pagination": {
-    "totalRecords": 2,
+    "totalRecords": 18,
     "currentOffset": 1,
-    "offsetCount": 1
+    "offsetCount": 4
   }
 }

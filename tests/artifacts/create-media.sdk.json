@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "data": {
+    "id": "03afe4d5-8c5c-45fe-8a84-43bb1566de19",
+    "trial": false,
+    "status": "Created",
+    "createdAt": "2026-06-05T11:06:41.533Z",
+    "updatedAt": "2026-06-05T11:06:41.533Z",
+    "playbackIds": [
+      {
+        "id": "17e0851d-889f-49c1-b7c1-40f4003f651c",
+        "accessPolicy": "public",
+        "accessRestrictions": {
+          "domains": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          },
+          "userAgents": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "source": "non-get-validator"
+    },
+    "mediaQuality": "standard",
+    "sourceAccess": false,
+    "maxResolution": "720p",
+    "inputs": [
+      {
+        "type": "video",
+        "url": "https://static.fastpix.com/fp-sample-video.mp4"
+      }
+    ],
+    "optimizeAudio": false
+  }
+}

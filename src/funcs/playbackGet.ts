@@ -40,21 +40,22 @@ import { Result } from "../types/fp.js";
  * **Example:**
  * A media platform might use this endpoint to verify if a playback ID is public or private before embedding the video in a frontend player or allowing access to a restricted group.
  */
-export function playbackGet(
-  client: FastpixCore,
-  request: operations.GetPlaybackIdRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetPlaybackIdResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playbackGet(
+  client: FastpixCore,
+  request: operations.GetPlaybackIdRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetPlaybackIdResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -71,15 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetPlaybackIdResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetPlaybackIdResponse,MyError
     >,
     APICall,
   ]
@@ -170,15 +163,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetPlaybackIdResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetPlaybackIdResponse,MyError
   >(
     M.json(200, operations.GetPlaybackIdResponse$inboundSchema),
     M.fail("4XX"),

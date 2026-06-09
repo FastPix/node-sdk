@@ -11,16 +11,11 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
-/**
- * views affected by the specific errors.
- */
-export type ErrorDetailsPercentage = number | number;
-
 export type ErrorDetails = {
   /**
    * views affected by the specific errors.
    */
-  percentage?: number | number | null | undefined;
+  percentage?: number | null | undefined;
   /**
    * Information about the specific error.
    */
@@ -53,13 +48,13 @@ export type ErrorDetails = {
 
 /** @internal */
 export const ErrorDetailsPercentage$inboundSchema: z.ZodMiniType<
-  ErrorDetailsPercentage,
+  number,
   unknown
 > = smartUnion([types.number(), types.number()]);
 
 export function errorDetailsPercentageFromJSON(
   jsonString: string,
-): SafeParseResult<ErrorDetailsPercentage, SDKValidationError> {
+): SafeParseResult<number, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) => ErrorDetailsPercentage$inboundSchema.parse(JSON.parse(x)),

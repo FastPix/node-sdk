@@ -47,21 +47,23 @@ import { Result } from "../types/fp.js";
  *
  *   Related guide: <a href="https://docs.fastpix.com/page/how-to-get-top-performing-content">Get top-performing content</a>
  */
-export function viewsListTopContent(
-  client: FastpixCore,
-  request?: operations.ListByTopContentRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListByTopContentResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function viewsListTopContent(
+  client: FastpixCore,
+  request?: operations.ListByTopContentRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListByTopContentResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -78,15 +80,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListByTopContentResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListByTopContentResponse,MyError
     >,
     APICall,
   ]
@@ -175,15 +169,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListByTopContentResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListByTopContentResponse,MyError
   >(
     M.json(200, operations.ListByTopContentResponse$inboundSchema),
     M.fail("4XX"),

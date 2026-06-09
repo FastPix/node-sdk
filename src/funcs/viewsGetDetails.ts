@@ -41,21 +41,22 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/page/what-video-data-do-we-capture#/">What Video Data do we capture?</a>
  */
-export function viewsGetDetails(
-  client: FastpixCore,
-  request: operations.GetVideoViewDetailsRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetVideoViewDetailsResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function viewsGetDetails(
+  client: FastpixCore,
+  request: operations.GetVideoViewDetailsRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetVideoViewDetailsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -72,15 +73,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetVideoViewDetailsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetVideoViewDetailsResponse,MyError
     >,
     APICall,
   ]
@@ -166,15 +159,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetVideoViewDetailsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GetVideoViewDetailsResponse,MyError
   >(
     M.json(200, operations.GetVideoViewDetailsResponse$inboundSchema),
     M.fail("4XX"),

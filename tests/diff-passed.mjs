@@ -31,11 +31,18 @@ function collectPathsStrict(value, prefix = "", out = new Set()) {
 const files = readdirSync(ARTIFACTS);
 const ops = new Set();
 for (const f of files) {
-  const m = f.match(/^(.+)\.(api|sdk)\.json$/);
+  const m = /^(.+)\.(api|sdk)\.json$/.exec(f);
   if (m) ops.add(m[1]);
 }
 
-const sorted = [...ops].sort();
+// Stable string comparator matching the default lexicographic sort order.
+function cmpStr(a, b) {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+}
+
+const sorted = [...ops].sort(cmpStr);
 let clean = 0;
 let dirty = 0;
 let skipped = 0;
@@ -52,11 +59,11 @@ for (const op of sorted) {
     continue;
   }
   // Skip 4xx/error artifacts — not real schema comparisons
-  if (api && api.success === false) {
+  if (api?.success === false) {
     skipped++;
     continue;
   }
-  if (sdk && sdk.statusCode && sdk.statusCode >= 400) {
+  if (sdk?.statusCode && sdk.statusCode >= 400) {
     skipped++;
     continue;
   }
@@ -64,8 +71,8 @@ for (const op of sorted) {
   const apiPaths = collectPathsStrict(api);
   const sdkPaths = collectPathsStrict(sdk);
 
-  const missingInSDK = [...apiPaths].filter((p) => !sdkPaths.has(p)).sort();
-  const extraInSDK = [...sdkPaths].filter((p) => !apiPaths.has(p)).sort();
+  const missingInSDK = [...apiPaths].filter((p) => !sdkPaths.has(p)).sort(cmpStr);
+  const extraInSDK = [...sdkPaths].filter((p) => !apiPaths.has(p)).sort(cmpStr);
 
   if (missingInSDK.length === 0 && extraInSDK.length === 0) {
     clean++;

@@ -45,21 +45,23 @@ import { Result } from "../types/fp.js";
  *
  * **Detailed example:**  Suppose you have a signing key used for a specific version of your mobile app, and you discover that the key has been compromised due to a security breach. To mitigate the issue, you delete the key to invalidate any tokens generated using it. As soon as the key is deleted, users on the compromised version of the app can no longer make valid requests, thus preventing further exploitation.
  */
-export function signingKeysDelete(
-  client: FastpixCore,
-  request: operations.DeleteSigningKeyRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeleteSigningKeyResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function signingKeysDelete(
+  client: FastpixCore,
+  request: operations.DeleteSigningKeyRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeleteSigningKeyResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -76,15 +78,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteSigningKeyResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DeleteSigningKeyResponse,MyError
     >,
     APICall,
   ]
@@ -170,15 +164,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.DeleteSigningKeyResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.DeleteSigningKeyResponse,MyError
   >(
     M.json(200, operations.DeleteSigningKeyResponse$inboundSchema),
     M.fail("4XX"),

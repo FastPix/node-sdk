@@ -13,7 +13,7 @@ export type HookContext = {
   baseURL: string | URL;
   operationID: string;
   oAuth2Scopes: string[] | null;
-  securitySource?: any | (() => Promise<any>);
+  securitySource?: any;
   retryConfig: RetryConfig;
   resolvedSecurity: SecurityState | null;
   options: SDKOptions;
@@ -21,10 +21,10 @@ export type HookContext = {
 
 export type Awaitable<T> = T | Promise<T>;
 
-export type BeforeCreateRequestContext = HookContext & {};
-export type BeforeRequestContext = HookContext & {};
-export type AfterSuccessContext = HookContext & {};
-export type AfterErrorContext = HookContext & {};
+export interface BeforeCreateRequestContext extends HookContext {}
+export interface BeforeRequestContext extends HookContext {}
+export interface AfterSuccessContext extends HookContext {}
+export interface AfterErrorContext extends HookContext {}
 
 /**
  * SDKInitHook is called when the SDK is initializing. The

@@ -1,0 +1,5 @@
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'generateChapters')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'generateChapters')\n    at update-media-chapters (/Users/sumasree/fp-nodejs/node-sdk/tests/validate-non-get-endpoints.ts:139:36)\n    at main (/Users/sumasree/fp-nodejs/node-sdk/tests/validate-non-get-endpoints.ts:439:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+}

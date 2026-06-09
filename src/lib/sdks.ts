@@ -77,8 +77,89 @@ const webWorkerLike = typeof gt === "object"
   && "importScripts" in gt
   && typeof gt["importScripts"] === "function";
 const isBrowserLike = webWorkerLike
-  || (typeof navigator !== "undefined" && "serviceWorker" in navigator)
-  || (typeof window === "object" && typeof window.document !== "undefined");
+  || ("navigator" in globalThis && "serviceWorker" in globalThis.navigator)
+  || ("window" in globalThis && "document" in globalThis.window);
+
+/**
+ * Reads the legacy `fetchOptions` field while it remains supported. The local
+ * type intentionally omits the `@deprecated` tag so internal reads don't surface
+ * deprecation warnings; consumers are still steered away from it via the public
+ * {@link RequestOptions} type.
+ */
+function getLegacyFetchOptions(
+  options: RequestOptions | undefined,
+): Omit<RequestInit, "method" | "body"> | undefined {
+  return (
+    options as
+      | { fetchOptions?: Omit<RequestInit, "method" | "body"> }
+      | undefined
+  )?.fetchOptions;
+}
+
+function buildQueryString(
+  query: string | undefined,
+  security: SecurityState | null,
+): string {
+  let finalQuery = query || "";
+
+  const secQuery: string[] = [];
+  for (const [k, v] of Object.entries(security?.queryParams || {})) {
+    const q = encodeForm(k, v, { charEncoding: "percent" });
+    if (q !== undefined) {
+      secQuery.push(q);
+    }
+  }
+  if (secQuery.length) {
+    finalQuery += `&${secQuery.join("&")}`;
+  }
+
+  return finalQuery;
+}
+
+function buildRequestHeaders(
+  conf: RequestConfig,
+  options: RequestOptions | undefined,
+  security: SecurityState | null,
+): Headers {
+  const headers = new Headers(conf.headers);
+
+  const username = security?.basic.username;
+  const password = security?.basic.password;
+  if (username != null || password != null) {
+    const encoded = stringToBase64([username || "", password || ""].join(":"));
+    headers.set("Authorization", `Basic ${encoded}`);
+  }
+
+  const securityHeaders = new Headers(security?.headers || {});
+  for (const [k, v] of securityHeaders) {
+    headers.set(k, v);
+  }
+
+  let cookie = headers.get("cookie") || "";
+  for (const [k, v] of Object.entries(security?.cookies || {})) {
+    cookie += `; ${k}=${v}`;
+  }
+  cookie = cookie.startsWith("; ") ? cookie.slice(2) : cookie;
+  headers.set("cookie", cookie);
+
+  const userHeaders = new Headers(
+    options?.headers ?? getLegacyFetchOptions(options)?.headers,
+  );
+  for (const [k, v] of userHeaders) {
+    headers.set(k, v);
+  }
+
+  // Only set user agent header in non-browser-like environments since CORS
+  // policy disallows setting it in browsers e.g. Chrome throws an error.
+  if (!isBrowserLike) {
+    headers.set(
+      conf.uaHeader ?? "user-agent",
+      conf.userAgent ?? SDK_METADATA.userAgent,
+    );
+  }
+
+  return headers;
+}
 
 export class ClientSDK {
   readonly #httpClient: HTTPClient;
@@ -105,7 +186,14 @@ export class ClientSDK {
 
     const url = serverURLFromOptions(options);
     if (url) {
-      url.pathname = url.pathname.replace(/\/+$/, "") + "/";
+      // Strip trailing slashes with a linear scan (avoids the super-linear
+      // backtracking of a `/\/+$/` regex), then ensure exactly one trailing "/".
+      const pathname = url.pathname;
+      let end = pathname.length;
+      while (end > 0 && pathname.codePointAt(end - 1) === 47 /* "/" */) {
+        end--;
+      }
+      url.pathname = pathname.slice(0, end) + "/";
     }
     this._baseURL = url;
     this.#httpClient = options.httpClient || defaultHttpClient;
@@ -123,7 +211,7 @@ export class ClientSDK {
     conf: RequestConfig,
     options?: RequestOptions,
   ): Result<Request, InvalidRequestError | UnexpectedClientError> {
-    const { method, path, query, headers: opHeaders, security } = conf;
+    const { method, path, query, security } = conf;
 
     const base = conf.baseURL ?? this._baseURL;
     if (!base) {
@@ -137,65 +225,16 @@ export class ClientSDK {
       reqURL.pathname += inputURL.pathname.replace(/^\/+/, "");
     }
 
-    let finalQuery = query || "";
-
-    const secQuery: string[] = [];
-    for (const [k, v] of Object.entries(security?.queryParams || {})) {
-      const q = encodeForm(k, v, { charEncoding: "percent" });
-      if (typeof q !== "undefined") {
-        secQuery.push(q);
-      }
-    }
-    if (secQuery.length) {
-      finalQuery += `&${secQuery.join("&")}`;
-    }
-
+    const finalQuery = buildQueryString(query, security ?? null);
     if (finalQuery) {
       const q = finalQuery.startsWith("&") ? finalQuery.slice(1) : finalQuery;
       reqURL.search = `?${q}`;
     }
 
-    const headers = new Headers(opHeaders);
-
-    const username = security?.basic.username;
-    const password = security?.basic.password;
-    if (username != null || password != null) {
-      const encoded = stringToBase64(
-        [username || "", password || ""].join(":"),
-      );
-      headers.set("Authorization", `Basic ${encoded}`);
-    }
-
-    const securityHeaders = new Headers(security?.headers || {});
-    for (const [k, v] of securityHeaders) {
-      headers.set(k, v);
-    }
-
-    let cookie = headers.get("cookie") || "";
-    for (const [k, v] of Object.entries(security?.cookies || {})) {
-      cookie += `; ${k}=${v}`;
-    }
-    cookie = cookie.startsWith("; ") ? cookie.slice(2) : cookie;
-    headers.set("cookie", cookie);
-
-    const userHeaders = new Headers(
-      options?.headers ?? options?.fetchOptions?.headers,
-    );
-    for (const [k, v] of userHeaders) {
-      headers.set(k, v);
-    }
-
-    // Only set user agent header in non-browser-like environments since CORS
-    // policy disallows setting it in browsers e.g. Chrome throws an error.
-    if (!isBrowserLike) {
-      headers.set(
-        conf.uaHeader ?? "user-agent",
-        conf.userAgent ?? SDK_METADATA.userAgent,
-      );
-    }
+    const headers = buildRequestHeaders(conf, options, security ?? null);
 
     const fetchOptions: Omit<RequestInit, "method" | "body"> = {
-      ...options?.fetchOptions,
+      ...getLegacyFetchOptions(options),
       ...options,
     };
     if (!fetchOptions?.signal && conf.timeoutMs && conf.timeoutMs > 0) {
@@ -309,9 +348,12 @@ export class ClientSDK {
   }
 }
 
-const jsonLikeContentTypeRE = /(application|text)\/.*?\+*json.*/;
+// Single greedy `.*` before the literal/word avoids the super-linear
+// backtracking of the previous `.*?\+*…` form while matching the same inputs
+// (these are only used with `.test()`, so the trailing `.*` was redundant).
+const jsonLikeContentTypeRE = /(application|text)\/.*json/;
 const jsonlLikeContentTypeRE =
-  /(application|text)\/(.*?\+*\bjsonl\b.*|.*?\+*\bx-ndjson\b.*)/;
+  /(application|text)\/(.*\bjsonl\b|.*\bx-ndjson\b)/;
 async function logRequest(logger: Logger | undefined, req: Request) {
   if (!logger) {
     return;

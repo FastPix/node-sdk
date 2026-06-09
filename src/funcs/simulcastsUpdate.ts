@@ -38,21 +38,23 @@ import { Result } from "../types/fp.js";
  * #### Example
  * When a `PATCH` request is made to this endpoint, the API updates the status of the simulcast. This can be useful for pausing or resuming a simulcast on a particular platform without stopping the parent live stream.
  */
-export function simulcastsUpdate(
-  client: FastpixCore,
-  request: operations.UpdateSpecificSimulcastOfStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateSpecificSimulcastOfStreamResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function simulcastsUpdate(
+  client: FastpixCore,
+  request: operations.UpdateSpecificSimulcastOfStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateSpecificSimulcastOfStreamResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -69,15 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateSpecificSimulcastOfStreamResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateSpecificSimulcastOfStreamResponse,MyError
     >,
     APICall,
   ]
@@ -173,15 +167,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdateSpecificSimulcastOfStreamResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdateSpecificSimulcastOfStreamResponse,MyError
   >(
     M.json(
       200,

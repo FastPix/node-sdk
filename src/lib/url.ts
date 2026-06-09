@@ -12,7 +12,7 @@ export function pathToFunc(
   pathPattern: string,
   options?: { charEncoding?: "percent" | "none" },
 ): (params?: Params) => string {
-  const paramRE = /\{([a-zA-Z0-9_][a-zA-Z0-9_-]*?)\}/g;
+  const paramRE = /\{(\w[\w-]*?)\}/g;
 
   return function buildURLPath(params: Record<string, unknown> = {}): string {
     return pathPattern.replace(paramRE, function (_, placeholder) {
@@ -22,7 +22,7 @@ export function pathToFunc(
 
       const value = params[placeholder];
       if (typeof value !== "string" && typeof value !== "number") {
-        throw new Error(
+        throw new TypeError(
           `Parameter '${placeholder}' must be a string or number`,
         );
       }

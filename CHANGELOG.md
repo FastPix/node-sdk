@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.7]
+
+### Changed
+
+- **SDK version bump: `2.0.6` → `2.0.7`.**
+  A maintenance release that updates the SDK's internal version identifiers.
+  It contains no functional, API, or behavioral changes and is fully
+  backward compatible with `2.0.6`.
+
+  Updated identifiers:
+  - `sdkVersion` constant — now reports `2.0.7` (the internal identifiers were
+    previously lagging at `2.0.5`; they are now aligned with the package version).
+  - `User-Agent` header — outbound requests now identify as
+    `fastpix-sdk/typescript 2.0.7`.
+
+### Compatibility
+
+- No changes to public types, method signatures, request/response models,
+  default server URLs, hooks, or retry logic.
+- No action required for existing integrations — update the dependency and
+  rebuild.
+
 ## [2.0.6]
 
 ### ⚠️ Important — FastPix is migrating from `.io` to `.com`

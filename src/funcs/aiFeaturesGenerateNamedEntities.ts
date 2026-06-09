@@ -49,21 +49,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/generate-named-entities">Named entities</a>
  */
-export function aiFeaturesGenerateNamedEntities(
-  client: FastpixCore,
-  request: operations.UpdateMediaNamedEntitiesRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateMediaNamedEntitiesResponse,
-    | FastpixError
+
+type MyError= | FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function aiFeaturesGenerateNamedEntities(
+  client: FastpixCore,
+  request: operations.UpdateMediaNamedEntitiesRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateMediaNamedEntitiesResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -80,15 +82,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateMediaNamedEntitiesResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateMediaNamedEntitiesResponse,MyError
     >,
     APICall,
   ]

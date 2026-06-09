@@ -21,6 +21,9 @@ function walk(dir, out = []) {
 
 const mdFiles = walk(ROOT);
 const urlToFiles = new Map(); // url -> Set(files)
+// ReDoS-safe: a single negated character class with `+` and no following token
+// cannot backtrack. S5852 is a Security Hotspot and cannot be suppressed via
+// NOSONAR — review it as "Safe" in the SonarCloud Security Hotspots tab.
 const urlRe = /https?:\/\/[^\s"'<>()[\]`]+/g;
 
 for (const f of mdFiles) {
@@ -32,7 +35,12 @@ for (const f of mdFiles) {
   }
 }
 
-const urls = [...urlToFiles.keys()].sort();
+const byCodeUnit = (a, b) => {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+};
+const urls = [...urlToFiles.keys()].sort(byCodeUnit);
 console.log(`Checking ${urls.length} unique URLs across ${mdFiles.length} markdown files...\n`);
 
 async function checkUrl(url) {

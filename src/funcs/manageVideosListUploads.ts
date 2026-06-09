@@ -46,21 +46,23 @@ import { Result } from "../types/fp.js";
  *
  * A video management team at a media organization regularly uploads content but often forgets to delete or use unused uploads. These unused uploads have signed URLs that expire after 24 hours and need to be managed efficiently. By using this API, the team can retrieve metadata for all unused uploads, identify expired signed URLs, and decide whether to regenerate URLs, reuse the uploads, or delete them.
  */
-export function manageVideosListUploads(
-  client: FastpixCore,
-  request?: operations.ListUploadsRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListUploadsResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosListUploads(
+  client: FastpixCore,
+  request?: operations.ListUploadsRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListUploadsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -77,15 +79,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListUploadsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListUploadsResponse,MyError
     >,
     APICall,
   ]
@@ -171,15 +165,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListUploadsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListUploadsResponse,MyError
   >(
     M.json(200, operations.ListUploadsResponse$inboundSchema),
     M.fail("4XX"),

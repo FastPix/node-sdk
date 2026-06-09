@@ -4,12 +4,14 @@
  * Your changes will be overwritten during the next generation.
  */
 
+import { PatchResponseData } from "../src/models/patchresponsedata.js";
+
 let value: PatchResponseData = {
   trial: false,
   status: "{\"possibleValue\":\"idle, preparing, active, disabled\",\"example\":\"idle\"}",
   maxResolution: "{\"possibleValue\":\"1080p, 720p, 480p\",\"example\":\"1080p\",\"default\":\"1080p\"}",
   maxDuration: 28800,
-  reconnectWindow: [object Object],
+  reconnectWindow: 60,
   enableRecording: false,
   enableDvrMode: true,
   mediaPolicy: "{\"possibleValue\":\"public, private\",\"example\":\"public\",\"default\":\"public\"}",

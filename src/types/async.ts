@@ -13,58 +13,50 @@ export type APICall =
   | {
       status: "request-error";
       request: Request;
-      response?: undefined;
+      response?: never;
     }
   | {
       status: "invalid";
-      request?: undefined;
-      response?: undefined;
+      request?: never;
+      response?: never;
     };
 
-export class APIPromise<T> implements Promise<T> {
-  readonly #promise: Promise<[T, APICall]>;
-  readonly #unwrapped: Promise<T>;
+export class APIPromise<T> extends Promise<T> {
+  readonly #inspect: Promise<[T, APICall]>;
 
-  readonly [Symbol.toStringTag] = "APIPromise";
+  override readonly [Symbol.toStringTag] = "APIPromise";
 
-  constructor(p: [T, APICall] | Promise<[T, APICall]>) {
-    this.#promise = p instanceof Promise ? p : Promise.resolve(p);
-    this.#unwrapped =
-      p instanceof Promise
-        ? this.#promise.then(([value]) => value)
-        : Promise.resolve(p[0]);
+  // Derived promises (from then/catch/finally) must be plain Promises, not this
+  // subclass, otherwise the runtime would re-invoke our constructor with an
+  // executor function instead of the expected tuple/promise input.
+  static override get [Symbol.species](): PromiseConstructor {
+    return Promise;
   }
 
-  then<TResult1 = T, TResult2 = never>(
-    onfulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | null
-      | undefined,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | null
-      | undefined,
-  ): Promise<TResult1 | TResult2> {
-    return this.#promise.then(
-      onfulfilled ? ([value]) => onfulfilled(value) : void 0,
-      onrejected,
-    );
+  // A Promise subclass must set up resolution in its constructor via
+  // super(executor); the deferred .then() lives inside the executor closure and
+  // does not run during construction, so there is no real async work here.
+  constructor(p: [T, APICall] | Promise<[T, APICall]>) { // NOSONAR(typescript:S7059) - required Promise subclass wiring
+    const inspect = APIPromise.#asInspect(p);
+    super(APIPromise.#executor(inspect));
+    this.#inspect = inspect;
   }
 
-  catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | null
-      | undefined,
-  ): Promise<T | TResult> {
-    return this.#unwrapped.catch(onrejected);
+  static #asInspect<T>(
+    p: [T, APICall] | Promise<[T, APICall]>,
+  ): Promise<[T, APICall]> {
+    return p instanceof Promise ? p : Promise.resolve(p);
   }
 
-  finally(onfinally?: (() => void) | null | undefined): Promise<T> {
-    return this.#unwrapped.finally(onfinally);
+  static #executor<T>(
+    inspect: Promise<[T, APICall]>,
+  ): (resolve: (value: T) => void, reject: (reason?: unknown) => void) => void {
+    return (resolve, reject) => {
+      inspect.then(([value]) => resolve(value), reject);
+    };
   }
 
   $inspect(): Promise<[T, APICall]> {
-    return this.#promise;
+    return this.#inspect;
   }
 }

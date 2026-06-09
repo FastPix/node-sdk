@@ -107,7 +107,7 @@ type SecurityInputOAuth2PasswordCredentials = {
 
 type SecurityInputCustom = {
   type: "http:custom";
-  value: any | null | undefined;
+  value: any;
   fieldName?: string;
 };
 
@@ -152,7 +152,7 @@ export function resolveSecurity(
       } else if (typeof o.value === "string") {
         return !!o.value;
       } else {
-        throw new Error(
+        throw new TypeError(
           `Unrecognized security type: ${o.type} (value type: ${typeof o
             .value})`,
         );

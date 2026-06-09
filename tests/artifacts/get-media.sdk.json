@@ -1,19 +1,36 @@
 {
   "success": true,
   "data": {
-    "thumbnail": "https://images.fastpix.com/fad6fa6b-c7bc-42aa-85f7-3105d71b5f98/thumbnail.png",
-    "id": "66b74bdb-c868-4fc8-bc16-ad8e2dfcbc36",
+    "thumbnail": "https://images.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/thumbnail.png",
+    "id": "836f8e89-b756-4d8a-9aaf-0ed949e43ec1",
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
-    "metadata": {},
-    "mediaQuality": "pro",
-    "title": "720p_3min4sec_h264_",
+    "metadata": {
+      "source": "sdk-validate"
+    },
+    "mediaQuality": "standard",
     "maxResolution": "720p",
-    "sourceResolution": "720",
+    "sourceResolution": "1080",
     "status": "Ready",
     "sourceAccess": false,
     "playbackIds": [
       {
-        "id": "fad6fa6b-c7bc-42aa-85f7-3105d71b5f98",
+        "id": "82af62f9-64e8-4fe6-b72b-1ccc42d9874e",
+        "accessPolicy": "public",
+        "accessRestrictions": {
+          "domains": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          },
+          "userAgents": {
+            "defaultPolicy": "allow",
+            "allow": [],
+            "deny": []
+          }
+        }
+      },
+      {
+        "id": "b1808523-e3c7-493d-88a1-a2d24631d78c",
         "accessPolicy": "public",
         "accessRestrictions": {
           "domains": {
@@ -31,27 +48,34 @@
     ],
     "tracks": [
       {
-        "id": "d1e3ae30-f6ef-440d-8714-3a63bc89a84c",
+        "id": "0d7cf616-8f43-4372-9d7d-cef1b1cf0c58",
+        "type": "video",
+        "width": 1920,
+        "height": 1080,
+        "frameRate": "60.000",
+        "status": "available"
+      },
+      {
+        "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
         "type": "audio",
         "status": "available",
         "languageName": "default",
         "languageCode": "und"
       },
       {
-        "id": "d521c8f0-73df-434c-99bf-e7ba6e537b94",
-        "type": "video",
-        "width": 1280,
-        "height": 720,
-        "frameRate": "24.000",
-        "status": "available"
+        "id": "d0a11388-defb-41d6-8275-1d29964867d9",
+        "type": "audio",
+        "status": "available",
+        "languageName": "Italian",
+        "languageCode": "it"
       }
     ],
     "generatedSubtitles": [],
     "isAudioOnly": false,
     "subtitleAvailable": false,
-    "duration": "00:03:03",
+    "duration": "00:00:10",
     "aspectRatio": "16:9",
-    "createdAt": "2026-05-20T09:06:43.064Z",
-    "updatedAt": "2026-05-20T09:06:49.921Z"
+    "createdAt": "2026-06-05T11:46:07.488Z",
+    "updatedAt": "2026-06-05T11:46:18.149Z"
   }
 }

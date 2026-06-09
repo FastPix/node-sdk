@@ -129,7 +129,7 @@ export function compactMap<T>(
   const out: Record<string, T> = {};
 
   for (const [k, v] of Object.entries(values)) {
-    if (typeof v !== "undefined") {
+    if (v !== undefined) {
       out[k] = v;
     }
   }

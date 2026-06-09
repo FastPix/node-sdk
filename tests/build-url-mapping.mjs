@@ -67,10 +67,9 @@ for (const file of mdFiles) {
   for (const oldUrl of sortedKeys) {
     const newUrl = urlMap.get(oldUrl);
     if (content.includes(oldUrl)) {
-      const count = (
-        content.match(new RegExp(oldUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g")) || []
-      ).length;
-      content = content.split(oldUrl).join(newUrl);
+      const parts = content.split(oldUrl);
+      const count = parts.length - 1;
+      content = parts.join(newUrl);
       totalReplacements += count;
       fileCount += count;
       changed = true;
@@ -97,5 +96,10 @@ for (const file of mdFiles) {
 }
 if (allOldUrlsInMd.size) {
   console.log(`\nUnmapped old docs.fastpix URLs still in markdown:`);
-  for (const u of [...allOldUrlsInMd].sort()) console.log(`  ${u}`);
+  const byCodeUnit = (a, b) => {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  };
+  for (const u of [...allOldUrlsInMd].sort(byCodeUnit)) console.log(`  ${u}`);
 }

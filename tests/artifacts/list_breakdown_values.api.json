@@ -3,22 +3,14 @@
   "metadata": {
     "aggregation": "view_end"
   },
-  "data": [
-    {
-      "views": 10,
-      "value": 0.7999003730402684,
-      "totalWatchTime": 69200,
-      "totalPlayingTime": 32875,
-      "field": "Chrome"
-    }
-  ],
+  "data": [],
   "pagination": {
-    "totalRecords": 1,
+    "totalRecords": 0,
     "currentOffset": 1,
-    "offsetCount": 1
+    "offsetCount": 0
   },
   "timespan": [
-    1779193816,
-    1779280216
+    1780815852,
+    1780902252
   ]
 }

@@ -43,21 +43,23 @@ import { Result } from "../types/fp.js";
  *
  * Your platform offers limited-time access to premium content. When the subscription expires, you can revoke access to the content by deleting the associated playback ID, preventing users from streaming the video further.
  */
-export function playbackDelete(
-  client: FastpixCore,
-  request: operations.DeleteMediaPlaybackIdRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeleteMediaPlaybackIdResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playbackDelete(
+  client: FastpixCore,
+  request: operations.DeleteMediaPlaybackIdRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeleteMediaPlaybackIdResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -74,15 +76,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteMediaPlaybackIdResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DeleteMediaPlaybackIdResponse,MyError
     >,
     APICall,
   ]
@@ -173,15 +167,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.DeleteMediaPlaybackIdResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.DeleteMediaPlaybackIdResponse,MyError
   >(
     M.json(200, operations.DeleteMediaPlaybackIdResponse$inboundSchema),
     M.fail("4XX"),

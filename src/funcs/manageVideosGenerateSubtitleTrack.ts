@@ -49,21 +49,22 @@ import { Result } from "../types/fp.js";
  *
  * </br> Related guide: <a href="https://docs.fastpix.com/docs/add-auto-generated-subtitles-to-videos">Add auto-generated subtitles</a>
  */
-export function manageVideosGenerateSubtitleTrack(
-  client: FastpixCore,
-  request: operations.GenerateSubtitleTrackRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GenerateSubtitleTrackResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosGenerateSubtitleTrack(
+  client: FastpixCore,
+  request: operations.GenerateSubtitleTrackRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GenerateSubtitleTrackResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -80,15 +81,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GenerateSubtitleTrackResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GenerateSubtitleTrackResponse,MyError
     >,
     APICall,
   ]
@@ -181,15 +174,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GenerateSubtitleTrackResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.GenerateSubtitleTrackResponse,MyError
   >(
     M.json(200, operations.GenerateSubtitleTrackResponse$inboundSchema),
     M.fail("4XX"),

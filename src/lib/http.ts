@@ -43,13 +43,13 @@ export type RequestErrorHook = (err: unknown, req: Request) => Awaitable<void>;
 export type ResponseHook = (res: Response, req: Request) => Awaitable<void>;
 
 export class HTTPClient {
-  private fetcher: Fetcher;
+  private readonly fetcher: Fetcher;
   private requestHooks: BeforeRequestHook[] = [];
   private requestErrorHooks: RequestErrorHook[] = [];
   private responseHooks: ResponseHook[] = [];
 
-  constructor(private options: HTTPClientOptions = {}) {
-    this.fetcher = options.fetcher || DEFAULT_FETCHER;
+  constructor(private readonly options: HTTPClientOptions = {}) {
+    this.fetcher = options.fetcher ?? DEFAULT_FETCHER;
   }
 
   async request(request: Request): Promise<Response> {
@@ -135,7 +135,7 @@ export class HTTPClient {
       throw new Error(`Invalid hook type: ${args[0]}`);
     }
 
-    const index = target.findIndex((v) => v === args[1]);
+    const index = target.indexOf(args[1]);
     if (index >= 0) {
       target.splice(index, 1);
     }
@@ -156,8 +156,12 @@ export class HTTPClient {
 export type StatusCodePredicate = number | string | (number | string)[];
 
 // A semicolon surrounded by optional whitespace characters is used to separate
-// segments in a media type string.
-const mediaParamSeparator = /\s*;\s*/g;
+// segments in a media type string. Splitting on the literal `;` and trimming
+// each segment avoids the super-linear backtracking of a `/\s*;\s*/` regex while
+// producing identical results for the (already trimmed) inputs used below.
+function splitMediaTypeSegments(value: string): string[] {
+  return value.split(";").map((segment) => segment.trim());
+}
 
 export function matchContentType(response: Response, pattern: string): boolean {
   // `*` is a special case which means anything is acceptable.
@@ -169,14 +173,14 @@ export function matchContentType(response: Response, pattern: string): boolean {
     response.headers.get("content-type")?.trim() || "application/octet-stream";
   contentType = contentType.toLowerCase();
 
-  const wantParts = pattern.toLowerCase().trim().split(mediaParamSeparator);
+  const wantParts = splitMediaTypeSegments(pattern.toLowerCase().trim());
   const [wantType = "", ...wantParams] = wantParts;
 
   if (wantType.split("/").length !== 2) {
     return false;
   }
 
-  const gotParts = contentType.split(mediaParamSeparator);
+  const gotParts = splitMediaTypeSegments(contentType);
   const [gotType = "", ...gotParams] = gotParts;
 
   const [type = "", subtype = ""] = gotType.split("/");
@@ -207,7 +211,7 @@ export function matchContentType(response: Response, pattern: string): boolean {
   return true;
 }
 
-const codeRangeRE = new RegExp("^[0-9]xx$", "i");
+const codeRangeRE = /^\dxx$/i;
 
 export function matchStatusCode(
   response: Response,

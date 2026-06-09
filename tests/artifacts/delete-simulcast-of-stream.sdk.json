@@ -1,0 +1,26 @@
+{
+  "name": "FastpixDefaultError",
+  "message": "API error occurred: Status 404 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":404,\"message\":\"stream not found\",\"description\":\"The requested resource (eg: streamId) doesn't exist in the workspace\"}}",
+  "stack": "FastpixDefaultError: API error occurred: Status 404 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":404,\"message\":\"stream not found\",\"description\":\"The requested resource (eg: streamId) doesn't exist in the workspace\"}}\n    at matchFunc (/Users/sumasree/fp-nodejs/node-sdk/src/lib/matchers.ts:304:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async $do (/Users/sumasree/fp-nodejs/node-sdk/src/funcs/simulcastStreamsDelete.ts:164:20)",
+  "statusCode": 404,
+  "contentType": "application/json;charset=UTF-8",
+  "body": "{\"success\":false,\"error\":{\"code\":404,\"message\":\"stream not found\",\"description\":\"The requested resource (eg: streamId) doesn't exist in the workspace\"}}",
+  "bodyJson": {
+    "success": false,
+    "error": {
+      "code": 404,
+      "message": "stream not found",
+      "description": "The requested resource (eg: streamId) doesn't exist in the workspace"
+    }
+  },
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "a06eb4890f745ef9-HYD",
+    "content-encoding": "gzip",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Fri, 05 Jun 2026 11:05:58 GMT",
+    "server": "cloudflare"
+  },
+  "url": "https://api.fastpix.com/v1/live/streams/04f2ff997551bfeb99db3e099e8e85c8/simulcast/c0da2202b40efcc3dd25718c40aba9c8"
+}

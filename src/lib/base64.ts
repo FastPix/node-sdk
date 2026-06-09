@@ -11,7 +11,7 @@ export function bytesToBase64(u8arr: Uint8Array): string {
 }
 
 export function bytesFromBase64(encoded: string): Uint8Array {
-  return Uint8Array.from(atob(encoded), (c) => c.charCodeAt(0));
+  return Uint8Array.from(atob(encoded), (c) => c.codePointAt(0) ?? 0);
 }
 
 export function stringToBytes(str: string): Uint8Array {

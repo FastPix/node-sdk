@@ -40,21 +40,23 @@ import { Result } from "../types/fp.js";
  * **Use case:**
  * Useful for validating and managing playback permissions programmatically, reviewing restriction settings, or powering an access control dashboard.
  */
-export function playbackListIds(
-  client: FastpixCore,
-  request: operations.ListPlaybackIdsRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListPlaybackIdsResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playbackListIds(
+  client: FastpixCore,
+  request: operations.ListPlaybackIdsRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListPlaybackIdsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -71,15 +73,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListPlaybackIdsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListPlaybackIdsResponse,MyError
     >,
     APICall,
   ]
@@ -164,15 +158,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListPlaybackIdsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListPlaybackIdsResponse,MyError
   >(
     M.json(200, operations.ListPlaybackIdsResponse$inboundSchema),
     M.fail("4XX"),

@@ -42,21 +42,22 @@ import { Result } from "../types/fp.js";
  * **Example:**
  * A developer may configure a playback ID to deny access from known scraping user-agents while allowing all others by default.
  */
-export function playbackUpdateUserAgentRestrictions(
-  client: FastpixCore,
-  request: operations.UpdateUserAgentRestrictionsRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateUserAgentRestrictionsResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playbackUpdateUserAgentRestrictions(
+  client: FastpixCore,
+  request: operations.UpdateUserAgentRestrictionsRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateUserAgentRestrictionsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -73,15 +74,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateUserAgentRestrictionsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateUserAgentRestrictionsResponse,MyError
     >,
     APICall,
   ]
@@ -177,15 +170,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdateUserAgentRestrictionsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdateUserAgentRestrictionsResponse,MyError
   >(
     M.json(200, operations.UpdateUserAgentRestrictionsResponse$inboundSchema),
     M.fail("4XX"),

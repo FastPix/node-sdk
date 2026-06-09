@@ -54,7 +54,7 @@ export function number(): z.ZodMiniType<number> {
       z.string(),
       z.transform((x, ctx) => {
         const num = Number(x);
-        if (isNaN(num)) {
+        if (Number.isNaN(num)) {
           ctx.issues.push({
             input: x,
             code: "invalid_type",
@@ -79,7 +79,7 @@ export function bigint(): z.ZodMiniType<bigint> {
       z.transform((x, ctx) => {
         try {
           return BigInt(x);
-        } catch (error) {
+        } catch {
           ctx.issues.push({
             input: x,
             code: "invalid_type",
@@ -107,7 +107,7 @@ export function date(): z.ZodMiniType<Date> {
       z.number(),
       z.transform((x, ctx) => {
         const date = new Date(x);
-        if (isNaN(date.getTime())) {
+        if (Number.isNaN(date.getTime())) {
           ctx.issues.push({
             input: x,
             code: "invalid_type",
@@ -129,7 +129,15 @@ export function literal<T extends string | number | boolean>(
 }
 
 export function literalBigInt<T extends bigint>(value: T): z.ZodMiniType<T> {
-  return z.pipe(z.literal(String(value)), z.transform((x) => BigInt(x))) as any;
+  return z.pipe(
+    z.literal(String(value)),
+    // The cast can't be dropped: `z.transform(BigInt)` fails to type-check, and an
+    // arrow wrapper `(v) => BigInt(v)` only trips a different rule. NOSONAR must be
+    // on this line (the one S4325 is reported on) to take effect.
+    z.transform(BigInt as (value: string) => bigint), // NOSONAR(typescript:S4325)
+    // `as any` required: `T` is a `bigint` subtype the pipe's inferred output
+    // (`bigint`) is not assignable to, so the assertion cannot be removed.
+  ) as any;
 }
 
 export function optional<T extends z.ZodMiniType>(t: T) {

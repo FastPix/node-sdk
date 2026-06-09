@@ -38,21 +38,22 @@ import { Result } from "../types/fp.js";
  * #### Example
  * A broadcaster may need to stop simulcasting to one platform while keeping the stream active on others. For example, a tech company is simulcasting a product launch across multiple platforms. Midway through the event, they decide to stop the simulcast on Facebook due to performance issues but continue streaming on YouTube. They use this API to delete the Facebook simulcast target.
  */
-export function simulcastStreamsDelete(
-  client: FastpixCore,
-  request: operations.DeleteSimulcastOfStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeleteSimulcastOfStreamResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function simulcastStreamsDelete(
+  client: FastpixCore,
+  request: operations.DeleteSimulcastOfStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeleteSimulcastOfStreamResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -69,15 +70,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteSimulcastOfStreamResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DeleteSimulcastOfStreamResponse,MyError
     >,
     APICall,
   ]
@@ -169,15 +162,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.DeleteSimulcastOfStreamResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.DeleteSimulcastOfStreamResponse,MyError
   >(
     M.json(200, operations.DeleteSimulcastOfStreamResponse$inboundSchema),
     M.fail("4XX"),

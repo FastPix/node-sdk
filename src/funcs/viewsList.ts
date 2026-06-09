@@ -55,21 +55,22 @@ import { Result } from "../types/fp.js";
  *
  *   Related guide: <a href="https://docs.fastpix.com/docs/audience-metrics">Audience metrics</a>, <a href="https://docs.fastpix.com/docs/understand-dashboard-ui#1-views-dashboard">Views dashboard</a>
  */
-export function viewsList(
-  client: FastpixCore,
-  request?: operations.ListVideoViewsRequest | undefined,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListVideoViewsResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function viewsList(
+  client: FastpixCore,
+  request?: operations.ListVideoViewsRequest | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListVideoViewsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -86,15 +87,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListVideoViewsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListVideoViewsResponse,MyError
     >,
     APICall,
   ]
@@ -188,15 +181,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListVideoViewsResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListVideoViewsResponse,MyError
   >(
     M.json(200, operations.ListVideoViewsResponse$inboundSchema),
     M.fail("4XX"),

@@ -46,21 +46,22 @@ import { Result } from "../types/fp.js";
  * #### Example
  * If a user uploads a video and later needs to change the title, add a new description, or update tags, you can use this endpoint to update the media metadata without re-uploading the entire video.
  */
-export function manageVideosUpdate(
-  client: FastpixCore,
-  request: operations.UpdatedMediaRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdatedMediaResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageVideosUpdate(
+  client: FastpixCore,
+  request: operations.UpdatedMediaRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdatedMediaResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -77,15 +78,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdatedMediaResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdatedMediaResponse,MyError
     >,
     APICall,
   ]
@@ -171,15 +164,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.UpdatedMediaResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.UpdatedMediaResponse,MyError
   >(
     M.json(200, operations.UpdatedMediaResponse$inboundSchema),
     M.fail("4XX"),

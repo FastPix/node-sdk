@@ -39,21 +39,22 @@ import { Result } from "../types/fp.js";
  * #### Example
  * An e-learning platform updates the playlist titled "Beginner Python Series" to rename it as "Python Basics" and add a more detailed description. The updated metadata is reflected when retrieving the playlist, helping users better understand the playlist content.
  */
-export function playlistUpdate(
-  client: FastpixCore,
-  request: operations.UpdateAPlaylistRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.UpdateAPlaylistResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playlistUpdate(
+  client: FastpixCore,
+  request: operations.UpdateAPlaylistRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.UpdateAPlaylistResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -70,15 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.UpdateAPlaylistResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.UpdateAPlaylistResponse,MyError
     >,
     APICall,
   ]

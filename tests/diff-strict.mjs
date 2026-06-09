@@ -30,12 +30,19 @@ function collectPathsStrict(value, prefix = "", out = new Set()) {
 const files = readdirSync(ARTIFACTS);
 const ops = new Set();
 for (const f of files) {
-  const m = f.match(/^(.+)\.(api|sdk)\.json$/);
+  const m = /^(.+)\.(api|sdk)\.json$/.exec(f);
   if (m) ops.add(m[1]);
 }
 
+// Stable string comparator matching the default lexicographic sort order.
+function cmpStr(a, b) {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+}
+
 let totalIssues = 0;
-for (const op of [...ops].sort()) {
+for (const op of [...ops].sort(cmpStr)) {
   const apiPath = join(ARTIFACTS, `${op}.api.json`);
   const sdkPath = join(ARTIFACTS, `${op}.sdk.json`);
   let api, sdk;
@@ -46,9 +53,9 @@ for (const op of [...ops].sort()) {
     continue;
   }
   // Skip error-response artifacts (test-data noise)
-  if (api && api.success === false) continue;
+  if (api?.success === false) continue;
   // Skip if SDK was an error envelope (it threw)
-  if (sdk && sdk.statusCode && sdk.statusCode >= 400) continue;
+  if (sdk?.statusCode && sdk.statusCode >= 400) continue;
 
   const apiPaths = collectPathsStrict(api);
   const sdkPaths = collectPathsStrict(sdk);
@@ -71,11 +78,11 @@ for (const op of [...ops].sort()) {
   console.log(`\n── ${op} ──`);
   if (filteredMissing.length) {
     console.log(`  Missing in SDK (${filteredMissing.length}):`);
-    for (const p of filteredMissing.sort()) console.log(`    - ${p}`);
+    for (const p of filteredMissing.toSorted(cmpStr)) console.log(`    - ${p}`);
   }
   if (filteredExtra.length) {
     console.log(`  Extra in SDK (${filteredExtra.length}):`);
-    for (const p of filteredExtra.sort()) console.log(`    - ${p}`);
+    for (const p of filteredExtra.toSorted(cmpStr)) console.log(`    - ${p}`);
   }
 }
 console.log(`\nEndpoints with real (non-events, non-error) mismatches: ${totalIssues}`);

@@ -4,15 +4,15 @@
     "aggregation": "view_end"
   },
   "data": {
-    "value": 0.7999003730402684,
-    "totalWatchTime": 69200,
-    "uniqueViews": 2,
-    "totalViews": 10,
-    "totalPlayTime": 68039,
-    "globalValue": 0.7999003730402684
+    "value": 0,
+    "totalWatchTime": null,
+    "uniqueViews": 0,
+    "totalViews": 0,
+    "totalPlayTime": null,
+    "globalValue": null
   },
   "timespan": [
-    1779193817,
-    1779280217
+    1780815853,
+    1780902253
   ]
 }

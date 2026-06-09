@@ -43,21 +43,23 @@ import { Result } from "../types/fp.js";
  *
  * Related guide <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
-export function manageLiveStreamComplete(
-  client: FastpixCore,
-  request: operations.CompleteLiveStreamRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.CompleteLiveStreamResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageLiveStreamComplete(
+  client: FastpixCore,
+  request: operations.CompleteLiveStreamRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.CompleteLiveStreamResponse,MyError
   >
 > {
   return new APIPromise($do(

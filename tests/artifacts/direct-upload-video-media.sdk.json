@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "data": {
+    "uploadId": "c2839898-4934-4bb1-9f56-808169d704c2",
+    "trial": false,
+    "status": "waiting",
+    "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/c2839898-4934-4bb1-9f56-808169d704c2?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260605/auto/storage/goog4_request&X-Goog-Date=20260605T110641Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=aef41f030ddae27da23bd4d6b460dc0586be8a45d8cc213a5f0e6af2c481f7140a057d5241a74a8fc6693b9e6a4f61de1d46fd81acf9f273a2bbf44a5e4fb49736f7c198cbf273eb761ff1ef68f5691ba9a2bb7859ff4b716b65f3c36de1c4d4ad41dae952916b15771e00dcd632fe7379ca271f0ca83677c31d4c69d0bbc6e5d58261c47d0336dfaea7abcede258bd925229fbd754a110ea6d12ab9d0f45d3dcf3c5d723349ce8629ccd9f102a10ebe4b20a6721131e785c662195845909a7d4f0d5d0fef2f83f6e92674506d3aaedad229bbce08bfe2ee065ba73770640d6296f9fa28b689780c671ec3e8fe3abc06c4409205edb0f53c5883b106c741a3c2&upload_id=AJ5rDhGv3NdpVI0ij43prscaL519YSkf2m_Evuyc6U7zdC82Vvf-POzYWNVehhX4IygPR5BbGm7LLcMV2bex9Vr6BRdCh3MP-IIRCaGbVZRGpg",
+    "timeout": 14400,
+    "corsOrigin": "*",
+    "pushMediaSettings": {
+      "playbackIds": [
+        {
+          "accessPolicy": "public",
+          "accessRestrictions": {
+            "domains": {
+              "defaultPolicy": "allow",
+              "allow": [],
+              "deny": []
+            },
+            "userAgents": {
+              "defaultPolicy": "allow",
+              "allow": [],
+              "deny": []
+            }
+          }
+        }
+      ],
+      "metadata": {
+        "source": "non-get-validator"
+      },
+      "mediaQuality": "standard",
+      "sourceAccess": false,
+      "optimizeAudio": false
+    }
+  }
+}

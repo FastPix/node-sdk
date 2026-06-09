@@ -44,21 +44,22 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/instant-live-clipping">Instant live clipping</a>
  */
-export function liveStreamsListClips(
-  client: FastpixCore,
-  request: operations.ListLiveClipsRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListLiveClipsResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function liveStreamsListClips(
+  client: FastpixCore,
+  request: operations.ListLiveClipsRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListLiveClipsResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -75,15 +76,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListLiveClipsResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListLiveClipsResponse,MyError
     >,
     APICall,
   ]

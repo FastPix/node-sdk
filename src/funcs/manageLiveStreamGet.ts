@@ -38,21 +38,22 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/manage-streams">Manage streams</a>
  */
-export function manageLiveStreamGet(
-  client: FastpixCore,
-  request: operations.GetLiveStreamByIdRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.GetLiveStreamByIdResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function manageLiveStreamGet(
+  client: FastpixCore,
+  request: operations.GetLiveStreamByIdRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.GetLiveStreamByIdResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -69,15 +70,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetLiveStreamByIdResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.GetLiveStreamByIdResponse,MyError
     >,
     APICall,
   ]

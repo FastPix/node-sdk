@@ -294,7 +294,7 @@ export function encodeJSON(
   value: unknown,
   options?: { explode?: boolean; charEncoding?: "percent" | "none" },
 ): string | undefined {
-  if (typeof value === "undefined") {
+  if (value === undefined) {
     return;
   }
 
@@ -367,11 +367,24 @@ function serializeValue(value: unknown): string {
     return value.toISOString();
   } else if (value instanceof Uint8Array) {
     return bytesToBase64(value);
-  } else if (typeof value === "object") {
-    return JSON.stringify(value, jsonReplacer);
   }
 
-  return `${value}`;
+  switch (typeof value) {
+    case "object":
+      return JSON.stringify(value, jsonReplacer);
+    case "string":
+      return value;
+    case "symbol":
+      return value.toString();
+    case "function":
+      return value.name;
+    case "number":
+    case "bigint":
+    case "boolean":
+      return value.toString();
+    default:
+      return "";
+  }
 }
 
 function jsonReplacer(_: string, value: unknown): unknown {
@@ -498,6 +511,6 @@ export function appendForm(
       appendForm(fd, key, v);
     });
   } else {
-    fd.append(key, String(value));
+    fd.append(key, serializeValue(value));
   }
 }

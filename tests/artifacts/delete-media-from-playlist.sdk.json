@@ -1,0 +1,31 @@
+{
+  "name": "FastpixDefaultError",
+  "message": "API error occurred: Status 422 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"mediaRequest\",\"message\":\"must not be null\"}]}}",
+  "stack": "FastpixDefaultError: API error occurred: Status 422 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"mediaRequest\",\"message\":\"must not be null\"}]}}\n    at matchFunc (/Users/sumasree/fp-nodejs/node-sdk/src/lib/matchers.ts:304:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async $do (/Users/sumasree/fp-nodejs/node-sdk/src/funcs/playlistsDeleteMedia.ts:162:20)",
+  "statusCode": 422,
+  "contentType": "application/json;charset=UTF-8",
+  "body": "{\"success\":false,\"error\":{\"code\":422,\"message\":\"payload validation failed\",\"fields\":[{\"field\":\"mediaRequest\",\"message\":\"must not be null\"}]}}",
+  "bodyJson": {
+    "success": false,
+    "error": {
+      "code": 422,
+      "message": "payload validation failed",
+      "fields": [
+        {
+          "field": "mediaRequest",
+          "message": "must not be null"
+        }
+      ]
+    }
+  },
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "a06eb4756c195ef9-HYD",
+    "content-length": "141",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Fri, 05 Jun 2026 11:05:55 GMT",
+    "server": "cloudflare"
+  },
+  "url": "https://api.fastpix.com/v1/on-demand/playlists/323a3ef5-7d80-4bbc-b5af-c86f6f0d44cd/media"
+}

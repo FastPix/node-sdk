@@ -39,21 +39,22 @@ import { Result } from "../types/fp.js";
  * #### Example
  * An e-learning platform removes outdated video tutorials from the "Beginner Python Series" playlist by specifying their media IDs in the request. The playlist is updated to exclude these items, ensuring learners only access relevant content.
  */
-export function playlistsDeleteMedia(
-  client: FastpixCore,
-  request: operations.DeleteMediaFromPlaylistRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.DeleteMediaFromPlaylistResponse,
-    | FastpixError
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playlistsDeleteMedia(
+  client: FastpixCore,
+  request: operations.DeleteMediaFromPlaylistRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.DeleteMediaFromPlaylistResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -70,15 +71,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DeleteMediaFromPlaylistResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.DeleteMediaFromPlaylistResponse,MyError
     >,
     APICall,
   ]
@@ -167,15 +160,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.DeleteMediaFromPlaylistResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.DeleteMediaFromPlaylistResponse,MyError
   >(
     M.json(200, operations.DeleteMediaFromPlaylistResponse$inboundSchema),
     M.fail("4XX"),

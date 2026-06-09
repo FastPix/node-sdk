@@ -41,21 +41,25 @@ import { Result } from "../types/fp.js";
  *
  * Related guide: <a href="https://docs.fastpix.com/docs/understand-dashboard-ui#filters-and-timeframes">Filters and timespan</a>
  */
-export function dimensionsListFilterValues(
-  client: FastpixCore,
-  request: operations.ListFilterValuesForDimensionRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.ListFilterValuesForDimensionResponse,
-    | FastpixError
+
+
+type MyError =
+ | FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError; 
+
+export function dimensionsListFilterValues(
+  client: FastpixCore,
+  request: operations.ListFilterValuesForDimensionRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.ListFilterValuesForDimensionResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -72,15 +76,8 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListFilterValuesForDimensionResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.ListFilterValuesForDimensionResponse,MyError
+      
     >,
     APICall,
   ]
@@ -175,15 +172,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListFilterValuesForDimensionResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.ListFilterValuesForDimensionResponse,MyError
   >(
     M.json(200, operations.ListFilterValuesForDimensionResponse$inboundSchema),
     M.fail("4XX"),

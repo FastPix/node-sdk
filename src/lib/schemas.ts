@@ -78,7 +78,7 @@ export function collectExtraKeys<
         }
 
         const v = val[key];
-        if (typeof v === "undefined") {
+        if (v === "undefined") {
           continue;
         }
 

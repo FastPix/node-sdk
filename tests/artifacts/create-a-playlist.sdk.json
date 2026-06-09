@@ -1,0 +1,26 @@
+{
+  "name": "FastpixDefaultError",
+  "message": "API error occurred: Status 409 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":409,\"message\":\"playlist create failed\",\"description\":\"A playlist with the given reference ID already exists\"}}",
+  "stack": "FastpixDefaultError: API error occurred: Status 409 Content-Type application/json;charset=UTF-8\nBody: {\"success\":false,\"error\":{\"code\":409,\"message\":\"playlist create failed\",\"description\":\"A playlist with the given reference ID already exists\"}}\n    at matchFunc (/Users/sumasree/fp-nodejs/node-sdk/src/lib/matchers.ts:304:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async $do (/Users/sumasree/fp-nodejs/node-sdk/src/funcs/playlistCreate.ts:160:20)",
+  "statusCode": 409,
+  "contentType": "application/json;charset=UTF-8",
+  "body": "{\"success\":false,\"error\":{\"code\":409,\"message\":\"playlist create failed\",\"description\":\"A playlist with the given reference ID already exists\"}}",
+  "bodyJson": {
+    "success": false,
+    "error": {
+      "code": 409,
+      "message": "playlist create failed",
+      "description": "A playlist with the given reference ID already exists"
+    }
+  },
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "a06eb5a4cb84cda7-HYD",
+    "content-length": "143",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Fri, 05 Jun 2026 11:06:43 GMT",
+    "server": "cloudflare"
+  },
+  "url": "https://api.fastpix.com/v1/on-demand/playlists"
+}

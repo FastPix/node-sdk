@@ -1,6 +1,6 @@
 # Non-GET endpoints validation report (Node SDK)
 
-Generated: 2026-05-20T12:54:31.524Z
+Generated: 2026-06-08T07:07:29.410Z
 
 ## Summary
 
@@ -11,16 +11,16 @@ Generated: 2026-05-20T12:54:31.524Z
 
 ## Captured resources
 
-- `signingKeyId`: b7158b65-302d-4fbd-9c48-503ca92bdd25
-- `playlistId`: 67fef841-2857-4e90-95d9-698858af1353
-- `streamId`: 91b8484250e5a1ed03fd4e100b807082
-- `mediaId`: 3123e275-3f7f-4abf-9655-7a8f5a7dbc61
-- `mediaPlaybackId`: 446315bf-11a7-44d2-92ef-a0c56808d2d0
-- `createdPlaybackId`: ca3fb5ce-b9de-432c-80b9-e332569c735c
-- `trackId`: 58ccc04e-dbbc-4ed2-bc04-f128106034a2
-- `streamPlaybackId`: 43751449-62d6-42e4-8153-783e28c31ed1
-- `simulcastId`: 7a8dbfb4d61657cc90a6b31d81a7eb9b
-- `uploadId`: 3fc1d54b-aa88-41df-bcf9-0cf7b66e75dd
+- `signingKeyId`: 496d4ca6-d3fc-4fef-9460-1cd851db7c22
+- `playlistId`: 86ef0d26-9573-4ba6-a785-7374af08ca03
+- `streamId`: 9b58f07729da379874e5ee0cfc0e0aaf
+- `mediaId`: 27229043-54e7-4f7b-98ab-14d91aa2bbc6
+- `mediaPlaybackId`: bfe46630-6017-43a5-b728-27b600dc91ec
+- `createdPlaybackId`: 65597d5e-1684-4396-940d-9d478763f510
+- `trackId`: 2cdcb3f2-7868-4364-8176-cc127fafa9c9
+- `streamPlaybackId`: 35e19eb6-554e-4b3c-bf12-86f1d163f564
+- `simulcastId`: 43402798197700b1c5a602917f9aada8
+- `uploadId`: 83a9f59f-f1d0-49cc-8b5b-1a652a92f10c
 
 ## Consolidated
 
@@ -71,55 +71,55 @@ Generated: 2026-05-20T12:54:31.524Z
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `b7158b65-302d-4fbd-9c48-503ca92bdd25`
+- **Captured id**: `496d4ca6-d3fc-4fef-9460-1cd851db7c22`
 
 ### create-a-playlist (`POST /on-demand/playlists`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `67fef841-2857-4e90-95d9-698858af1353`
+- **Captured id**: `86ef0d26-9573-4ba6-a785-7374af08ca03`
 
 ### create-new-stream (`POST /live/streams`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `91b8484250e5a1ed03fd4e100b807082`
+- **Captured id**: `9b58f07729da379874e5ee0cfc0e0aaf`
 
 ### create-media (`POST /on-demand`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `3123e275-3f7f-4abf-9655-7a8f5a7dbc61`
+- **Captured id**: `27229043-54e7-4f7b-98ab-14d91aa2bbc6`
 
 ### create-media-playback-id (`POST /on-demand/{mediaId}/playback-ids`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `ca3fb5ce-b9de-432c-80b9-e332569c735c`
+- **Captured id**: `65597d5e-1684-4396-940d-9d478763f510`
 
 ### Add-media-track (`POST /on-demand/{mediaId}/tracks`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `58ccc04e-dbbc-4ed2-bc04-f128106034a2`
+- **Captured id**: `2cdcb3f2-7868-4364-8176-cc127fafa9c9`
 
 ### create-playbackId-of-stream (`POST /live/streams/{streamId}/playback-ids`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `43751449-62d6-42e4-8153-783e28c31ed1`
+- **Captured id**: `35e19eb6-554e-4b3c-bf12-86f1d163f564`
 
 ### create-simulcast-of-stream (`POST /live/streams/{streamId}/simulcast`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `7a8dbfb4d61657cc90a6b31d81a7eb9b`
+- **Captured id**: `43402798197700b1c5a602917f9aada8`
 
 ### direct-upload-video-media (`POST /on-demand/upload`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `3fc1d54b-aa88-41df-bcf9-0cf7b66e75dd`
+- **Captured id**: `83a9f59f-f1d0-49cc-8b5b-1a652a92f10c`
 
 ### Generate-subtitle-track (`POST /on-demand/{mediaId}/tracks/{trackId}/generate-subtitles`)
 - **Phase**: CREATE

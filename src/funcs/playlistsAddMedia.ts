@@ -39,21 +39,23 @@ import { Result } from "../types/fp.js";
  * #### Example
  * An e-learning platform adds new video tutorials to the "Beginner Python Series" playlist by sending their media IDs in the request. The playlist is updated with the new content, ensuring learners have access to the latest tutorials in sequence.
  */
-export function playlistsAddMedia(
-  client: FastpixCore,
-  request: operations.AddMediaToPlaylistRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    operations.AddMediaToPlaylistResponse,
-    | FastpixError
+
+type MyError=| FastpixError
     | ResponseValidationError
     | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
     | InvalidRequestError
     | UnexpectedClientError
-    | SDKValidationError
+    | SDKValidationError;
+
+export function playlistsAddMedia(
+  client: FastpixCore,
+  request: operations.AddMediaToPlaylistRequest,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.AddMediaToPlaylistResponse,MyError
   >
 > {
   return new APIPromise($do(
@@ -70,15 +72,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.AddMediaToPlaylistResponse,
-      | FastpixError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+      operations.AddMediaToPlaylistResponse,MyError
     >,
     APICall,
   ]
@@ -167,15 +161,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.AddMediaToPlaylistResponse,
-    | FastpixError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    operations.AddMediaToPlaylistResponse,MyError
   >(
     M.json(200, operations.AddMediaToPlaylistResponse$inboundSchema),
     M.fail("4XX"),
