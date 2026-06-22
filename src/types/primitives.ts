@@ -141,13 +141,18 @@ export function literalBigInt<T extends bigint>(value: T): z.ZodMiniType<T> {
 }
 
 export function optional<T extends z.ZodMiniType>(t: T) {
-  return z.union([
-    z.undefined(),
-
-    // Null -> undefined
-    z.pipe(z.null(), z.transform(() => unrecognized(undefined))),
-    t,
-  ]);
+  // Wrap in `z.optional` so the object key is treated as optional regardless of
+  // zod version. zod >=4.4.0 changed object parsing so that a missing key whose
+  // value schema is merely a `union` containing `z.undefined()` is treated as
+  // required ("nonoptional"); `z.optional(...)` marks the key optional in every
+  // 4.x. The inner null->undefined pipe is preserved.
+  return z.optional(
+    z.union([
+      // Null -> undefined
+      z.pipe(z.null(), z.transform(() => unrecognized(undefined))),
+      t,
+    ]),
+  );
 }
 
 export function nullable<T extends z.ZodMiniType>(t: T) {

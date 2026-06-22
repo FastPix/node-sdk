@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.8]
+
+### Fixed
+
+- **Response validation no longer fails under zod ≥ 4.4.0.**
+  zod `4.4.0` changed object parsing so that a missing optional key whose value
+  schema is a `union` containing `undefined` was treated as required
+  (`expected: "nonoptional"`). Because the SDK declared zod loosely
+  (`^4.0.0`), fresh installs pulled `4.4.x` and threw
+  `ResponseValidationError` on valid HTTP 200 responses that omitted optional
+  fields (e.g. `summary`, `chapters`, `namedEntities`, `moderation` on media
+  responses when those AI features are not enabled).
+  - Root-cause fix: the internal `optional()` helper now wraps fields in
+    `z.optional(...)`, so optional keys are treated as optional on **every** zod
+    version (verified on 4.3.6 and 4.4.3).
+  - Defense in depth: the `zod` dependency range is capped to
+    `^3.25.65 || >=4.0.0 <4.4.0` so installs resolve to a known-good version
+    automatically.
+- **Webhook signing secret no longer logged.** Removed two debug `console.log`
+  statements in `src/sdk/webhooks.ts` that printed the signing secret and raw
+  payload.
+- **Webhook module type resolution.** Added a `node:` types reference so
+  `node:crypto`/`node:buffer` imports resolve in editors/type-checks.
+
+### Changed
+
+- **Dependency cleanup.** Removed the bogus `crypto` npm package (the deprecated
+  registry stub — `node:crypto` is built in), removed the accidental
+  self-dependency on `@fastpix/fastpix-node`, and moved `dotenv` to
+  `devDependencies`. The published package now declares only `zod` as a runtime
+  dependency.
+- **SDK version bump: `2.0.7` → `2.0.8`** (`sdkVersion` constant and
+  `User-Agent` header updated accordingly).
+
+### Compatibility
+
+- No changes to public types, method signatures, request/response models,
+  default server URLs, hooks, or retry logic. No action required beyond updating
+  the dependency.
+
 ## [2.0.7]
 
 ### Changed
