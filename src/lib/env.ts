@@ -10,14 +10,14 @@ import { dlv } from "./dlv.js";
 export interface Env {
   FASTPIX_USERNAME?: string | undefined;
   FASTPIX_PASSWORD?: string | undefined;
-
+  FASTPIX_WEBHOOK_SECRET?: string | undefined;
   FASTPIX_DEBUG?: boolean | undefined;
 }
 
 export const envSchema: z.ZodMiniType<Env, unknown> = z.object({
   FASTPIX_USERNAME: z.optional(z.string()),
   FASTPIX_PASSWORD: z.optional(z.string()),
-
+  FASTPIX_WEBHOOK_SECRET: z.optional(z.string()),
   FASTPIX_DEBUG: z.optional(z.coerce.boolean()),
 });
 

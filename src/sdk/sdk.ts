@@ -25,6 +25,7 @@ import { SigningKeys } from "./signingkeys.js";
 import { Simulcasts } from "./simulcasts.js";
 import { SimulcastStreams } from "./simulcaststreams.js";
 import { Views } from "./views.js";
+import { Webhooks } from "./webhooks.js";
 
 export class Fastpix extends ClientSDK {
   private _inputVideo?: InputVideo;
@@ -146,4 +147,11 @@ export class Fastpix extends ClientSDK {
     this._errors ??= new Errors(this._options);
     return this._errors;
   }
+
+  private _webhooks?: Webhooks;
+  get webhooks(): Webhooks {
+    this._webhooks ??= new Webhooks(this._options);
+    return this._webhooks;
+  }
+ 
 }
