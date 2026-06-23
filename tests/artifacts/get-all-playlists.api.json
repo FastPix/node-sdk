@@ -2,49 +2,49 @@
   "success": true,
   "data": [
     {
-      "id": "86ef0d26-9573-4ba6-a785-7374af08ca03",
+      "id": "f99d2d10-1597-4fae-9a06-a547869725d4",
       "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "sdkValidatemq4v7css",
-      "createdAt": "2026-06-08T07:03:46.943297Z",
+      "referenceId": "sdkValidatemqpanhlh",
+      "createdAt": "2026-06-22T14:11:37.479967Z",
       "mediaCount": 0
     },
     {
-      "id": "e046613e-551b-4c2c-8834-2562fc3455ec",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq4sf90y",
-      "createdAt": "2026-06-08T05:45:56.795627Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq0uythe",
-      "createdAt": "2026-06-05T11:46:04.069981Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "b2cdf506-5051-471c-8561-eb522c7d6071",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq0ol4zz",
-      "createdAt": "2026-06-05T08:47:28.071848Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "00bda787-d7ed-40a4-9764-ab238bf672b7",
+      "id": "65d18946-8fbf-4581-b6c2-77e170b18261",
       "name": "sdk-validate-playlist",
       "type": "manual",
-      "referenceId": "sdkvalidate2847",
-      "createdAt": "2026-06-04T04:46:54.134970Z",
+      "referenceId": "sdkvalidate6142954751291",
+      "createdAt": "2026-06-20T07:57:35.867572Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "0e0e55a5-9526-46c5-82ba-e9c0ef0797af",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate1781940561",
+      "createdAt": "2026-06-20T07:29:21.725059Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "84b198f3-bd4b-4cec-8c0d-73f09ec84342",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate5795094411958",
+      "createdAt": "2026-06-19T17:48:33.989494Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "104bd544-92f4-4101-a897-3dfc6c2abc77",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate3188152353916",
+      "createdAt": "2026-06-19T16:54:38.083842Z",
       "mediaCount": 0
     }
   ],
   "pagination": {
-    "totalRecords": 18,
+    "totalRecords": 41,
     "currentOffset": 1,
-    "offsetCount": 4
+    "offsetCount": 9
   }
 }

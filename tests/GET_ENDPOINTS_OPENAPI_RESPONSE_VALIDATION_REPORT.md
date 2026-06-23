@@ -1,6 +1,6 @@
 # GET Endpoints — OpenAPI Response Validation Report
 
-Generated: 2026-06-08T07:04:15.881Z
+Generated: 2026-06-22T14:13:08.253Z
 
 ## Summary
 
@@ -61,18 +61,36 @@ Generated: 2026-06-08T07:04:15.881Z
   "success": true,
   "data": [
     {
-      "id": "27229043-54e7-4f7b-98ab-14d91aa2bbc6",
+      "thumbnail": "https://images.fastpix.com/aaed1c0c-4c05-41de-ad84-7e78d6b728d0/thumbnail.png",
+      "id": "265b27a6-7edc-4046-ad0b-69d55206e469",
       "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
       "metadata": {
         "source": "sdk-validate"
       },
       "mediaQuality": "standard",
       "maxResolution": "720p",
-      "status": "Created",
+      "sourceResolution": "1080",
+      "status": "Ready",
       "sourceAccess": false,
       "playbackIds": [
         {
-          "id": "bfe46630-6017-43a5-b728-27b600dc91ec",
+          "id": "6166f9c5-aefa-411a-93b5-4af5d86d6b3b",
+          "accessPolicy": "public",
+          "accessRestrictions": {
+            "domains": {
+              "defaultPolicy": "allow",
+              "allow": [],
+              "deny": []
+            },
+            "userAgents": {
+              "defaultPolicy": "allow",
+              "allow": [],
+              "deny": []
+            }
+          }
+        },
+        {
+          "id": "aaed1c0c-4c05-41de-ad84-7e78d6b728d0",
           "accessPolicy": "public",
           "accessRestrictions": {
             "domains": {
@@ -88,20 +106,43 @@ Generated: 2026-06-08T07:04:15.881Z
           }
         }
       ],
-      "tracks": [],
+      "tracks": [
+        {
+          "id": "47065d02-0e4d-486a-a9af-034d022ed345",
+          "type": "audio",
+          "status": "Ready",
+          "languageCode": "it",
+          "languageName": "Italian"
+        },
+        {
+          "id": "cd43d9f3-840c-475e-a86c-5c376d238f2a",
+          "type": "audio",
+          "status": "Ready",
+          "languageCode": "und",
+          "languageName": "default"
+        },
+        {
+          "id": "e0e01ca3-3120-4ad0-bc2e-cde35d5d8690",
+          "type": "video",
+          "width": 1920,
+          "height": 1080,
+          "frameRate": "60.000",
+          "status": "Ready"
+        }
+      ],
       "generatedSubtitles": [],
       "isAudioOnly": false,
       "subtitleAvailable": false,
-      "duration": "00:00:00",
-      "createdAt": "2026-06-08T07:03:49.363580Z",
-      "updatedAt": "2026-06-08T07:03:49.363588Z",
-      "sourceResolution": "1080p"
+      "duration": "00:00:10",
+      "aspectRatio": "16:9",
+      "createdAt": "2026-06-22T14:12:10.114943Z",
+      "updatedAt": "2026-06-22T14:12:41.529984Z"
     }
   ],
   "pagination": {
-    "totalRecords": 113,
+    "totalRecords": 208,
     "currentOffset": 1,
-    "offsetCount": 113
+    "offsetCount": 208
   }
 }
 ```
@@ -113,19 +154,36 @@ Generated: 2026-06-08T07:04:15.881Z
   "success": true,
   "data": [
     {
-      "id": "27229043-54e7-4f7b-98ab-14d91aa2bbc6",
+      "thumbnail": "https://images.fastpix.com/aaed1c0c-4c05-41de-ad84-7e78d6b728d0/thumbnail.png",
+      "id": "265b27a6-7edc-4046-ad0b-69d55206e469",
       "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
       "metadata": {
         "source": "sdk-validate"
       },
       "mediaQuality": "standard",
       "maxResolution": "720p",
-      "sourceResolution": "1080p",
-      "status": "Created",
+      "sourceResolution": "1080",
+      "status": "Ready",
       "sourceAccess": false,
       "playbackIds": [
         {
-          "id": "bfe46630-6017-43a5-b728-27b600dc91ec",
+          "id": "6166f9c5-aefa-411a-93b5-4af5d86d6b3b",
+          "accessPolicy": "public",
+          "accessRestrictions": {
+            "domains": {
+              "defaultPolicy": "allow",
+              "allow": [],
+              "deny": []
+            },
+            "userAgents": {
+              "defaultPolicy": "allow",
+              "allow": [],
+              "deny": []
+            }
+          }
+        },
+        {
+          "id": "aaed1c0c-4c05-41de-ad84-7e78d6b728d0",
           "accessPolicy": "public",
           "accessRestrictions": {
             "domains": {
@@ -141,19 +199,43 @@ Generated: 2026-06-08T07:04:15.881Z
           }
         }
       ],
-      "tracks": [],
+      "tracks": [
+        {
+          "id": "47065d02-0e4d-486a-a9af-034d022ed345",
+          "type": "audio",
+          "status": "Ready",
+          "languageName": "Italian",
+          "languageCode": "it"
+        },
+        {
+          "id": "cd43d9f3-840c-475e-a86c-5c376d238f2a",
+          "type": "audio",
+          "status": "Ready",
+          "languageName": "default",
+          "languageCode": "und"
+        },
+        {
+          "id": "e0e01ca3-3120-4ad0-bc2e-cde35d5d8690",
+          "type": "video",
+          "width": 1920,
+          "height": 1080,
+          "frameRate": "60.000",
+          "status": "Ready"
+        }
+      ],
       "generatedSubtitles": [],
       "isAudioOnly": false,
       "subtitleAvailable": false,
-      "duration": "00:00:00",
-      "createdAt": "2026-06-08T07:03:49.363Z",
-      "updatedAt": "2026-06-08T07:03:49.363Z"
+      "duration": "00:00:10",
+      "aspectRatio": "16:9",
+      "createdAt": "2026-06-22T14:12:10.114Z",
+      "updatedAt": "2026-06-22T14:12:41.529Z"
     }
   ],
   "pagination": {
-    "totalRecords": 113,
+    "totalRecords": 208,
     "currentOffset": 1,
-    "offsetCount": 113
+    "offsetCount": 208
   }
 }
 ```
@@ -295,6 +377,41 @@ Generated: 2026-06-08T07:04:15.881Z
         "status": "available"
       },
       {
+        "id": "2f04f660-38a9-4c66-ae5c-7028e049f927",
+        "type": "subtitle",
+        "status": "available",
+        "languageCode": "fr-FR",
+        "languageName": "French"
+      },
+      {
+        "id": "340ed9da-be97-4f04-b15b-6cc09f7a3b98",
+        "type": "subtitle",
+        "status": "available",
+        "languageCode": "es-ES",
+        "languageName": "Spanish"
+      },
+      {
+        "id": "4e2082d8-9e25-4bcf-b57d-44040a601e50",
+        "type": "subtitle",
+        "status": "available",
+        "languageCode": "de-DE",
+        "languageName": "German"
+      },
+      {
+        "id": "86f0def8-e85e-4468-8e44-f7c4b8bec30e",
+        "type": "subtitle",
+        "status": "available",
+        "languageCode": "ja-JP",
+        "languageName": "Japanese"
+      },
+      {
+        "id": "987c4c7b-1a6a-4a7b-b394-3f53b76ece79",
+        "type": "subtitle",
+        "status": "available",
+        "languageCode": "it-IT",
+        "languageName": "Italian"
+      },
+      {
         "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
         "type": "audio",
         "status": "available",
@@ -307,17 +424,40 @@ Generated: 2026-06-08T07:04:15.881Z
         "status": "available",
         "languageCode": "it",
         "languageName": "Italian"
+      },
+      {
+        "id": "f02261c3-819d-4cf9-a3ea-3195d496d45b",
+        "type": "subtitle",
+        "status": "available",
+        "languageCode": "ko-KR",
+        "languageName": "Korean"
       }
     ],
-    "generatedSubtitles": [],
-    "isAudioOnly": false,
-    "subtitleAvailable": false,
-    "duration": "00:00:10",
-    "aspectRatio": "16:9",
-    "createdAt": "2026-06-05T11:46:07.488133Z",
-    "updatedAt": "2026-06-05T11:46:18.149930Z"
-  }
-}
+    "generatedSubtitles": [
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/2f04f660-38a9-4c66-ae5c-7028e049f927.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/340ed9da-be97-4f04-b15b-6cc09f7a3b98.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/4e2082d8-9e25-4bcf-b57d-44040a601e50.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/86f0def8-e85e-4468-8e44-f7c4b8bec30e.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/987c4c7b-1a6a-4a7b-b394-3f53b76ece79.vtt"
+      },
+      {
+        "status": "available",
+        "url": "h
+... (truncated)
 ```
 
 **SDK response (preview)**
@@ -381,6 +521,41 @@ Generated: 2026-06-08T07:04:15.881Z
         "status": "available"
       },
       {
+        "id": "2f04f660-38a9-4c66-ae5c-7028e049f927",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "French",
+        "languageCode": "fr-FR"
+      },
+      {
+        "id": "340ed9da-be97-4f04-b15b-6cc09f7a3b98",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "Spanish",
+        "languageCode": "es-ES"
+      },
+      {
+        "id": "4e2082d8-9e25-4bcf-b57d-44040a601e50",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "German",
+        "languageCode": "de-DE"
+      },
+      {
+        "id": "86f0def8-e85e-4468-8e44-f7c4b8bec30e",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "Japanese",
+        "languageCode": "ja-JP"
+      },
+      {
+        "id": "987c4c7b-1a6a-4a7b-b394-3f53b76ece79",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "Italian",
+        "languageCode": "it-IT"
+      },
+      {
         "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
         "type": "audio",
         "status": "available",
@@ -393,17 +568,40 @@ Generated: 2026-06-08T07:04:15.881Z
         "status": "available",
         "languageName": "Italian",
         "languageCode": "it"
+      },
+      {
+        "id": "f02261c3-819d-4cf9-a3ea-3195d496d45b",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "Korean",
+        "languageCode": "ko-KR"
       }
     ],
-    "generatedSubtitles": [],
-    "isAudioOnly": false,
-    "subtitleAvailable": false,
-    "duration": "00:00:10",
-    "aspectRatio": "16:9",
-    "createdAt": "2026-06-05T11:46:07.488Z",
-    "updatedAt": "2026-06-05T11:46:18.149Z"
-  }
-}
+    "generatedSubtitles": [
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/2f04f660-38a9-4c66-ae5c-7028e049f927.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/340ed9da-be97-4f04-b15b-6cc09f7a3b98.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/4e2082d8-9e25-4bcf-b57d-44040a601e50.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/86f0def8-e85e-4468-8e44-f7c4b8bec30e.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/987c4c7b-1a6a-4a7b-b394-3f53b76ece79.vtt"
+      },
+      {
+        "status": "available",
+        "url": "h
+... (truncated)
 ```
 
 **Missing in SDK (present in API) — 0**
@@ -466,10 +664,10 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "headers": {
     "alt-svc": "h3=\":443\"; ma=86400",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a0860a210c25ab41-BOM",
+    "cf-ray": "a0fbd9b08f585ef9-HYD",
     "content-length": "133",
     "content-type": "application/json;charset=UTF-8",
-    "date": "Mon, 08 Jun 2026 07:03:56 GMT",
+    "date": "Mon, 22 Jun 2026 14:12:52 GMT",
     "server": "cloudflare"
   },
   "url": "https://api.fastpix.com/v1/on-demand/836f8e89-b756-4d8a-9aaf-0ed949e43ec1/summary"
@@ -521,6 +719,41 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
           "status": "available"
         },
         {
+          "id": "2f04f660-38a9-4c66-ae5c-7028e049f927",
+          "type": "subtitle",
+          "status": "available",
+          "languageCode": "fr-FR",
+          "languageName": "French"
+        },
+        {
+          "id": "340ed9da-be97-4f04-b15b-6cc09f7a3b98",
+          "type": "subtitle",
+          "status": "available",
+          "languageCode": "es-ES",
+          "languageName": "Spanish"
+        },
+        {
+          "id": "4e2082d8-9e25-4bcf-b57d-44040a601e50",
+          "type": "subtitle",
+          "status": "available",
+          "languageCode": "de-DE",
+          "languageName": "German"
+        },
+        {
+          "id": "86f0def8-e85e-4468-8e44-f7c4b8bec30e",
+          "type": "subtitle",
+          "status": "available",
+          "languageCode": "ja-JP",
+          "languageName": "Japanese"
+        },
+        {
+          "id": "987c4c7b-1a6a-4a7b-b394-3f53b76ece79",
+          "type": "subtitle",
+          "status": "available",
+          "languageCode": "it-IT",
+          "languageName": "Italian"
+        },
+        {
           "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
           "type": "audio",
           "status": "available",
@@ -533,6 +766,13 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
           "status": "available",
           "languageCode": "it",
           "languageName": "Italian"
+        },
+        {
+          "id": "f02261c3-819d-4cf9-a3ea-3195d496d45b",
+          "type": "subtitle",
+          "status": "available",
+          "languageCode": "ko-KR",
+          "languageName": "Korean"
         }
       ]
     }
@@ -561,6 +801,41 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
           "status": "available"
         },
         {
+          "id": "2f04f660-38a9-4c66-ae5c-7028e049f927",
+          "type": "subtitle",
+          "status": "available",
+          "languageName": "French",
+          "languageCode": "fr-FR"
+        },
+        {
+          "id": "340ed9da-be97-4f04-b15b-6cc09f7a3b98",
+          "type": "subtitle",
+          "status": "available",
+          "languageName": "Spanish",
+          "languageCode": "es-ES"
+        },
+        {
+          "id": "4e2082d8-9e25-4bcf-b57d-44040a601e50",
+          "type": "subtitle",
+          "status": "available",
+          "languageName": "German",
+          "languageCode": "de-DE"
+        },
+        {
+          "id": "86f0def8-e85e-4468-8e44-f7c4b8bec30e",
+          "type": "subtitle",
+          "status": "available",
+          "languageName": "Japanese",
+          "languageCode": "ja-JP"
+        },
+        {
+          "id": "987c4c7b-1a6a-4a7b-b394-3f53b76ece79",
+          "type": "subtitle",
+          "status": "available",
+          "languageName": "Italian",
+          "languageCode": "it-IT"
+        },
+        {
           "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
           "type": "audio",
           "status": "available",
@@ -573,6 +848,13 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
           "status": "available",
           "languageName": "Italian",
           "languageCode": "it"
+        },
+        {
+          "id": "f02261c3-819d-4cf9-a3ea-3195d496d45b",
+          "type": "subtitle",
+          "status": "available",
+          "languageName": "Korean",
+          "languageCode": "ko-KR"
         }
       ]
     }
@@ -719,10 +1001,10 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "uploadId": "cab71c83-d921-4fe1-a260-ddf839d6d748",
+      "uploadId": "78ea4e7e-6915-4138-8e72-c36a0747dd87",
       "trial": false,
       "status": "waiting",
-      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/cab71c83-d921-4fe1-a260-ddf839d6d748?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260608/auto/storage/goog4_request&X-Goog-Date=20260608T054617Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=0f5979ab18ecc5b114feb853fc300a051e59a8ca98e7f99cb60988df13f69b4987a782e67cc5cd4ddb5fbd42ec914f3707e8ac29bfbfa0582a5962b5df5fed48429a65093e59bf71779366f61b90881f10f031c515cabf6f02d4bcffd1a749e978318e09e3aeeaf621cacbffba730154b2135a744afee780db257f7d9eb7e5d898f85de2dcd4e4943537c610aabeb060dfb4bc4a1d43a5570a8cfac7bb95c33db40911c4df31d3a6fd7c9e2f8853ea71f215fc6fbf61307f6a53e48d62a36b9b6873624c7928fc6b158cecf963d09f2edb25a8944525802aff4c44fffca7050697fcf4bb3dfd229a86b5a899e6901743dcb860a32a5cd103b520517e402025a3&upload_id=AJ5rDhGcgKk6jITuj_6MKAE3SneLe14fBMEoVt8R5_rZgVANRY54RUpxPkKPlWgzWW3A7cxdpoCfdktvaLM_Z6MDSIUgnFR8ZTkH5RhAKizRoBk",
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/78ea4e7e-6915-4138-8e72-c36a0747dd87?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260622/auto/storage/goog4_request&X-Goog-Date=20260622T141245Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=95007c245e588f7ca4f78e2f0a0a4e5f0b34bd0664f237394d3d81ccbe1598752510cc83fdc90f8b53a8ed1bb49b9360e66c5698c99775e8971bce032c58082e11bc95bc00f2af6c0ad5f0a505f5f3a53aace49344d9fad6883234dc88074f49166de9d9ad38e05729070ea933b0322a18b867bae7b06d358026f055e981e8a564fa2119b6461e0a47cffa679708c3ff58706cc0a3ef6665dd1c1bcb274643ee26348c7fff9763e93a9581775cbb36437a5dd176414b14ed38caa411bfe140fa528a3bfc8b1e97bf1e617fac2282d21f13fc03a1b74030306f84fee498f0b1e5eb9629d68a4b692e1575cd71ec1be2ec3d41e701070276c14469f6e22f6d229b&upload_id=AJ5rDhF_QCjka_hZFS11G6QSvk0NVYQRfmd23djITckLDRsazVAcZdSsqmh_mXZM0zh_y8v2IITbYsyxfOnwBuPhGAcF4P4pPozxh7Dbu658l8o",
       "timeout": 14400,
       "corsOrigin": "*",
       "pushMediaSettings": {
@@ -750,14 +1032,46 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
         "sourceAccess": false,
         "optimizeAudio": false
       }
-    }
-  ],
-  "pagination": {
-    "totalRecords": 1,
-    "currentOffset": 1,
-    "offsetCount": 1
-  }
-}
+    },
+    {
+      "uploadId": "333b14a4-d34d-4df9-9794-3b39dde2cf17",
+      "trial": false,
+      "status": "waiting",
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/333b14a4-d34d-4df9-9794-3b39dde2cf17?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260622/auto/storage/goog4_request&X-Goog-Date=20260622T130958Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=56b5d868835a08a60605c8aa16340f187f7b6c4e4699ba1bfbcbeedafe9b61f6eac4bba2448622f0a843cc71f2c36dd5210395010db0001981b44a1887bc1c0ca4fcc8a0f2417b7b88988f51812e2eb1a07894eff36d4ec35ef8b9a8d1f385b319aec4cc39c1adaa2d660ebecd8e780f3a5f3a812e73a996dd70a3000bb7e0eddb797a876dfc70bed1e6b6950072a7bc3468e3a45760c44bff3ca5e69bbb0585b5980d05b6b5a01d45bc9f48cb55589c59a86978f620fa48a59d2cff638e1e993738dc1ad6b9dcc99717c2391dc6cda09ec2ded3f900ab803faae133531a61607f09749510605183b4cbda731a42121bbf828b65f2e33430eff05d0c0e1b772f&upload_id=AJ5rDhGnXt0lfnnUqB2_VV5Dh2SOvZ0YcRSk9vRoti6fLux9l4I7ajZFUwjN8120AdgR12INEKdQPBpcowk80cvuhWM7hk6JxSBzOqEJHkTTTw",
+      "timeout": 14400,
+      "corsOrigin": "*",
+      "pushMediaSettings": {
+        "playbackIds": [
+          {
+            "accessPolicy": "public",
+            "accessRestrictions": {
+              "domains": {
+                "defaultPolicy": "allow",
+                "allow": [],
+                "deny": []
+              },
+              "userAgents": {
+                "defaultPolicy": "allow",
+                "allow": [],
+                "deny": []
+              }
+            }
+          }
+        ],
+        "metadata": {
+          "source": "non-get-validator"
+        },
+        "mediaQuality": "standard",
+        "sourceAccess": false,
+        "optimizeAudio": false
+      }
+    },
+    {
+      "uploadId": "da1a38aa-cb15-481a-a22a-2da1ad5b61d4",
+      "trial": false,
+      "status": "waiting",
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/da1a38aa-cb15-481a-a22a-2da1ad5b61d4?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-
+... (truncated)
 ```
 
 **SDK response (preview)**
@@ -767,10 +1081,10 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "uploadId": "cab71c83-d921-4fe1-a260-ddf839d6d748",
+      "uploadId": "78ea4e7e-6915-4138-8e72-c36a0747dd87",
       "trial": false,
       "status": "waiting",
-      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/cab71c83-d921-4fe1-a260-ddf839d6d748?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260608/auto/storage/goog4_request&X-Goog-Date=20260608T054617Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=0f5979ab18ecc5b114feb853fc300a051e59a8ca98e7f99cb60988df13f69b4987a782e67cc5cd4ddb5fbd42ec914f3707e8ac29bfbfa0582a5962b5df5fed48429a65093e59bf71779366f61b90881f10f031c515cabf6f02d4bcffd1a749e978318e09e3aeeaf621cacbffba730154b2135a744afee780db257f7d9eb7e5d898f85de2dcd4e4943537c610aabeb060dfb4bc4a1d43a5570a8cfac7bb95c33db40911c4df31d3a6fd7c9e2f8853ea71f215fc6fbf61307f6a53e48d62a36b9b6873624c7928fc6b158cecf963d09f2edb25a8944525802aff4c44fffca7050697fcf4bb3dfd229a86b5a899e6901743dcb860a32a5cd103b520517e402025a3&upload_id=AJ5rDhGcgKk6jITuj_6MKAE3SneLe14fBMEoVt8R5_rZgVANRY54RUpxPkKPlWgzWW3A7cxdpoCfdktvaLM_Z6MDSIUgnFR8ZTkH5RhAKizRoBk",
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/78ea4e7e-6915-4138-8e72-c36a0747dd87?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260622/auto/storage/goog4_request&X-Goog-Date=20260622T141245Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=95007c245e588f7ca4f78e2f0a0a4e5f0b34bd0664f237394d3d81ccbe1598752510cc83fdc90f8b53a8ed1bb49b9360e66c5698c99775e8971bce032c58082e11bc95bc00f2af6c0ad5f0a505f5f3a53aace49344d9fad6883234dc88074f49166de9d9ad38e05729070ea933b0322a18b867bae7b06d358026f055e981e8a564fa2119b6461e0a47cffa679708c3ff58706cc0a3ef6665dd1c1bcb274643ee26348c7fff9763e93a9581775cbb36437a5dd176414b14ed38caa411bfe140fa528a3bfc8b1e97bf1e617fac2282d21f13fc03a1b74030306f84fee498f0b1e5eb9629d68a4b692e1575cd71ec1be2ec3d41e701070276c14469f6e22f6d229b&upload_id=AJ5rDhF_QCjka_hZFS11G6QSvk0NVYQRfmd23djITckLDRsazVAcZdSsqmh_mXZM0zh_y8v2IITbYsyxfOnwBuPhGAcF4P4pPozxh7Dbu658l8o",
       "timeout": 14400,
       "corsOrigin": "*",
       "pushMediaSettings": {
@@ -798,14 +1112,46 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
         "sourceAccess": false,
         "optimizeAudio": false
       }
-    }
-  ],
-  "pagination": {
-    "totalRecords": 1,
-    "currentOffset": 1,
-    "offsetCount": 1
-  }
-}
+    },
+    {
+      "uploadId": "333b14a4-d34d-4df9-9794-3b39dde2cf17",
+      "trial": false,
+      "status": "waiting",
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/333b14a4-d34d-4df9-9794-3b39dde2cf17?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=dev-staging-pub-sub@fastpix-vms.iam.gserviceaccount.com/20260622/auto/storage/goog4_request&X-Goog-Date=20260622T130958Z&X-Goog-Expires=14400&X-Goog-SignedHeaders=host;x-goog-resumable&X-Goog-Signature=56b5d868835a08a60605c8aa16340f187f7b6c4e4699ba1bfbcbeedafe9b61f6eac4bba2448622f0a843cc71f2c36dd5210395010db0001981b44a1887bc1c0ca4fcc8a0f2417b7b88988f51812e2eb1a07894eff36d4ec35ef8b9a8d1f385b319aec4cc39c1adaa2d660ebecd8e780f3a5f3a812e73a996dd70a3000bb7e0eddb797a876dfc70bed1e6b6950072a7bc3468e3a45760c44bff3ca5e69bbb0585b5980d05b6b5a01d45bc9f48cb55589c59a86978f620fa48a59d2cff638e1e993738dc1ad6b9dcc99717c2391dc6cda09ec2ded3f900ab803faae133531a61607f09749510605183b4cbda731a42121bbf828b65f2e33430eff05d0c0e1b772f&upload_id=AJ5rDhGnXt0lfnnUqB2_VV5Dh2SOvZ0YcRSk9vRoti6fLux9l4I7ajZFUwjN8120AdgR12INEKdQPBpcowk80cvuhWM7hk6JxSBzOqEJHkTTTw",
+      "timeout": 14400,
+      "corsOrigin": "*",
+      "pushMediaSettings": {
+        "playbackIds": [
+          {
+            "accessPolicy": "public",
+            "accessRestrictions": {
+              "domains": {
+                "defaultPolicy": "allow",
+                "allow": [],
+                "deny": []
+              },
+              "userAgents": {
+                "defaultPolicy": "allow",
+                "allow": [],
+                "deny": []
+              }
+            }
+          }
+        ],
+        "metadata": {
+          "source": "non-get-validator"
+        },
+        "mediaQuality": "standard",
+        "sourceAccess": false,
+        "optimizeAudio": false
+      }
+    },
+    {
+      "uploadId": "da1a38aa-cb15-481a-a22a-2da1ad5b61d4",
+      "trial": false,
+      "status": "waiting",
+      "url": "https://storage.googleapis.com/fastpix-uploads-asia/fd9197bb-8cfa-4569-b046-a30fb95e2381/da1a38aa-cb15-481a-a22a-2da1ad5b61d4?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-
+... (truncated)
 ```
 
 **Missing in SDK (present in API) — 0**
@@ -891,50 +1237,50 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "id": "86ef0d26-9573-4ba6-a785-7374af08ca03",
+      "id": "f99d2d10-1597-4fae-9a06-a547869725d4",
       "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "sdkValidatemq4v7css",
-      "createdAt": "2026-06-08T07:03:46.943297Z",
+      "referenceId": "sdkValidatemqpanhlh",
+      "createdAt": "2026-06-22T14:11:37.479967Z",
       "mediaCount": 0
     },
     {
-      "id": "e046613e-551b-4c2c-8834-2562fc3455ec",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq4sf90y",
-      "createdAt": "2026-06-08T05:45:56.795627Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq0uythe",
-      "createdAt": "2026-06-05T11:46:04.069981Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "b2cdf506-5051-471c-8561-eb522c7d6071",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq0ol4zz",
-      "createdAt": "2026-06-05T08:47:28.071848Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "00bda787-d7ed-40a4-9764-ab238bf672b7",
+      "id": "65d18946-8fbf-4581-b6c2-77e170b18261",
       "name": "sdk-validate-playlist",
       "type": "manual",
-      "referenceId": "sdkvalidate2847",
-      "createdAt": "2026-06-04T04:46:54.134970Z",
+      "referenceId": "sdkvalidate6142954751291",
+      "createdAt": "2026-06-20T07:57:35.867572Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "0e0e55a5-9526-46c5-82ba-e9c0ef0797af",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate1781940561",
+      "createdAt": "2026-06-20T07:29:21.725059Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "84b198f3-bd4b-4cec-8c0d-73f09ec84342",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate5795094411958",
+      "createdAt": "2026-06-19T17:48:33.989494Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "104bd544-92f4-4101-a897-3dfc6c2abc77",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate3188152353916",
+      "createdAt": "2026-06-19T16:54:38.083842Z",
       "mediaCount": 0
     }
   ],
   "pagination": {
-    "totalRecords": 18,
+    "totalRecords": 41,
     "currentOffset": 1,
-    "offsetCount": 4
+    "offsetCount": 9
   }
 }
 ```
@@ -946,50 +1292,50 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
   "success": true,
   "data": [
     {
-      "id": "86ef0d26-9573-4ba6-a785-7374af08ca03",
+      "id": "f99d2d10-1597-4fae-9a06-a547869725d4",
       "name": "sdk validate playlist",
       "type": "manual",
-      "referenceId": "sdkValidatemq4v7css",
-      "createdAt": "2026-06-08T07:03:46.943Z",
+      "referenceId": "sdkValidatemqpanhlh",
+      "createdAt": "2026-06-22T14:11:37.479Z",
       "mediaCount": 0
     },
     {
-      "id": "e046613e-551b-4c2c-8834-2562fc3455ec",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq4sf90y",
-      "createdAt": "2026-06-08T05:45:56.795Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "cfe5cee9-e5b9-45c9-be4b-f76f71b53c80",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq0uythe",
-      "createdAt": "2026-06-05T11:46:04.069Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "b2cdf506-5051-471c-8561-eb522c7d6071",
-      "name": "sdk validate playlist",
-      "type": "manual",
-      "referenceId": "sdkValidatemq0ol4zz",
-      "createdAt": "2026-06-05T08:47:28.071Z",
-      "mediaCount": 0
-    },
-    {
-      "id": "00bda787-d7ed-40a4-9764-ab238bf672b7",
+      "id": "65d18946-8fbf-4581-b6c2-77e170b18261",
       "name": "sdk-validate-playlist",
       "type": "manual",
-      "referenceId": "sdkvalidate2847",
-      "createdAt": "2026-06-04T04:46:54.134Z",
+      "referenceId": "sdkvalidate6142954751291",
+      "createdAt": "2026-06-20T07:57:35.867Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "0e0e55a5-9526-46c5-82ba-e9c0ef0797af",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate1781940561",
+      "createdAt": "2026-06-20T07:29:21.725Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "84b198f3-bd4b-4cec-8c0d-73f09ec84342",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate5795094411958",
+      "createdAt": "2026-06-19T17:48:33.989Z",
+      "mediaCount": 0
+    },
+    {
+      "id": "104bd544-92f4-4101-a897-3dfc6c2abc77",
+      "name": "sdk-validate-playlist",
+      "type": "manual",
+      "referenceId": "sdkvalidate3188152353916",
+      "createdAt": "2026-06-19T16:54:38.083Z",
       "mediaCount": 0
     }
   ],
   "pagination": {
-    "totalRecords": 18,
+    "totalRecords": 41,
     "currentOffset": 1,
-    "offsetCount": 4
+    "offsetCount": 9
   }
 }
 ```
@@ -1029,11 +1375,20 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
     "referenceId": "sdkValidatemq0uythe",
     "type": "manual",
     "description": "sdk validate",
-    "mediaList": [],
+    "mediaList": [
+      {
+        "createdAt": "2026-06-16T06:50:31.188979Z",
+        "duration": "00:00:10",
+        "id": "f404ddcd-c9a7-4582-acde-42c6ef303fdc",
+        "sourceResolution": "1080",
+        "status": "Ready",
+        "thumbnail": "https://images.fastpix.com/b2dd4c78-84db-423b-af63-b749327d8b28/thumbnail.png"
+      }
+    ],
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
     "createdAt": "2026-06-05T11:46:04.069981Z",
-    "updatedAt": "2026-06-05T11:46:04.069981Z",
-    "mediaCount": 0
+    "updatedAt": "2026-06-16T08:57:35.681724Z",
+    "mediaCount": 1
   }
 }
 ```
@@ -1049,11 +1404,20 @@ Body: {"success":false,"error":{"code":400,"message":"Summary not enabled","desc
     "referenceId": "sdkValidatemq0uythe",
     "type": "manual",
     "description": "sdk validate",
-    "mediaList": [],
+    "mediaList": [
+      {
+        "createdAt": "2026-06-16T06:50:31.188Z",
+        "duration": "00:00:10",
+        "id": "f404ddcd-c9a7-4582-acde-42c6ef303fdc",
+        "sourceResolution": "1080",
+        "status": "Ready",
+        "thumbnail": "https://images.fastpix.com/b2dd4c78-84db-423b-af63-b749327d8b28/thumbnail.png"
+      }
+    ],
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
     "createdAt": "2026-06-05T11:46:04.069Z",
-    "updatedAt": "2026-06-05T11:46:04.069Z",
-    "mediaCount": 0
+    "updatedAt": "2026-06-16T08:57:35.681Z",
+    "mediaCount": 1
   }
 }
 ```
@@ -1190,10 +1554,10 @@ Body: {"success":false,"error":{"code":400,"message":"DRM ID does not exist","de
   "headers": {
     "alt-svc": "h3=\":443\"; ma=86400",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a0860a438dc7ab41-BOM",
+    "cf-ray": "a0fbd9ce49745ef9-HYD",
     "content-length": "147",
     "content-type": "application/json;charset=UTF-8",
-    "date": "Mon, 08 Jun 2026 07:04:02 GMT",
+    "date": "Mon, 22 Jun 2026 14:12:56 GMT",
     "server": "cloudflare"
   },
   "url": "https://api.fastpix.com/v1/on-demand/drm-configurations?limit=10&offset=1"
@@ -1270,10 +1634,10 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "headers": {
     "alt-svc": "h3=\":443\"; ma=86400",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a0860a4778e5ab41-BOM",
+    "cf-ray": "a0fbd9d18e355ef9-HYD",
     "content-length": "141",
     "content-type": "application/json;charset=UTF-8",
-    "date": "Mon, 08 Jun 2026 07:04:02 GMT",
+    "date": "Mon, 22 Jun 2026 14:12:57 GMT",
     "server": "cloudflare"
   },
   "url": "https://api.fastpix.com/v1/on-demand/drm-configurations/your-drm-configuration-id"
@@ -1314,14 +1678,14 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": [
     {
-      "streamId": "9b58f07729da379874e5ee0cfc0e0aaf",
-      "streamKey": "649a23983e5b1501945ff835391997a3k9b58f07729da379874e5ee0cfc0e0aaf",
-      "srtSecret": "b1626967cb21f59213bef728aeac8c0fk9b58f07729da379874e5ee0cfc0e0aaf",
+      "streamId": "0933bef2cae37474d536a86e95881f45",
+      "streamKey": "e719f041bdd7d5f21cd3583c719cdd87k0933bef2cae37474d536a86e95881f45",
+      "srtSecret": "9e2705ed339c4d54d34a8a5d824b8f7fk0933bef2cae37474d536a86e95881f45",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-06-08T07:03:48.858337Z",
+      "createdAt": "2026-06-22T14:12:09.749831Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
@@ -1333,65 +1697,36 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "ef6236a1-05d4-428d-be74-2017180900a3",
-          "accessPolicy": "public"
-        }
-      ],
-      "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play9b58f07729da379874e5ee0cfc0e0aaf",
-        "srtPlaybackSecret": "2470c60d52d4bfa12cb9b9b18d7524ebk9b58f07729da379874e5ee0cfc0e0aaf"
-      }
-    },
-    {
-      "streamId": "21023d5cae7e9aab6bdbcea8d6f2f504",
-      "streamKey": "51ae2fed821fe7b99d27c6890331aae8k21023d5cae7e9aab6bdbcea8d6f2f504",
-      "srtSecret": "046c49b66740c38a3c8577e634cfde16k21023d5cae7e9aab6bdbcea8d6f2f504",
-      "trial": false,
-      "status": "idle",
-      "maxResolution": "1080p",
-      "maxDuration": 0,
-      "createdAt": "2026-06-08T05:45:58.410112Z",
-      "reconnectWindow": 60,
-      "enableRecording": true,
-      "enableDvrMode": false,
-      "mediaPolicy": "public",
-      "metadata": {
-        "name": "sdk-validate"
-      },
-      "lowLatency": false,
-      "closedCaptions": false,
-      "playbackIds": [
-        {
-          "id": "07cd00a1-a5e0-405c-ba69-3fb847bde09d",
+          "id": "d66e5168-b57e-48bb-9f7a-5b1b48880941",
           "accessPolicy": "public"
         },
         {
-          "id": "c2dbc995-2e1e-47d4-8a99-eb9145cce7a1",
+          "id": "de3c3387-2ab0-4c43-bbe7-6db3109699f2",
           "accessPolicy": "public"
         }
       ],
       "simulcastResponses": [
         {
-          "simulcastId": "ac9e04f6587d3bc388f4da8595b10ad5",
+          "simulcastId": "9e54af81c930741d067e735955bd482a",
           "url": "rtmp://example.com/live",
-          "streamKey": "sk-mq4sfoh8",
+          "streamKey": "sk-mqpaowod",
           "isEnabled": true
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play21023d5cae7e9aab6bdbcea8d6f2f504",
-        "srtPlaybackSecret": "1725fb57302d6cdb633d0dad7481488fk21023d5cae7e9aab6bdbcea8d6f2f504"
+        "srtPlaybackStreamId": "play0933bef2cae37474d536a86e95881f45",
+        "srtPlaybackSecret": "3e3b42f90a2490796737e0d1bdc2dee5k0933bef2cae37474d536a86e95881f45"
       }
     },
     {
-      "streamId": "5874e71e3738f1bc5f569874d43e99fa",
-      "streamKey": "5663784b36a278729a458c82225073e4k5874e71e3738f1bc5f569874d43e99fa",
-      "srtSecret": "00ea44e51cbc3a4673c11df657ebb8cfk5874e71e3738f1bc5f569874d43e99fa",
+      "streamId": "83711bc24841a17a14b1596db787eb5b",
+      "streamKey": "2aacf7c9c71850b2fdd8a53d2d9054b4k83711bc24841a17a14b1596db787eb5b",
+      "srtSecret": "e01838b45f94b40d87ccf0f176d8767dk83711bc24841a17a14b1596db787eb5b",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-06-05T11:46:06.734585Z",
+      "createdAt": "2026-06-22T14:11:54.861939Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
@@ -1403,36 +1738,63 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "db91f971-101b-47d6-8901-efffc86a10e9",
+          "id": "4ed66c61-e3ae-4ffe-ae58-574783ded25b",
           "accessPolicy": "public"
-        },
-        {
-          "id": "ea5fc1b4-f06a-4c9c-944e-c28c05be634f",
-          "accessPolicy": "public"
-        }
-      ],
-      "simulcastResponses": [
-        {
-          "simulcastId": "2cf9a5aa4e5b70b4732397400524cdf6",
-          "url": "rtmp://example.com/live",
-          "streamKey": "sk-mq0uz5nr",
-          "isEnabled": true
-        },
-        {
-          "simulcastId": "8de51e8b2c420d89491b562b113d210f",
-          "url": "rtmp://a.rtmp.youtube.com/live2",
-          "streamKey": "test-dummy-key-1234",
-          "isEnabled": true
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play5874e71e3738f1bc5f569874d43e99fa",
-        "srtPlaybackSecret": "44137e621630b240a3ad3860443066d9k5874e71e3738f1bc5f569874d43e99fa"
+        "srtPlaybackStreamId": "play83711bc24841a17a14b1596db787eb5b",
+        "srtPlaybackSecret": "1755e9fac51117fb002d9f6247ded266k83711bc24841a17a14b1596db787eb5b"
       }
     },
     {
-      "streamId": "6a963e6e9ba7ce45951c28a765fa4b39",
-      "streamKey": "c47d7ead4b9b93254ad3fedde86083f4k6a963e6e9b
+      "streamId": "d6f0df064d3fc14ce94691e398d04ad9",
+      "streamKey": "45eb8183a27bace53733ba2eff17418ckd6f0df064d3fc14ce94691e398d04ad9",
+      "srtSecret": "c8de6933925251f19b34b65ad378bde2kd6f0df064d3fc14ce94691e398d04ad9",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-22T13:10:01.343527Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "7bfc098d-d0f3-4924-b22b-fe0977c90a39",
+          "accessPolicy": "public"
+        }
+      ],
+      "srtPlaybackResponse": {
+        "srtPlaybackStreamId": "playd6f0df064d3fc14ce94691e398d04ad9",
+        "srtPlaybackSecret": "54dc4f9195da5d3f7541cc13c2a302b0kd6f0df064d3fc14ce94691e398d04ad9"
+      }
+    },
+    {
+      "streamId": "7da3e877b724e20d574f7ec91e32c58b",
+      "streamKey": "ab396a1b8c9cbbe021e4167deaf6a0f2k7da3e877b724e20d574f7ec91e32c58b",
+      "srtSecret": "366e9bb16fb28d9805158f9574d4fdabk7da3e877b724e20d574f7ec91e32c58b",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-22T13:03:54.692894Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "8566ed9e-1d37-4c5d-9d92-878358440f37",
+          "accessPolicy": "public"
+        }
+      ],
+      "srtPlaybackRespo
 ... (truncated)
 ```
 
@@ -1443,14 +1805,14 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
   "success": true,
   "data": [
     {
-      "streamId": "9b58f07729da379874e5ee0cfc0e0aaf",
-      "streamKey": "649a23983e5b1501945ff835391997a3k9b58f07729da379874e5ee0cfc0e0aaf",
-      "srtSecret": "b1626967cb21f59213bef728aeac8c0fk9b58f07729da379874e5ee0cfc0e0aaf",
+      "streamId": "0933bef2cae37474d536a86e95881f45",
+      "streamKey": "e719f041bdd7d5f21cd3583c719cdd87k0933bef2cae37474d536a86e95881f45",
+      "srtSecret": "9e2705ed339c4d54d34a8a5d824b8f7fk0933bef2cae37474d536a86e95881f45",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-06-08T07:03:48.858Z",
+      "createdAt": "2026-06-22T14:12:09.749Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
@@ -1462,65 +1824,36 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "ef6236a1-05d4-428d-be74-2017180900a3",
-          "accessPolicy": "public"
-        }
-      ],
-      "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play9b58f07729da379874e5ee0cfc0e0aaf",
-        "srtPlaybackSecret": "2470c60d52d4bfa12cb9b9b18d7524ebk9b58f07729da379874e5ee0cfc0e0aaf"
-      }
-    },
-    {
-      "streamId": "21023d5cae7e9aab6bdbcea8d6f2f504",
-      "streamKey": "51ae2fed821fe7b99d27c6890331aae8k21023d5cae7e9aab6bdbcea8d6f2f504",
-      "srtSecret": "046c49b66740c38a3c8577e634cfde16k21023d5cae7e9aab6bdbcea8d6f2f504",
-      "trial": false,
-      "status": "idle",
-      "maxResolution": "1080p",
-      "maxDuration": 0,
-      "createdAt": "2026-06-08T05:45:58.410Z",
-      "reconnectWindow": 60,
-      "enableRecording": true,
-      "enableDvrMode": false,
-      "mediaPolicy": "public",
-      "metadata": {
-        "name": "sdk-validate"
-      },
-      "lowLatency": false,
-      "closedCaptions": false,
-      "playbackIds": [
-        {
-          "id": "07cd00a1-a5e0-405c-ba69-3fb847bde09d",
+          "id": "d66e5168-b57e-48bb-9f7a-5b1b48880941",
           "accessPolicy": "public"
         },
         {
-          "id": "c2dbc995-2e1e-47d4-8a99-eb9145cce7a1",
+          "id": "de3c3387-2ab0-4c43-bbe7-6db3109699f2",
           "accessPolicy": "public"
         }
       ],
       "simulcastResponses": [
         {
-          "simulcastId": "ac9e04f6587d3bc388f4da8595b10ad5",
+          "simulcastId": "9e54af81c930741d067e735955bd482a",
           "url": "rtmp://example.com/live",
-          "streamKey": "sk-mq4sfoh8",
+          "streamKey": "sk-mqpaowod",
           "isEnabled": true
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play21023d5cae7e9aab6bdbcea8d6f2f504",
-        "srtPlaybackSecret": "1725fb57302d6cdb633d0dad7481488fk21023d5cae7e9aab6bdbcea8d6f2f504"
+        "srtPlaybackStreamId": "play0933bef2cae37474d536a86e95881f45",
+        "srtPlaybackSecret": "3e3b42f90a2490796737e0d1bdc2dee5k0933bef2cae37474d536a86e95881f45"
       }
     },
     {
-      "streamId": "5874e71e3738f1bc5f569874d43e99fa",
-      "streamKey": "5663784b36a278729a458c82225073e4k5874e71e3738f1bc5f569874d43e99fa",
-      "srtSecret": "00ea44e51cbc3a4673c11df657ebb8cfk5874e71e3738f1bc5f569874d43e99fa",
+      "streamId": "83711bc24841a17a14b1596db787eb5b",
+      "streamKey": "2aacf7c9c71850b2fdd8a53d2d9054b4k83711bc24841a17a14b1596db787eb5b",
+      "srtSecret": "e01838b45f94b40d87ccf0f176d8767dk83711bc24841a17a14b1596db787eb5b",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-06-05T11:46:06.734Z",
+      "createdAt": "2026-06-22T14:11:54.861Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
@@ -1532,36 +1865,64 @@ Body: {"success":false,"error":{"code":422,"message":"payload validation failed"
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "db91f971-101b-47d6-8901-efffc86a10e9",
+          "id": "4ed66c61-e3ae-4ffe-ae58-574783ded25b",
           "accessPolicy": "public"
-        },
-        {
-          "id": "ea5fc1b4-f06a-4c9c-944e-c28c05be634f",
-          "accessPolicy": "public"
-        }
-      ],
-      "simulcastResponses": [
-        {
-          "simulcastId": "2cf9a5aa4e5b70b4732397400524cdf6",
-          "url": "rtmp://example.com/live",
-          "streamKey": "sk-mq0uz5nr",
-          "isEnabled": true
-        },
-        {
-          "simulcastId": "8de51e8b2c420d89491b562b113d210f",
-          "url": "rtmp://a.rtmp.youtube.com/live2",
-          "streamKey": "test-dummy-key-1234",
-          "isEnabled": true
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play5874e71e3738f1bc5f569874d43e99fa",
-        "srtPlaybackSecret": "44137e621630b240a3ad3860443066d9k5874e71e3738f1bc5f569874d43e99fa"
+        "srtPlaybackStreamId": "play83711bc24841a17a14b1596db787eb5b",
+        "srtPlaybackSecret": "1755e9fac51117fb002d9f6247ded266k83711bc24841a17a14b1596db787eb5b"
       }
     },
     {
-      "streamId": "6a963e6e9ba7ce45951c28a765fa4b39",
-      "streamKey": "c47d7ead4b9b93254ad3fedde86083f4k6a963e6e9ba7ce45951
+      "streamId": "d6f0df064d3fc14ce94691e398d04ad9",
+      "streamKey": "45eb8183a27bace53733ba2eff17418ckd6f0df064d3fc14ce94691e398d04ad9",
+      "srtSecret": "c8de6933925251f19b34b65ad378bde2kd6f0df064d3fc14ce94691e398d04ad9",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-22T13:10:01.343Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "7bfc098d-d0f3-4924-b22b-fe0977c90a39",
+          "accessPolicy": "public"
+        }
+      ],
+      "srtPlaybackResponse": {
+        "srtPlaybackStreamId": "playd6f0df064d3fc14ce94691e398d04ad9",
+        "srtPlaybackSecret": "54dc4f9195da5d3f7541cc13c2a302b0kd6f0df064d3fc14ce94691e398d04ad9"
+      }
+    },
+    {
+      "streamId": "7da3e877b724e20d574f7ec91e32c58b",
+      "streamKey": "ab396a1b8c9cbbe021e4167deaf6a0f2k7da3e877b724e20d574f7ec91e32c58b",
+      "srtSecret": "366e9bb16fb28d9805158f9574d4fdabk7da3e877b724e20d574f7ec91e32c58b",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-22T13:03:54.692Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "8566ed9e-1d37-4c5d-9d92-878358440f37",
+          "accessPolicy": "public"
+        }
+      ],
+      "srtPlaybackResponse": {
+    
 ... (truncated)
 ```
 
@@ -1625,10 +1986,10 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   "headers": {
     "alt-svc": "h3=\":443\"; ma=86400",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a0860a517f92ab41-BOM",
+    "cf-ray": "a0fbd9dadbdb5ef9-HYD",
     "content-encoding": "gzip",
     "content-type": "application/json;charset=UTF-8",
-    "date": "Mon, 08 Jun 2026 07:04:04 GMT",
+    "date": "Mon, 22 Jun 2026 14:12:59 GMT",
     "server": "cloudflare"
   },
   "url": "https://api.fastpix.com/v1/live/streams/5874e71e3738f1bc5f569874d43e99fa/viewer-count"
@@ -1704,6 +2065,42 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
         "url": "rtmp://a.rtmp.youtube.com/live2",
         "streamKey": "test-dummy-key-1234",
         "isEnabled": true
+      },
+      {
+        "simulcastId": "a958ea51fd25b06fbc0a917e51049340",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
+      },
+      {
+        "simulcastId": "b30c422d2b8297f8213c96696ad67a01",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
+      },
+      {
+        "simulcastId": "38c8cd25ae92797c8c9d2ae68705db79",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
+      },
+      {
+        "simulcastId": "b1ed4242738b92fa3df72d735cb739bb",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
       }
     ],
     "srtPlaybackResponse": {
@@ -1759,6 +2156,42 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
         "url": "rtmp://a.rtmp.youtube.com/live2",
         "streamKey": "test-dummy-key-1234",
         "isEnabled": true
+      },
+      {
+        "simulcastId": "a958ea51fd25b06fbc0a917e51049340",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
+      },
+      {
+        "simulcastId": "b30c422d2b8297f8213c96696ad67a01",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
+      },
+      {
+        "simulcastId": "38c8cd25ae92797c8c9d2ae68705db79",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
+      },
+      {
+        "simulcastId": "b1ed4242738b92fa3df72d735cb739bb",
+        "url": "rtmp://hyd01.contribute.live-video.net/app/",
+        "streamKey": "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+        "isEnabled": true,
+        "metadata": {
+          "livestream_name": "Tech-Connect Summit"
+        }
       }
     ],
     "srtPlaybackResponse": {
@@ -1900,30 +2333,30 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   "success": true,
   "data": [
     {
-      "id": "496d4ca6-d3fc-4fef-9460-1cd851db7c22",
-      "createdAt": "2026-06-08T07:03:46.247843Z"
+      "id": "1811c8b0-400d-4998-a525-aa3cf82ee5aa",
+      "createdAt": "2026-06-22T14:11:36.700158Z"
     },
     {
-      "id": "48a3888d-950c-4fc5-9031-5dcaf8916e3b",
-      "createdAt": "2026-06-08T05:45:56.108871Z"
+      "id": "49522234-f70c-487d-b02d-4fa414b9da57",
+      "createdAt": "2026-06-22T13:10:01.783048Z"
     },
     {
-      "id": "04cf0f41-fd03-4c14-a30a-26f201624061",
-      "createdAt": "2026-06-05T11:46:03.378397Z"
+      "id": "423974cc-67c6-451d-8969-245a8895729d",
+      "createdAt": "2026-06-22T13:03:55.630951Z"
     },
     {
-      "id": "2dd486ac-b0ee-4ae0-ab1d-90e2f3504f5d",
-      "createdAt": "2026-06-05T11:06:45.999861Z"
+      "id": "dbe7b70a-cddf-4bfb-9e48-87972d243aa3",
+      "createdAt": "2026-06-20T07:57:33.304891Z"
     },
     {
-      "id": "5d4fc1f9-9845-4d70-9e35-54cea0a53464",
-      "createdAt": "2026-06-05T11:06:00.509464Z"
+      "id": "bcd3171b-ffa9-4481-9793-3b2e91a5c3ac",
+      "createdAt": "2026-06-20T07:29:20.932704Z"
     }
   ],
   "pagination": {
-    "totalRecords": 48,
+    "totalRecords": 81,
     "currentOffset": 1,
-    "offsetCount": 10
+    "offsetCount": 17
   }
 }
 ```
@@ -1935,30 +2368,30 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   "success": true,
   "data": [
     {
-      "id": "496d4ca6-d3fc-4fef-9460-1cd851db7c22",
-      "createdAt": "2026-06-08T07:03:46.247Z"
+      "id": "1811c8b0-400d-4998-a525-aa3cf82ee5aa",
+      "createdAt": "2026-06-22T14:11:36.700Z"
     },
     {
-      "id": "48a3888d-950c-4fc5-9031-5dcaf8916e3b",
-      "createdAt": "2026-06-08T05:45:56.108Z"
+      "id": "49522234-f70c-487d-b02d-4fa414b9da57",
+      "createdAt": "2026-06-22T13:10:01.783Z"
     },
     {
-      "id": "04cf0f41-fd03-4c14-a30a-26f201624061",
-      "createdAt": "2026-06-05T11:46:03.378Z"
+      "id": "423974cc-67c6-451d-8969-245a8895729d",
+      "createdAt": "2026-06-22T13:03:55.630Z"
     },
     {
-      "id": "2dd486ac-b0ee-4ae0-ab1d-90e2f3504f5d",
-      "createdAt": "2026-06-05T11:06:45.999Z"
+      "id": "dbe7b70a-cddf-4bfb-9e48-87972d243aa3",
+      "createdAt": "2026-06-20T07:57:33.304Z"
     },
     {
-      "id": "5d4fc1f9-9845-4d70-9e35-54cea0a53464",
-      "createdAt": "2026-06-05T11:06:00.509Z"
+      "id": "bcd3171b-ffa9-4481-9793-3b2e91a5c3ac",
+      "createdAt": "2026-06-20T07:29:20.932Z"
     }
   ],
   "pagination": {
-    "totalRecords": 48,
+    "totalRecords": 81,
     "currentOffset": 1,
-    "offsetCount": 10
+    "offsetCount": 17
   }
 }
 ```
@@ -1993,9 +2426,9 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
 {
   "success": true,
   "data": {
+    "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
     "signingKeyId": "04cf0f41-fd03-4c14-a30a-26f201624061",
-    "publicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs8Vl0agbiwg6upzJq17ospR6W/vtV5vrWBOdwBifAN1eF3mctq+e32iVZe8X1y3wpIJtlLdXksCOrL1i4wFpOHjZ+a2j+3xINK+9PQfTWV1Q2dBTgrbU4gJJKyW5YC1lXvncmOaQlBrKSyqinE8eGL74PibM2jfXz5jxPhd9j1+lidw0uM+BoYX/J2Q2jekDqEX2Om4bcaPl6MFJWRB+CwN1AXg5Mdxjm/fGd+AfSBzsEkLqjdswgoOd6M9YOI/YgGk8g89jL24uOKLNKQ+MUo+iuEbB24noJ6bJrbmKrU9om6+nPu8aWFrgDsJc8ApI6H9yAlytVdalTf2eXapr6QIDAQAB\n-----END PUBLIC KEY-----\n",
-    "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381"
+    "publicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs8Vl0agbiwg6upzJq17ospR6W/vtV5vrWBOdwBifAN1eF3mctq+e32iVZe8X1y3wpIJtlLdXksCOrL1i4wFpOHjZ+a2j+3xINK+9PQfTWV1Q2dBTgrbU4gJJKyW5YC1lXvncmOaQlBrKSyqinE8eGL74PibM2jfXz5jxPhd9j1+lidw0uM+BoYX/J2Q2jekDqEX2Om4bcaPl6MFJWRB+CwN1AXg5Mdxjm/fGd+AfSBzsEkLqjdswgoOd6M9YOI/YgGk8g89jL24uOKLNKQ+MUo+iuEbB24noJ6bJrbmKrU9om6+nPu8aWFrgDsJc8ApI6H9yAlytVdalTf2eXapr6QIDAQAB\n-----END PUBLIC KEY-----\n"
   }
 }
 ```
@@ -2049,8 +2482,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
     "offsetCount": 0
   },
   "timespan": [
-    1780815848,
-    1780902248
+    1782051181,
+    1782137581
   ]
 }
 ```
@@ -2067,8 +2500,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
     "offsetCount": 0
   },
   "timespan": [
-    1780815848,
-    1780902248
+    1782051182,
+    1782137582
   ]
 }
 ```
@@ -2398,8 +2831,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   "success": true,
   "data": [],
   "timespan": [
-    1780815850,
-    1780902250
+    1782051183,
+    1782137583
   ]
 }
 ```
@@ -2411,8 +2844,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   "success": true,
   "data": [],
   "timespan": [
-    1780815850,
-    1780902250
+    1782051183,
+    1782137583
   ]
 }
 ```
@@ -2604,8 +3037,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   "success": true,
   "data": [],
   "timespan": [
-    1780815851,
-    1780902251
+    1782051184,
+    1782137584
   ]
 }
 ```
@@ -2617,8 +3050,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   "success": true,
   "data": [],
   "timespan": [
-    1780815851,
-    1780902251
+    1782051184,
+    1782137584
   ]
 }
 ```
@@ -2662,8 +3095,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
     "offsetCount": 0
   },
   "timespan": [
-    1780815852,
-    1780902252
+    1782051185,
+    1782137585
   ]
 }
 ```
@@ -2683,8 +3116,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
     "offsetCount": 0
   },
   "timespan": [
-    1780815852,
-    1780902252
+    1782051185,
+    1782137585
   ]
 }
 ```
@@ -2730,8 +3163,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
     "globalValue": null
   },
   "timespan": [
-    1780815853,
-    1780902253
+    1782051185,
+    1782137585
   ]
 }
 ```
@@ -2753,8 +3186,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
     "globalValue": null
   },
   "timespan": [
-    1780815853,
-    1780902253
+    1782051186,
+    1782137586
   ]
 }
 ```
@@ -2794,8 +3227,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   },
   "data": [],
   "timespan": [
-    1780815853000,
-    1780902253000
+    1782051186000,
+    1782137586000
   ]
 }
 ```
@@ -2811,8 +3244,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
   },
   "data": [],
   "timespan": [
-    1780815854000,
-    1780902254000
+    1782051186000,
+    1782137586000
   ]
 }
 ```
@@ -3193,8 +3626,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
     "topErrors": []
   },
   "timespan": [
-    1780815855,
-    1780902255
+    1782051187,
+    1782137587
   ]
 }
 ```
@@ -3209,8 +3642,8 @@ Body: {"success":false,"error":{"code":404,"message":"stream details not found",
     "topErrors": []
   },
   "timespan": [
-    1780815855,
-    1780902255
+    1782051188,
+    1782137588
   ]
 }
 ```

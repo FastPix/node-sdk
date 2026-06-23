@@ -1,6 +1,6 @@
 # Non-GET endpoints validation report (Node SDK)
 
-Generated: 2026-06-08T07:07:29.410Z
+Generated: 2026-06-22T13:59:14.173Z
 
 ## Summary
 
@@ -11,16 +11,16 @@ Generated: 2026-06-08T07:07:29.410Z
 
 ## Captured resources
 
-- `signingKeyId`: 496d4ca6-d3fc-4fef-9460-1cd851db7c22
-- `playlistId`: 86ef0d26-9573-4ba6-a785-7374af08ca03
-- `streamId`: 9b58f07729da379874e5ee0cfc0e0aaf
-- `mediaId`: 27229043-54e7-4f7b-98ab-14d91aa2bbc6
-- `mediaPlaybackId`: bfe46630-6017-43a5-b728-27b600dc91ec
-- `createdPlaybackId`: 65597d5e-1684-4396-940d-9d478763f510
-- `trackId`: 2cdcb3f2-7868-4364-8176-cc127fafa9c9
-- `streamPlaybackId`: 35e19eb6-554e-4b3c-bf12-86f1d163f564
-- `simulcastId`: 43402798197700b1c5a602917f9aada8
-- `uploadId`: 83a9f59f-f1d0-49cc-8b5b-1a652a92f10c
+- `signingKeyId`: <SIGNING_KEY_ID>
+- `playlistId`: <PLAYLIST_ID>
+- `streamId`: <STREAM_ID>
+- `mediaId`: <MEDIA_ID>
+- `mediaPlaybackId`: <MEDIA_PLAYBACK_ID>
+- `createdPlaybackId`: <CREATED_PLAYBACK_ID>
+- `trackId`: <TRACK_ID>
+- `streamPlaybackId`: <STREAM_PLAYBACK_ID>
+- `simulcastId`: <SIMULCAST_ID>
+- `uploadId`: <UPLOAD_ID>
 
 ## Consolidated
 
@@ -71,55 +71,55 @@ Generated: 2026-06-08T07:07:29.410Z
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `496d4ca6-d3fc-4fef-9460-1cd851db7c22`
+- **Captured id**: `<SIGNING_KEY_ID>`
 
 ### create-a-playlist (`POST /on-demand/playlists`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `86ef0d26-9573-4ba6-a785-7374af08ca03`
+- **Captured id**: `<PLAYLIST_ID>`
 
 ### create-new-stream (`POST /live/streams`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `9b58f07729da379874e5ee0cfc0e0aaf`
+- **Captured id**: `<STREAM_ID>`
 
 ### create-media (`POST /on-demand`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `27229043-54e7-4f7b-98ab-14d91aa2bbc6`
+- **Captured id**: `<MEDIA_ID>`
 
 ### create-media-playback-id (`POST /on-demand/{mediaId}/playback-ids`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `65597d5e-1684-4396-940d-9d478763f510`
+- **Captured id**: `<CREATED_PLAYBACK_ID>`
 
 ### Add-media-track (`POST /on-demand/{mediaId}/tracks`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `2cdcb3f2-7868-4364-8176-cc127fafa9c9`
+- **Captured id**: `<TRACK_ID>`
 
 ### create-playbackId-of-stream (`POST /live/streams/{streamId}/playback-ids`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `35e19eb6-554e-4b3c-bf12-86f1d163f564`
+- **Captured id**: `<STREAM_PLAYBACK_ID>`
 
 ### create-simulcast-of-stream (`POST /live/streams/{streamId}/simulcast`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `43402798197700b1c5a602917f9aada8`
+- **Captured id**: `<SIMULCAST_ID>`
 
 ### direct-upload-video-media (`POST /on-demand/upload`)
 - **Phase**: CREATE
 - **Status**: PASS
 - **HTTP**: 201
-- **Captured id**: `83a9f59f-f1d0-49cc-8b5b-1a652a92f10c`
+- **Captured id**: `<UPLOAD_ID>`
 
 ### Generate-subtitle-track (`POST /on-demand/{mediaId}/tracks/{trackId}/generate-subtitles`)
 - **Phase**: CREATE

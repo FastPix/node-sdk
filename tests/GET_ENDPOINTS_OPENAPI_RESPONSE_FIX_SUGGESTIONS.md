@@ -1,6 +1,6 @@
 # GET Endpoints — OpenAPI Response Fix Suggestions
 
-Generated: 2026-06-08T07:04:15.882Z
+Generated: 2026-06-22T14:13:08.257Z
 
 Total failing endpoints: 5
 

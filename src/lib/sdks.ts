@@ -198,7 +198,15 @@ export class ClientSDK {
     this._baseURL = url;
     this.#httpClient = options.httpClient || defaultHttpClient;
 
-    this._options = { ...options, hooks: this.#hooks };
+    this._options = {
+      ...options,
+      // Resolve the webhook signing secret once, preferring an explicit option
+      // and falling back to the FASTPIX_WEBHOOK_SECRET env var. Kept separate
+      // from `security` (the API password) on purpose. Carried forward here so
+      // any cloned options (e.g. per-resource clients) inherit it.
+      webhookSecret: options.webhookSecret ?? env().FASTPIX_WEBHOOK_SECRET ?? null,
+      hooks: this.#hooks,
+    };
 
     this.#logger = this._options.debugLogger;
     if (!this.#logger && env().FASTPIX_DEBUG) {

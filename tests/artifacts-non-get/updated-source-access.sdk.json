@@ -1,8 +1,8 @@
 {
   "success": true,
   "data": {
-    "thumbnail": "https://images.fastpix.io/bfe46630-6017-43a5-b728-27b600dc91ec/thumbnail.png",
-    "id": "27229043-54e7-4f7b-98ab-14d91aa2bbc6",
+    "thumbnail": "https://images.fastpix.io/2bad43f8-1954-4df4-b4f7-b022e99eeddf/thumbnail.png",
+    "id": "910cafb2-66d1-484e-b6bf-63482421dc44",
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
     "metadata": {
       "updated": "true"
@@ -16,7 +16,7 @@
     "sourceAccess": true,
     "playbackIds": [
       {
-        "id": "65597d5e-1684-4396-940d-9d478763f510",
+        "id": "2bad43f8-1954-4df4-b4f7-b022e99eeddf",
         "accessPolicy": "public",
         "accessRestrictions": {
           "domains": {
@@ -32,7 +32,7 @@
         }
       },
       {
-        "id": "bfe46630-6017-43a5-b728-27b600dc91ec",
+        "id": "e6d84119-3a9b-4412-ae69-7dd1996fb756",
         "accessPolicy": "public",
         "accessRestrictions": {
           "domains": {
@@ -50,7 +50,14 @@
     ],
     "tracks": [
       {
-        "id": "002a330d-ed12-4715-8391-8edf04f7857b",
+        "id": "18551e5b-8ec8-42c1-a413-3344ff2053f3",
+        "type": "audio",
+        "status": "available",
+        "languageName": "default",
+        "languageCode": "und"
+      },
+      {
+        "id": "3848c8eb-301b-41fe-b180-5b92cd1a2a42",
         "type": "video",
         "width": 1920,
         "height": 1080,
@@ -58,25 +65,18 @@
         "status": "available"
       },
       {
-        "id": "0da48fd9-0447-4c5d-8274-2bb10fedfa8e",
-        "type": "audio",
-        "status": "available",
-        "languageName": "default",
-        "languageCode": "und"
-      },
-      {
-        "id": "2cdcb3f2-7868-4364-8176-cc127fafa9c9",
-        "type": "audio",
-        "status": "available",
-        "languageName": "Italian",
-        "languageCode": "it"
-      },
-      {
-        "id": "d7cd8aa6-656f-466f-8d3b-9daefcf650ed",
+        "id": "3a1131cb-0ab3-4cd4-a1ad-d1cf186ba2bc",
         "type": "subtitle",
         "status": "preparing",
         "languageName": "English",
         "languageCode": "en-US"
+      },
+      {
+        "id": "c6bbf218-0de2-42f0-8baf-2e04fa81ea02",
+        "type": "audio",
+        "status": "available",
+        "languageName": "Italian",
+        "languageCode": "it"
       }
     ],
     "generatedSubtitles": [
@@ -88,7 +88,7 @@
     "subtitleAvailable": false,
     "duration": "00:00:10",
     "aspectRatio": "16:9",
-    "createdAt": "2026-06-08T07:03:49.363Z",
-    "updatedAt": "2026-06-08T07:07:11.971Z"
+    "createdAt": "2026-06-22T13:55:30.978Z",
+    "updatedAt": "2026-06-22T13:58:47.921Z"
   }
 }

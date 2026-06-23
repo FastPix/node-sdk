@@ -2,19 +2,36 @@
   "success": true,
   "data": [
     {
-      "id": "27229043-54e7-4f7b-98ab-14d91aa2bbc6",
+      "thumbnail": "https://images.fastpix.com/aaed1c0c-4c05-41de-ad84-7e78d6b728d0/thumbnail.png",
+      "id": "265b27a6-7edc-4046-ad0b-69d55206e469",
       "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
       "metadata": {
         "source": "sdk-validate"
       },
       "mediaQuality": "standard",
       "maxResolution": "720p",
-      "sourceResolution": "1080p",
-      "status": "Created",
+      "sourceResolution": "1080",
+      "status": "Ready",
       "sourceAccess": false,
       "playbackIds": [
         {
-          "id": "bfe46630-6017-43a5-b728-27b600dc91ec",
+          "id": "6166f9c5-aefa-411a-93b5-4af5d86d6b3b",
+          "accessPolicy": "public",
+          "accessRestrictions": {
+            "domains": {
+              "defaultPolicy": "allow",
+              "allow": [],
+              "deny": []
+            },
+            "userAgents": {
+              "defaultPolicy": "allow",
+              "allow": [],
+              "deny": []
+            }
+          }
+        },
+        {
+          "id": "aaed1c0c-4c05-41de-ad84-7e78d6b728d0",
           "accessPolicy": "public",
           "accessRestrictions": {
             "domains": {
@@ -30,18 +47,42 @@
           }
         }
       ],
-      "tracks": [],
+      "tracks": [
+        {
+          "id": "47065d02-0e4d-486a-a9af-034d022ed345",
+          "type": "audio",
+          "status": "Ready",
+          "languageName": "Italian",
+          "languageCode": "it"
+        },
+        {
+          "id": "cd43d9f3-840c-475e-a86c-5c376d238f2a",
+          "type": "audio",
+          "status": "Ready",
+          "languageName": "default",
+          "languageCode": "und"
+        },
+        {
+          "id": "e0e01ca3-3120-4ad0-bc2e-cde35d5d8690",
+          "type": "video",
+          "width": 1920,
+          "height": 1080,
+          "frameRate": "60.000",
+          "status": "Ready"
+        }
+      ],
       "generatedSubtitles": [],
       "isAudioOnly": false,
       "subtitleAvailable": false,
-      "duration": "00:00:00",
-      "createdAt": "2026-06-08T07:03:49.363Z",
-      "updatedAt": "2026-06-08T07:03:49.363Z"
+      "duration": "00:00:10",
+      "aspectRatio": "16:9",
+      "createdAt": "2026-06-22T14:12:10.114Z",
+      "updatedAt": "2026-06-22T14:12:41.529Z"
     }
   ],
   "pagination": {
-    "totalRecords": 113,
+    "totalRecords": 208,
     "currentOffset": 1,
-    "offsetCount": 113
+    "offsetCount": 208
   }
 }

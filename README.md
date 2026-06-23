@@ -33,6 +33,9 @@ Configure your FastPix credentials using environment variables for enhanced secu
 # Set your FastPix credentials
 export FASTPIX_USERNAME="your-access-token"
 export FASTPIX_PASSWORD="your-secret-key"
+
+# Optional: only needed to verify inbound webhooks (separate from the API credentials above)
+export FASTPIX_WEBHOOK_SECRET="your-webhook-signing-secret"
 ```
 
 > Security Note: Never commit your credentials to version control. Use environment variables or secure credential management systems.
@@ -49,6 +52,7 @@ export FASTPIX_PASSWORD="your-secret-key"
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Debugging](#debugging)
+  * [Webhooks](#webhooks)
   * [Development](#development)
 
 ## Setup
@@ -163,7 +167,8 @@ Comprehensive Node.js SDK for FastPix platform integration with full API coverag
 
 Upload, manage, and transform video content with comprehensive media management capabilities.
 
-For detailed documentation, see [FastPix Video on Demand Overview](https://fastpix.com/docs/get-started/overview).
+For detailed documentation, see [FastPix Video on Demand Overview](https://fastpix.com/docs/video-on-demand-api/overview
+).
 
 #### Input Video
 - [Create from URL](docs/sdks/inputvideo/README.md#create) - Upload video content from external URL
@@ -207,7 +212,7 @@ For detailed documentation, see [FastPix Video on Demand Overview](https://fastp
 
 Stream, manage, and transform live video content with real-time broadcasting capabilities.
 
-For detailed documentation, see [FastPix Live Stream Overview](https://fastpix.com/docs/get-started/live-overview).
+For detailed documentation, see [FastPix Live Stream Overview](https://fastpix.com/docs/live-stream-api/overview).
 
 #### Start Live Stream
 - [Create Stream](docs/sdks/livestreams/README.md#create) - Initialize new live streaming session with DVR mode support
@@ -237,7 +242,7 @@ For detailed documentation, see [FastPix Live Stream Overview](https://fastpix.c
 
 Monitor video performance and quality with comprehensive analytics and real-time metrics.
 
-For detailed documentation, see [FastPix Video Data Overview](https://fastpix.com/docs/concepts/what-video-data-do-we-capture).
+For detailed documentation, see [FastPix Video Data Overview](https://fastpix.com/docs/video-data-api/overview).
 
 #### Metrics
 - [List Breakdown Values](docs/sdks/metrics/README.md#listbreakdownvalues) - Get detailed breakdown of metrics by dimension
@@ -655,6 +660,89 @@ You can also enable a default debug logger by setting an environment variable `F
 <!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future fastpix SDK Sections -->
+## Webhooks
+ 
+FastPix signs every webhook delivery. The SDK's `webhooks` resource verifies that signature and returns the parsed, trusted event in **one call** — so you never act on a forged payload.
+ 
+The signing secret is **separate** from your API credentials (it's the base64 secret from the FastPix dashboard). Provide it via the `webhookSecret` option, or let it default to the `FASTPIX_WEBHOOK_SECRET` environment variable.
+ 
+### The one call
+ 
+```typescript
+// Verifies the signature, then returns the parsed event. Throws
+// WebhookVerificationError if the signature is missing, wrong, or the body
+// isn't the raw bytes. `rawBody` must be the unparsed request body.
+const event = fastpix.webhooks.unwrap(rawBody, headers);
+```
+ 
+`event` is a typed, discriminated union — `switch (event.type)` narrows `event.data` (`Media` for `video.media.*`, the live-stream payload for `video.live_stream.*`).
+ 
+### Express example
+ 
+```typescript
+import express from "express";
+import { Fastpix, WebhookVerificationError } from "@fastpix/fastpix-node";
+ 
+const fastpix = new Fastpix({ webhookSecret: process.env.FASTPIX_WEBHOOK_SECRET });
+const app = express();
+const seen = new Set<string>(); // use a durable store (Redis/DB) in production
+ 
+app.post(
+  "/webhooks/fastpix",
+  express.raw({ type: "application/json" }), // REQUIRED: verify over the raw bytes
+  (req, res) => {
+    const signature = req.header("FastPix-Signature");
+    const rawText = req.body?.toString("utf8") ?? "";
+ 
+    // Dashboard validation probe: unsigned, empty/"{}" body → ack with 200 first.
+    if (!signature && (rawText.trim() === "" || rawText.trim() === "{}")) {
+      return res.status(200).send("ok");
+    }
+ 
+    try {
+      const event = fastpix.webhooks.unwrap(req.body, req.headers);
+ 
+      if (seen.has(event.id)) return res.status(202).send("duplicate"); // dedupe on id
+      seen.add(event.id);
+ 
+      switch (event.type) {
+        case "video.media.ready":
+        case "video.media.updated":
+          console.log(`media ${event.object.id} -> ${event.data.status}`); // data: Media
+          break;
+        case "video.live_stream.created":
+          console.log(`stream ${event.data.streamId} created`); // data: live-stream
+          break;
+        default:
+          console.log(`unhandled: ${event.type}`);
+      }
+      return res.status(202).send("accepted");
+    } catch (err) {
+      if (err instanceof WebhookVerificationError) {
+        return res.status(400).send("invalid signature"); // bad signature
+      }
+      throw err; // unexpected → 500
+    }
+  },
+);
+ 
+app.listen(3000, () => console.log("Listening on :3000/webhooks/fastpix"));
+```
+ 
+> **CommonJS:** swap the imports for `const express = require("express");` and `const { Fastpix, WebhookVerificationError } = require("@fastpix/fastpix-node");` — everything else is identical.
+ 
+### Troubleshooting
+ 
+| Symptom | Fix |
+|---|---|
+| `400` "must be the raw request payload" | Use `express.raw({ type: "application/json" })`, not `express.json()`. |
+| Dashboard says endpoint **not connecting** | Return `200` to the unsigned empty/`{}` validation probe before verifying. |
+| `400` "signature mismatch" on your own test | Base64-**decode** the secret first: `createHmac("sha256", Buffer.from(secret, "base64"))`. Sign the *exact* body bytes you send. |
+| No events arrive at all | `http://localhost` isn't reachable — register a public tunnel URL (e.g. `npx ngrok http 3000`). |
+ 
+> **No timestamp is signed**, so there is no replay window — enforce idempotency by deduping on the top-level event `id`.
+ 
+Full reference (event envelope, typed events, local testing, all gotchas): [`docs/webhooks.md`](./docs/webhooks.md). Standalone example: [`examples/webhooksServer.example.ts`](./examples/webhooksServer.example.ts).
 
 # Development
 
@@ -664,6 +752,6 @@ We value community contributions and feedback. Feel free to submit pull requests
 
 ## Detailed Usage
 
-For comprehensive understanding of each API's functionality, including detailed request and response specifications, parameter descriptions, and additional examples, please refer to the [FastPix API Reference](https://fastpix.com/docs/video-security/secure-media-access-with-jwts).
+For comprehensive understanding of each API's functionality, including detailed request and response specifications, parameter descriptions, and additional examples, please refer to the [FastPix API Reference](https://fastpix.com/docs/product-os-api/overview).
 
 The API reference offers complete documentation for all available endpoints and features, enabling developers to integrate and leverage FastPix APIs effectively.

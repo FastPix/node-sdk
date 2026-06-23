@@ -1,14 +1,14 @@
 {
   "success": true,
   "data": {
-    "streamId": "6a963e6e9ba7ce45951c28a765fa4b39",
-    "streamKey": "c47d7ead4b9b93254ad3fedde86083f4k6a963e6e9ba7ce45951c28a765fa4b39",
-    "srtSecret": "d992ce628c2139d4e32cd82aa993fc35k6a963e6e9ba7ce45951c28a765fa4b39",
+    "streamId": "d6f0df064d3fc14ce94691e398d04ad9",
+    "streamKey": "45eb8183a27bace53733ba2eff17418ckd6f0df064d3fc14ce94691e398d04ad9",
+    "srtSecret": "c8de6933925251f19b34b65ad378bde2kd6f0df064d3fc14ce94691e398d04ad9",
     "trial": false,
     "status": "idle",
     "maxResolution": "1080p",
     "maxDuration": 0,
-    "createdAt": "2026-06-05T11:06:45.385Z",
+    "createdAt": "2026-06-22T13:10:01.343Z",
     "reconnectWindow": 60,
     "enableRecording": true,
     "enableDvrMode": false,
@@ -17,13 +17,13 @@
     "closedCaptions": false,
     "playbackIds": [
       {
-        "id": "e1030cf3-7c7f-4401-a0cb-d607c510b5ae",
+        "id": "7bfc098d-d0f3-4924-b22b-fe0977c90a39",
         "accessPolicy": "public"
       }
     ],
     "srtPlaybackResponse": {
-      "srtPlaybackStreamId": "play6a963e6e9ba7ce45951c28a765fa4b39",
-      "srtPlaybackSecret": "a5361779585b38f78d357325c1f6dd29k6a963e6e9ba7ce45951c28a765fa4b39"
+      "srtPlaybackStreamId": "playd6f0df064d3fc14ce94691e398d04ad9",
+      "srtPlaybackSecret": "54dc4f9195da5d3f7541cc13c2a302b0kd6f0df064d3fc14ce94691e398d04ad9"
     }
   }
 }

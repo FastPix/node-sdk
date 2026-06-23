@@ -26,6 +26,18 @@ export type SDKOptions = {
    */
   security?: models.Security | (() => Promise<models.Security>) | undefined;
 
+  /**
+   * The secret used to verify FastPix webhook signatures.
+   *
+   * This is the webhook signing secret shown in the FastPix dashboard, NOT the
+   * API password supplied via `security`. Keep the two separate: `security`
+   * authenticates outbound API requests, while `webhookSecret` verifies inbound
+   * webhook deliveries.
+   *
+   * Defaults to `process.env.FASTPIX_WEBHOOK_SECRET` when not provided.
+   */
+  webhookSecret?: string | null | undefined;
+
   httpClient?: HTTPClient;
   /**
    * Allows overriding the default server used by the SDK
@@ -67,8 +79,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "1.0.0",
-  sdkVersion: "2.0.7",
+  sdkVersion: "2.0.8",
   genVersion: "2.781.2",
   userAgent:
-    "fastpix-sdk/typescript 2.0.7 2.781.2 1.0.0 @fastpix/fastpix-node",
+    "fastpix-sdk/typescript 2.0.8 2.781.2 1.0.0 @fastpix/fastpix-node",
 } as const;

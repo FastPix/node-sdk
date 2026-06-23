@@ -2,14 +2,14 @@
   "success": true,
   "data": [
     {
-      "streamId": "9b58f07729da379874e5ee0cfc0e0aaf",
-      "streamKey": "649a23983e5b1501945ff835391997a3k9b58f07729da379874e5ee0cfc0e0aaf",
-      "srtSecret": "b1626967cb21f59213bef728aeac8c0fk9b58f07729da379874e5ee0cfc0e0aaf",
+      "streamId": "0933bef2cae37474d536a86e95881f45",
+      "streamKey": "e719f041bdd7d5f21cd3583c719cdd87k0933bef2cae37474d536a86e95881f45",
+      "srtSecret": "9e2705ed339c4d54d34a8a5d824b8f7fk0933bef2cae37474d536a86e95881f45",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-06-08T07:03:48.858337Z",
+      "createdAt": "2026-06-22T14:12:09.749831Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
@@ -21,65 +21,36 @@
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "ef6236a1-05d4-428d-be74-2017180900a3",
-          "accessPolicy": "public"
-        }
-      ],
-      "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play9b58f07729da379874e5ee0cfc0e0aaf",
-        "srtPlaybackSecret": "2470c60d52d4bfa12cb9b9b18d7524ebk9b58f07729da379874e5ee0cfc0e0aaf"
-      }
-    },
-    {
-      "streamId": "21023d5cae7e9aab6bdbcea8d6f2f504",
-      "streamKey": "51ae2fed821fe7b99d27c6890331aae8k21023d5cae7e9aab6bdbcea8d6f2f504",
-      "srtSecret": "046c49b66740c38a3c8577e634cfde16k21023d5cae7e9aab6bdbcea8d6f2f504",
-      "trial": false,
-      "status": "idle",
-      "maxResolution": "1080p",
-      "maxDuration": 0,
-      "createdAt": "2026-06-08T05:45:58.410112Z",
-      "reconnectWindow": 60,
-      "enableRecording": true,
-      "enableDvrMode": false,
-      "mediaPolicy": "public",
-      "metadata": {
-        "name": "sdk-validate"
-      },
-      "lowLatency": false,
-      "closedCaptions": false,
-      "playbackIds": [
-        {
-          "id": "07cd00a1-a5e0-405c-ba69-3fb847bde09d",
+          "id": "d66e5168-b57e-48bb-9f7a-5b1b48880941",
           "accessPolicy": "public"
         },
         {
-          "id": "c2dbc995-2e1e-47d4-8a99-eb9145cce7a1",
+          "id": "de3c3387-2ab0-4c43-bbe7-6db3109699f2",
           "accessPolicy": "public"
         }
       ],
       "simulcastResponses": [
         {
-          "simulcastId": "ac9e04f6587d3bc388f4da8595b10ad5",
+          "simulcastId": "9e54af81c930741d067e735955bd482a",
           "url": "rtmp://example.com/live",
-          "streamKey": "sk-mq4sfoh8",
+          "streamKey": "sk-mqpaowod",
           "isEnabled": true
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play21023d5cae7e9aab6bdbcea8d6f2f504",
-        "srtPlaybackSecret": "1725fb57302d6cdb633d0dad7481488fk21023d5cae7e9aab6bdbcea8d6f2f504"
+        "srtPlaybackStreamId": "play0933bef2cae37474d536a86e95881f45",
+        "srtPlaybackSecret": "3e3b42f90a2490796737e0d1bdc2dee5k0933bef2cae37474d536a86e95881f45"
       }
     },
     {
-      "streamId": "5874e71e3738f1bc5f569874d43e99fa",
-      "streamKey": "5663784b36a278729a458c82225073e4k5874e71e3738f1bc5f569874d43e99fa",
-      "srtSecret": "00ea44e51cbc3a4673c11df657ebb8cfk5874e71e3738f1bc5f569874d43e99fa",
+      "streamId": "83711bc24841a17a14b1596db787eb5b",
+      "streamKey": "2aacf7c9c71850b2fdd8a53d2d9054b4k83711bc24841a17a14b1596db787eb5b",
+      "srtSecret": "e01838b45f94b40d87ccf0f176d8767dk83711bc24841a17a14b1596db787eb5b",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-06-05T11:46:06.734585Z",
+      "createdAt": "2026-06-22T14:11:54.861939Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
@@ -91,42 +62,24 @@
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "db91f971-101b-47d6-8901-efffc86a10e9",
+          "id": "4ed66c61-e3ae-4ffe-ae58-574783ded25b",
           "accessPolicy": "public"
-        },
-        {
-          "id": "ea5fc1b4-f06a-4c9c-944e-c28c05be634f",
-          "accessPolicy": "public"
-        }
-      ],
-      "simulcastResponses": [
-        {
-          "simulcastId": "2cf9a5aa4e5b70b4732397400524cdf6",
-          "url": "rtmp://example.com/live",
-          "streamKey": "sk-mq0uz5nr",
-          "isEnabled": true
-        },
-        {
-          "simulcastId": "8de51e8b2c420d89491b562b113d210f",
-          "url": "rtmp://a.rtmp.youtube.com/live2",
-          "streamKey": "test-dummy-key-1234",
-          "isEnabled": true
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play5874e71e3738f1bc5f569874d43e99fa",
-        "srtPlaybackSecret": "44137e621630b240a3ad3860443066d9k5874e71e3738f1bc5f569874d43e99fa"
+        "srtPlaybackStreamId": "play83711bc24841a17a14b1596db787eb5b",
+        "srtPlaybackSecret": "1755e9fac51117fb002d9f6247ded266k83711bc24841a17a14b1596db787eb5b"
       }
     },
     {
-      "streamId": "6a963e6e9ba7ce45951c28a765fa4b39",
-      "streamKey": "c47d7ead4b9b93254ad3fedde86083f4k6a963e6e9ba7ce45951c28a765fa4b39",
-      "srtSecret": "d992ce628c2139d4e32cd82aa993fc35k6a963e6e9ba7ce45951c28a765fa4b39",
+      "streamId": "d6f0df064d3fc14ce94691e398d04ad9",
+      "streamKey": "45eb8183a27bace53733ba2eff17418ckd6f0df064d3fc14ce94691e398d04ad9",
+      "srtSecret": "c8de6933925251f19b34b65ad378bde2kd6f0df064d3fc14ce94691e398d04ad9",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-06-05T11:06:45.385161Z",
+      "createdAt": "2026-06-22T13:10:01.343527Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
@@ -135,24 +88,24 @@
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "e1030cf3-7c7f-4401-a0cb-d607c510b5ae",
+          "id": "7bfc098d-d0f3-4924-b22b-fe0977c90a39",
           "accessPolicy": "public"
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play6a963e6e9ba7ce45951c28a765fa4b39",
-        "srtPlaybackSecret": "a5361779585b38f78d357325c1f6dd29k6a963e6e9ba7ce45951c28a765fa4b39"
+        "srtPlaybackStreamId": "playd6f0df064d3fc14ce94691e398d04ad9",
+        "srtPlaybackSecret": "54dc4f9195da5d3f7541cc13c2a302b0kd6f0df064d3fc14ce94691e398d04ad9"
       }
     },
     {
-      "streamId": "300f76d2d40c1018ac8dcd22942638e2",
-      "streamKey": "cf2105d09f05265e5ee410ef4e6df334k300f76d2d40c1018ac8dcd22942638e2",
-      "srtSecret": "c7791f836ab52b327be14ca7fba7345dk300f76d2d40c1018ac8dcd22942638e2",
+      "streamId": "7da3e877b724e20d574f7ec91e32c58b",
+      "streamKey": "ab396a1b8c9cbbe021e4167deaf6a0f2k7da3e877b724e20d574f7ec91e32c58b",
+      "srtSecret": "366e9bb16fb28d9805158f9574d4fdabk7da3e877b724e20d574f7ec91e32c58b",
       "trial": false,
       "status": "idle",
       "maxResolution": "1080p",
       "maxDuration": 0,
-      "createdAt": "2026-06-05T11:05:56.252062Z",
+      "createdAt": "2026-06-22T13:03:54.692894Z",
       "reconnectWindow": 60,
       "enableRecording": true,
       "enableDvrMode": false,
@@ -161,19 +114,48 @@
       "closedCaptions": false,
       "playbackIds": [
         {
-          "id": "d1bf8938-17e6-4f3f-9ddc-78d09f430055",
+          "id": "8566ed9e-1d37-4c5d-9d92-878358440f37",
           "accessPolicy": "public"
         }
       ],
       "srtPlaybackResponse": {
-        "srtPlaybackStreamId": "play300f76d2d40c1018ac8dcd22942638e2",
-        "srtPlaybackSecret": "fc1f90a1dfb541c8480f3fd84e1aa066k300f76d2d40c1018ac8dcd22942638e2"
+        "srtPlaybackStreamId": "play7da3e877b724e20d574f7ec91e32c58b",
+        "srtPlaybackSecret": "3e1e789bcc68035cc5fdbdbbaceabab6k7da3e877b724e20d574f7ec91e32c58b"
+      }
+    },
+    {
+      "streamId": "a9036bd8d17341791d0cedc9755b5397",
+      "streamKey": "bc7a949eb422789554b25c575bb21829ka9036bd8d17341791d0cedc9755b5397",
+      "srtSecret": "4b6843e9e46fb55fa0fd60790b6147b9ka9036bd8d17341791d0cedc9755b5397",
+      "trial": false,
+      "status": "idle",
+      "maxResolution": "1080p",
+      "maxDuration": 0,
+      "createdAt": "2026-06-22T12:37:29.551682Z",
+      "reconnectWindow": 60,
+      "enableRecording": true,
+      "enableDvrMode": false,
+      "mediaPolicy": "public",
+      "metadata": {
+        "livestream_name": "fastpix_livestream"
+      },
+      "lowLatency": false,
+      "closedCaptions": false,
+      "playbackIds": [
+        {
+          "id": "bea9bbdd-5a37-4a4c-a8c3-eb0ecca06915",
+          "accessPolicy": "public"
+        }
+      ],
+      "srtPlaybackResponse": {
+        "srtPlaybackStreamId": "playa9036bd8d17341791d0cedc9755b5397",
+        "srtPlaybackSecret": "bf1c58c0ecdf2200e2df84c392d64894ka9036bd8d17341791d0cedc9755b5397"
       }
     }
   ],
   "pagination": {
-    "totalRecords": 33,
+    "totalRecords": 70,
     "currentOffset": 1,
-    "offsetCount": 7
+    "offsetCount": 14
   }
 }

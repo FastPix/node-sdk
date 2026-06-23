@@ -1,9 +1,9 @@
 {
   "success": true,
   "data": {
-    "simulcastId": "43402798197700b1c5a602917f9aada8",
+    "simulcastId": "163754a20fb3680a210e59b5a4dfafc1",
     "url": "rtmp://example.com/live",
-    "streamKey": "sk-mq4v7sta",
+    "streamKey": "sk-mqpa317n",
     "isEnabled": false
   }
 }

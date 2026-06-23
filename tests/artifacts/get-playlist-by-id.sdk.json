@@ -6,10 +6,19 @@
     "referenceId": "sdkValidatemq0uythe",
     "type": "manual",
     "description": "sdk validate",
-    "mediaList": [],
+    "mediaList": [
+      {
+        "createdAt": "2026-06-16T06:50:31.188Z",
+        "duration": "00:00:10",
+        "id": "f404ddcd-c9a7-4582-acde-42c6ef303fdc",
+        "sourceResolution": "1080",
+        "status": "Ready",
+        "thumbnail": "https://images.fastpix.com/b2dd4c78-84db-423b-af63-b749327d8b28/thumbnail.png"
+      }
+    ],
     "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
     "createdAt": "2026-06-05T11:46:04.069Z",
-    "updatedAt": "2026-06-05T11:46:04.069Z",
-    "mediaCount": 0
+    "updatedAt": "2026-06-16T08:57:35.681Z",
+    "mediaCount": 1
   }
 }

@@ -56,6 +56,41 @@
         "status": "available"
       },
       {
+        "id": "2f04f660-38a9-4c66-ae5c-7028e049f927",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "French",
+        "languageCode": "fr-FR"
+      },
+      {
+        "id": "340ed9da-be97-4f04-b15b-6cc09f7a3b98",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "Spanish",
+        "languageCode": "es-ES"
+      },
+      {
+        "id": "4e2082d8-9e25-4bcf-b57d-44040a601e50",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "German",
+        "languageCode": "de-DE"
+      },
+      {
+        "id": "86f0def8-e85e-4468-8e44-f7c4b8bec30e",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "Japanese",
+        "languageCode": "ja-JP"
+      },
+      {
+        "id": "987c4c7b-1a6a-4a7b-b394-3f53b76ece79",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "Italian",
+        "languageCode": "it-IT"
+      },
+      {
         "id": "bb81b65e-967b-4e3a-b15f-cb900bd33fc2",
         "type": "audio",
         "status": "available",
@@ -68,9 +103,41 @@
         "status": "available",
         "languageName": "Italian",
         "languageCode": "it"
+      },
+      {
+        "id": "f02261c3-819d-4cf9-a3ea-3195d496d45b",
+        "type": "subtitle",
+        "status": "available",
+        "languageName": "Korean",
+        "languageCode": "ko-KR"
       }
     ],
-    "generatedSubtitles": [],
+    "generatedSubtitles": [
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/2f04f660-38a9-4c66-ae5c-7028e049f927.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/340ed9da-be97-4f04-b15b-6cc09f7a3b98.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/4e2082d8-9e25-4bcf-b57d-44040a601e50.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/86f0def8-e85e-4468-8e44-f7c4b8bec30e.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/987c4c7b-1a6a-4a7b-b394-3f53b76ece79.vtt"
+      },
+      {
+        "status": "available",
+        "url": "https://stream.fastpix.com/82af62f9-64e8-4fe6-b72b-1ccc42d9874e/text/f02261c3-819d-4cf9-a3ea-3195d496d45b.vtt"
+      }
+    ],
     "isAudioOnly": false,
     "subtitleAvailable": false,
     "duration": "00:00:10",
