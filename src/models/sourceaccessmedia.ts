@@ -98,6 +98,60 @@ export type SourceAccessMediaStatus = OpenEnum<typeof SourceAccessMediaStatus>;
 
 export type SourceAccessMediaTrack = VideoTrack | AudioTrack | SubtitleTrack;
 
+/**
+ * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
+ * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
+ */
+export const SourceAccessMediaMp4SupportType = {
+  Capped4k: "capped_4k",
+  AudioOnly: "audioOnly",
+} as const;
+/**
+ * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
+ * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
+ */
+export type SourceAccessMediaMp4SupportType = OpenEnum<typeof SourceAccessMediaMp4SupportType>;
+
+/**
+ * Generation status of this MP4 rendition.
+ */
+export const SourceAccessMediaMp4SupportStatus = {
+  Preparing: "preparing",
+  Ready: "ready",
+  Failed: "failed",
+} as const;
+/**
+ * Generation status of this MP4 rendition.
+ */
+export type SourceAccessMediaMp4SupportStatus = OpenEnum<typeof SourceAccessMediaMp4SupportStatus>;
+
+/**
+ * File extension of the downloadable rendition.
+ */
+export const SourceAccessMediaMp4SupportExt = {
+  Mp4: "mp4",
+  M4a: "m4a",
+} as const;
+/**
+ * File extension of the downloadable rendition.
+ */
+export type SourceAccessMediaMp4SupportExt = OpenEnum<typeof SourceAccessMediaMp4SupportExt>;
+
+/**
+ * A single generated MP4 rendition returned by the API.
+ *
+ * @remarks
+ * `mp4Support` comes back as an ARRAY of these renditions. Audio-only
+ * renditions omit `height` and `width`.
+ */
+export type SourceAccessMediaMp4Support = {
+  type?: SourceAccessMediaMp4SupportType | undefined;
+  status?: SourceAccessMediaMp4SupportStatus | undefined;
+  height?: number | null | undefined;
+  width?: number | null | undefined;
+  ext?: SourceAccessMediaMp4SupportExt | undefined;
+};
+
 export type SourceAccessMedia = {
   /**
    * A video thumbnail is a still image that acts as the preview image for your video.
@@ -145,6 +199,10 @@ export type SourceAccessMedia = {
    * The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
    */
   sourceAccess?: boolean | null | undefined;
+  /**
+   * The MP4 renditions generated for this media.
+   */
+  mp4Support?: Array<SourceAccessMediaMp4Support> | null | undefined;
   /**
    * A collection of Playback ID objects utilized for crafting HLS playback URLs.
    */
@@ -244,6 +302,36 @@ export function sourceAccessMediaTrackFromJSON(
 }
 
 /** @internal */
+/** @internal */
+export const SourceAccessMediaMp4SupportType$inboundSchema: z.ZodMiniType<
+  SourceAccessMediaMp4SupportType,
+  unknown
+> = openEnums.inboundSchema(SourceAccessMediaMp4SupportType);
+
+/** @internal */
+export const SourceAccessMediaMp4SupportStatus$inboundSchema: z.ZodMiniType<
+  SourceAccessMediaMp4SupportStatus,
+  unknown
+> = openEnums.inboundSchema(SourceAccessMediaMp4SupportStatus);
+
+/** @internal */
+export const SourceAccessMediaMp4SupportExt$inboundSchema: z.ZodMiniType<
+  SourceAccessMediaMp4SupportExt,
+  unknown
+> = openEnums.inboundSchema(SourceAccessMediaMp4SupportExt);
+
+/** @internal */
+export const SourceAccessMediaMp4Support$inboundSchema: z.ZodMiniType<
+  SourceAccessMediaMp4Support,
+  unknown
+> = z.object({
+  type: types.optional(SourceAccessMediaMp4SupportType$inboundSchema),
+  status: types.optional(SourceAccessMediaMp4SupportStatus$inboundSchema),
+  height: z.optional(z.nullable(types.number())),
+  width: z.optional(z.nullable(types.number())),
+  ext: types.optional(SourceAccessMediaMp4SupportExt$inboundSchema),
+});
+
 export const SourceAccessMedia$inboundSchema: z.ZodMiniType<
   SourceAccessMedia,
   unknown
@@ -265,6 +353,9 @@ export const SourceAccessMedia$inboundSchema: z.ZodMiniType<
   ),
   status: types.optional(SourceAccessMediaStatus$inboundSchema),
   sourceAccess: z.optional(z.nullable(types.boolean())),
+  mp4Support: z.optional(
+    z.nullable(z.array(SourceAccessMediaMp4Support$inboundSchema)),
+  ),
   playbackIds: types.optional(z.array(PlaybackId$inboundSchema)),
   tracks: types.optional(
     z.array(

@@ -18,7 +18,15 @@ const value: operations.GetMediaResponseBody = {
     },
     mediaQuality: "standard",
     status: "Ready",
-    mp4Support: "capped_4k",
+    mp4Support: [
+      {
+        type: "capped_4k",
+        status: "ready",
+        height: 1080,
+        width: 1920,
+        ext: "mp4",
+      },
+    ],
     sourceAccess: false,
     playbackIds: [
       {

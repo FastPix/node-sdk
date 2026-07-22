@@ -98,6 +98,60 @@ export type UpdateMediaStatus = OpenEnum<typeof UpdateMediaStatus>;
 
 export type UpdateMediaTrack = VideoTrack | AudioTrack | SubtitleTrack;
 
+/**
+ * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
+ * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
+ */
+export const UpdateMediaMp4SupportType = {
+  Capped4k: "capped_4k",
+  AudioOnly: "audioOnly",
+} as const;
+/**
+ * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
+ * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
+ */
+export type UpdateMediaMp4SupportType = OpenEnum<typeof UpdateMediaMp4SupportType>;
+
+/**
+ * Generation status of this MP4 rendition.
+ */
+export const UpdateMediaMp4SupportStatus = {
+  Preparing: "preparing",
+  Ready: "ready",
+  Failed: "failed",
+} as const;
+/**
+ * Generation status of this MP4 rendition.
+ */
+export type UpdateMediaMp4SupportStatus = OpenEnum<typeof UpdateMediaMp4SupportStatus>;
+
+/**
+ * File extension of the downloadable rendition.
+ */
+export const UpdateMediaMp4SupportExt = {
+  Mp4: "mp4",
+  M4a: "m4a",
+} as const;
+/**
+ * File extension of the downloadable rendition.
+ */
+export type UpdateMediaMp4SupportExt = OpenEnum<typeof UpdateMediaMp4SupportExt>;
+
+/**
+ * A single generated MP4 rendition returned by the API.
+ *
+ * @remarks
+ * `mp4Support` comes back as an ARRAY of these renditions. Audio-only
+ * renditions omit `height` and `width`.
+ */
+export type UpdateMediaMp4Support = {
+  type?: UpdateMediaMp4SupportType | undefined;
+  status?: UpdateMediaMp4SupportStatus | undefined;
+  height?: number | null | undefined;
+  width?: number | null | undefined;
+  ext?: UpdateMediaMp4SupportExt | undefined;
+};
+
 export type UpdateMedia = {
   /**
    * A video thumbnail is a still image that acts as the preview image for your video.
@@ -143,6 +197,10 @@ export type UpdateMedia = {
    * The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it
    */
   sourceAccess?: boolean | undefined;
+  /**
+   * The MP4 renditions generated for this media.
+   */
+  mp4Support?: Array<UpdateMediaMp4Support> | null | undefined;
   /**
    * A collection of Playback ID objects utilized for crafting HLS playback URLs.
    */
@@ -242,6 +300,36 @@ export function updateMediaTrackFromJSON(
 }
 
 /** @internal */
+/** @internal */
+export const UpdateMediaMp4SupportType$inboundSchema: z.ZodMiniType<
+  UpdateMediaMp4SupportType,
+  unknown
+> = openEnums.inboundSchema(UpdateMediaMp4SupportType);
+
+/** @internal */
+export const UpdateMediaMp4SupportStatus$inboundSchema: z.ZodMiniType<
+  UpdateMediaMp4SupportStatus,
+  unknown
+> = openEnums.inboundSchema(UpdateMediaMp4SupportStatus);
+
+/** @internal */
+export const UpdateMediaMp4SupportExt$inboundSchema: z.ZodMiniType<
+  UpdateMediaMp4SupportExt,
+  unknown
+> = openEnums.inboundSchema(UpdateMediaMp4SupportExt);
+
+/** @internal */
+export const UpdateMediaMp4Support$inboundSchema: z.ZodMiniType<
+  UpdateMediaMp4Support,
+  unknown
+> = z.object({
+  type: types.optional(UpdateMediaMp4SupportType$inboundSchema),
+  status: types.optional(UpdateMediaMp4SupportStatus$inboundSchema),
+  height: z.optional(z.nullable(types.number())),
+  width: z.optional(z.nullable(types.number())),
+  ext: types.optional(UpdateMediaMp4SupportExt$inboundSchema),
+});
+
 export const UpdateMedia$inboundSchema: z.ZodMiniType<UpdateMedia, unknown> = z
   .object({
     thumbnail: types.optional(types.string()),
@@ -261,6 +349,9 @@ export const UpdateMedia$inboundSchema: z.ZodMiniType<UpdateMedia, unknown> = z
     ),
     status: types.optional(UpdateMediaStatus$inboundSchema),
     sourceAccess: types.optional(types.boolean()),
+    mp4Support: z.optional(
+      z.nullable(z.array(UpdateMediaMp4Support$inboundSchema)),
+    ),
     playbackIds: types.optional(z.array(PlaybackId$inboundSchema)),
     tracks: types.optional(
       z.array(

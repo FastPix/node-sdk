@@ -1,4 +1,4 @@
-# GetAllMediaResponseMp4Support
+# LiveMediaClipsMp4Support
 
 A single generated MP4 rendition returned by the API.
 
@@ -9,9 +9,9 @@ enabling MP4 support still takes a single string (`none`, `capped_4k`, `audioOnl
 ## Example Usage
 
 ```typescript
-import { GetAllMediaResponseMp4Support } from "@fastpix/fastpix-node/models";
+import { LiveMediaClipsMp4Support } from "@fastpix/fastpix-node/models";
 
-let value: GetAllMediaResponseMp4Support = {
+let value: LiveMediaClipsMp4Support = {
   type: "capped_4k",
   status: "ready",
   height: 1080,
@@ -24,8 +24,8 @@ let value: GetAllMediaResponseMp4Support = {
 
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    | Example                                                                                        |
 |------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| `type`                                                                                         | [models.GetAllMediaResponseMp4SupportType](../models/getallmediaresponsemp4supporttype.md)     | :heavy_minus_sign:                                                                             | The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at 4K resolution, `audioOnly` is a downloadable m4a audio-only file. | capped_4k                                                                                      |
-| `status`                                                                                       | [models.GetAllMediaResponseMp4SupportStatus](../models/getallmediaresponsemp4supportstatus.md) | :heavy_minus_sign:                                                                             | Generation status of this MP4 rendition.                                                       | ready                                                                                          |
+| `type`                                                                                         | [models.LiveMediaClipsMp4SupportType](../models/livemediaclipsmp4supporttype.md)               | :heavy_minus_sign:                                                                             | The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at 4K resolution, `audioOnly` is a downloadable m4a audio-only file. | capped_4k                                                                                      |
+| `status`                                                                                       | [models.LiveMediaClipsMp4SupportStatus](../models/livemediaclipsmp4supportstatus.md)           | :heavy_minus_sign:                                                                             | Generation status of this MP4 rendition.                                                       | ready                                                                                          |
 | `height`                                                                                       | *number*                                                                                       | :heavy_minus_sign:                                                                             | Pixel height of the rendition. Omitted for the `audioOnly` type.                               | 1080                                                                                           |
 | `width`                                                                                        | *number*                                                                                       | :heavy_minus_sign:                                                                             | Pixel width of the rendition. Omitted for the `audioOnly` type.                                | 1920                                                                                           |
-| `ext`                                                                                          | [models.GetAllMediaResponseMp4SupportExt](../models/getallmediaresponsemp4supportext.md)       | :heavy_minus_sign:                                                                             | File extension of the downloadable rendition.                                                  | mp4                                                                                            |
+| `ext`                                                                                          | [models.LiveMediaClipsMp4SupportExt](../models/livemediaclipsmp4supportext.md)                 | :heavy_minus_sign:                                                                             | File extension of the downloadable rendition.                                                  | mp4                                                                                            |
