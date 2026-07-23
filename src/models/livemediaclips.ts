@@ -167,6 +167,15 @@ export type LiveMediaClips = {
    */
   sourceAccess?: boolean | undefined;
   /**
+   * Whether the audio track of the media has been volume-normalized. Available
+   * for pre-recorded content only.
+   *
+   * @remarks
+   * Returned by the API but not yet declared in the OpenAPI spec — verified
+   * against live get-media / list-media responses.
+   */
+  optimizeAudio?: boolean | undefined;
+  /**
    * The MP4 renditions generated for this media.
    */
   mp4Support?: Array<LiveMediaClipsMp4Support> | null | undefined;
@@ -290,6 +299,7 @@ export const LiveMediaClips$inboundSchema: z.ZodMiniType<
   ),
   status: types.optional(LiveMediaClipsStatus$inboundSchema),
   sourceAccess: types.optional(types.boolean()),
+  optimizeAudio: types.optional(types.boolean()),
   mp4Support: z.optional(
     z.nullable(z.array(LiveMediaClipsMp4Support$inboundSchema)),
   ),

@@ -200,6 +200,15 @@ export type SourceAccessMedia = {
    */
   sourceAccess?: boolean | null | undefined;
   /**
+   * Whether the audio track of the media has been volume-normalized. Available
+   * for pre-recorded content only.
+   *
+   * @remarks
+   * Returned by the API but not yet declared in the OpenAPI spec — verified
+   * against live get-media / list-media responses.
+   */
+  optimizeAudio?: boolean | null | undefined;
+  /**
    * The MP4 renditions generated for this media.
    */
   mp4Support?: Array<SourceAccessMediaMp4Support> | null | undefined;
@@ -353,6 +362,7 @@ export const SourceAccessMedia$inboundSchema: z.ZodMiniType<
   ),
   status: types.optional(SourceAccessMediaStatus$inboundSchema),
   sourceAccess: z.optional(z.nullable(types.boolean())),
+  optimizeAudio: z.optional(z.nullable(types.boolean())),
   mp4Support: z.optional(
     z.nullable(z.array(SourceAccessMediaMp4Support$inboundSchema)),
   ),

@@ -6413,6 +6413,14 @@ components:
           nullable: true
           example: true
           description: The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
+        optimizeAudio:
+          type: boolean
+          nullable: true
+          example: false
+          description: |
+            Whether the audio track of the media has been volume-normalized.
+            Available for pre-recorded content only. Returned by the API but not
+            yet declared in the published OpenAPI spec.
         playbackIds:
           type: array
           items:
@@ -6628,6 +6636,14 @@ components:
           nullable: true
           example: true
           description: The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
+        optimizeAudio:
+          type: boolean
+          nullable: true
+          example: false
+          description: |
+            Whether the audio track of the media has been volume-normalized.
+            Available for pre-recorded content only. Returned by the API but not
+            yet declared in the published OpenAPI spec.
         playbackIds:
           type: array
           items:
@@ -6770,6 +6786,14 @@ components:
           type: boolean
           example: false
           description: The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
+        optimizeAudio:
+          type: boolean
+          nullable: true
+          example: false
+          description: |
+            Whether the audio track of the media has been volume-normalized.
+            Available for pre-recorded content only. Returned by the API but not
+            yet declared in the published OpenAPI spec.
         playbackIds:
           type: array
           items:
@@ -7010,6 +7034,14 @@ components:
           nullable: true
           example: true
           description: The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
+        optimizeAudio:
+          type: boolean
+          nullable: true
+          example: false
+          description: |
+            Whether the audio track of the media has been volume-normalized.
+            Available for pre-recorded content only. Returned by the API but not
+            yet declared in the published OpenAPI spec.
         playbackIds:
           type: array
           items:
@@ -7216,6 +7248,14 @@ components:
           nullable: true
           example: true
           description: The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
+        optimizeAudio:
+          type: boolean
+          nullable: true
+          example: false
+          description: |
+            Whether the audio track of the media has been volume-normalized.
+            Available for pre-recorded content only. Returned by the API but not
+            yet declared in the published OpenAPI spec.
         playbackIds:
           type: array
           items:
@@ -7421,6 +7461,14 @@ components:
           type: boolean
           example: true
           description: The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it
+        optimizeAudio:
+          type: boolean
+          nullable: true
+          example: false
+          description: |
+            Whether the audio track of the media has been volume-normalized.
+            Available for pre-recorded content only. Returned by the API but not
+            yet declared in the published OpenAPI spec.
         playbackIds:
           type: array
           items:

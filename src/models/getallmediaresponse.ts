@@ -226,6 +226,15 @@ export type GetAllMediaResponse = {
    */
   sourceAccess?: boolean | null | undefined;
   /**
+   * Whether the audio track of the media has been volume-normalized. Available
+   * for pre-recorded content only.
+   *
+   * @remarks
+   * Returned by the API but not yet declared in the OpenAPI spec — verified
+   * against live get-media / list-media responses.
+   */
+  optimizeAudio?: boolean | null | undefined;
+  /**
    * A collection of Playback ID objects utilized for crafting HLS playback URLs.
    */
   playbackIds?: Array<PlaybackId> | undefined;
@@ -384,6 +393,7 @@ export const GetAllMediaResponse$inboundSchema: z.ZodMiniType<
     z.nullable(z.array(GetAllMediaResponseMp4Support$inboundSchema)),
   ),
   sourceAccess: z.optional(z.nullable(types.boolean())),
+  optimizeAudio: z.optional(z.nullable(types.boolean())),
   playbackIds: types.optional(z.array(PlaybackId$inboundSchema)),
   tracks: types.optional(
     z.array(

@@ -35,11 +35,11 @@ This directory contains the GET endpoints validator script and generated reports
 The script uses `get-endpoints-fixtures.json` to provide real IDs for path parameters. If missing, placeholder UUIDs are used.
 
 <!-- BEGIN GET_ENDPOINTS_CONSOLIDATED -->
-Last generated: 2026-06-08T07:04:15.881Z
+Last generated: 2026-07-23T09:13:41.426Z
 
 - **Total GET endpoints**: 30
-- **PASS**: 25
-- **FAIL**: 5
+- **PASS**: 26
+- **FAIL**: 4
 - **SKIP**: 0
 
 | Endpoint | OperationId | OpenAPI valid | SDK parse | Missing in SDK (present in API) | Missing in API (present in SDK) | Empty arrays omitted by SDK | Status |
@@ -58,7 +58,7 @@ Last generated: 2026-06-08T07:04:15.881Z
 | `/on-demand/drm-configurations` | `getDrmConfiguration` | ✅ | ❌ | None | None | None | ❌ FAIL |
 | `/on-demand/drm-configurations/{drmConfigurationId}` | `getDrmConfigurationById` | ✅ | ❌ | `error.fields`, `error.fields[]`, `error.fields[].field`, `error.fields[].message` | None | None | ❌ FAIL |
 | `/live/streams` | `get-all-streams` | ✅ | ✅ | None | None | None | ✅ PASS |
-| `/live/streams/{streamId}/viewer-count` | `get-live-stream-viewer-count-by-id` | ✅ | ❌ | None | None | None | ❌ FAIL |
+| `/live/streams/{streamId}/viewer-count` | `get-live-stream-viewer-count-by-id` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/live/streams/{streamId}` | `get-live-stream-by-id` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/live/streams/{streamId}/playback-ids/{playbackId}` | `get-live-stream-playback-id` | ✅ | ✅ | None | None | None | ✅ PASS |
 | `/live/streams/{streamId}/simulcast/{simulcastId}` | `get-specific-simulcast-of-stream` | ✅ | ✅ | None | None | None | ✅ PASS |

@@ -198,6 +198,15 @@ export type UpdateMedia = {
    */
   sourceAccess?: boolean | undefined;
   /**
+   * Whether the audio track of the media has been volume-normalized. Available
+   * for pre-recorded content only.
+   *
+   * @remarks
+   * Returned by the API but not yet declared in the OpenAPI spec — verified
+   * against live get-media / list-media responses.
+   */
+  optimizeAudio?: boolean | undefined;
+  /**
    * The MP4 renditions generated for this media.
    */
   mp4Support?: Array<UpdateMediaMp4Support> | null | undefined;
@@ -349,6 +358,7 @@ export const UpdateMedia$inboundSchema: z.ZodMiniType<UpdateMedia, unknown> = z
     ),
     status: types.optional(UpdateMediaStatus$inboundSchema),
     sourceAccess: types.optional(types.boolean()),
+    optimizeAudio: types.optional(types.boolean()),
     mp4Support: z.optional(
       z.nullable(z.array(UpdateMediaMp4Support$inboundSchema)),
     ),
