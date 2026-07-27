@@ -7603,6 +7603,10 @@ components:
           type: string
           example: available
           description: Indicates the current state of the track. 'available' means the track has been processed successfully and is ready to be used or played.
+        title:
+          type: string
+          example: My track title
+          description: Title of the track. Returned by the API but not yet declared in the published OpenAPI spec.
       example:
         tracks:
           - id: 9oa85f64-5717-4562-b3fc-2c963f66afa6
@@ -7642,6 +7646,10 @@ components:
           type: string
           example: available
           description: Indicates the current state of the track. 'available' means the track has been processed successfully and is ready to be used or played.
+        title:
+          type: string
+          example: My track title
+          description: Title of the track. Returned by the API but not yet declared in the published OpenAPI spec.
       example:
         tracks:
           - id: 9oa85f64-5717-4562-b3fc-2c963f66afa6
@@ -7668,6 +7676,10 @@ components:
           type: string
           example: available
           description: Indicates the current state of the track. 'available' means the track has been processed successfully and is ready to be used or played.
+        title:
+          type: string
+          example: My track title
+          description: Title of the track. Returned by the API but not yet declared in the published OpenAPI spec.
         languageName:
           type: string
           example: english
@@ -7696,6 +7708,10 @@ components:
           type: string
           example: available
           description: Indicates the current state of the track. 'available' means the track has been processed successfully and is ready to be used or played.
+        title:
+          type: string
+          example: My track title
+          description: Title of the track. Returned by the API but not yet declared in the published OpenAPI spec.
         languageName:
           type: string
           example: english
@@ -8491,6 +8507,11 @@ components:
           description: The full name of the language used to generate the subtitles.
           example: English
           default: English
+        title:
+          type: string
+          maxLength: 255
+          description: Title of the track.
+          example: My track title
         metadata:
           type: object
           additionalProperties:
@@ -8587,6 +8608,11 @@ components:
           type: string
           description: The full name of the language for the generated track.
           example: English
+        title:
+          type: string
+          maxLength: 255
+          description: Title of the track.
+          example: My track title
         metadata:
           type: object
           additionalProperties:
@@ -8655,6 +8681,11 @@ components:
           description: The full name of the language corresponding to the `languageCode`.
           example: Italian
           default: Italian
+        title:
+          type: string
+          maxLength: 255
+          description: Title of the track.
+          example: My track title
 
     AddTrackResponse:
       type: object
@@ -8685,6 +8716,11 @@ components:
           type: string
           description: The full name of the language corresponding to the `languageCode`.
           example: Italian
+        title:
+          type: string
+          maxLength: 255
+          description: Title of the track.
+          example: My track title
     UpdateTrackResponse:
       type: object
       description: Contains details about the track that was added or updated.
@@ -8714,6 +8750,11 @@ components:
           type: string
           description: The full name of the language corresponding to the `languageCode`.
           example: french
+        title:
+          type: string
+          maxLength: 255
+          description: Title of the track.
+          example: My track title
     UpdateTrackRequest:
       type: object
       description: Contains details about the track being added to the media file.
@@ -8738,6 +8779,11 @@ components:
           description: The full name of the language corresponding to the `languageCode`.
           example: French
           default: French
+        title:
+          type: string
+          maxLength: 255
+          description: Title of the track.
+          example: My track title
 
     DirectUpload:
       type: object

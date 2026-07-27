@@ -153,7 +153,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -428,7 +428,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -469,7 +469,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -516,7 +516,7 @@ async function run() {
       },
     });
 
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } catch (error) {
     if (error instanceof errors.FastpixError) {
       console.log(error.message);
@@ -583,7 +583,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();

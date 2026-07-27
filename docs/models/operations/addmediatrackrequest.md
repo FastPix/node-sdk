@@ -8,7 +8,13 @@ import { AddMediaTrackRequest } from "@fastpix/fastpix-node/models/operations";
 let value: AddMediaTrackRequest = {
   mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
   body: {
-    tracks: {},
+    tracks: {
+      type: "audio",
+      url: "https://static.fastpix.com/music-1.mp3",
+      languageCode: "it",
+      languageName: "Italian",
+      title: "Italian audio",
+    },
   },
 };
 ```

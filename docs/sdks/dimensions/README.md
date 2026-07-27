@@ -34,7 +34,7 @@ const fastpix = new Fastpix({
 async function run() {
   const result = await fastpix.dimensions.list();
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -61,7 +61,7 @@ async function run() {
   const res = await dimensionsList(fastpix);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("dimensionsList failed:", res.error);
   }
@@ -123,7 +123,7 @@ async function run() {
     filterby: "browser_name:Chrome",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -154,7 +154,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("dimensionsListFilterValues failed:", res.error);
   }

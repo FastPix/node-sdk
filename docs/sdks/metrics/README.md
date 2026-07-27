@@ -67,7 +67,7 @@ async function run() {
     groupBy: "browser_name",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -99,7 +99,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("metricsListBreakdownValues failed:", res.error);
   }
@@ -178,7 +178,7 @@ async function run() {
     filterby: "browser_name:Chrome",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -209,7 +209,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("metricsListOverallValues failed:", res.error);
   }
@@ -268,7 +268,7 @@ async function run() {
     filterby: "browser_name:Chrome",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -299,7 +299,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("metricsGetTimeseriesData failed:", res.error);
   }
@@ -373,7 +373,7 @@ async function run() {
     value: "Chrome",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -405,7 +405,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("metricsListCompares failed:", res.error);
   }

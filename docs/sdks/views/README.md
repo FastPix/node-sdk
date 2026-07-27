@@ -60,7 +60,7 @@ async function run() {
     errorCode: "1002",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -92,7 +92,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("viewsList failed:", res.error);
   }
@@ -152,7 +152,7 @@ async function run() {
     viewId: "your-view-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -181,7 +181,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("viewsGetDetails failed:", res.error);
   }
@@ -248,7 +248,7 @@ async function run() {
     filterby: "browser_name:Chrome",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -278,7 +278,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("viewsListTopContent failed:", res.error);
   }

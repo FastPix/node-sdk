@@ -16,6 +16,10 @@ export type TrackSubtitlesGenerateRequest = {
    */
   languageName?: string | undefined;
   /**
+   * Title of the track.
+   */
+  title?: string | undefined;
+  /**
    * You can search for videos with specific key value pairs using metadata, when you tag a video in "key" : "value" pairs. Dynamic metadata allows you to define a key that allows any value pair. You can have maximum of 255 characters and upto 10 entries are allowed.
    *
    * @remarks
@@ -30,6 +34,7 @@ export type TrackSubtitlesGenerateRequest = {
 /** @internal */
 export type TrackSubtitlesGenerateRequest$Outbound = {
   languageName: string;
+  title?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   languageCode: string;
 };
@@ -40,6 +45,7 @@ export const TrackSubtitlesGenerateRequest$outboundSchema: z.ZodMiniType<
   TrackSubtitlesGenerateRequest
 > = z.object({
   languageName: z._default(z.string(), "English"),
+  title: z.optional(z.string()),
   metadata: z.optional(z.record(z.string(), z.string())),
   languageCode: z._default(LanguageCode$outboundSchema, "en-US"),
 });

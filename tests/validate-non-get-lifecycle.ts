@@ -498,6 +498,7 @@ const STEPS: Step[] = [
             type: "audio",
             languageCode: "it",
             languageName: "Italian",
+            title: "Italian audio",
           },
         },
       } as any),
@@ -552,6 +553,7 @@ const STEPS: Step[] = [
         body: {
           languageCode: "en-US",
           languageName: "English",
+          title: "English subtitles",
         },
       } as any),
   },
@@ -642,6 +644,7 @@ const STEPS: Step[] = [
           url: "https://static.fastpix.com/music-1.mp3",
           languageCode: "en",
           languageName: "English",
+          title: "English audio",
         },
       } as any),
   },

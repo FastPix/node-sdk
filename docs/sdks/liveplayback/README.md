@@ -37,7 +37,7 @@ async function run() {
     body: {},
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -67,7 +67,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("livePlaybackCreateId failed:", res.error);
   }
@@ -121,7 +121,7 @@ async function run() {
     playbackId: "your-playback-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -151,7 +151,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("livePlaybackDelete failed:", res.error);
   }
@@ -205,7 +205,7 @@ async function run() {
     playbackId: "your-playback-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -235,7 +235,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("livePlaybackGet failed:", res.error);
   }

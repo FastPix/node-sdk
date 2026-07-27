@@ -38,6 +38,11 @@ export type VideoTrackForGetAll = {
    * Indicates the current state of the track. 'available' means the track has been processed successfully and is ready to be used or played.
    */
   status?: string | undefined;
+  /**
+   * Title of the track. Returned by the API on media responses but not yet
+   * declared in the published OpenAPI spec.
+   */
+  title?: string | undefined;
 };
 
 /** @internal */
@@ -51,6 +56,7 @@ export const VideoTrackForGetAll$inboundSchema: z.ZodMiniType<
   height: types.optional(types.number()),
   frameRate: types.optional(types.string()),
   status: types.optional(types.string()),
+  title: types.optional(types.string()),
 });
 
 export function videoTrackForGetAllFromJSON(

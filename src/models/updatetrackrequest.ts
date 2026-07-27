@@ -22,6 +22,10 @@ export type UpdateTrackRequest = {
    * The full name of the language corresponding to the `languageCode`.
    */
   languageName?: string | undefined;
+  /**
+   * Title of the track.
+   */
+  title?: string | undefined;
 };
 
 /** @internal */
@@ -29,6 +33,7 @@ export type UpdateTrackRequest$Outbound = {
   url: string;
   languageCode: string;
   languageName: string;
+  title?: string | undefined;
 };
 
 /** @internal */
@@ -45,6 +50,7 @@ export const UpdateTrackRequest$outboundSchema: z.ZodMiniType<
   ),
   languageCode: z._default(z.string(), "fr"),
   languageName: z._default(z.string(), "French"),
+  title: z.optional(z.string()),
 });
 
 export function updateTrackRequestToJSON(

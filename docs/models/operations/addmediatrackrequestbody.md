@@ -6,7 +6,13 @@
 import { AddMediaTrackRequestBody } from "@fastpix/fastpix-node/models/operations";
 
 let value: AddMediaTrackRequestBody = {
-  tracks: {},
+  tracks: {
+    type: "audio",
+    url: "https://static.fastpix.com/music-1.mp3",
+    languageCode: "it",
+    languageName: "Italian",
+    title: "Italian audio",
+  },
 };
 ```
 

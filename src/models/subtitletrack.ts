@@ -39,6 +39,11 @@ export type SubtitleTrack = {
    */
   status?: string | undefined;
   /**
+   * Title of the track. Returned by the API on media responses but not yet
+   * declared in the published OpenAPI spec.
+   */
+  title?: string | undefined;
+  /**
    * Name of the language in which the subtitles will be generated.
    *
    * @remarks
@@ -65,6 +70,7 @@ export const SubtitleTrack$inboundSchema: z.ZodMiniType<
   id: types.optional(types.string()),
   type: types.optional(SubtitleTrackType$inboundSchema),
   status: types.optional(types.string()),
+  title: types.optional(types.string()),
   languageName: types.optional(types.string()),
   languageCode: types.optional(types.string()),
 });

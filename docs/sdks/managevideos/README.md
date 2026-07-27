@@ -55,7 +55,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -84,7 +84,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosGet failed:", res.error);
   }
@@ -155,7 +155,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -190,7 +190,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosUpdate failed:", res.error);
   }
@@ -254,7 +254,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -283,7 +283,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosDelete failed:", res.error);
   }
@@ -357,11 +357,17 @@ async function run() {
   const result = await fastpix.manageVideos.addTrack({
     mediaId: "your-media-id",
     body: {
-      tracks: {},
+      tracks: {
+        type: "audio",
+        url: "https://static.fastpix.com/music-1.mp3",
+        languageCode: "it",
+        languageName: "Italian",
+        title: "Italian audio",
+      },
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -388,12 +394,18 @@ async function run() {
   const res = await manageVideosAddTrack(fastpix, {
     mediaId: "your-media-id",
     body: {
-      tracks: {},
+      tracks: {
+        type: "audio",
+        url: "https://static.fastpix.com/music-1.mp3",
+        languageCode: "it",
+        languageName: "Italian",
+        title: "Italian audio",
+      },
     },
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosAddTrack failed:", res.error);
   }
@@ -457,7 +469,7 @@ async function run() {
     uploadId: "your-upload-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -486,7 +498,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosCancelUpload failed:", res.error);
   }
@@ -566,10 +578,11 @@ async function run() {
     mediaId: "your-media-id",
     body: {
       languageName: "french",
+      title: "French audio",
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -598,11 +611,12 @@ async function run() {
     mediaId: "your-media-id",
     body: {
       languageName: "french",
+      title: "French audio",
     },
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosUpdateTrack failed:", res.error);
   }
@@ -670,10 +684,11 @@ async function run() {
     trackId: "your-track-id",
     body: {
       languageName: "Italian",
+      title: "Italian subtitles",
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -702,11 +717,12 @@ async function run() {
     trackId: "your-track-id",
     body: {
       languageName: "Italian",
+      title: "Italian subtitles",
     },
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosGenerateSubtitleTrack failed:", res.error);
   }
@@ -768,7 +784,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -797,7 +813,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosGetSummary failed:", res.error);
   }
@@ -877,7 +893,7 @@ async function run() {
     body: {},
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -907,7 +923,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosUpdateMp4Support failed:", res.error);
   }
@@ -971,7 +987,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -1000,7 +1016,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosRetrieveMediaInputInfo failed:", res.error);
   }
@@ -1066,7 +1082,7 @@ async function run() {
     limit: 20,
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -1095,7 +1111,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosListUploads failed:", res.error);
   }
