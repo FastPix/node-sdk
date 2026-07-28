@@ -641,7 +641,6 @@ const STEPS: Step[] = [
         mediaId: ctx.mediaId,
         trackId: ctx.trackId,
         body: {
-          url: "https://static.fastpix.com/music-1.mp3",
           languageCode: "en",
           languageName: "English",
           title: "English audio",

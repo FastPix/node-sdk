@@ -15,5 +15,5 @@ let value: LiveMediaClipsSourceResolution = "1080p";
 This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 ```typescript
-"2160p" | "1440p" | "1080p" | "720p" | "480p" | Unrecognized<string>
+"2160p" | "2160" | "1440p" | "1440" | "1080p" | "1080" | "720p" | "720" | "480p" | "480" | "360p" | "360" | Unrecognized<string>
 ```

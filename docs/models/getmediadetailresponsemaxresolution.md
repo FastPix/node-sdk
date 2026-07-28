@@ -1,13 +1,13 @@
-# GetMediaResponseMaxResolution
+# GetMediaDetailResponseMaxResolution
 
 The maximum resolution specified by the user for the media.
 
 ## Example Usage
 
 ```typescript
-import { GetMediaResponseMaxResolution } from "@fastpix/fastpix-node/models";
+import { GetMediaDetailResponseMaxResolution } from "@fastpix/fastpix-node/models";
 
-let value: GetMediaResponseMaxResolution = "1080p";
+let value: GetMediaDetailResponseMaxResolution = "1080p";
 ```
 
 ## Values

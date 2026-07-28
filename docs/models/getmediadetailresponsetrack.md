@@ -1,4 +1,4 @@
-# GetMediaResponseTrack
+# GetMediaDetailResponseTrack
 
 
 ## Supported Types

@@ -1,13 +1,13 @@
-# GetMediaResponseMp4SupportType
+# GetMediaDetailResponseMp4SupportType
 
 The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
 
 ## Example Usage
 
 ```typescript
-import { GetMediaResponseMp4SupportType } from "@fastpix/fastpix-node/models";
+import { GetMediaDetailResponseMp4SupportType } from "@fastpix/fastpix-node/models";
 
-let value: GetMediaResponseMp4SupportType = "capped_4k";
+let value: GetMediaDetailResponseMp4SupportType = "capped_4k";
 ```
 
 ## Values

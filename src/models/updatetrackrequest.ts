@@ -7,13 +7,9 @@
 import * as z from "zod/v4-mini";
 
 /**
- * Contains details about the track being added to the media file.
+ * Contains details about the track being updated. The track's file (`url`) cannot be changed — only its language and title.
  */
 export type UpdateTrackRequest = {
-  /**
-   * The direct URL of the track file. It must point to a valid audio or subtitle file.
-   */
-  url?: string | undefined;
   /**
    * The BCP 47 language code representing the track’s language.
    */
@@ -30,7 +26,6 @@ export type UpdateTrackRequest = {
 
 /** @internal */
 export type UpdateTrackRequest$Outbound = {
-  url: string;
   languageCode: string;
   languageName: string;
   title?: string | undefined;
@@ -41,13 +36,6 @@ export const UpdateTrackRequest$outboundSchema: z.ZodMiniType<
   UpdateTrackRequest$Outbound,
   UpdateTrackRequest
 > = z.object({
-  url: z._default(
-    z.string(),
-    // not a live endpoint: spec-provided default example value for the `url`
-    // field; preserved verbatim to avoid changing the request payload the SDK
-    // emits when `url` is omitted.
-    "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt", // NOSONAR(typescript:S5332)
-  ),
   languageCode: z._default(z.string(), "fr"),
   languageName: z._default(z.string(), "French"),
   title: z.optional(z.string()),

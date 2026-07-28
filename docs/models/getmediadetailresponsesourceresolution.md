@@ -1,13 +1,13 @@
-# UpdateMediaSourceResolution
+# GetMediaDetailResponseSourceResolution
 
 The actual resolution of the uploaded media. This represents the native quality of the source media.
 
 ## Example Usage
 
 ```typescript
-import { UpdateMediaSourceResolution } from "@fastpix/fastpix-node/models";
+import { GetMediaDetailResponseSourceResolution } from "@fastpix/fastpix-node/models";
 
-let value: UpdateMediaSourceResolution = "1080p";
+let value: GetMediaDetailResponseSourceResolution = "1080p";
 ```
 
 ## Values

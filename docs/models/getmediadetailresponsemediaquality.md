@@ -1,13 +1,13 @@
-# GetMediaResponseMediaQuality
+# GetMediaDetailResponseMediaQuality
 
 The quality tier applied to the media.
 
 ## Example Usage
 
 ```typescript
-import { GetMediaResponseMediaQuality } from "@fastpix/fastpix-node/models";
+import { GetMediaDetailResponseMediaQuality } from "@fastpix/fastpix-node/models";
 
-let value: GetMediaResponseMediaQuality = "standard";
+let value: GetMediaDetailResponseMediaQuality = "standard";
 ```
 
 ## Values

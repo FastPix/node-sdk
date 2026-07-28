@@ -39,8 +39,7 @@ export type VideoTrack = {
    */
   status?: string | undefined;
   /**
-   * Title of the track. Returned by the API on media responses but not yet
-   * declared in the published OpenAPI spec.
+   * Title of the track.
    */
   title?: string | undefined;
 };

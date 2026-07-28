@@ -20,7 +20,7 @@ This endpoint creates a new playlist within a specified workspace. A playlist ac
 - **Manual:** Creates an empty playlist without any initial media items. Use this mode for manual curation, where you add items later in a user-defined sequence.
 - **Smart:** Auto-populates the playlist at creation time based on the filter criteria (for example, a video creation date range) that you provide in the request.
 
-For more details, see <a href="https://fastpix.com/docs/playback-and-delivery/create-and-manage-playlists">Create and manage playlist</a>.
+For more details, see <a href="https://fastpix.com/docs/video-on-demand/create-and-manage-playlists">Create and manage playlist</a>.
 
 #### How it works 
 
@@ -54,12 +54,12 @@ async function run() {
     limit: 20,
     metadata: {
       createdDate: {
-        startDate: "2024-11-11",
-        endDate: "2024-12-12",
+        startDate: "2024-11-11", // Give your own startDate
+        endDate: "2024-12-12", // Give your own endDate
       },
       updatedDate: {
-        startDate: "2024-11-11",
-        endDate: "2024-12-12",
+        startDate: "2024-11-11", // Give your own startDate
+        endDate: "2024-12-12", // Give your own endDate
       },
     },
   });

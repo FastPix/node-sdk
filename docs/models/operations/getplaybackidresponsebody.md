@@ -20,7 +20,7 @@ let value: GetPlaybackIdResponseBody = {
           "trustedsite.org",
         ],
         deny: [
-          "malicioussite.com",
+          "malicioussite.io",
           "abc.net",
         ],
       },

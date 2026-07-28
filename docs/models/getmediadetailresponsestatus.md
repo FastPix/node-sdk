@@ -1,13 +1,13 @@
-# GetMediaResponseStatus
+# GetMediaDetailResponseStatus
 
 Determines the media's status, which can be one of the possible values.
 
 ## Example Usage
 
 ```typescript
-import { GetMediaResponseStatus } from "@fastpix/fastpix-node/models";
+import { GetMediaDetailResponseStatus } from "@fastpix/fastpix-node/models";
 
-let value: GetMediaResponseStatus = "Processing";
+let value: GetMediaDetailResponseStatus = "Processing";
 ```
 
 ## Values

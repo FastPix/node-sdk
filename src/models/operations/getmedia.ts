@@ -27,7 +27,7 @@ export type GetMediaResponseBody = {
    * Demonstrates whether the request is successful or not.
    */
   success?: boolean | undefined;
-  data?: models.GetMediaResponse | undefined;
+  data?: models.GetMediaDetailResponse | undefined;
 };
 
 export type GetMediaResponse = GetMediaResponseBody | models.DefaultError;
@@ -57,7 +57,7 @@ export const GetMediaResponseBody$inboundSchema: z.ZodMiniType<
   unknown
 > = z.object({
   success: types.optional(types.boolean()),
-  data: types.optional(models.GetMediaResponse$inboundSchema),
+  data: types.optional(models.GetMediaDetailResponse$inboundSchema),
 });
 
 export function getMediaResponseBodyFromJSON(

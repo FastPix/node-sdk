@@ -32,6 +32,11 @@ export type VideoTrackForGetAll = {
   height?: number | undefined;
   /**
    * Frame rate quantifies the speed at which frames are displayed per second. It represents the range of frames available for a specific track. The indeterminable frame rate of the input file is indicated by a value of -1.
+   *
+   * @remarks
+   * Returned by the API on list-media video tracks (e.g. "60.000") but dropped
+   * from the published OpenAPI spec. Kept here deliberately — removing it would
+   * silently discard the value at parse time.
    */
   frameRate?: string | undefined;
   /**
@@ -39,8 +44,7 @@ export type VideoTrackForGetAll = {
    */
   status?: string | undefined;
   /**
-   * Title of the track. Returned by the API on media responses but not yet
-   * declared in the published OpenAPI spec.
+   * Title of the track.
    */
   title?: string | undefined;
 };

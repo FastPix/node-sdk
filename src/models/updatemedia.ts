@@ -51,7 +51,6 @@ export const UpdateMediaMaxResolution = {
   OneThousandAndEightyp: "1080p",
   SevenHundredAndTwentyp: "720p",
   FourHundredAndEightyp: "480p",
-  ThreeHundredAndSixtyp: "360p",
 } as const;
 /**
  * The maximum resolution specified by the user for the media.
@@ -65,11 +64,17 @@ export type UpdateMediaMaxResolution = OpenEnum<
  */
 export const UpdateMediaSourceResolution = {
   TwoThousandOneHundredAndSixtyp: "2160p",
+  TwoThousandOneHundredAndSixty: "2160",
   OneThousandFourHundredAndFortyp: "1440p",
+  OneThousandFourHundredAndForty: "1440",
   OneThousandAndEightyp: "1080p",
+  OneThousandAndEighty: "1080",
   SevenHundredAndTwentyp: "720p",
+  SevenHundredAndTwenty: "720",
   FourHundredAndEightyp: "480p",
+  FourHundredAndEighty: "480",
   ThreeHundredAndSixtyp: "360p",
+  ThreeHundredAndSixty: "360",
 } as const;
 /**
  * The actual resolution of the uploaded media. This represents the native quality of the source media.
@@ -198,12 +203,7 @@ export type UpdateMedia = {
    */
   sourceAccess?: boolean | undefined;
   /**
-   * Whether the audio track of the media has been volume-normalized. Available
-   * for pre-recorded content only.
-   *
-   * @remarks
-   * Returned by the API but not yet declared in the OpenAPI spec — verified
-   * against live get-media / list-media responses.
+   * Whether the audio track of the media has been volume-normalized.
    */
   optimizeAudio?: boolean | undefined;
   /**

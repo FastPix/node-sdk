@@ -1,13 +1,13 @@
-# GetMediaResponseMp4SupportExt
+# GetMediaDetailResponseMp4SupportExt
 
 File extension of the downloadable rendition.
 
 ## Example Usage
 
 ```typescript
-import { GetMediaResponseMp4SupportExt } from "@fastpix/fastpix-node/models";
+import { GetMediaDetailResponseMp4SupportExt } from "@fastpix/fastpix-node/models";
 
-let value: GetMediaResponseMp4SupportExt = "mp4";
+let value: GetMediaDetailResponseMp4SupportExt = "mp4";
 ```
 
 ## Values

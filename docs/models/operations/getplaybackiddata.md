@@ -16,7 +16,7 @@ let value: GetPlaybackIdData = {
         "trustedsite.org",
       ],
       deny: [
-        "malicioussite.com",
+        "malicioussite.io",
         "abc.net",
       ],
     },

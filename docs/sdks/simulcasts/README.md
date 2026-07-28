@@ -20,7 +20,7 @@ Creates a simulcast for a parent live stream. Simulcasting allows you to broadca
 #### Example
 An event manager sets up a live stream for a virtual conference and wants to simulcast the stream on YouTube and Facebook Live. They first create the primary live stream in FastPix, ensuring it's in the idle state. Then, they use the API to create a simulcast target for YouTube. 
 
-Related guide: <a href="https://fastpix.com/docs/edit-and-transform-live-stream/simulcast-to-multiple-platforms">Simulcast to 3rd party platforms</a>
+Related guide: <a href="https://fastpix.com/docs/live-streaming/simulcast-to-multiple-platforms">Simulcast to 3rd party platforms</a>
 
 ### Example Usage
 
@@ -199,7 +199,7 @@ run();
 
 Updates the status of a specific simulcast linked to a parent live stream. You can enable or disable the simulcast at any time while the parent stream is active or idle. After the live stream is disabled, the simulcast can no longer be modified.
 
-Webhook event: <a href="https://fastpix.com/docs/live-stream-events/live-events#videolive_streamsimulcast_targetupdated">video.live_stream.simulcast_target.updated</a>
+Webhook event: <a href="https://fastpix.com/docs/webhooks/live-events#videolive_streamsimulcast_targetupdated">video.live_stream.simulcast_target.updated</a>
 
 #### Example
 When a `PATCH` request is made to this endpoint, the API updates the status of the simulcast. This can be useful for pausing or resuming a simulcast on a particular platform without stopping the parent live stream.

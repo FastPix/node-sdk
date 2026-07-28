@@ -32,7 +32,7 @@ import { VideoTrack, VideoTrack$inboundSchema } from "./videotrack.js";
 /**
  * The quality tier applied to the media.
  */
-export const GetMediaResponseMediaQuality = {
+export const GetMediaDetailResponseMediaQuality = {
   Standard: "standard",
   Pro: "pro",
   Premium: "premium",
@@ -40,14 +40,14 @@ export const GetMediaResponseMediaQuality = {
 /**
  * The quality tier applied to the media.
  */
-export type GetMediaResponseMediaQuality = OpenEnum<
-  typeof GetMediaResponseMediaQuality
+export type GetMediaDetailResponseMediaQuality = OpenEnum<
+  typeof GetMediaDetailResponseMediaQuality
 >;
 
 /**
  * The maximum resolution specified by the user for the media.
  */
-export const GetMediaResponseMaxResolution = {
+export const GetMediaDetailResponseMaxResolution = {
   TwoThousandOneHundredAndSixtyp: "2160p",
   OneThousandFourHundredAndFortyp: "1440p",
   OneThousandAndEightyp: "1080p",
@@ -57,31 +57,38 @@ export const GetMediaResponseMaxResolution = {
 /**
  * The maximum resolution specified by the user for the media.
  */
-export type GetMediaResponseMaxResolution = OpenEnum<
-  typeof GetMediaResponseMaxResolution
+export type GetMediaDetailResponseMaxResolution = OpenEnum<
+  typeof GetMediaDetailResponseMaxResolution
 >;
 
 /**
  * The actual resolution of the uploaded media. This represents the native quality of the source media.
  */
-export const GetMediaResponseSourceResolution = {
+export const GetMediaDetailResponseSourceResolution = {
   TwoThousandOneHundredAndSixtyp: "2160p",
+  TwoThousandOneHundredAndSixty: "2160",
   OneThousandFourHundredAndFortyp: "1440p",
+  OneThousandFourHundredAndForty: "1440",
   OneThousandAndEightyp: "1080p",
+  OneThousandAndEighty: "1080",
   SevenHundredAndTwentyp: "720p",
+  SevenHundredAndTwenty: "720",
   FourHundredAndEightyp: "480p",
+  FourHundredAndEighty: "480",
+  ThreeHundredAndSixtyp: "360p",
+  ThreeHundredAndSixty: "360",
 } as const;
 /**
  * The actual resolution of the uploaded media. This represents the native quality of the source media.
  */
-export type GetMediaResponseSourceResolution = OpenEnum<
-  typeof GetMediaResponseSourceResolution
+export type GetMediaDetailResponseSourceResolution = OpenEnum<
+  typeof GetMediaDetailResponseSourceResolution
 >;
 
 /**
  * Determines the media's status, which can be one of the possible values.
  */
-export const GetMediaResponseStatus = {
+export const GetMediaDetailResponseStatus = {
   Created: "Created",
   Downloading: "Downloading",
   Downloaded: "Downloaded",
@@ -94,13 +101,13 @@ export const GetMediaResponseStatus = {
 /**
  * Determines the media's status, which can be one of the possible values.
  */
-export type GetMediaResponseStatus = OpenEnum<typeof GetMediaResponseStatus>;
+export type GetMediaDetailResponseStatus = OpenEnum<typeof GetMediaDetailResponseStatus>;
 
 /**
  * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
  * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
  */
-export const GetMediaResponseMp4SupportType = {
+export const GetMediaDetailResponseMp4SupportType = {
   Capped4k: "capped_4k",
   AudioOnly: "audioOnly",
 } as const;
@@ -108,12 +115,12 @@ export const GetMediaResponseMp4SupportType = {
  * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
  * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
  */
-export type GetMediaResponseMp4SupportType = OpenEnum<typeof GetMediaResponseMp4SupportType>;
+export type GetMediaDetailResponseMp4SupportType = OpenEnum<typeof GetMediaDetailResponseMp4SupportType>;
 
 /**
  * Generation status of this MP4 rendition.
  */
-export const GetMediaResponseMp4SupportStatus = {
+export const GetMediaDetailResponseMp4SupportStatus = {
   Preparing: "preparing",
   Ready: "ready",
   Failed: "failed",
@@ -121,19 +128,19 @@ export const GetMediaResponseMp4SupportStatus = {
 /**
  * Generation status of this MP4 rendition.
  */
-export type GetMediaResponseMp4SupportStatus = OpenEnum<typeof GetMediaResponseMp4SupportStatus>;
+export type GetMediaDetailResponseMp4SupportStatus = OpenEnum<typeof GetMediaDetailResponseMp4SupportStatus>;
 
 /**
  * File extension of the downloadable rendition.
  */
-export const GetMediaResponseMp4SupportExt = {
+export const GetMediaDetailResponseMp4SupportExt = {
   Mp4: "mp4",
   M4a: "m4a",
 } as const;
 /**
  * File extension of the downloadable rendition.
  */
-export type GetMediaResponseMp4SupportExt = OpenEnum<typeof GetMediaResponseMp4SupportExt>;
+export type GetMediaDetailResponseMp4SupportExt = OpenEnum<typeof GetMediaDetailResponseMp4SupportExt>;
 
 /**
  * A single generated MP4 rendition returned by the API.
@@ -143,17 +150,17 @@ export type GetMediaResponseMp4SupportExt = OpenEnum<typeof GetMediaResponseMp4S
  * on the *request* side when enabling MP4 support is a single string — see
  * `UpdatedMp4SupportMp4Support`.
  */
-export type GetMediaResponseMp4Support = {
-  type?: GetMediaResponseMp4SupportType | undefined;
-  status?: GetMediaResponseMp4SupportStatus | undefined;
+export type GetMediaDetailResponseMp4Support = {
+  type?: GetMediaDetailResponseMp4SupportType | undefined;
+  status?: GetMediaDetailResponseMp4SupportStatus | undefined;
   height?: number | null | undefined;
   width?: number | null | undefined;
-  ext?: GetMediaResponseMp4SupportExt | undefined;
+  ext?: GetMediaDetailResponseMp4SupportExt | undefined;
 };
 
-export type GetMediaResponseTrack = VideoTrack | AudioTrack | SubtitleTrack;
+export type GetMediaDetailResponseTrack = VideoTrack | AudioTrack | SubtitleTrack;
 
-export type GetMediaResponse = {
+export type GetMediaDetailResponse = {
   /**
    * A video thumbnail is a still image that acts as the preview image for your video.
    */
@@ -183,7 +190,7 @@ export type GetMediaResponse = {
   /**
    * The quality tier applied to the media.
    */
-  mediaQuality?: GetMediaResponseMediaQuality | undefined;
+  mediaQuality?: GetMediaDetailResponseMediaQuality | undefined;
   /**
    * The unique identifier of the user who created this media.
    */
@@ -195,15 +202,15 @@ export type GetMediaResponse = {
   /**
    * The maximum resolution specified by the user for the media.
    */
-  maxResolution?: GetMediaResponseMaxResolution | undefined;
+  maxResolution?: GetMediaDetailResponseMaxResolution | undefined;
   /**
    * The actual resolution of the uploaded media. This represents the native quality of the source media.
    */
-  sourceResolution?: GetMediaResponseSourceResolution | undefined;
+  sourceResolution?: GetMediaDetailResponseSourceResolution | undefined;
   /**
    * Determines the media's status, which can be one of the possible values.
    */
-  status?: GetMediaResponseStatus | undefined;
+  status?: GetMediaDetailResponseStatus | undefined;
   /**
    * The MP4 renditions generated for this media.
    *
@@ -212,18 +219,13 @@ export type GetMediaResponse = {
    * or an `audioOnly` m4a file — along with its generation status. Omitted or
    * empty when no MP4 support has been requested.
    */
-  mp4Support?: Array<GetMediaResponseMp4Support> | null | undefined;
+  mp4Support?: Array<GetMediaDetailResponseMp4Support> | null | undefined;
   /**
    * The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
    */
   sourceAccess?: boolean | null | undefined;
   /**
-   * Whether the audio track of the media has been volume-normalized. Available
-   * for pre-recorded content only.
-   *
-   * @remarks
-   * Returned by the API but not yet declared in the OpenAPI spec — verified
-   * against live get-media / list-media responses.
+   * Whether the audio track of the media has been volume-normalized.
    */
   optimizeAudio?: boolean | null | undefined;
   /**
@@ -285,62 +287,62 @@ export type GetMediaResponse = {
 };
 
 /** @internal */
-export const GetMediaResponseMediaQuality$inboundSchema: z.ZodMiniType<
-  GetMediaResponseMediaQuality,
+export const GetMediaDetailResponseMediaQuality$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseMediaQuality,
   unknown
-> = openEnums.inboundSchema(GetMediaResponseMediaQuality);
+> = openEnums.inboundSchema(GetMediaDetailResponseMediaQuality);
 
 /** @internal */
-export const GetMediaResponseMaxResolution$inboundSchema: z.ZodMiniType<
-  GetMediaResponseMaxResolution,
+export const GetMediaDetailResponseMaxResolution$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseMaxResolution,
   unknown
-> = openEnums.inboundSchema(GetMediaResponseMaxResolution);
+> = openEnums.inboundSchema(GetMediaDetailResponseMaxResolution);
 
 /** @internal */
-export const GetMediaResponseSourceResolution$inboundSchema: z.ZodMiniType<
-  GetMediaResponseSourceResolution,
+export const GetMediaDetailResponseSourceResolution$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseSourceResolution,
   unknown
-> = openEnums.inboundSchema(GetMediaResponseSourceResolution);
+> = openEnums.inboundSchema(GetMediaDetailResponseSourceResolution);
 
 /** @internal */
-export const GetMediaResponseStatus$inboundSchema: z.ZodMiniType<
-  GetMediaResponseStatus,
+export const GetMediaDetailResponseStatus$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseStatus,
   unknown
-> = openEnums.inboundSchema(GetMediaResponseStatus);
+> = openEnums.inboundSchema(GetMediaDetailResponseStatus);
 
 /** @internal */
-export const GetMediaResponseMp4SupportType$inboundSchema: z.ZodMiniType<
-  GetMediaResponseMp4SupportType,
+export const GetMediaDetailResponseMp4SupportType$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseMp4SupportType,
   unknown
-> = openEnums.inboundSchema(GetMediaResponseMp4SupportType);
+> = openEnums.inboundSchema(GetMediaDetailResponseMp4SupportType);
 
 /** @internal */
-export const GetMediaResponseMp4SupportStatus$inboundSchema: z.ZodMiniType<
-  GetMediaResponseMp4SupportStatus,
+export const GetMediaDetailResponseMp4SupportStatus$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseMp4SupportStatus,
   unknown
-> = openEnums.inboundSchema(GetMediaResponseMp4SupportStatus);
+> = openEnums.inboundSchema(GetMediaDetailResponseMp4SupportStatus);
 
 /** @internal */
-export const GetMediaResponseMp4SupportExt$inboundSchema: z.ZodMiniType<
-  GetMediaResponseMp4SupportExt,
+export const GetMediaDetailResponseMp4SupportExt$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseMp4SupportExt,
   unknown
-> = openEnums.inboundSchema(GetMediaResponseMp4SupportExt);
+> = openEnums.inboundSchema(GetMediaDetailResponseMp4SupportExt);
 
 /** @internal */
-export const GetMediaResponseMp4Support$inboundSchema: z.ZodMiniType<
-  GetMediaResponseMp4Support,
+export const GetMediaDetailResponseMp4Support$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseMp4Support,
   unknown
 > = z.object({
-  type: types.optional(GetMediaResponseMp4SupportType$inboundSchema),
-  status: types.optional(GetMediaResponseMp4SupportStatus$inboundSchema),
+  type: types.optional(GetMediaDetailResponseMp4SupportType$inboundSchema),
+  status: types.optional(GetMediaDetailResponseMp4SupportStatus$inboundSchema),
   height: z.optional(z.nullable(types.number())),
   width: z.optional(z.nullable(types.number())),
-  ext: types.optional(GetMediaResponseMp4SupportExt$inboundSchema),
+  ext: types.optional(GetMediaDetailResponseMp4SupportExt$inboundSchema),
 });
 
 /** @internal */
-export const GetMediaResponseTrack$inboundSchema: z.ZodMiniType<
-  GetMediaResponseTrack,
+export const GetMediaDetailResponseTrack$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponseTrack,
   unknown
 > = smartUnion([
   VideoTrack$inboundSchema,
@@ -350,17 +352,17 @@ export const GetMediaResponseTrack$inboundSchema: z.ZodMiniType<
 
 export function getMediaResponseTrackFromJSON(
   jsonString: string,
-): SafeParseResult<GetMediaResponseTrack, SDKValidationError> {
+): SafeParseResult<GetMediaDetailResponseTrack, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetMediaResponseTrack$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMediaResponseTrack' from JSON`,
+    (x) => GetMediaDetailResponseTrack$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMediaDetailResponseTrack' from JSON`,
   );
 }
 
 /** @internal */
-export const GetMediaResponse$inboundSchema: z.ZodMiniType<
-  GetMediaResponse,
+export const GetMediaDetailResponse$inboundSchema: z.ZodMiniType<
+  GetMediaDetailResponse,
   unknown
 > = z.object({
   thumbnail: z.optional(z.nullable(types.string())),
@@ -369,20 +371,20 @@ export const GetMediaResponse$inboundSchema: z.ZodMiniType<
   workspaceId: types.optional(types.string()),
   streamId: types.optional(types.string()),
   metadata: z.optional(z.nullable(z.record(z.string(), types.string()))),
-  mediaQuality: types.optional(GetMediaResponseMediaQuality$inboundSchema),
+  mediaQuality: types.optional(GetMediaDetailResponseMediaQuality$inboundSchema),
   creatorId: z.optional(z.nullable(types.string())),
   title: z.optional(z.nullable(types.string())),
   maxResolution: z._default(
-    GetMediaResponseMaxResolution$inboundSchema,
+    GetMediaDetailResponseMaxResolution$inboundSchema,
     "1080p",
   ),
   sourceResolution: z._default(
-    GetMediaResponseSourceResolution$inboundSchema,
+    GetMediaDetailResponseSourceResolution$inboundSchema,
     "1080p",
   ),
-  status: types.optional(GetMediaResponseStatus$inboundSchema),
+  status: types.optional(GetMediaDetailResponseStatus$inboundSchema),
   mp4Support: z.optional(
-    z.nullable(z.array(GetMediaResponseMp4Support$inboundSchema)),
+    z.nullable(z.array(GetMediaDetailResponseMp4Support$inboundSchema)),
   ),
   sourceAccess: z.optional(z.nullable(types.boolean())),
   optimizeAudio: z.optional(z.nullable(types.boolean())),
@@ -414,10 +416,10 @@ export const GetMediaResponse$inboundSchema: z.ZodMiniType<
 
 export function getMediaResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetMediaResponse, SDKValidationError> {
+): SafeParseResult<GetMediaDetailResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetMediaResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMediaResponse' from JSON`,
+    (x) => GetMediaDetailResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMediaDetailResponse' from JSON`,
   );
 }

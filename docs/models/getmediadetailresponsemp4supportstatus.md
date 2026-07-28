@@ -1,13 +1,13 @@
-# GetMediaResponseMp4SupportStatus
+# GetMediaDetailResponseMp4SupportStatus
 
 Generation status of this MP4 rendition.
 
 ## Example Usage
 
 ```typescript
-import { GetMediaResponseMp4SupportStatus } from "@fastpix/fastpix-node/models";
+import { GetMediaDetailResponseMp4SupportStatus } from "@fastpix/fastpix-node/models";
 
-let value: GetMediaResponseMp4SupportStatus = "ready";
+let value: GetMediaDetailResponseMp4SupportStatus = "ready";
 ```
 
 ## Values
