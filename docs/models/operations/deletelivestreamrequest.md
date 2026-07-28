@@ -6,7 +6,7 @@
 import { DeleteLiveStreamRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: DeleteLiveStreamRequest = {
-  streamId: "8717422d89288ad5958d4a86e9afe2a2",
+  streamId: "your-stream-id",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: DeleteLiveStreamRequest = {
 
 | Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         | Example                                                                             |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `streamId`                                                                          | *string*                                                                            | :heavy_check_mark:                                                                  | Upon creating a new live stream, FastPix assigns a unique identifier to the stream. | 8717422d89288ad5958d4a86e9afe2a2                                                    |
+| `streamId`                                                                          | *string*                                                                            | :heavy_check_mark:                                                                  | Upon creating a new live stream, FastPix assigns a unique identifier to the stream. | your-stream-id                                                    |

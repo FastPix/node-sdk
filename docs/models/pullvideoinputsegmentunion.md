@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.PullVideoInputSegment1 = {
-  url: "https://storage.googleapis.com/gtv-videos-mp4/sample-segment.mp4",
+  url: "your-upload-url",
   insertAt: 2,
 };
 ```
@@ -16,7 +16,7 @@ const value: models.PullVideoInputSegment1 = {
 
 ```typescript
 const value: models.PullVideoInputSegment2 = {
-  url: "https://storage.googleapis.com/gtv-videos-mp4",
+  url: "your-upload-url",
   insertAtEnd: true,
 };
 ```

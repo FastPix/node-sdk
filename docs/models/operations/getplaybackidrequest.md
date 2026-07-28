@@ -6,8 +6,8 @@
 import { GetPlaybackIdRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: GetPlaybackIdRequest = {
-  mediaId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
-  playbackId: "4fa85f64-5717-4562-b3fc-2c963f66afa6",
+  mediaId: "your-media-id",
+  playbackId: "your-playback-id",
 };
 ```
 
@@ -15,5 +15,5 @@ let value: GetPlaybackIdRequest = {
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `mediaId`                            | *string*                             | :heavy_check_mark:                   | N/A                                  | 4fa85f64-5717-4562-b3fc-2c963f66afa6 |
-| `playbackId`                         | *string*                             | :heavy_check_mark:                   | N/A                                  | 4fa85f64-5717-4562-b3fc-2c963f66afa6 |
+| `mediaId`                            | *string*                             | :heavy_check_mark:                   | N/A                                  | your-media-id |
+| `playbackId`                         | *string*                             | :heavy_check_mark:                   | N/A                                  | your-playback-id |

@@ -8,7 +8,7 @@ import { DirectUploadResponse } from "@fastpix/fastpix-node/models";
 let value: DirectUploadResponse = {
   playbackIds: [
     {
-      id: "6ta85f64-5717-4562-b3fc-2c963f66afa6",
+      id: "your-id",
     },
   ],
   metadata: {

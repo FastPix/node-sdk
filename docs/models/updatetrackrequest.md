@@ -8,8 +8,8 @@ Contains details about the track being updated. The track's file (`url`) cannot 
 import { UpdateTrackRequest } from "@fastpix/fastpix-node/models";
 
 let value: UpdateTrackRequest = {
-  languageCode: "fr",
-  languageName: "French",
+  languageCode: "your-language-code",
+  languageName: "your-language-name",
   title: "French audio",
 };
 ```
@@ -18,6 +18,6 @@ let value: UpdateTrackRequest = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `languageCode`                                                                     | *string*                                                                           | :heavy_minus_sign:                                                                 | The BCP 47 language code representing the track’s language.                        | fr                                                                                 |
-| `languageName`                                                                     | *string*                                                                           | :heavy_minus_sign:                                                                 | The full name of the language corresponding to the `languageCode`.                 | French                                                                             |
+| `languageCode`                                                                     | *string*                                                                           | :heavy_minus_sign:                                                                 | The BCP 47 language code representing the track’s language.                        | your-language-code                                                                                 |
+| `languageName`                                                                     | *string*                                                                           | :heavy_minus_sign:                                                                 | The full name of the language corresponding to the `languageCode`.                 | your-language-name                                                                             |
 | `title`                                                                            | *string*                                                                           | :heavy_minus_sign:                                                                 | Title of the track.                                                                | French subtitles                                                                   |

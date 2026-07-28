@@ -39,8 +39,8 @@ async function run() {
   const result = await fastpix.simulcasts.create({
     streamId: "your-stream-id",
     body: {
-      url: "rtmp://hyd01.contribute.live-video.net/app/",
-      streamKey: "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+      url: "your-rtmp-url",
+      streamKey: "your-stream-key",
       metadata: {
         "livestream_name": "Tech-Connect Summit",
       },
@@ -74,8 +74,8 @@ async function run() {
   const res = await simulcastsCreate(fastpix, {
     streamId: "your-stream-id",
     body: {
-      url: "rtmp://hyd01.contribute.live-video.net/app/",
-      streamKey: "live_1012464221_DuM8W004MoZYNxQEZ0czODgfHCFBhk",
+      url: "your-rtmp-url",
+      streamKey: "your-stream-key",
       metadata: {
         "livestream_name": "Tech-Connect Summit",
       },
@@ -223,7 +223,7 @@ async function run() {
     simulcastId: "your-simulcast-id",
     body: {
       metadata: {
-        "simulcast_name": "Tech today",
+        "simulcast_name": "your-simulcast-name",
       },
     },
   });

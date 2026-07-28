@@ -6,7 +6,7 @@
 import { ListPlaybackIdsRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: ListPlaybackIdsRequest = {
-  mediaId: "5455b8db-79c7-438e-83b9-c440980214c3",
+  mediaId: "your-media-id",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: ListPlaybackIdsRequest = {
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `mediaId`                            | *string*                             | :heavy_check_mark:                   | N/A                                  | 5455b8db-79c7-438e-83b9-c440980214c3 |
+| `mediaId`                            | *string*                             | :heavy_check_mark:                   | N/A                                  | your-media-id |

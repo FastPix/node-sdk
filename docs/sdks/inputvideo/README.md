@@ -72,7 +72,7 @@ async function run() {
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.com/fp-sample-video.mp4",
+        url: "your-video-url",
       },
     ],
     metadata: {
@@ -108,7 +108,7 @@ async function run() {
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.com/fp-sample-video.mp4",
+        url: "your-video-url",
       },
     ],
     metadata: {

@@ -9,7 +9,7 @@
 const value: operations.CreateMediaPlaybackIdResponseBody = {
   success: true,
   data: {
-    id: "b331e0d8-bef4-4ad2-8760-757fdb2818b7",
+    id: "your-id",
     accessPolicy: "public",
     accessRestrictions: {
       domains: {

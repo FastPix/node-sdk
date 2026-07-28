@@ -6,7 +6,7 @@
 import { GetVideoViewDetailsRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: GetVideoViewDetailsRequest = {
-  viewId: "<id>",
+  viewId: "your-view-id",
 };
 ```
 

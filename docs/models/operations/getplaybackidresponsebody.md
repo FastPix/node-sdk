@@ -10,7 +10,7 @@ import { GetPlaybackIdResponseBody } from "@fastpix/fastpix-node/models/operatio
 let value: GetPlaybackIdResponseBody = {
   success: true,
   data: {
-    id: "54fd5e7e-3aa5-4817-b56d-44932f67f6c3",
+    id: "your-id",
     accessPolicy: "public",
     accessRestrictions: {
       domains: {

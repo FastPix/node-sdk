@@ -9,13 +9,13 @@
 const value: models.CreateMediaSuccessResponse = {
   success: true,
   data: {
-    id: "a1d1acdd-8f4e-4add-b498-6b398cf349d9",
+    id: "your-id",
     status: "Created",
     createdAt: new Date("2023-10-20T10:50:34.594302Z"),
     updatedAt: new Date("2023-10-20T10:50:34.594302Z"),
     playbackIds: [
       {
-        id: "6ta85f64-5717-4562-b3fc-2c963f66afa6",
+        id: "your-id",
       },
     ],
     metadata: {
@@ -27,7 +27,7 @@ const value: models.CreateMediaSuccessResponse = {
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.com/fp-sample-video.mp4",
+        url: "your-video-url",
       },
     ],
     optimizeAudio: false,

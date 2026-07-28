@@ -335,7 +335,7 @@ This endpoint allows you to add an audio or subtitle track to an existing media 
 
 
 #### Example
-Suppose you have a video uploaded to the FastPix platform, and you want to add an Italian audio track to it. By calling this API, you can attach an external audio file (https://static.fastpix.com/music-1.mp3) to the media file. Similarly, if you need to add subtitles in different languages, you can specify type: `subtitle` with the corresponding subtitle `url`, `languageCode` and `languageName`.
+Suppose you have a video uploaded to the FastPix platform, and you want to add an Italian audio track to it. By calling this API, you can attach an external audio file (your-audio-url) to the media file. Similarly, if you need to add subtitles in different languages, you can specify type: `subtitle` with the corresponding subtitle `url`, `languageCode` and `languageName`.
 
 Related guides: <a href="https://fastpix.com/docs/video-on-demand/add-subtitles-to-a-video">Add own subtitle tracks</a>, <a href="https://fastpix.com/docs/video-on-demand/add-audio-to-a-video">Add own audio tracks</a>
 
@@ -359,9 +359,9 @@ async function run() {
     body: {
       tracks: {
         type: "audio",
-        url: "https://static.fastpix.com/music-1.mp3",
-        languageCode: "it",
-        languageName: "Italian",
+        url: "your-audio-url",
+        languageCode: "your-language-code",
+        languageName: "your-language-name",
         title: "Italian audio",
       },
     },
@@ -396,9 +396,9 @@ async function run() {
     body: {
       tracks: {
         type: "audio",
-        url: "https://static.fastpix.com/music-1.mp3",
-        languageCode: "it",
-        languageName: "Italian",
+        url: "your-audio-url",
+        languageCode: "your-language-code",
+        languageName: "your-language-name",
         title: "Italian audio",
       },
     },
@@ -577,7 +577,7 @@ async function run() {
     trackId: "your-track-id",
     mediaId: "your-media-id",
     body: {
-      languageName: "french",
+      languageName: "your-language-name",
       title: "French audio",
     },
   });
@@ -610,7 +610,7 @@ async function run() {
     trackId: "your-track-id",
     mediaId: "your-media-id",
     body: {
-      languageName: "french",
+      languageName: "your-language-name",
       title: "French audio",
     },
   });
@@ -683,7 +683,7 @@ async function run() {
     mediaId: "your-media-id",
     trackId: "your-track-id",
     body: {
-      languageName: "Italian",
+      languageName: "your-language-name",
       title: "Italian subtitles",
     },
   });
@@ -716,7 +716,7 @@ async function run() {
     mediaId: "your-media-id",
     trackId: "your-track-id",
     body: {
-      languageName: "Italian",
+      languageName: "your-language-name",
       title: "Italian subtitles",
     },
   });

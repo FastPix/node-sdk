@@ -10,15 +10,15 @@ const value: models.MediaClipResponse = {
   success: true,
   data: [
     {
-      id: "b62427ec-07fd-4a89-b3c0-94909aaaa1da",
+      id: "your-id",
       duration: "00:00:13",
       status: "Ready",
       thumbnail:
-        "https://images.fastpix.app/66dc7b0b-9dfb-4721-a738-837f89ccbd0a/thumbnail.png",
+        "your-thumbnail-url",
       createdAt: new Date("2025-03-12T06:17:26.403017Z"),
       playbackIds: [
         {
-          id: "66dc7b0b-9dfb-4721-a738-837f89ccbd0a",
+          id: "your-id",
           accessPolicy: "public",
         },
       ],

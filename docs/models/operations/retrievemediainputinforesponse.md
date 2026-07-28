@@ -10,13 +10,13 @@ const value: operations.RetrieveMediaInputInfoResponseBody = {
   success: true,
   data: {
     configuration: {
-      url: "https://static.fastpix.com/fp-sample-video.mp4",
+      url: "your-video-url",
     },
     file: {
       containerFormat: "mp4",
       tracks: [
         {
-          id: "6eb56a83-9a8b-47a5-94b2-cadb4458cf4d",
+          id: "your-id",
           type: "video",
           width: 1280,
           height: 720,

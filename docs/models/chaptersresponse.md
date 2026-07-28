@@ -6,7 +6,7 @@
 import { ChaptersResponse } from "@fastpix/fastpix-node/models";
 
 let value: ChaptersResponse = {
-  mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+  mediaId: "your-media-id",
   isChaptersEnabled: true,
 };
 ```
@@ -15,5 +15,5 @@ let value: ChaptersResponse = {
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `mediaId`                            | *string*                             | :heavy_minus_sign:                   | N/A                                  | c695988b-ff84-42ae-bb21-10f284fedb0e |
+| `mediaId`                            | *string*                             | :heavy_minus_sign:                   | N/A                                  | your-media-id |
 | `isChaptersEnabled`                  | *boolean*                            | :heavy_minus_sign:                   | N/A                                  | true                                 |
