@@ -9,11 +9,11 @@
 const value: operations.AddMediaTrackResponseBody = {
   success: true,
   data: {
-    id: "ace60fc7-e876-4fc6-b9d9-c33fa242f84b",
+    id: "your-track-id",
     type: "audio",
-    url: "https://static.fastpix.com/music-1.mp3",
-    languageCode: "it",
-    languageName: "Italian",
+    url: "your-audio-url",
+    languageCode: "your-language-code",
+    languageName: "your-language-name",
   },
 };
 ```

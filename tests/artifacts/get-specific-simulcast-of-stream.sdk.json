@@ -1,9 +1,0 @@
-{
-  "success": true,
-  "data": {
-    "simulcastId": "8de51e8b2c420d89491b562b113d210f",
-    "url": "rtmp://a.rtmp.youtube.com/live2",
-    "streamKey": "test-dummy-key-1234",
-    "isEnabled": true
-  }
-}

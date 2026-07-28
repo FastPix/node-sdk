@@ -121,6 +121,10 @@ export type GenerateTrackResponse = {
    */
   languageName?: string | undefined;
   /**
+   * Title of the track.
+   */
+  title?: string | undefined;
+  /**
    * You can search for videos with specific key value pairs using metadata, when you tag a video in "key" : "value" pairs. Dynamic metadata allows you to define a key that allows any value pair. You can have maximum of 255 characters and upto 10 entries are allowed.
    *
    * @remarks
@@ -148,6 +152,7 @@ export const GenerateTrackResponse$inboundSchema: z.ZodMiniType<
   type: types.optional(GenerateTrackResponseType$inboundSchema),
   languageCode: types.optional(GenerateTrackResponseLanguageCode$inboundSchema),
   languageName: types.optional(types.string()),
+  title: types.optional(types.string()),
   metadata: types.optional(z.record(z.string(), types.string())),
 });
 

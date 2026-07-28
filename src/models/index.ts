@@ -40,7 +40,7 @@ export * from "./getallplaylistsresponse.js";
 export * from "./getallsigningkeysresponse.js";
 export * from "./getallsigningkeysresponsedto.js";
 export * from "./getcreatelivestreamresponsedto.js";
-export * from "./getmediaresponse.js";
+export * from "./getmediadetailresponse.js";
 export * from "./getpublicpemusingsigningkeyidresponsedto.js";
 export * from "./getstreamsresponse.js";
 export * from "./languagecode.js";

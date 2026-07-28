@@ -12,15 +12,15 @@ let value: ListLiveClipsResponseBody = {
   data: [
     {
       thumbnail:
-        "https://images.fastpix.com/837f028b-dcaf-4c23-b368-3748641f74ac/thumbnail.png",
-      id: "cfeec1a3-6cbd-40df-a425-2ed7f8f72ced",
-      workspaceId: "6dc2b4e0-0615-42fd-a580-1f4aad932dfe",
-      streamId: "98f28be5ac9bd7a4205634691a1a096b",
+        "your-thumbnail-url",
+      id: "your-media-id",
+      workspaceId: "your-workspace-id",
+      streamId: "your-stream-id",
       status: "Ready",
       sourceAccess: false,
       playbackIds: [
         {
-          id: "837f028b-dcaf-4c23-b368-3748641f74ac",
+          id: "your-playback-id",
           accessPolicy: "public",
           accessRestrictions: {
             domains: {
@@ -38,7 +38,7 @@ let value: ListLiveClipsResponseBody = {
       ],
       tracks: [
         {
-          id: "f301a2a1-b40d-40fa-b419-4d0cd92a62f8",
+          id: "your-track-id",
           type: "video",
           width: 1920,
           height: 1080,

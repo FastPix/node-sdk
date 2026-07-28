@@ -39,6 +39,10 @@ export type AddTrackRequest = {
    * The full name of the language corresponding to the `languageCode`.
    */
   languageName?: string | undefined;
+  /**
+   * Title of the track.
+   */
+  title?: string | undefined;
 };
 
 /** @internal */
@@ -52,6 +56,7 @@ export type AddTrackRequest$Outbound = {
   type: string;
   languageCode: string;
   languageName: string;
+  title?: string | undefined;
 };
 
 /** @internal */
@@ -63,6 +68,7 @@ export const AddTrackRequest$outboundSchema: z.ZodMiniType<
   type: z._default(AddTrackRequestType$outboundSchema, "audio"),
   languageCode: z._default(z.string(), "it"),
   languageName: z._default(z.string(), "Italian"),
+  title: z.optional(z.string()),
 });
 
 export function addTrackRequestToJSON(

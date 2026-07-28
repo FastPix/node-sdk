@@ -20,7 +20,7 @@ This endpoint creates a new playlist within a specified workspace. A playlist ac
 - **Manual:** Creates an empty playlist without any initial media items. Use this mode for manual curation, where you add items later in a user-defined sequence.
 - **Smart:** Auto-populates the playlist at creation time based on the filter criteria (for example, a video creation date range) that you provide in the request.
 
-For more details, see <a href="https://fastpix.com/docs/playback-and-delivery/create-and-manage-playlists">Create and manage playlist</a>.
+For more details, see <a href="https://fastpix.com/docs/video-on-demand/create-and-manage-playlists">Create and manage playlist</a>.
 
 #### How it works 
 
@@ -54,17 +54,17 @@ async function run() {
     limit: 20,
     metadata: {
       createdDate: {
-        startDate: "2024-11-11",
-        endDate: "2024-12-12",
+        startDate: "2024-11-11", // Give your own startDate
+        endDate: "2024-12-12", // Give your own endDate
       },
       updatedDate: {
-        startDate: "2024-11-11",
-        endDate: "2024-12-12",
+        startDate: "2024-11-11", // Give your own startDate
+        endDate: "2024-12-12", // Give your own endDate
       },
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -108,7 +108,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playlistCreate failed:", res.error);
   }
@@ -165,7 +165,7 @@ async function run() {
     limit: 1,
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -194,7 +194,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playlistList failed:", res.error);
   }
@@ -248,7 +248,7 @@ async function run() {
     playlistId: "your-playlist-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -277,7 +277,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playlistGet failed:", res.error);
   }
@@ -337,7 +337,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -370,7 +370,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playlistUpdate failed:", res.error);
   }
@@ -425,7 +425,7 @@ async function run() {
     playlistId: "your-playlist-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -454,7 +454,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playlistDelete failed:", res.error);
   }
@@ -517,7 +517,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -553,7 +553,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playlistUpdateMediaOrder failed:", res.error);
   }

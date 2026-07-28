@@ -15,11 +15,11 @@ This endpoint enables moderation features, such as NSFW and profanity filtering,
 2. Include the `moderation` object and provide the requried `type` parameter in the request body to specify the media type (for example, video/audio/av).
 4. The response contains the updated media data, confirming the changes made.
 
-You can use the <a href="https://fastpix.com/docs/ai-events/in-video-ai-events#videomediaaimoderationready">video.mediaAI.moderation.ready</a> webhook event to track and notify about the detected moderation results.
+You can use the <a href="https://fastpix.com/docs/webhooks/in-video-ai-events#videomediaaimoderationready">video.mediaAI.moderation.ready</a> webhook event to track and notify about the detected moderation results.
 
 **Use case:** This is particularly useful when a user uploads a video and later decides to enable moderation detection without the need to re-upload it.
 
-Related guide: <a href="https://fastpix.com/docs/video-intelligence/detect-nsfw-content-and-profanity">Moderate NSFW & Profanity</a>
+Related guide: <a href="https://fastpix.com/docs/in-video-ai/detect-nsfw-content-and-profanity">Moderate NSFW & Profanity</a>
 
 
 ### Example Usage
@@ -45,7 +45,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -79,7 +79,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("inVideoAIUpdateModeration failed:", res.error);
   }

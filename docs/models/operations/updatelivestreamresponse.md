@@ -9,11 +9,11 @@
 const value: models.PatchResponseDTO = {
   success: true,
   data: {
-    streamId: "fa7f8c0950ea48ebcc5ef9de8c23deaa",
+    streamId: "your-stream-id",
     streamKey:
-      "3dc5d7641f918baa083a5c52a5bd9cbckfa7f8c0950ea48ebcc5ef9de8c23deaa",
+      "your-stream-key",
     srtSecret:
-      "c51739512d0088d98a46925c9b74c73akfa7f8c0950ea48ebcc5ef9de8c23deaa",
+      "your-srt-secret",
     trial: false,
     status: "idle",
     maxResolution: "1080p",
@@ -30,14 +30,14 @@ const value: models.PatchResponseDTO = {
     closedCaptions: false,
     playbackIds: [
       {
-        id: "4e43ec52-4775-4f68-a3ff-a57d8a59bba8",
+        id: "your-playback-id",
         accessPolicy: "public",
       },
     ],
     srtPlaybackResponse: {
-      srtPlaybackStreamId: "playfa7f8c0950ea48ebcc5ef9de8c23deaa",
+      srtPlaybackStreamId: "your-srt-playback-stream-id",
       srtPlaybackSecret:
-        "490e707dd4d165c9e38d261b252f9457kfa7f8c0950ea48ebcc5ef9de8c23deaa",
+        "your-srt-playback-secret",
     },
   },
 };

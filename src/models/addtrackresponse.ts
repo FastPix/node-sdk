@@ -48,6 +48,10 @@ export type AddTrackResponse = {
    * The full name of the language corresponding to the `languageCode`.
    */
   languageName?: string | undefined;
+  /**
+   * Title of the track.
+   */
+  title?: string | undefined;
 };
 
 /** @internal */
@@ -66,6 +70,7 @@ export const AddTrackResponse$inboundSchema: z.ZodMiniType<
   url: types.optional(types.string()),
   languageCode: types.optional(types.string()),
   languageName: types.optional(types.string()),
+  title: types.optional(types.string()),
 });
 
 export function addTrackResponseFromJSON(

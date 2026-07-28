@@ -6,10 +6,10 @@
 import { PlaylistItem } from "@fastpix/fastpix-node/models";
 
 let value: PlaylistItem = {
-  id: "db6e860f-cb57-43dd-8acf-39c9effd5608",
+  id: "your-playlist-id",
   name: "playlist1",
   type: "smart",
-  referenceId: "a111dfdfdafsdfe",
+  referenceId: "your-reference-id",
   createdAt: new Date("2025-05-12T12:55:24.368182Z"),
   mediaCount: 9,
 };
@@ -19,7 +19,7 @@ let value: PlaylistItem = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `id`                                                                                          | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique id of the playlist                                                                 | db6e860f-cb57-43dd-8acf-39c9effd5608                                                          |
+| `id`                                                                                          | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique id of the playlist                                                                 | your-playlist-id                                                          |
 | `name`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | The name of the playlist set by the user                                                      | playlist1                                                                                     |
 | `type`                                                                                        | [models.PlaylistItemType](../models/playlistitemtype.md)                                      | :heavy_minus_sign:                                                                            | type of the playlist, when it was created                                                     | smart                                                                                         |
 | `referenceId`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | Unique string value assigned by user to the playlist.                                         | a111dfdfdafsdfe                                                                               |

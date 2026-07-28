@@ -10,7 +10,7 @@ const value: operations.ListPlaybackIdsResponseBody = {
   success: true,
   data: [
     {
-      id: "54fd5e7e-3aa5-4817-b56d-44932f67f6c3",
+      id: "your-playback-id",
       accessPolicy: "drm",
       accessRestrictions: {
         domains: {
@@ -20,7 +20,7 @@ const value: operations.ListPlaybackIdsResponseBody = {
             "trustedsite.org",
           ],
           deny: [
-            "malicioussite.com",
+            "malicioussite.io",
             "abc.net",
           ],
         },

@@ -46,10 +46,10 @@ Upon successful creation, the API returns an `id` that must be retained for futu
 
 4. Use the id in subsequent API calls, such as checking the status of the media with the <a href="https://fastpix.com/docs/video-on-demand-api/manage-videos/get-media">Get Media by ID</a> endpoint to determine when the media is ready for playback. 
 
-FastPix uses webhooks to tell your application about things that happen in the background, outside of the API regular request flow. For instance, after the media file is created (but not yet processed or encoded), FastPix sends a `POST` request to your specified webhook URL with the event <a href="https://fastpix.com/docs/vod-events/media-events#videomediacreated">video.media.created</a>. 
+FastPix uses webhooks to tell your application about things that happen in the background, outside of the API regular request flow. For instance, after the media file is created (but not yet processed or encoded), FastPix sends a `POST` request to your specified webhook URL with the event <a href="https://fastpix.com/docs/webhooks/media-events#videomediacreated">video.media.created</a>. 
 
 
-After processing completes, monitor the events <a href="https://fastpix.com/docs/vod-events/media-events#videomediaready">video.media.ready</a> and <a href="https://fastpix.com/docs/vod-events/media-events#videomediafailed">video.media.failed</a> to track the status of the media file.
+After processing completes, monitor the events <a href="https://fastpix.com/docs/webhooks/media-events#videomediaready">video.media.ready</a> and <a href="https://fastpix.com/docs/webhooks/media-events#videomediafailed">video.media.failed</a> to track the status of the media file.
 
 Related guide: <a href="https://fastpix.com/docs/upload-videos/upload-videos-from-a-url">Upload videos from URL</a>
 
@@ -72,7 +72,7 @@ async function run() {
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.com/fp-sample-video.mp4",
+        url: "your-video-url",
       },
     ],
     metadata: {
@@ -80,7 +80,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -108,7 +108,7 @@ async function run() {
     inputs: [
       {
         type: "video",
-        url: "https://static.fastpix.com/fp-sample-video.mp4",
+        url: "your-video-url",
       },
     ],
     metadata: {
@@ -117,7 +117,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("inputVideoCreate failed:", res.error);
   }
@@ -151,7 +151,7 @@ This endpoint enables accelerated uploads of large media files directly from you
 
 > **NOTE**
 >
-> This version now supports uploads with no file size limitations and offers faster uploads. The previous endpoint (which had a 500MB size limit) is now deprecated. You can find details in the [changelog](https://fastpix.com/docs/changelog/api-update-direct-upload-media-from-device).
+> This version now supports uploads with no file size limitations and offers faster uploads. The previous endpoint (which had a 500MB size limit) is now deprecated. You can find details in the [changelog](https://fastpix.com/docs/changelog/release-notes).
 
 #### How it works
 
@@ -159,7 +159,7 @@ This endpoint enables accelerated uploads of large media files directly from you
 
 2. The response includes an `uploadId` and a signed `url` for direct video file upload.
 
-3. Upload your video file to the provided url by making a PUT request. The API accepts the media file from your device and uploads it to the FastPix platform. (Refer to <a href="https://fastpix.com/docs/upload-videos/upload-videos-from-device#step-3-initiate-the-upload">Step 3: Initiate the upload</a> for complete instructions.)
+3. Upload your video file to the provided url by making a PUT request. The API accepts the media file from your device and uploads it to the FastPix platform. (Refer to <a href="https://fastpix.com/docs/upload-videos/upload-videos-from-device#initiate-the-upload-session-web-only">Step 3: Initiate the upload</a> for complete instructions.)
 
 
 4. Once uploaded, the media undergoes processing and is assigned a unique ID for tracking. Retain this `uploadId` for any future operations related to this upload. 
@@ -200,7 +200,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -233,7 +233,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("inputVideoUpload failed:", res.error);
   }

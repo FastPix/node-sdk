@@ -10,7 +10,7 @@
 
 Deletes a simulcast using its unique simulcastId, which you received during the simulcast creation process. Deleting a simulcast stops the broadcast to the associated platform, while the parent stream continues if it’s live. This action can’t be undone, and you must create a new simulcast to resume streaming to the same platform.
 
-Webhook event: <a href="https://fastpix.com/docs/live-stream-events/live-events#videolive_streamsimulcast_targetdeleted">video.live_stream.simulcast_target.deleted</a>
+Webhook event: <a href="https://fastpix.com/docs/webhooks/live-events#videolive_streamsimulcast_targetdeleted">video.live_stream.simulcast_target.deleted</a>
 
 
 #### Example
@@ -35,7 +35,7 @@ async function run() {
     simulcastId: "your-simulcast-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -65,7 +65,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("simulcastStreamsDelete failed:", res.error);
   }

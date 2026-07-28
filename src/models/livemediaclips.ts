@@ -39,10 +39,17 @@ export type LiveMediaClipsMaxResolution = OpenEnum<
  */
 export const LiveMediaClipsSourceResolution = {
   TwoThousandOneHundredAndSixtyp: "2160p",
+  TwoThousandOneHundredAndSixty: "2160",
   OneThousandFourHundredAndFortyp: "1440p",
+  OneThousandFourHundredAndForty: "1440",
   OneThousandAndEightyp: "1080p",
+  OneThousandAndEighty: "1080",
   SevenHundredAndTwentyp: "720p",
+  SevenHundredAndTwenty: "720",
   FourHundredAndEightyp: "480p",
+  FourHundredAndEighty: "480",
+  ThreeHundredAndSixtyp: "360p",
+  ThreeHundredAndSixty: "360",
 } as const;
 /**
  * The actual resolution of the uploaded media. This represents the native quality of the source media.
@@ -70,6 +77,60 @@ export const LiveMediaClipsStatus = {
 export type LiveMediaClipsStatus = OpenEnum<typeof LiveMediaClipsStatus>;
 
 export type LiveMediaClipsTrack = VideoTrack | AudioTrack | SubtitleTrack;
+
+/**
+ * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
+ * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
+ */
+export const LiveMediaClipsMp4SupportType = {
+  Capped4k: "capped_4k",
+  AudioOnly: "audioOnly",
+} as const;
+/**
+ * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
+ * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
+ */
+export type LiveMediaClipsMp4SupportType = OpenEnum<typeof LiveMediaClipsMp4SupportType>;
+
+/**
+ * Generation status of this MP4 rendition.
+ */
+export const LiveMediaClipsMp4SupportStatus = {
+  Preparing: "preparing",
+  Ready: "ready",
+  Failed: "failed",
+} as const;
+/**
+ * Generation status of this MP4 rendition.
+ */
+export type LiveMediaClipsMp4SupportStatus = OpenEnum<typeof LiveMediaClipsMp4SupportStatus>;
+
+/**
+ * File extension of the downloadable rendition.
+ */
+export const LiveMediaClipsMp4SupportExt = {
+  Mp4: "mp4",
+  M4a: "m4a",
+} as const;
+/**
+ * File extension of the downloadable rendition.
+ */
+export type LiveMediaClipsMp4SupportExt = OpenEnum<typeof LiveMediaClipsMp4SupportExt>;
+
+/**
+ * A single generated MP4 rendition returned by the API.
+ *
+ * @remarks
+ * `mp4Support` comes back as an ARRAY of these renditions. Audio-only
+ * renditions omit `height` and `width`.
+ */
+export type LiveMediaClipsMp4Support = {
+  type?: LiveMediaClipsMp4SupportType | undefined;
+  status?: LiveMediaClipsMp4SupportStatus | undefined;
+  height?: number | null | undefined;
+  width?: number | null | undefined;
+  ext?: LiveMediaClipsMp4SupportExt | undefined;
+};
 
 export type LiveMediaClips = {
   /**
@@ -112,6 +173,14 @@ export type LiveMediaClips = {
    * The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
    */
   sourceAccess?: boolean | undefined;
+  /**
+   * Whether the audio track of the media has been volume-normalized.
+   */
+  optimizeAudio?: boolean | undefined;
+  /**
+   * The MP4 renditions generated for this media.
+   */
+  mp4Support?: Array<LiveMediaClipsMp4Support> | null | undefined;
   /**
    * A collection of Playback ID objects utilized for crafting HLS playback URLs.
    */
@@ -185,6 +254,36 @@ export function liveMediaClipsTrackFromJSON(
 }
 
 /** @internal */
+/** @internal */
+export const LiveMediaClipsMp4SupportType$inboundSchema: z.ZodMiniType<
+  LiveMediaClipsMp4SupportType,
+  unknown
+> = openEnums.inboundSchema(LiveMediaClipsMp4SupportType);
+
+/** @internal */
+export const LiveMediaClipsMp4SupportStatus$inboundSchema: z.ZodMiniType<
+  LiveMediaClipsMp4SupportStatus,
+  unknown
+> = openEnums.inboundSchema(LiveMediaClipsMp4SupportStatus);
+
+/** @internal */
+export const LiveMediaClipsMp4SupportExt$inboundSchema: z.ZodMiniType<
+  LiveMediaClipsMp4SupportExt,
+  unknown
+> = openEnums.inboundSchema(LiveMediaClipsMp4SupportExt);
+
+/** @internal */
+export const LiveMediaClipsMp4Support$inboundSchema: z.ZodMiniType<
+  LiveMediaClipsMp4Support,
+  unknown
+> = z.object({
+  type: types.optional(LiveMediaClipsMp4SupportType$inboundSchema),
+  status: types.optional(LiveMediaClipsMp4SupportStatus$inboundSchema),
+  height: z.optional(z.nullable(types.number())),
+  width: z.optional(z.nullable(types.number())),
+  ext: types.optional(LiveMediaClipsMp4SupportExt$inboundSchema),
+});
+
 export const LiveMediaClips$inboundSchema: z.ZodMiniType<
   LiveMediaClips,
   unknown
@@ -202,6 +301,10 @@ export const LiveMediaClips$inboundSchema: z.ZodMiniType<
   ),
   status: types.optional(LiveMediaClipsStatus$inboundSchema),
   sourceAccess: types.optional(types.boolean()),
+  optimizeAudio: types.optional(types.boolean()),
+  mp4Support: z.optional(
+    z.nullable(z.array(LiveMediaClipsMp4Support$inboundSchema)),
+  ),
   playbackIds: types.optional(z.array(PlaybackId$inboundSchema)),
   tracks: types.optional(
     z.array(

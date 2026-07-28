@@ -55,7 +55,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -84,7 +84,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosGet failed:", res.error);
   }
@@ -125,7 +125,7 @@ This endpoint allows you to update specific parameters of an existing media file
 
 3. The response returns the updated media data, confirming the changes. 
 
-4. Monitor the <a href="https://fastpix.com/docs/vod-events/media-events#videomediaupdated">video.media.updated</a> webhook event to track the update status in your system.
+4. Monitor the <a href="https://fastpix.com/docs/webhooks/media-events#videomediaupdated">video.media.updated</a> webhook event to track the update status in your system.
 
 #### Example
 If a user uploads a video and later needs to change the title, add a new description, or update tags, you can use this endpoint to update the media metadata without re-uploading the entire video.
@@ -155,7 +155,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -190,7 +190,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosUpdate failed:", res.error);
   }
@@ -230,7 +230,7 @@ This endpoint allows you to permanently delete a a specific video or audio media
 
 2. This action is irreversible. Make sure you no longer need the media before proceeding. Once deleted, the media can’t be retrieved or played back. 
 
-3. Monitor the following webhook event: <a href="https://fastpix.com/docs/vod-events/media-events#videomediadeleted">video.media.deleted</a>
+3. Monitor the following webhook event: <a href="https://fastpix.com/docs/webhooks/media-events#videomediadeleted">video.media.deleted</a>
 
 #### Example
 A user on a video-sharing platform decides to remove an old video from their profile, or suppose you're running a content moderation system, and one of the videos uploaded by a user violates your platform's policies. Using this endpoint, the media is permanently deleted from your library, ensuring it's no longer accessible or viewable by other users.
@@ -254,7 +254,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -283,7 +283,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosDelete failed:", res.error);
   }
@@ -327,17 +327,17 @@ This endpoint allows you to add an audio or subtitle track to an existing media 
 
 #### Webhook events
 
-1. After successfully adding a track, your system must receive the webhook event <a href="https://fastpix.com/docs/vod-events/transform-media-events#videomediatrackcreated">video.media.track.created</a>.
+1. After successfully adding a track, your system must receive the webhook event <a href="https://fastpix.com/docs/webhooks/transform-media-events#videomediatrackcreated">video.media.track.created</a>.
 
-2. Once the track is processed and ready, you must receive the webhook event <a href="https://fastpix.com/docs/vod-events/transform-media-events#videomediatrackready">video.media.track.ready</a>.
+2. Once the track is processed and ready, you must receive the webhook event <a href="https://fastpix.com/docs/webhooks/transform-media-events#videomediatrackready">video.media.track.ready</a>.
 
-3. Finally, an update event <a href="https://fastpix.com/docs/vod-events/media-events#videomediaupdated">video.media.updated</a> must notify your system about the media's updated status.
+3. Finally, an update event <a href="https://fastpix.com/docs/webhooks/media-events#videomediaupdated">video.media.updated</a> must notify your system about the media's updated status.
 
 
 #### Example
-Suppose you have a video uploaded to the FastPix platform, and you want to add an Italian audio track to it. By calling this API, you can attach an external audio file (https://static.fastpix.com/music-1.mp3) to the media file. Similarly, if you need to add subtitles in different languages, you can specify type: `subtitle` with the corresponding subtitle `url`, `languageCode` and `languageName`.
+Suppose you have a video uploaded to the FastPix platform, and you want to add an Italian audio track to it. By calling this API, you can attach an external audio file (your-audio-url) to the media file. Similarly, if you need to add subtitles in different languages, you can specify type: `subtitle` with the corresponding subtitle `url`, `languageCode` and `languageName`.
 
-Related guides: <a href="https://fastpix.com/docs/manage-audio-and-subtitle-tracks/add-subtitles-to-a-video">Add own subtitle tracks</a>, <a href="https://fastpix.com/docs/manage-audio-and-subtitle-tracks/add-audio-to-a-video">Add own audio tracks</a>
+Related guides: <a href="https://fastpix.com/docs/video-on-demand/add-subtitles-to-a-video">Add own subtitle tracks</a>, <a href="https://fastpix.com/docs/video-on-demand/add-audio-to-a-video">Add own audio tracks</a>
 
 
 ### Example Usage
@@ -357,11 +357,17 @@ async function run() {
   const result = await fastpix.manageVideos.addTrack({
     mediaId: "your-media-id",
     body: {
-      tracks: {},
+      tracks: {
+        type: "audio",
+        url: "your-audio-url",
+        languageCode: "your-language-code",
+        languageName: "your-language-name",
+        title: "Italian audio",
+      },
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -388,12 +394,18 @@ async function run() {
   const res = await manageVideosAddTrack(fastpix, {
     mediaId: "your-media-id",
     body: {
-      tracks: {},
+      tracks: {
+        type: "audio",
+        url: "your-audio-url",
+        languageCode: "your-language-code",
+        languageName: "your-language-name",
+        title: "Italian audio",
+      },
     },
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosAddTrack failed:", res.error);
   }
@@ -432,7 +444,7 @@ This endpoint allows you to cancel ongoing upload by its `uploadId`. Once cancel
 
 #### Webhook Events
 
-Once the upload is cancelled, you must receive the webhook event <a href="https://fastpix.com/docs/vod-events/media-events#videomediauploadcancelled">video.media.upload.cancelled</a>.
+Once the upload is cancelled, you must receive the webhook event <a href="https://fastpix.com/docs/webhooks/media-events#videomediauploadcancelled">video.media.upload.cancelled</a>.
 
 #### Example
 
@@ -457,7 +469,7 @@ async function run() {
     uploadId: "your-upload-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -486,7 +498,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosCancelUpload failed:", res.error);
   }
@@ -531,11 +543,11 @@ This endpoint allows you to update an existing audio or subtitle track associate
 
 After updating a track, your system must receive webhook notifications:
 
-1. After successfully updating a track, your system must receive the webhook event <a href="https://fastpix.com/docs/vod-events/transform-media-events#videomediatrackupdated">video.media.track.updated</a>.
+1. After successfully updating a track, your system must receive the webhook event <a href="https://fastpix.com/docs/webhooks/transform-media-events#videomediatrackupdated">video.media.track.updated</a>.
 
-2. Once the new track is processed and ready, you must receive the webhook event <a href="https://fastpix.com/docs/vod-events/transform-media-events#videomediatrackready">video.media.track.ready</a>.
+2. Once the new track is processed and ready, you must receive the webhook event <a href="https://fastpix.com/docs/webhooks/transform-media-events#videomediatrackready">video.media.track.ready</a>.
 
-3. Once the media file is updated with the new track details, a <a href="https://fastpix.com/docs/vod-events/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
+3. Once the media file is updated with the new track details, a <a href="https://fastpix.com/docs/webhooks/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
 
 
 #### Example
@@ -544,7 +556,7 @@ Suppose you previously added a French subtitle track to a video but now need to 
   - The original track file has errors and needs correction.
   - You want to improve subtitle translations or replace an audio track with a better-quality version.
 
-Related guides: <a href="https://fastpix.com/docs/manage-audio-and-subtitle-tracks/add-subtitles-to-a-video">Add own subtitle tracks</a>, <a href="https://fastpix.com/docs/manage-audio-and-subtitle-tracks/add-audio-to-a-video">Add own audio tracks</a>
+Related guides: <a href="https://fastpix.com/docs/video-on-demand/add-subtitles-to-a-video">Add own subtitle tracks</a>, <a href="https://fastpix.com/docs/video-on-demand/add-audio-to-a-video">Add own audio tracks</a>
 
 
 ### Example Usage
@@ -565,11 +577,12 @@ async function run() {
     trackId: "your-track-id",
     mediaId: "your-media-id",
     body: {
-      languageName: "french",
+      languageName: "your-language-name",
+      title: "French audio",
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -597,12 +610,13 @@ async function run() {
     trackId: "your-track-id",
     mediaId: "your-media-id",
     body: {
-      languageName: "french",
+      languageName: "your-language-name",
+      title: "French audio",
     },
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosUpdateTrack failed:", res.error);
   }
@@ -644,11 +658,11 @@ This endpoint allows you to generate subtitles for an existing audio track in a 
 
 #### Webhook Events
 
-1. After the subtitle track is generated and ready, you receive the webhook event <a href="https://fastpix.com/docs/vod-events/transform-media-events#videomediasubtitlegeneratedready">video.media.subtitle.generated.ready</a>.
+1. After the subtitle track is generated and ready, you receive the webhook event <a href="https://fastpix.com/docs/webhooks/transform-media-events#videomediasubtitlegenerated">video.media.subtitle.generated</a>.
 
-2. Finally the <a href="https://fastpix.com/docs/vod-events/media-events#videomediaupdated">video.media.updated</a> event notifies your system about the media’s updated status.
+2. Finally the <a href="https://fastpix.com/docs/webhooks/media-events#videomediaupdated">video.media.updated</a> event notifies your system about the media’s updated status.
 
-</br> Related guide: <a href="https://fastpix.com/docs/manage-audio-and-subtitle-tracks/generate-subtitles-automatically">Add auto-generated subtitles</a>
+</br> Related guide: <a href="https://fastpix.com/docs/video-on-demand/generate-subtitles-automatically">Add auto-generated subtitles</a>
 
 
 ### Example Usage
@@ -669,11 +683,12 @@ async function run() {
     mediaId: "your-media-id",
     trackId: "your-track-id",
     body: {
-      languageName: "Italian",
+      languageName: "your-language-name",
+      title: "Italian subtitles",
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -701,12 +716,13 @@ async function run() {
     mediaId: "your-media-id",
     trackId: "your-track-id",
     body: {
-      languageName: "Italian",
+      languageName: "your-language-name",
+      title: "Italian subtitles",
     },
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosGenerateSubtitleTrack failed:", res.error);
   }
@@ -768,7 +784,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -797,7 +813,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosGetSummary failed:", res.error);
   }
@@ -849,13 +865,13 @@ This endpoint allows you to update the `mp4Support` setting of an existing media
 
 #### Webhook events
 
-- <a href="https://fastpix.com/docs/vod-events/transform-media-events#videomediamp4supportready">video.media.mp4Support.ready</a> – Triggered when the MP4 support setting is successfully updated.
+- <a href="https://fastpix.com/docs/webhooks/transform-media-events#videomediamp4supportready">video.media.mp4Support.ready</a> – Triggered when the MP4 support setting is successfully updated.
 
 #### Example
 Suppose you have a video uploaded to the FastPix platform, and you want to allow users to download the video in MP4 format. By setting "mp4Support": "capped_4k", the system generates an MP4 rendition of the video up to 4K resolution, making it available for download through the stream URL(`https://stream.fastpix.com/{playbackId}/{capped-4k.mp4 | audio.m4a}`). If you want users to stream only the audio from the media file, you can set "mp4Support": "audioOnly". This provides an audio-only stream URL that allows users to listen to the media without video. By setting "mp4Support": "audioOnly,capped_4k", both options are enabled. Users can download the MP4 video and also stream just the audio version of the media. 
 
 
-Related guide: <a href="https://fastpix.com/docs/playback-and-delivery/enable-mp4-support-for-offline-viewing">Use MP4 support for offline viewing</a>
+Related guide: <a href="https://fastpix.com/docs/video-on-demand/enable-mp4-support-for-offline-viewing">Use MP4 support for offline viewing</a>
 
 
 ### Example Usage
@@ -877,7 +893,7 @@ async function run() {
     body: {},
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -907,7 +923,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosUpdateMp4Support failed:", res.error);
   }
@@ -971,7 +987,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -1000,7 +1016,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosRetrieveMediaInputInfo failed:", res.error);
   }
@@ -1066,7 +1082,7 @@ async function run() {
     limit: 20,
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -1095,7 +1111,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("manageVideosListUploads failed:", res.error);
   }

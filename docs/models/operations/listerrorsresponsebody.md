@@ -17,7 +17,7 @@ let value: ListErrorsResponseBody = {
         message:
           "com.fastpix.stats.sdk.h71.a - android.media.mediadrm$mediadrmstateexception: failed to handle key response: drm vendor-defined error: -2998",
         lastSeen: "2023-12-01T11:31:07Z",
-        id: "9pa85f64-5717-4562-b3fc-2c963f66afa6",
+        id: "your-error-id",
         description: "a description for the specific error",
         count: 4,
         code: "1003",

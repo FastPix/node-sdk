@@ -10,7 +10,7 @@ const value: operations.ListByTopContentResponseBody = {
   success: true,
   data: [
     {
-      videoTitle: "Cycle",
+      videoTitle: "your-video-title",
       views: 44,
       uniqueViews: 40,
     },

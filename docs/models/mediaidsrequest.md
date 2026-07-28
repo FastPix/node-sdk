@@ -9,9 +9,9 @@ import { MediaIdsRequest } from "@fastpix/fastpix-node/models";
 
 let value: MediaIdsRequest = {
   mediaIds: [
-    "a1cd180e-f9b5-4e99-9d44-b9c9baabad89",
-    "245800c3-7b73-47d9-a201-e961260dcb30",
-    "41316aac-5396-4278-8f44-08d5f2495b12",
+    "your-media-id-1",
+    "your-media-id-2",
+    "your-media-id-3",
   ],
 };
 ```

@@ -11,11 +11,11 @@ let value: ListUploadsResponseBody = {
   success: true,
   data: [
     {
-      uploadId: "9149264c-6cb9-40d3-9313-95a85c56135e",
+      uploadId: "your-upload-id",
       trial: true,
       status: "waiting",
       url:
-        "https://storage.fastpix.net/uploads/7619ee69-d758-4589-80ee-965f6bfc922c/9149264c-6cb9-40d3-9313-95a85c56135e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=assets-svc%2F20250109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250109T084749Z&X-Amz-Expires=14400&X-Amz-SignedHeaders=host&X-Amz-Signature=f0a1e3798792543bff7fed64314cc386f56adc1bc1a65f6d4d9c137c6998b6ce",
+        "your-upload-url",
       corsOrigin: "*",
       pushMediaSettings: {
         playbackIds: [

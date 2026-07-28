@@ -9,10 +9,10 @@
 const value: operations.GenerateSubtitleTrackResponseBody = {
   success: true,
   data: {
-    id: "ace60fc7-e876-4fc6-b9d9-c33fa242f84b",
+    id: "your-track-id",
     type: "subtitle",
-    languageCode: "ro-RO",
-    languageName: "Italian",
+    languageCode: "your-language-code",
+    languageName: "your-language-name",
   },
 };
 ```

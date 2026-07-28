@@ -62,10 +62,17 @@ export type MediaMaxResolution = OpenEnum<typeof MediaMaxResolution>;
  */
 export const MediaSourceResolution = {
   TwoThousandOneHundredAndSixtyp: "2160p",
+  TwoThousandOneHundredAndSixty: "2160",
   OneThousandFourHundredAndFortyp: "1440p",
+  OneThousandFourHundredAndForty: "1440",
   OneThousandAndEightyp: "1080p",
+  OneThousandAndEighty: "1080",
   SevenHundredAndTwentyp: "720p",
+  SevenHundredAndTwenty: "720",
   FourHundredAndEightyp: "480p",
+  FourHundredAndEighty: "480",
+  ThreeHundredAndSixtyp: "360p",
+  ThreeHundredAndSixty: "360",
 } as const;
 /**
  * The actual resolution of the uploaded media. This represents the native quality of the source media.
@@ -91,30 +98,60 @@ export const MediaStatus = {
 export type MediaStatus = OpenEnum<typeof MediaStatus>;
 
 /**
- * Determines the type of MP4 support for the media.
- *
- * @remarks
- * - **none**: Disables MP4 support.
- * - **capped_4k**: Enables MP4 downloads with resolutions up to 4K.
- * - **audioOnly**: Provides an MP4 stream containing only the audio.
- * - **audioOnly,capped_4k**: Enables both MP4 video downloads (up to 4K) and an audio-only stream.
+ * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
+ * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
  */
-export const MediaMp4Support = {
-  None: "none",
+export const MediaMp4SupportType = {
   Capped4k: "capped_4k",
   AudioOnly: "audioOnly",
-  AudioOnlyCapped4k: "audioOnly,capped_4k",
 } as const;
 /**
- * Determines the type of MP4 support for the media.
+ * The MP4 rendition type. `capped_4k` is a downloadable MP4 video capped at
+ * 4K resolution, `audioOnly` is a downloadable m4a audio-only file.
+ */
+export type MediaMp4SupportType = OpenEnum<typeof MediaMp4SupportType>;
+
+/**
+ * Generation status of this MP4 rendition.
+ */
+export const MediaMp4SupportStatus = {
+  Preparing: "preparing",
+  Ready: "ready",
+  Failed: "failed",
+} as const;
+/**
+ * Generation status of this MP4 rendition.
+ */
+export type MediaMp4SupportStatus = OpenEnum<typeof MediaMp4SupportStatus>;
+
+/**
+ * File extension of the downloadable rendition.
+ */
+export const MediaMp4SupportExt = {
+  Mp4: "mp4",
+  M4a: "m4a",
+} as const;
+/**
+ * File extension of the downloadable rendition.
+ */
+export type MediaMp4SupportExt = OpenEnum<typeof MediaMp4SupportExt>;
+
+/**
+ * A single generated MP4 rendition returned by the API.
  *
  * @remarks
- * - **none**: Disables MP4 support.
- * - **capped_4k**: Enables MP4 downloads with resolutions up to 4K.
- * - **audioOnly**: Provides an MP4 stream containing only the audio.
- * - **audioOnly,capped_4k**: Enables both MP4 video downloads (up to 4K) and an audio-only stream.
+ * The API returns `mp4Support` on a media as an ARRAY of these renditions
+ * (e.g. `[{ type: "capped_4k", status: "ready", height: 1080, width: 1920,
+ * ext: "mp4" }]`). The value accepted on the *request* side when enabling MP4
+ * support is a single string — see `UpdatedMp4SupportMp4Support`.
  */
-export type MediaMp4Support = OpenEnum<typeof MediaMp4Support>;
+export type MediaMp4Support = {
+  type?: MediaMp4SupportType | undefined;
+  status?: MediaMp4SupportStatus | undefined;
+  height?: number | null | undefined;
+  width?: number | null | undefined;
+  ext?: MediaMp4SupportExt | undefined;
+};
 
 export type MediaTrack = VideoTrack | AudioTrack | SubtitleTrack;
 
@@ -162,19 +199,22 @@ export type Media = {
    */
   status?: MediaStatus | undefined;
   /**
-   * Determines the type of MP4 support for the media.
+   * The MP4 renditions generated for this media.
    *
    * @remarks
-   * - **none**: Disables MP4 support.
-   * - **capped_4k**: Enables MP4 downloads with resolutions up to 4K.
-   * - **audioOnly**: Provides an MP4 stream containing only the audio.
-   * - **audioOnly,capped_4k**: Enables both MP4 video downloads (up to 4K) and an audio-only stream.
+   * Each entry describes one downloadable rendition — a `capped_4k` video file
+   * or an `audioOnly` m4a file — along with its generation status. Omitted or
+   * empty when no MP4 support has been requested.
    */
-  mp4Support?: MediaMp4Support | null | undefined;
+  mp4Support?: Array<MediaMp4Support> | null | undefined;
   /**
    * The sourceAccess parameter determines whether the original media file is accessible. Set to true to enable access or false to restrict it.
    */
   sourceAccess?: boolean | null | undefined;
+  /**
+   * Whether the audio track of the media has been volume-normalized.
+   */
+  optimizeAudio?: boolean | null | undefined;
   /**
    * A collection of Playback ID objects utilized for crafting HLS playback URLs.
    */
@@ -252,10 +292,34 @@ export const MediaStatus$inboundSchema: z.ZodMiniType<MediaStatus, unknown> =
   openEnums.inboundSchema(MediaStatus);
 
 /** @internal */
+export const MediaMp4SupportType$inboundSchema: z.ZodMiniType<
+  MediaMp4SupportType,
+  unknown
+> = openEnums.inboundSchema(MediaMp4SupportType);
+
+/** @internal */
+export const MediaMp4SupportStatus$inboundSchema: z.ZodMiniType<
+  MediaMp4SupportStatus,
+  unknown
+> = openEnums.inboundSchema(MediaMp4SupportStatus);
+
+/** @internal */
+export const MediaMp4SupportExt$inboundSchema: z.ZodMiniType<
+  MediaMp4SupportExt,
+  unknown
+> = openEnums.inboundSchema(MediaMp4SupportExt);
+
+/** @internal */
 export const MediaMp4Support$inboundSchema: z.ZodMiniType<
   MediaMp4Support,
   unknown
-> = openEnums.inboundSchema(MediaMp4Support);
+> = z.object({
+  type: types.optional(MediaMp4SupportType$inboundSchema),
+  status: types.optional(MediaMp4SupportStatus$inboundSchema),
+  height: z.optional(z.nullable(types.number())),
+  width: z.optional(z.nullable(types.number())),
+  ext: types.optional(MediaMp4SupportExt$inboundSchema),
+});
 
 /** @internal */
 export const MediaTrack$inboundSchema: z.ZodMiniType<MediaTrack, unknown> =
@@ -287,8 +351,11 @@ export const Media$inboundSchema: z.ZodMiniType<Media, unknown> = z.object({
   maxResolution: z._default(MediaMaxResolution$inboundSchema, "1080p"),
   sourceResolution: z._default(MediaSourceResolution$inboundSchema, "1080p"),
   status: types.optional(MediaStatus$inboundSchema),
-  mp4Support: z.optional(z.nullable(MediaMp4Support$inboundSchema)),
+  mp4Support: z.optional(
+    z.nullable(z.array(MediaMp4Support$inboundSchema)),
+  ),
   sourceAccess: z.optional(z.nullable(types.boolean())),
+  optimizeAudio: z.optional(z.nullable(types.boolean())),
   playbackIds: types.optional(z.array(PlaybackId$inboundSchema)),
   tracks: types.optional(
     z.array(

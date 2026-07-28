@@ -13,7 +13,7 @@ let value: Custom2 = {
     {
       dimensionName: "custom_1",
       displayName: "email",
-      value: "johndoe@gmail.com",
+      value: "your-email@example.com",
     },
   ],
 };

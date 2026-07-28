@@ -55,7 +55,7 @@ const fastpix = new Fastpix({
 async function run() {
   const result = await fastpix.signingKeys.create();
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -82,7 +82,7 @@ async function run() {
   const res = await signingKeysCreate(fastpix);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("signingKeysCreate failed:", res.error);
   }
@@ -151,7 +151,7 @@ async function run() {
     limit: 25,
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -180,7 +180,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("signingKeysList failed:", res.error);
   }
@@ -248,7 +248,7 @@ async function run() {
     signingKeyId: "your-signing-key-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -277,7 +277,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("signingKeysDelete failed:", res.error);
   }
@@ -373,7 +373,7 @@ async function run() {
     signingKeyId: "your-signing-key-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -402,7 +402,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("signingKeysGetById failed:", res.error);
   }

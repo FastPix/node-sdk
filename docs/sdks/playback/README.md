@@ -57,7 +57,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -91,7 +91,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playbackCreate failed:", res.error);
   }
@@ -149,7 +149,7 @@ async function run() {
     mediaId: "your-media-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -178,7 +178,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playbackListIds failed:", res.error);
   }
@@ -241,7 +241,7 @@ async function run() {
     playbackId: "your-playback-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -271,7 +271,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playbackDelete failed:", res.error);
   }
@@ -330,7 +330,7 @@ async function run() {
     playbackId: "your-playback-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -360,7 +360,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playbackGet failed:", res.error);
   }
@@ -430,7 +430,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -469,7 +469,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playbackUpdateDomainRestrictions failed:", res.error);
   }
@@ -538,7 +538,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -576,7 +576,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("playbackUpdateUserAgentRestrictions failed:", res.error);
   }

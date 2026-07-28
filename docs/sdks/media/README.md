@@ -42,7 +42,7 @@ async function run() {
     limit: 20,
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -71,7 +71,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("mediaList failed:", res.error);
   }
@@ -115,7 +115,7 @@ This endpoint allows you to delete an existing audio or subtitle track from a me
 
 1. After successfully deleting a track, your system must receive the webhook event **video.media.track.deleted**.
 
-2. Once the media file is updated to reflect the track removal, a <a href="https://fastpix.com/docs/vod-events/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
+2. Once the media file is updated to reflect the track removal, a <a href="https://fastpix.com/docs/webhooks/media-events#videomediaupdated">video.media.updated</a> event must be triggered.
 
 
 #### Example
@@ -125,7 +125,7 @@ Suppose you uploaded an audio track in Italian for a video but later realize it'
   - The content owner requests the removal of a specific subtitle or audio track.
   - A new version of the track gets uploaded to replace the existing one.
 
-Related guides: <a href="https://fastpix.com/docs/manage-audio-and-subtitle-tracks/add-subtitles-to-a-video">Add own subtitle tracks</a>, <a href="https://fastpix.com/docs/manage-audio-and-subtitle-tracks/add-audio-to-a-video">Add own audio tracks</a>
+Related guides: <a href="https://fastpix.com/docs/video-on-demand/add-subtitles-to-a-video">Add own subtitle tracks</a>, <a href="https://fastpix.com/docs/video-on-demand/add-audio-to-a-video">Add own audio tracks</a>
 
 
 ### Example Usage
@@ -147,7 +147,7 @@ async function run() {
     trackId: "your-track-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -177,7 +177,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("mediaDeleteTrack failed:", res.error);
   }
@@ -216,7 +216,7 @@ This endpoint allows you to update the `sourceAccess` setting of an existing med
 2. Include the updated `sourceAccess` parameter in the request body.
 
 3. You receive a response confirming the update to the media’s source access status.
-4. Webhook events: <a href="https://fastpix.com/docs/vod-events/transform-media-events#videomediasourceready">video.media.source.ready</a>, <a href="https://fastpix.com/docs/vod-events/transform-media-events#videomediasourcedeleted">video.media.source.deleted</a>
+4. Webhook events: <a href="https://fastpix.com/docs/webhooks/transform-media-events#videomediasourceready">video.media.source.ready</a>, <a href="https://fastpix.com/docs/webhooks/transform-media-events#videomediasourcedeleted">video.media.source.deleted</a>
 
 
 ### Example Usage
@@ -240,7 +240,7 @@ async function run() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -272,7 +272,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("mediaUpdateSourceAccess failed:", res.error);
   }
@@ -319,7 +319,7 @@ A media clip is a segmented portion of an original media file (source media). Cl
 
 Imagine you’re managing a video editing platform where users upload full-length videos and create short clips for social media sharing. To keep track of all clips linked to a particular video, you call this API with the sourceMediaId. The response provides a list of all associated clips, allowing you to manage, edit, or repurpose them as needed.
 
-Related guide: <a href="https://fastpix.com/docs/edit-and-transform-videos/clip-and-trim-videos">Create clips from existing media</a>
+Related guide: <a href="https://fastpix.com/docs/video-on-demand/clip-and-trim-videos">Create clips from existing media</a>
 
 
 ### Example Usage
@@ -342,7 +342,7 @@ async function run() {
     limit: 20,
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -373,7 +373,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("mediaGetClips failed:", res.error);
   }

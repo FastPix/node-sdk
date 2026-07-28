@@ -10,7 +10,7 @@ import { UpdateMediaChaptersResponseBody } from "@fastpix/fastpix-node/models/op
 let value: UpdateMediaChaptersResponseBody = {
   success: true,
   data: {
-    mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+    mediaId: "your-media-id",
     isChaptersEnabled: true,
   },
 };

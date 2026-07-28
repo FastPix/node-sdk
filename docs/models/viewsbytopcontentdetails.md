@@ -8,7 +8,7 @@ Retrieves a list of the top video views
 import { ViewsByTopContentDetails } from "@fastpix/fastpix-node/models";
 
 let value: ViewsByTopContentDetails = {
-  videoTitle: "example video title",
+  videoTitle: "your-video-title",
   views: 44,
   uniqueViews: 40,
 };
@@ -18,6 +18,6 @@ let value: ViewsByTopContentDetails = {
 
 | Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `videoTitle`                                                      | *string*                                                          | :heavy_minus_sign:                                                | Title of the video                                                | example video title                                               |
+| `videoTitle`                                                      | *string*                                                          | :heavy_minus_sign:                                                | Title of the video                                                | your-video-title                                               |
 | `views`                                                           | *number*                                                          | :heavy_minus_sign:                                                | Total count of view sessions for a particular video content.      | 44                                                                |
 | `uniqueViews`                                                     | *number*                                                          | :heavy_minus_sign:                                                | Total count of unique video viewers for particular video content. | 40                                                                |

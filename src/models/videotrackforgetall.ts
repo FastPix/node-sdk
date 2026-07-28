@@ -32,12 +32,21 @@ export type VideoTrackForGetAll = {
   height?: number | undefined;
   /**
    * Frame rate quantifies the speed at which frames are displayed per second. It represents the range of frames available for a specific track. The indeterminable frame rate of the input file is indicated by a value of -1.
+   *
+   * @remarks
+   * Returned by the API on list-media video tracks (e.g. "60.000") but dropped
+   * from the published OpenAPI spec. Kept here deliberately — removing it would
+   * silently discard the value at parse time.
    */
   frameRate?: string | undefined;
   /**
    * Indicates the current state of the track. 'available' means the track has been processed successfully and is ready to be used or played.
    */
   status?: string | undefined;
+  /**
+   * Title of the track.
+   */
+  title?: string | undefined;
 };
 
 /** @internal */
@@ -51,6 +60,7 @@ export const VideoTrackForGetAll$inboundSchema: z.ZodMiniType<
   height: types.optional(types.number()),
   frameRate: types.optional(types.string()),
   status: types.optional(types.string()),
+  title: types.optional(types.string()),
 });
 
 export function videoTrackForGetAllFromJSON(

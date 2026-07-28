@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.9]
+
+### Changed
+
+- **BREAKING: `mp4Support` on media responses is now an array of renditions.**
+  The API previously returned a single string (`"capped_4k"`) and now returns one
+  object per generated rendition, each with its own status and dimensions.
+
+  ```ts
+  // before
+  if (media.mp4Support === "capped_4k") { /* ... */ }
+
+  // after
+  const mp4 = media.mp4Support?.find((r) => r.type === "capped_4k");
+  if (mp4?.status === "ready") { /* ... */ }
+  ```
+
+  Affected types: `Media`, `GetMediaResponse`, `GetAllMediaResponse`,
+  `UpdateMedia`, `SourceAccessMedia`, `LiveMediaClips`.
+
+  The `*Mp4Support` names are reused, but they now describe **one rendition
+  object** (`type`, `status`, `height`, `width`, `ext`) rather than the old
+  string enum, and the field holds an array of them. `height` and `width` are
+  absent on `audioOnly` renditions. Code that imported e.g. `MediaMp4Support`
+  as an enum will still resolve the name but no longer type-check.
+
+  `type`, `status` and `ext` are typed as open enums —
+  `*Mp4SupportType` (`capped_4k` / `audioOnly`), `*Mp4SupportStatus`
+  (`preparing` / `ready` / `failed`) and `*Mp4SupportExt` (`mp4` / `m4a`).
+  Being open, they narrow for autocomplete while still accepting values the
+  API may add later, which surface as `Unrecognized<string>`.
+
+  The **request** side is unchanged — enabling MP4 support still takes a single
+  string (`none` / `capped_4k` / `audioOnly` / `audioOnly,capped_4k`) via
+  `updateMp4Support` and the upload settings.
+
+- **BREAKING: removed the response-side `mp4Support` enums.** `MediaMp4Support`,
+  `GetMediaResponseMp4Support` and `GetAllMediaResponseMp4Support` described the
+  old string response and no longer matched anything the API returns. The
+  request-side enums (`CreateMediaRequestMp4Support`,
+  `DirectUploadVideoMediaMp4Support`, `UpdatedMp4SupportMp4Support`) are
+  unaffected.
+
+### Added
+
+- **`mp4Support` on `UpdateMedia`, `SourceAccessMedia` and `LiveMediaClips`**,
+  which previously omitted the field entirely.
+
 ## [2.0.8]
 
 ### Fixed

@@ -10,12 +10,12 @@ import { UpdateMediaTrackResponseBody } from "@fastpix/fastpix-node/models/opera
 let value: UpdateMediaTrackResponseBody = {
   success: true,
   data: {
-    id: "2452ca23-b7ed-4daf-babf-841996b0100e",
+    id: "your-track-id",
     type: "subtitle",
     url:
-      "http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.vtt",
-    languageCode: "fr",
-    languageName: "french",
+      "your-subtitle-url",
+    languageCode: "your-language-code",
+    languageName: "your-language-name",
   },
 };
 ```

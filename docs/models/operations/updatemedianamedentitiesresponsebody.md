@@ -10,7 +10,7 @@ import { UpdateMediaNamedEntitiesResponseBody } from "@fastpix/fastpix-node/mode
 let value: UpdateMediaNamedEntitiesResponseBody = {
   success: true,
   data: {
-    mediaId: "c695988b-ff84-42ae-bb21-10f284fedb0e",
+    mediaId: "your-media-id",
     isNamedEntitiesEnabled: true,
   },
 };

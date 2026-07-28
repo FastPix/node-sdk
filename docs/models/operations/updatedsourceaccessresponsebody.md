@@ -11,9 +11,9 @@ let value: UpdatedSourceAccessResponseBody = {
   success: true,
   data: {
     thumbnail:
-      "https://venus-images.fastpix.dev/cf41c9f7-ece3-4efe-8d31-c6e000dc422b/thumbnail.png",
-    id: "eb56a668-0354-40c2-9233-f3197e1baabd",
-    workspaceId: "c788be40-91a5-4d2d-abf7-47398a6276a1",
+      "your-thumbnail-url",
+    id: "your-media-id",
+    workspaceId: "your-workspace-id",
     metadata: {
       "key1": "value1",
     },
@@ -22,7 +22,7 @@ let value: UpdatedSourceAccessResponseBody = {
     sourceAccess: true,
     playbackIds: [
       {
-        id: "cf41c9f7-ece3-4efe-8d31-c6e000dc422b",
+        id: "your-playback-id",
         accessPolicy: "public",
         accessRestrictions: {
           domains: {
@@ -40,7 +40,7 @@ let value: UpdatedSourceAccessResponseBody = {
     ],
     tracks: [
       {
-        id: "344fd5bc-82af-4d11-bc1c-785d9e6f9aef",
+        id: "your-track-id",
         type: "video",
         width: 1920,
         height: 1080,

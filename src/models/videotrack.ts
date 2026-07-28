@@ -38,6 +38,10 @@ export type VideoTrack = {
    * Indicates the current state of the track. 'available' means the track has been processed successfully and is ready to be used or played.
    */
   status?: string | undefined;
+  /**
+   * Title of the track.
+   */
+  title?: string | undefined;
 };
 
 /** @internal */
@@ -49,6 +53,7 @@ export const VideoTrack$inboundSchema: z.ZodMiniType<VideoTrack, unknown> = z
     height: types.optional(types.number()),
     frameRate: types.optional(types.string()),
     status: types.optional(types.string()),
+    title: types.optional(types.string()),
   });
 
 export function videoTrackFromJSON(

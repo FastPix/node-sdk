@@ -39,7 +39,7 @@ const fastpix = new Fastpix({
 async function run() {
   const result = await fastpix.drmConfigurations.list({});
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -66,7 +66,7 @@ async function run() {
   const res = await drmConfigurationsList(fastpix, {});
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("drmConfigurationsList failed:", res.error);
   }
@@ -124,7 +124,7 @@ async function run() {
     drmConfigurationId: "your-drm-configuration-id",
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 run();
@@ -153,7 +153,7 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log("drmConfigurationsGet failed:", res.error);
   }

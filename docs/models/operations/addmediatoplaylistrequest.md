@@ -6,13 +6,13 @@
 import { AddMediaToPlaylistRequest } from "@fastpix/fastpix-node/models/operations";
 
 let value: AddMediaToPlaylistRequest = {
-  playlistId: "348fbe0f-e813-436d-a501-4b57a9bcfac6",
+  playlistId: "your-playlist-id",
   body: {
     mediaIds: [
-      "a1cd180e-f9b5-4e99-9d44-b9c9baabad89",
-      "245800c3-7b73-47d9-a201-e961260dcb30",
-      "41316aac-5396-4278-8f44-08d5f2495b12",
-    ],
+    "your-media-id-1",
+    "your-media-id-2",
+    "your-media-id-3",
+  ],
   },
 };
 ```

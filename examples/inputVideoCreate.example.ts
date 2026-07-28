@@ -35,7 +35,7 @@ async function main() {
     },
   });
 
-  console.log(result);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 main().catch(console.error);

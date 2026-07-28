@@ -9,17 +9,17 @@ import { RetrieveMediaInputInfoData } from "@fastpix/fastpix-node/models/operati
 
 let value: RetrieveMediaInputInfoData = {
   configuration: {
-    url: "https://static.fastpix.com/fp-sample-video.mp4",
+    url: "your-video-url",
   },
   file: {
     containerFormat: "mp4",
     tracks: [
       {
-        id: "9oa85f64-5717-4562-b3fc-2c963f66afa6",
+        id: "your-track-id",
         type: "subtitle",
         status: "available",
-        languageName: "english",
-        languageCode: "en",
+        languageName: "your-language-name",
+        languageCode: "your-language-code",
       },
     ],
   },

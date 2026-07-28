@@ -1,8 +1,0 @@
-{
-  "success": true,
-  "data": {
-    "workspaceId": "fd9197bb-8cfa-4569-b046-a30fb95e2381",
-    "signingKeyId": "04cf0f41-fd03-4c14-a30a-26f201624061",
-    "publicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs8Vl0agbiwg6upzJq17ospR6W/vtV5vrWBOdwBifAN1eF3mctq+e32iVZe8X1y3wpIJtlLdXksCOrL1i4wFpOHjZ+a2j+3xINK+9PQfTWV1Q2dBTgrbU4gJJKyW5YC1lXvncmOaQlBrKSyqinE8eGL74PibM2jfXz5jxPhd9j1+lidw0uM+BoYX/J2Q2jekDqEX2Om4bcaPl6MFJWRB+CwN1AXg5Mdxjm/fGd+AfSBzsEkLqjdswgoOd6M9YOI/YgGk8g89jL24uOKLNKQ+MUo+iuEbB24noJ6bJrbmKrU9om6+nPu8aWFrgDsJc8ApI6H9yAlytVdalTf2eXapr6QIDAQAB\n-----END PUBLIC KEY-----\n"
-  }
-}

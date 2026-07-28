@@ -6,7 +6,7 @@
 import { ListPlaybackIdsData } from "@fastpix/fastpix-node/models/operations";
 
 let value: ListPlaybackIdsData = {
-  id: "54fd5e7e-3aa5-4817-b56d-44932f67f6c3",
+  id: "your-playback-id",
   accessPolicy: "drm",
   accessRestrictions: {
     domains: {
@@ -16,7 +16,7 @@ let value: ListPlaybackIdsData = {
         "trustedsite.org",
       ],
       deny: [
-        "malicioussite.com",
+        "malicioussite.io",
         "abc.net",
       ],
     },
@@ -37,6 +37,6 @@ let value: ListPlaybackIdsData = {
 
 | Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                         | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | Unique identifier of the playback ID.                                                                        | 54fd5e7e-3aa5-4817-b56d-44932f67f6c3                                                                         |
+| `id`                                                                                                         | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | Unique identifier of the playback ID.                                                                        | your-playback-id                                                                         |
 | `accessPolicy`                                                                                               | [operations.ListPlaybackIdsAccessPolicy](../../models/operations/listplaybackidsaccesspolicy.md)             | :heavy_minus_sign:                                                                                           | The access policy set for the playback ID.                                                                   | drm                                                                                                          |
 | `accessRestrictions`                                                                                         | [operations.ListPlaybackIdsAccessRestrictions](../../models/operations/listplaybackidsaccessrestrictions.md) | :heavy_minus_sign:                                                                                           | Restrictions applied to this playback ID.                                                                    |                                                                                                              |
