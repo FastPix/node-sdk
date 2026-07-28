@@ -6,7 +6,7 @@
 import { MediaClipResponsePlaybackId } from "@fastpix/fastpix-node/models";
 
 let value: MediaClipResponsePlaybackId = {
-  id: "your-id",
+  id: "your-playback-id",
   accessPolicy: "public",
 };
 ```
@@ -15,5 +15,5 @@ let value: MediaClipResponsePlaybackId = {
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `id`                                 | *string*                             | :heavy_minus_sign:                   | The unique identifier for playback.  | your-id |
+| `id`                                 | *string*                             | :heavy_minus_sign:                   | The unique identifier for playback.  | your-playback-id |
 | `accessPolicy`                       | *string*                             | :heavy_minus_sign:                   | The access policy of the playback.   | public                               |

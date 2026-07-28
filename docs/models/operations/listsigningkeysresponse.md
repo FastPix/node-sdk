@@ -10,7 +10,7 @@ const value: models.GetAllSigningKeysResponse = {
   success: true,
   data: [
     {
-      id: "your-id",
+      id: "your-signing-key-id",
       createdAt: new Date("2025-10-27T05:22:54.782954Z"),
     },
   ],

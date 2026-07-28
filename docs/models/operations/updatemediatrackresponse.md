@@ -9,7 +9,7 @@
 const value: operations.UpdateMediaTrackResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-track-id",
     type: "subtitle",
     url:
       "your-subtitle-url",

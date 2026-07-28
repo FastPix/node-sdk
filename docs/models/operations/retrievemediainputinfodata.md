@@ -15,7 +15,7 @@ let value: RetrieveMediaInputInfoData = {
     containerFormat: "mp4",
     tracks: [
       {
-        id: "your-id",
+        id: "your-track-id",
         type: "subtitle",
         status: "available",
         languageName: "your-language-name",

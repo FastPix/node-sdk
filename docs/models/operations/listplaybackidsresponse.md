@@ -10,7 +10,7 @@ const value: operations.ListPlaybackIdsResponseBody = {
   success: true,
   data: [
     {
-      id: "your-id",
+      id: "your-playback-id",
       accessPolicy: "drm",
       accessRestrictions: {
         domains: {

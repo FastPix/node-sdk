@@ -31,7 +31,7 @@ const value: models.GetStreamsResponse = {
       closedCaptions: false,
       playbackIds: [
         {
-          id: "your-id",
+          id: "your-playback-id",
           accessPolicy: "public",
         },
       ],

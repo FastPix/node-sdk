@@ -10,7 +10,7 @@ import { UpdateMediaTrackResponseBody } from "@fastpix/fastpix-node/models/opera
 let value: UpdateMediaTrackResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-track-id",
     type: "subtitle",
     url:
       "your-subtitle-url",

@@ -9,7 +9,7 @@
 const value: operations.GetDrmConfigurationByIdResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-drm-configuration-id",
   },
 };
 ```

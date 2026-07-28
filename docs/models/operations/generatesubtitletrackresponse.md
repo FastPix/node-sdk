@@ -9,7 +9,7 @@
 const value: operations.GenerateSubtitleTrackResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-track-id",
     type: "subtitle",
     languageCode: "your-language-code",
     languageName: "your-language-name",

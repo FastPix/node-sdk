@@ -17,7 +17,7 @@ let value: RetrieveMediaInputInfoResponseBody = {
       containerFormat: "mp4",
       tracks: [
         {
-          id: "your-id",
+          id: "your-track-id",
           type: "video",
           width: 1280,
           height: 720,

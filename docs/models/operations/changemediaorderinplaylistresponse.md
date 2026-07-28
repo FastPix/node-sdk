@@ -9,7 +9,7 @@
 const value: models.PlaylistByIdResponse = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-playlist-id",
     name: "My Playlist",
     referenceId: "your-reference-id",
     type: "smart",
@@ -30,7 +30,7 @@ const value: models.PlaylistByIdResponse = {
         createdAt: new Date("2025-05-27T09:37:52.445936Z"),
         creatorId: "your-creator-id",
         duration: "00:00:10",
-        id: "your-id",
+        id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:
@@ -41,7 +41,7 @@ const value: models.PlaylistByIdResponse = {
         createdAt: new Date("2025-04-04T13:26:23.507284Z"),
         creatorId: "your-creator-id",
         duration: "00:00:10",
-        id: "your-id",
+        id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:
@@ -52,7 +52,7 @@ const value: models.PlaylistByIdResponse = {
         createdAt: new Date("2025-04-04T13:26:12.552840Z"),
         creatorId: "your-creator-id",
         duration: "00:00:10",
-        id: "your-id",
+        id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:

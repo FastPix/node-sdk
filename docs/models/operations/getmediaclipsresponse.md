@@ -10,7 +10,7 @@ const value: models.MediaClipResponse = {
   success: true,
   data: [
     {
-      id: "your-id",
+      id: "your-media-id",
       duration: "00:00:13",
       status: "Ready",
       thumbnail:
@@ -18,7 +18,7 @@ const value: models.MediaClipResponse = {
       createdAt: new Date("2025-03-12T06:17:26.403017Z"),
       playbackIds: [
         {
-          id: "your-id",
+          id: "your-playback-id",
           accessPolicy: "public",
         },
       ],

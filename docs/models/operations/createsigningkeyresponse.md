@@ -9,7 +9,7 @@
 const value: models.CreateResponse = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-signing-key-id",
     privateKey:
       "your-private-key",
     createdAt: new Date("2024-01-11T10:00:06.618993Z"),

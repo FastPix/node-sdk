@@ -9,7 +9,7 @@
 const value: operations.GetPlaybackIdResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-playback-id",
     accessPolicy: "public",
     accessRestrictions: {
       domains: {

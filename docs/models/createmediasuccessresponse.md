@@ -8,13 +8,13 @@ import { CreateMediaSuccessResponse } from "@fastpix/fastpix-node/models";
 let value: CreateMediaSuccessResponse = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-media-id",
     status: "Created",
     createdAt: new Date("2023-10-20T10:50:34.594302Z"),
     updatedAt: new Date("2023-10-20T10:50:34.594302Z"),
     playbackIds: [
       {
-        id: "your-id",
+        id: "your-playback-id",
       },
     ],
     metadata: {

@@ -26,7 +26,7 @@ let value: CreateLiveStreamResponseDTO = {
   closedCaptions: false,
   playbackIds: [
     {
-      id: "your-id",
+      id: "your-playback-id",
       accessPolicy: "public",
     },
   ],

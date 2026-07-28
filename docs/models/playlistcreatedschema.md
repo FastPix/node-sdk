@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.PlaylistByIdResponseDataManual = {
-  id: "your-id",
+  id: "your-playlist-id",
   name: "playlist1",
   referenceId: "your-reference-id",
   type: "manual",
@@ -17,7 +17,7 @@ const value: models.PlaylistByIdResponseDataManual = {
       createdAt: new Date("2025-03-21T05:58:38.000708Z"),
       creatorId: "your-creator-id",
       duration: "00:00:10",
-      id: "your-id",
+      id: "your-media-id",
       sourceResolution: "1080p",
       status: "Ready",
       thumbnail:
@@ -36,7 +36,7 @@ const value: models.PlaylistByIdResponseDataManual = {
 
 ```typescript
 const value: models.PlaylistByIdResponseDataSmart = {
-  id: "your-id",
+  id: "your-playlist-id",
   name: "playlist1",
   referenceId: "your-reference-id",
   type: "smart",
@@ -57,7 +57,7 @@ const value: models.PlaylistByIdResponseDataSmart = {
       createdAt: new Date("2025-03-21T05:58:38.000708Z"),
       creatorId: "your-creator-id",
       duration: "00:00:10",
-      id: "your-id",
+      id: "your-media-id",
       sourceResolution: "1080p",
       status: "Ready",
       thumbnail:

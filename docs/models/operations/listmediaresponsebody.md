@@ -13,7 +13,7 @@ let value: ListMediaResponseBody = {
     {
       thumbnail:
         "your-thumbnail-url",
-      id: "your-id",
+      id: "your-media-id",
       workspaceId: "your-workspace-id",
       metadata: {
         "key1": "value1",
@@ -23,7 +23,7 @@ let value: ListMediaResponseBody = {
       sourceAccess: false,
       playbackIds: [
         {
-          id: "your-id",
+          id: "your-playback-id",
           accessPolicy: "public",
           accessRestrictions: {
             domains: {
@@ -41,7 +41,7 @@ let value: ListMediaResponseBody = {
       ],
       tracks: [
         {
-          id: "your-id",
+          id: "your-track-id",
           type: "video",
           width: 1920,
           height: 1080,

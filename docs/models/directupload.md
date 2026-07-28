@@ -17,7 +17,7 @@ let value: DirectUpload = {
   pushMediaSettings: {
     playbackIds: [
       {
-        id: "your-id",
+        id: "your-playback-id",
       },
     ],
     metadata: {

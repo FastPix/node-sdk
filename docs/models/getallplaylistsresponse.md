@@ -9,7 +9,7 @@ let value: GetAllPlaylistsResponse = {
   success: true,
   data: [
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "playist1",
       type: "smart",
       referenceId: "your-reference-id",
@@ -17,7 +17,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 0,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "playist2",
       type: "smart",
       referenceId: "your-reference-id",
@@ -25,7 +25,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 0,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "Onboarding",
       type: "manual",
       referenceId: "your-reference-id",
@@ -33,7 +33,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 0,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "December playlist",
       type: "manual",
       referenceId: "your-reference-id",
@@ -41,7 +41,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 0,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "March Highlights",
       type: "smart",
       referenceId: "your-reference-id",
@@ -49,7 +49,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 9,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "playlist1",
       type: "smart",
       referenceId: "your-reference-id",
@@ -57,7 +57,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 9,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "playlist1",
       type: "smart",
       referenceId: "your-reference-id",
@@ -65,7 +65,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 9,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "playlist1",
       type: "smart",
       referenceId: "your-reference-id",
@@ -73,7 +73,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 9,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "playlist1",
       type: "smart",
       referenceId: "your-reference-id",
@@ -81,7 +81,7 @@ let value: GetAllPlaylistsResponse = {
       mediaCount: 9,
     },
     {
-      id: "your-id",
+      id: "your-playlist-id",
       name: "playlist1",
       type: "manual",
       referenceId: "your-reference-id",

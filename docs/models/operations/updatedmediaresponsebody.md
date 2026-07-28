@@ -12,7 +12,7 @@ let value: UpdatedMediaResponseBody = {
   data: {
     thumbnail:
       "your-thumbnail-url",
-    id: "your-id",
+    id: "your-media-id",
     workspaceId: "your-workspace-id",
     metadata: {
       "user": "fastpix_admin",
@@ -24,7 +24,7 @@ let value: UpdatedMediaResponseBody = {
     sourceAccess: false,
     playbackIds: [
       {
-        id: "your-id",
+        id: "your-playback-id",
         accessPolicy: "public",
         accessRestrictions: {
           domains: {
@@ -42,7 +42,7 @@ let value: UpdatedMediaResponseBody = {
     ],
     tracks: [
       {
-        id: "your-id",
+        id: "your-track-id",
         type: "video",
         width: 1920,
         height: 1080,

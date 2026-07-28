@@ -13,14 +13,14 @@ let value: ListLiveClipsResponseBody = {
     {
       thumbnail:
         "your-thumbnail-url",
-      id: "your-id",
+      id: "your-media-id",
       workspaceId: "your-workspace-id",
       streamId: "your-stream-id",
       status: "Ready",
       sourceAccess: false,
       playbackIds: [
         {
-          id: "your-id",
+          id: "your-playback-id",
           accessPolicy: "public",
           accessRestrictions: {
             domains: {
@@ -38,7 +38,7 @@ let value: ListLiveClipsResponseBody = {
       ],
       tracks: [
         {
-          id: "your-id",
+          id: "your-track-id",
           type: "video",
           width: 1920,
           height: 1080,

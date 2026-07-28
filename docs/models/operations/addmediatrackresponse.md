@@ -9,7 +9,7 @@
 const value: operations.AddMediaTrackResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-track-id",
     type: "audio",
     url: "your-audio-url",
     languageCode: "your-language-code",

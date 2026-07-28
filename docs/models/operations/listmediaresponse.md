@@ -12,7 +12,7 @@ const value: operations.ListMediaResponseBody = {
     {
       thumbnail:
         "your-thumbnail-url",
-      id: "your-id",
+      id: "your-media-id",
       workspaceId: "your-workspace-id",
       metadata: {
         "key1": "value1",
@@ -22,7 +22,7 @@ const value: operations.ListMediaResponseBody = {
       sourceAccess: false,
       playbackIds: [
         {
-          id: "your-id",
+          id: "your-playback-id",
           accessPolicy: "public",
           accessRestrictions: {
             domains: {
@@ -40,7 +40,7 @@ const value: operations.ListMediaResponseBody = {
       ],
       tracks: [
         {
-          id: "your-id",
+          id: "your-track-id",
           type: "video",
           width: 1920,
           height: 1080,

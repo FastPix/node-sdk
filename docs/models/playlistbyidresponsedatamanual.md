@@ -6,7 +6,7 @@
 import { PlaylistByIdResponseDataManual } from "@fastpix/fastpix-node/models";
 
 let value: PlaylistByIdResponseDataManual = {
-  id: "your-id",
+  id: "your-playlist-id",
   name: "playlist1",
   referenceId: "your-reference-id",
   type: "manual",
@@ -16,7 +16,7 @@ let value: PlaylistByIdResponseDataManual = {
       createdAt: new Date("2025-03-21T05:58:38.000708Z"),
       creatorId: "your-creator-id",
       duration: "00:00:10",
-      id: "your-id",
+      id: "your-media-id",
       sourceResolution: "1080p",
       status: "Ready",
       thumbnail:
@@ -35,7 +35,7 @@ let value: PlaylistByIdResponseDataManual = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `id`                                                                                          | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique id of the playlist                                                                 | your-id                                                          |
+| `id`                                                                                          | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique id of the playlist                                                                 | your-playlist-id                                                          |
 | `name`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | The name of the playlist set by the user                                                      | playlist1                                                                                     |
 | `referenceId`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | Unique string value assigned by user to the playlist.                                         | playlists301                                                                                  |
 | `type`                                                                                        | *"manual"*                                                                                    | :heavy_check_mark:                                                                            | type of the playlist, when it was created                                                     | manual                                                                                        |

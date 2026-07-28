@@ -10,7 +10,7 @@ import { GenerateSubtitleTrackResponseBody } from "@fastpix/fastpix-node/models/
 let value: GenerateSubtitleTrackResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-track-id",
     type: "subtitle",
     languageCode: "your-language-code",
     languageName: "your-language-name",

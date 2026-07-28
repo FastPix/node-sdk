@@ -10,7 +10,7 @@ import { GetDrmConfigurationByIdResponseBody } from "@fastpix/fastpix-node/model
 let value: GetDrmConfigurationByIdResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-drm-configuration-id",
   },
 };
 ```

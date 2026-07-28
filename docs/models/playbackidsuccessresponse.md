@@ -10,7 +10,7 @@ import { PlaybackIdSuccessResponse } from "@fastpix/fastpix-node/models";
 let value: PlaybackIdSuccessResponse = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-playback-id",
     accessPolicy: "public",
   },
 };

@@ -10,7 +10,7 @@ import { PlaylistCreatedResponse } from "@fastpix/fastpix-node/models";
 let value: PlaylistCreatedResponse = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-playlist-id",
     name: "playist",
     referenceId: "your-reference-id",
     type: "smart",
@@ -31,7 +31,7 @@ let value: PlaylistCreatedResponse = {
         createdAt: new Date("2024-11-12T05:58:38.000708Z"),
         creatorId: "your-creator-id",
         duration: "00:00:10",
-        id: "your-id",
+        id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:
@@ -42,7 +42,7 @@ let value: PlaylistCreatedResponse = {
         createdAt: new Date("2024-12-05T07:23:18.000108Z"),
         creatorId: "your-creator-id",
         duration: "00:00:10",
-        id: "your-id",
+        id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:
@@ -53,7 +53,7 @@ let value: PlaylistCreatedResponse = {
         createdAt: new Date("2024-12-05T07:21:15.000508Z"),
         creatorId: "your-creator-id",
         duration: "00:00:10",
-        id: "your-id",
+        id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
         thumbnail:

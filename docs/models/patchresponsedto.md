@@ -31,7 +31,7 @@ let value: PatchResponseDTO = {
     closedCaptions: false,
     playbackIds: [
       {
-        id: "your-id",
+        id: "your-playback-id",
         accessPolicy: "public",
       },
     ],

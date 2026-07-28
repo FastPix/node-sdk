@@ -11,7 +11,7 @@ let value: GetDrmConfigurationResponseBody = {
   success: true,
   data: [
     {
-      id: "your-id",
+      id: "your-drm-configuration-id",
     },
   ],
   pagination: {

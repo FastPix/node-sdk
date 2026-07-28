@@ -10,7 +10,7 @@ import { AddMediaTrackResponseBody } from "@fastpix/fastpix-node/models/operatio
 let value: AddMediaTrackResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-track-id",
     type: "audio",
     url: "your-audio-url",
     languageCode: "your-language-code",

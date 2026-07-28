@@ -9,7 +9,7 @@
 const value: models.PlaybackIdSuccessResponse = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-playback-id",
     accessPolicy: "public",
   },
 };

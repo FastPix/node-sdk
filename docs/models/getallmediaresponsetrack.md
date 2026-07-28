@@ -13,7 +13,7 @@ const value: models.VideoTrackForGetAll = {};
 
 ```typescript
 const value: models.AudioTrack = {
-  id: "your-id",
+  id: "your-track-id",
   type: "audio",
   status: "available",
   languageName: "your-language-name",
@@ -25,7 +25,7 @@ const value: models.AudioTrack = {
 
 ```typescript
 const value: models.SubtitleTrack = {
-  id: "your-id",
+  id: "your-track-id",
   type: "subtitle",
   status: "available",
   languageName: "your-language-name",

@@ -29,7 +29,7 @@ const value: models.LivestreamgetResponse = {
     closedCaptions: false,
     playbackIds: [
       {
-        id: "your-id",
+        id: "your-playback-id",
         accessPolicy: "public",
       },
     ],

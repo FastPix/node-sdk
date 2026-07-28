@@ -10,7 +10,7 @@ import { CreateMediaPlaybackIdResponseBody } from "@fastpix/fastpix-node/models/
 let value: CreateMediaPlaybackIdResponseBody = {
   success: true,
   data: {
-    id: "your-id",
+    id: "your-playback-id",
     accessPolicy: "public",
     accessRestrictions: {
       domains: {
