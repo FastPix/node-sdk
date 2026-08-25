@@ -1,147 +1,372 @@
 # FastPix Node.js SDK
 
+[![npm version](https://img.shields.io/npm/v/@fastpix/fastpix-node)](https://www.npmjs.com/package/@fastpix/fastpix-node)
+[![npm downloads](https://img.shields.io/npm/dm/@fastpix/fastpix-node)](https://www.npmjs.com/package/@fastpix/fastpix-node)
+[![license](https://img.shields.io/npm/l/@fastpix/fastpix-node)](https://github.com/FastPix/node-sdk/blob/main/LICENSE)
+[![Node.js 18+](https://img.shields.io/badge/node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+
 A robust, type-safe Node.js SDK designed for seamless integration with the FastPix API platform.
 
-## Introduction
+The FastPix Node.js SDK is a type-safe Node.js client for the FastPix video API. From any Node.js application you can upload and manage videos, run live streams and simulcasts, create and secure playback IDs, manage playlists and signing keys, pull video analytics (views, metrics, dimensions, and errors), and drive in-video AI features such as subtitles, chapters, summaries, and content moderation.
 
-The FastPix Node.js SDK simplifies integration with the FastPix platform. It provides a clean, TypeScript interface for secure and efficient communication with the FastPix API, enabling easy management of media uploads, live streaming, on‑demand content, playlists, video analytics, and signing keys for secure access and token management. It is intended for use with Node.js 18 and above.
+**Supported Node.js:** 18 and later
+**Package:** `@fastpix/fastpix-node`
+**Authentication:** HTTP Basic Authentication
+**Module systems:** ES modules (ESM) and CommonJS
 
-## Prerequisites
+📖 **Docs:** https://fastpix.com/docs/language-sdks/nodejs-sdk &nbsp;·&nbsp; 🚀 **Free account:** https://dashboard.fastpix.com
 
-### Environment and Version Support
+<br />
 
-| Requirement | Version | Description |
-|---|---:|---|
-| Node.js | `18+` | Core runtime environment |
-| npm/yarn/pnpm | `Latest` | Package manager for dependencies |
-| Internet | `Required` | API communication and authentication |
+## Start here
 
-> Pro Tip: We recommend using Node.js 20+ for optimal performance and the latest language features.
+If you are using the FastPix Node.js SDK for the first time, follow these steps in order:
 
-### Getting Started with FastPix
+1. Check your Node.js version.
+2. Create a Node.js project.
+3. Configure the project to use ES modules.
+4. Install the SDK.
+5. Verify that the SDK can be imported.
+6. Configure your FastPix credentials.
+7. Initialize the FastPix client.
+8. Create your first media asset.
+9. Retrieve the media asset using its media ID.
+10. Verify the API response.
 
-To get started with the FastPix Node.js SDK, ensure you have the following:
+Do not skip the verification steps. If installation, the ES module configuration, or authentication fails, troubleshoot that problem before continuing to the next API operation.
 
-- The FastPix APIs are authenticated using a **Username** and a **Password**. You must generate these credentials to use the SDK.
-- Follow the steps in the [Authentication with Basic Auth](https://fastpix.com/docs/getting-started/activate-your-account#authentication-format) guide to obtain your credentials.
+---
 
-### Environment Variables (Optional)
+### Before you begin
 
-Configure your FastPix credentials using environment variables for enhanced security and convenience:
+To use the SDK, make sure you have:
+
+- Node.js 18 or later.
+- npm.
+- A FastPix account.
+- A FastPix Access Token.
+- A FastPix Secret Key.
+
+FastPix uses Basic Authentication:
+
+| SDK value | FastPix credential |
+|---|---|
+| `username` | Access Token |
+| `password` | Secret Key |
+
+You can obtain your credentials from the FastPix Dashboard. Follow the steps in the [Authentication with Basic Auth](https://fastpix.com/docs/getting-started/activate-your-account#authentication-format) guide to obtain your credentials.
+
+1. Check your Node.js version
+
+Run:
 
 ```bash
-# Set your FastPix credentials
-export FASTPIX_USERNAME="your-access-token"
-export FASTPIX_PASSWORD="your-secret-key"
-
-# Optional: only needed to verify inbound webhooks (separate from the API credentials above)
-export FASTPIX_WEBHOOK_SECRET="your-webhook-signing-secret"
+node --version
 ```
 
-> Security Note: Never commit your credentials to version control. Use environment variables or secure credential management systems.
+Output is similar to:
 
-## Table of Contents
+```text
+v20.19.0
+```
 
-* [Fastpix Node.js SDK](#fastpix-nodejs-sdk)
-  * [Setup](#setup)
-  * [Example Usage](#example-usage)
-  * [Available Resources and Operations](#available-resources-and-operations)
-  * [Standalone functions](#standalone-functions)
-  * [Retries](#retries)
-  * [Error Handling](#error-handling)
-  * [Server Selection](#server-selection)
-  * [Custom HTTP Client](#custom-http-client)
-  * [Debugging](#debugging)
-  * [Webhooks](#webhooks)
-  * [Development](#development)
+or a later version.
 
-## Setup
+The FastPix Node.js SDK supports Node.js 18 and later.
 
-### Installation
+If your Node.js version is earlier than 18, install a supported version before continuing.
 
-Install the FastPix Node.js SDK using your preferred package manager:
+You can also verify your npm version:
+
+```bash
+npm --version
+```
+
+Output is similar to:
+
+```text
+10.8.2
+```
+
+2. Create a Node.js project
+
+a. Create a new directory for your FastPix application
+
+```bash
+mkdir fastpix-node-sdk-demo
+cd fastpix-node-sdk-demo
+```
+
+b. Initialize the Node.js project
+
+```bash
+npm init -y
+```
+
+This creates a `package.json` file.
+
+c. Configure the project to use ES modules
+
+Open `package.json` and add:
+
+```json
+"type": "module"
+```
+
+For example:
+
+```json
+{
+  "name": "fastpix-node-sdk-demo",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "FastPix Node.js SDK demo",
+  "main": "example.js",
+  "scripts": {
+    "start": "node example.js"
+  }
+}
+```
+
+The `"type": "module"` setting tells Node.js to treat `.js` files in this project as ES modules.
+
+This allows you to use ES module syntax:
+
+```javascript
+import { Fastpix } from "@fastpix/fastpix-node";
+```
+
+instead of CommonJS syntax:
+
+```javascript
+const { Fastpix } = require("@fastpix/fastpix-node");
+```
+
+3. Install the SDK
+
+a. Install the FastPix Node.js SDK using npm:
 
 ```bash
 npm install @fastpix/fastpix-node
 ```
 
-### PNPM
+The SDK is added to your project's dependencies and installed in the `node_modules` directory.
+
+You can verify the installed package with:
 
 ```bash
-pnpm add @fastpix/fastpix-node
+npm list @fastpix/fastpix-node
 ```
 
-### Bun
+Output is similar to:
+
+```text
+fastpix-node-sdk-demo@1.0.0
+└── @fastpix/fastpix-node@<version>
+```
+
+b. Verify that the project is using ES modules
+
+Create a file named `example.js`:
 
 ```bash
-bun add @fastpix/fastpix-node
+touch example.js
 ```
 
-### Yarn
+Add:
 
-```bash
-yarn add @fastpix/fastpix-node
-```
-
-### Imports
-
-This SDK supports both **ES modules** and **CommonJS**. Examples in this documentation use ES module syntax as it's the preferred format, but you can use either approach.
-
-#### ES Modules (Recommended)
-```typescript
-import { Fastpix } from "@fastpix/fastpix-node";
-import type { CreateMediaRequest } from "@fastpix/fastpix-node/models";
-```
-
-#### CommonJS
 ```javascript
-const { Fastpix } = require("@fastpix/fastpix-node");
+console.log("ES modules are enabled");
 ```
 
-> Why ES Modules? ES modules provide better tree-shaking, static analysis, and are the modern JavaScript standard.
+Run:
 
-### Initialization
+```bash
+node example.js
+```
 
-Initialize the FastPix SDK with your credentials:
+Output is similar to:
 
-```typescript
+```text
+ES modules are enabled
+```
+
+If this command fails, verify that `"type": "module"` is present in `package.json` before continuing.
+
+4. Verify the installation
+
+Before making an API request, verify that Node.js can import the SDK.
+
+Replace the contents of `example.js` with:
+
+```javascript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+console.log("FastPix SDK imported successfully");
+```
+
+Run:
+
+```bash
+node example.js
+```
+
+Output is similar to:
+
+```text
+FastPix SDK imported successfully
+```
+
+If this command fails, do not continue to API calls.
+
+Check:
+
+- Node.js 18 or later is installed.
+- The project uses `"type": "module"`.
+- `@fastpix/fastpix-node` is installed.
+- You are running the command from the project directory.
+- Your Node.js interpreter is the expected version.
+
+You can verify the installed package with:
+
+```bash
+npm list @fastpix/fastpix-node
+```
+
+---
+
+5. Configure authentication
+
+FastPix uses Basic Authentication.
+
+Set the Access Token and Secret Key as environment variables.
+
+### macOS and Linux
+
+```bash
+export FASTPIX_USERNAME="<YOUR_ACCESS_TOKEN>"
+export FASTPIX_PASSWORD="<YOUR_SECRET_KEY>"
+```
+
+### Windows PowerShell
+
+```powershell
+$env:FASTPIX_USERNAME="<YOUR_ACCESS_TOKEN>"
+$env:FASTPIX_PASSWORD="<YOUR_SECRET_KEY>"
+```
+
+The SDK maps these variables as follows:
+
+```text
+FASTPIX_USERNAME → Access Token
+FASTPIX_PASSWORD → Secret Key
+```
+
+### Verify the credentials are set
+
+Do not print the actual credential values.
+
+Instead, run:
+
+### macOS and Linux
+
+```bash
+node -e 'console.log("Access Token:", process.env.FASTPIX_USERNAME ? "set" : "missing"); console.log("Secret Key:", process.env.FASTPIX_PASSWORD ? "set" : "missing")'
+```
+
+### Windows PowerShell
+
+```powershell
+node -e "console.log('Access Token:', process.env.FASTPIX_USERNAME ? 'set' : 'missing'); console.log('Secret Key:', process.env.FASTPIX_PASSWORD ? 'set' : 'missing')"
+```
+
+Output is similar to:
+
+```text
+Access Token: set
+Secret Key: set
+```
+
+### Security
+
+Never:
+
+- Commit credentials to Git.
+- Put credentials directly into source code.
+- Include credentials in screenshots, logs, or bug reports.
+- Print authentication headers during debugging in production.
+
+Use environment variables or a secure credential-management system.
+
+---
+
+6. Initialize the FastPix client
+
+a. Create a file named `example.js`
+
+```javascript
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: "your-access-token",
-    password: "your-secret-key",
+    username: process.env.FASTPIX_USERNAME,
+    password: process.env.FASTPIX_PASSWORD,
   },
 });
+
+console.log("FastPix client initialized");
 ```
 
-Or using environment variables:
+b. Run:
 
-```typescript
+```bash
+node example.js
+```
+
+Output is similar to:
+
+```text
+FastPix client initialized
+```
+
+### What this code does
+
+`Fastpix` is the top-level SDK client.
+
+The `security` object contains the credentials used to authenticate API requests.
+
+The SDK client does not make an API request simply because it is initialized.
+
+An API request occurs when you call an operation such as:
+
+```javascript
+fastpix.inputVideo.create(...)
+```
+
+7. Make your first API request
+
+The easiest way to verify the complete integration is to create media from a publicly accessible video URL.
+
+FastPix provides a sample video URL:
+
+```text
+https://static.fastpix.com/fp-sample-video.mp4
+```
+
+a. Replace the contents of `example.js` with:
+
+```javascript
 import { Fastpix } from "@fastpix/fastpix-node";
 
 const fastpix = new Fastpix({
   security: {
-    username: process.env.FASTPIX_USERNAME, // Your Access Token
-    password: process.env.FASTPIX_PASSWORD, // Your Secret Key
-  },
-});
-```
-
-## Example Usage
-
-```typescript
-import { Fastpix } from "@fastpix/fastpix-node";
-
-const fastpix = new Fastpix({
-  security: {
-    username: "your-access-token",
-    password: "your-secret-key",
+    username: process.env.FASTPIX_USERNAME,
+    password: process.env.FASTPIX_PASSWORD,
   },
 });
 
 async function run() {
-  const result = await fastpix.inputVideo.create({
+  const response = await fastpix.inputVideo.create({
     inputs: [
       {
         type: "video",
@@ -149,15 +374,181 @@ async function run() {
       },
     ],
     metadata: {
-      "key1": "value1",
+      source: "fastpix-node-sdk-demo",
     },
   });
 
-  console.log(JSON.stringify(result, null, 2));
+  console.log(JSON.stringify(response, null, 2));
 }
 
-run();
+run().catch((error) => {
+  console.error("FastPix API request failed");
+  console.error(error);
+  process.exit(1);
+});
 ```
+
+b. Save the file and run:
+
+```bash
+node example.js
+```
+
+8. Verify the API response
+
+A successful request returns a response containing a media ID.
+
+The response has the following general structure:
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "5157e363-5abb-414d-83c7-520ecdc9f5fd",
+    "status": "Created"
+  }
+}
+```
+
+The value of:
+
+```text
+data.id
+```
+
+is the unique ID assigned to the media.
+
+A `media_id` is different from a `playback_id`. They identify different resources and are used for different operations.
+
+---
+
+9. Retrieve the media asset
+
+Use the media ID returned by the create operation to retrieve the media asset.
+
+Add the following code after the media is created:
+
+```javascript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const fastpix = new Fastpix({
+  security: {
+    username: process.env.FASTPIX_USERNAME,
+    password: process.env.FASTPIX_PASSWORD,
+  },
+});
+
+async function run() {
+  console.log("Creating media...");
+
+  const createResult = await fastpix.inputVideo.create({
+    inputs: [
+      {
+        type: "video",
+        url: "https://static.fastpix.com/fp-sample-video.mp4",
+      },
+    ],
+    metadata: {
+      source: "fastpix-node-sdk-demo",
+    },
+  });
+
+  console.log(
+    "CREATE MEDIA",
+    JSON.stringify(createResult, null, 2),
+  );
+
+  const mediaId = createResult.data.id;
+
+  console.log("\nMEDIA ID:");
+  console.log(mediaId);
+
+  console.log("\nRetrieving media...");
+
+  const mediaResult = await fastpix.manageVideos.get({
+    mediaId,
+  });
+
+  console.log(
+    "\nGET MEDIA",
+    JSON.stringify(mediaResult, null, 2),
+  );
+}
+
+run().catch((error) => {
+  console.error("\nFastPix API request failed");
+  console.error(error);
+  process.exit(1);
+});
+```
+
+Run:
+
+```bash
+node example.js
+```
+
+The output should contain:
+
+```text
+Creating media...
+```
+
+followed by the create response and:
+
+```text
+Media ID: <media-id>
+Retrieving media...
+```
+
+followed by the media response.
+
+A successful response from the get-media operation confirms that:
+
+- The SDK authenticated successfully.
+- The media was created successfully.
+- A media ID was returned.
+- The media ID can be used in a subsequent API operation.
+- The Node.js SDK can communicate successfully with the FastPix API.
+
+At this point, the initial SDK integration is complete.
+
+### What you have verified
+
+By completing this guide, you have verified that:
+
+- Node.js is installed and supported.
+- Your project is configured to use ES modules.
+- The FastPix Node.js SDK is installed.
+- Node.js can import the SDK.
+- Your FastPix credentials are configured.
+- The FastPix client can be initialized.
+- Your application can authenticate with the FastPix API.
+- You can create a media asset.
+- You can retrieve the media asset using its media ID.
+
+Your completed workflow is:
+
+```text
+Node.js application
+        |
+        v
+FastPix Node.js SDK
+        |
+        v
+FastPix API
+        |
+        v
+Create media
+        |
+        v
+media_id
+        |
+        v
+Get media
+```
+
+You are now ready to use the returned `media_id` with other FastPix API operations.
 
 ## Available Resources and Operations
 
@@ -167,8 +558,7 @@ Comprehensive Node.js SDK for FastPix platform integration with full API coverag
 
 Upload, manage, and transform video content with comprehensive media management capabilities.
 
-For detailed documentation, see [FastPix Video on Demand Overview](https://fastpix.com/docs/video-on-demand-api/overview
-).
+For detailed documentation, see [FastPix Video on Demand Overview](https://fastpix.com/docs/video-on-demand-api/overview).
 
 #### Input Video
 - [Create from URL](docs/sdks/inputvideo/README.md#create) - Upload video content from external URL
@@ -294,10 +684,6 @@ Enhance video content with AI-powered features including moderation, summarizati
 #### Format Support
 
 - [Update MP4 Support](docs/sdks/managevideos/README.md#updatemp4support) - Configure MP4 download capabilities
-
-
-
-
 
 <!-- End Available Resources and Operations [operations] -->
 
@@ -661,50 +1047,50 @@ You can also enable a default debug logger by setting an environment variable `F
 
 <!-- Placeholder for Future fastpix SDK Sections -->
 ## Webhooks
- 
+
 FastPix signs every webhook delivery. The SDK's `webhooks` resource verifies that signature and returns the parsed, trusted event in **one call** — so you never act on a forged payload.
- 
+
 The signing secret is **separate** from your API credentials (it's the base64 secret from the FastPix dashboard). Provide it via the `webhookSecret` option, or let it default to the `FASTPIX_WEBHOOK_SECRET` environment variable.
- 
+
 ### The one call
- 
+
 ```typescript
 // Verifies the signature, then returns the parsed event. Throws
 // WebhookVerificationError if the signature is missing, wrong, or the body
 // isn't the raw bytes. `rawBody` must be the unparsed request body.
 const event = fastpix.webhooks.unwrap(rawBody, headers);
 ```
- 
+
 `event` is a typed, discriminated union — `switch (event.type)` narrows `event.data` (`Media` for `video.media.*`, the live-stream payload for `video.live_stream.*`).
- 
+
 ### Express example
- 
+
 ```typescript
 import express from "express";
 import { Fastpix, WebhookVerificationError } from "@fastpix/fastpix-node";
- 
+
 const fastpix = new Fastpix({ webhookSecret: process.env.FASTPIX_WEBHOOK_SECRET });
 const app = express();
 const seen = new Set<string>(); // use a durable store (Redis/DB) in production
- 
+
 app.post(
   "/webhooks/fastpix",
   express.raw({ type: "application/json" }), // REQUIRED: verify over the raw bytes
   (req, res) => {
     const signature = req.header("FastPix-Signature");
     const rawText = req.body?.toString("utf8") ?? "";
- 
+
     // Dashboard validation probe: unsigned, empty/"{}" body → ack with 200 first.
     if (!signature && (rawText.trim() === "" || rawText.trim() === "{}")) {
       return res.status(200).send("ok");
     }
- 
+
     try {
       const event = fastpix.webhooks.unwrap(req.body, req.headers);
- 
+
       if (seen.has(event.id)) return res.status(202).send("duplicate"); // dedupe on id
       seen.add(event.id);
- 
+
       switch (event.type) {
         case "video.media.ready":
         case "video.media.updated":
@@ -725,28 +1111,88 @@ app.post(
     }
   },
 );
- 
+
 app.listen(3000, () => console.log("Listening on :3000/webhooks/fastpix"));
 ```
- 
+
 > **CommonJS:** swap the imports for `const express = require("express");` and `const { Fastpix, WebhookVerificationError } = require("@fastpix/fastpix-node");` — everything else is identical.
- 
+
 ### Troubleshooting
- 
+
 | Symptom | Fix |
 |---|---|
 | `400` "must be the raw request payload" | Use `express.raw({ type: "application/json" })`, not `express.json()`. |
 | Dashboard says endpoint **not connecting** | Return `200` to the unsigned empty/`{}` validation probe before verifying. |
 | `400` "signature mismatch" on your own test | Base64-**decode** the secret first: `createHmac("sha256", Buffer.from(secret, "base64"))`. Sign the *exact* body bytes you send. |
 | No events arrive at all | `http://localhost` isn't reachable — register a public tunnel URL (e.g. `npx ngrok http 3000`). |
- 
+
 > **No timestamp is signed**, so there is no replay window — enforce idempotency by deduping on the top-level event `id`.
- 
+
 Full reference (event envelope, typed events, local testing, all gotchas): [`docs/webhooks.md`](./docs/webhooks.md). Standalone example: [`examples/webhooksServer.example.ts`](./examples/webhooksServer.example.ts).
 
-# Development
+<br />
 
-This Node.js SDK is programmatically generated from our API specifications. Any manual modifications to internal files will be overwritten during subsequent generation cycles. 
+## FAQ
+
+**How do I install the FastPix Node.js SDK?**
+Run `npm install @fastpix/fastpix-node` (or the pnpm/yarn/bun equivalent). See [Start here](#start-here).
+
+**How do I authenticate the SDK?**
+FastPix uses Basic Auth: pass your access token as the `username` and your secret key as the `password` when constructing the client. See [Before you begin](#before-you-begin).
+
+**Does it support TypeScript, ESM, and CommonJS?**
+Yes - the package ships TypeScript type definitions and works with both ES modules and CommonJS. See [Start here](#start-here).
+
+**How do I upload a video in Node.js?**
+Create media from a URL or a direct upload through the input-video resource on the client. See [Start here](#start-here) and [Available Resources and Operations](#available-resources-and-operations).
+
+**How do I start a live stream?**
+Use the Live API resources to create and manage streams, simulcasts, and live playback IDs. See [Available Resources and Operations](#available-resources-and-operations).
+
+**How do I get video analytics and metrics in Node.js?**
+The Video Data API exposes metrics, views, dimensions, and errors for quality-of-experience monitoring. See [Available Resources and Operations](#available-resources-and-operations).
+
+**How do I verify FastPix webhooks in Node.js?**
+The SDK includes webhook signature verification. See [Webhooks](#webhooks).
+
+**How do I handle API errors?**
+Wrap calls in try/catch; the SDK throws typed errors exposing the message, status code, and response body. See [Error Handling](#error-handling).
+
+**How do I configure automatic retries?**
+Pass a retry configuration per call or at client initialization to control the backoff strategy. See [Retries](#retries).
+
+**How do I use a custom HTTP client, proxy, or timeout?**
+Provide your own HTTP client to configure timeouts, proxies, and custom headers, or add request/response hooks. See [Custom HTTP Client](#custom-http-client).
+
+**How do I import only the functions I need (tree-shaking)?**
+Use the standalone functions instead of the full client for smaller bundles. See [Standalone functions](#standalone-functions).
+
+**Which Node.js versions are supported?**
+Node.js 18 and above. See [Before you begin](#before-you-begin).
+
+<br />
+
+## Which FastPix SDK should I use?
+
+FastPix publishes a server SDK for every major backend language, each generated from the same API specification:
+
+| Language | Repo | Install |
+|---|---|---|
+| **Node.js / TypeScript** (this repo) | [node-sdk](https://github.com/FastPix/node-sdk) | `npm install @fastpix/fastpix-node` |
+| PHP | [fastpix-php](https://github.com/FastPix/fastpix-php) | `composer require fastpix/sdk` |
+| Python | [fastpix-python](https://github.com/FastPix/fastpix-python) | `pip install fastpix-python` |
+| Go | [fastpix-go](https://github.com/FastPix/fastpix-go) | `go get github.com/FastPix/fastpix-go` |
+| Java | [fastpix-java](https://github.com/FastPix/fastpix-java) | `io.fastpix:sdk` (Maven/Gradle) |
+| C# / .NET | [fastpix-sdk-csharp](https://github.com/FastPix/fastpix-sdk-csharp) | `dotnet add package Fastpix` |
+| Ruby | [fastpix-ruby](https://github.com/FastPix/fastpix-ruby) | `gem install fastpixapi` |
+
+To upload and play the media these SDKs create, use the FastPix browser libraries: [web-uploads-sdk](https://github.com/FastPix/web-uploads-sdk), [react-web-uploader](https://github.com/FastPix/react-web-uploader), and [web-player-component](https://github.com/FastPix/web-player-component). Browse everything in the [FastPix organization](https://github.com/orgs/FastPix/repositories).
+
+<br />
+
+## Development
+
+This Node.js SDK is programmatically generated from our API specifications. Any manual modifications to internal files will be overwritten during subsequent generation cycles.
 
 We value community contributions and feedback. Feel free to submit pull requests or open issues with your suggestions, and we'll do our best to include them in future releases.
 
