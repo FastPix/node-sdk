@@ -529,24 +529,7 @@ By completing this guide, you have verified that:
 
 Your completed workflow is:
 
-```text
-Node.js application
-        |
-        v
-FastPix Node.js SDK
-        |
-        v
-FastPix API
-        |
-        v
-Create media
-        |
-        v
-media_id
-        |
-        v
-Get media
-```
+<Image alt="FastPix Node.js media workflow: a Node.js application calls the FastPix Node.js SDK, which calls the FastPix API to create media, returns a media ID, then gets the media." border={false} src="https://static.fastpix.com/node-media-workflow.png" />
 
 You are now ready to use the returned `media_id` with other FastPix API operations.
 
