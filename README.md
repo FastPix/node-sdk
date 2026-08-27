@@ -22,16 +22,15 @@ The FastPix Node.js SDK is a type-safe Node.js client for the FastPix video API.
 
 If you are using the FastPix Node.js SDK for the first time, follow these steps in order:
 
-1. Check your Node.js version.
-2. Create a Node.js project.
-3. Configure the project to use ES modules.
-4. Install the SDK.
-5. Verify that the SDK can be imported.
-6. Configure your FastPix credentials.
-7. Initialize the FastPix client.
-8. Create your first media asset.
-9. Retrieve the media asset using its media ID.
-10. Verify the API response.
+1. [Check your Node.js version](#1-check-your-nodejs-version)
+2. [Create a Node.js project](#2-create-a-nodejs-project)
+3. [Install the SDK](#3-install-the-sdk)
+4. [Verify the installation](#4-verify-the-installation)
+5. [Configure authentication](#5-configure-authentication)
+6. [Initialize the FastPix client](#6-initialize-the-fastpix-client)
+7. [Make your first API request](#7-make-your-first-api-request)
+8. [Verify the API response](#8-verify-the-api-response)
+9. [Retrieve the media asset](#9-retrieve-the-media-asset)
 
 Do not skip the verification steps. If installation, the ES module configuration, or authentication fails, troubleshoot that problem before continuing to the next API operation.
 
@@ -56,7 +55,7 @@ FastPix uses Basic Authentication:
 
 You can obtain your credentials from the FastPix Dashboard. Follow the steps in the [Authentication with Basic Auth](https://fastpix.com/docs/getting-started/activate-your-account#authentication-format) guide to obtain your credentials.
 
-1. Check your Node.js version
+## 1. Check your Node.js version
 
 Run:
 
@@ -88,7 +87,7 @@ Output is similar to:
 10.8.2
 ```
 
-2. Create a Node.js project
+## 2. Create a Node.js project
 
 a. Create a new directory for your FastPix application
 
@@ -142,7 +141,7 @@ instead of CommonJS syntax:
 const { Fastpix } = require("@fastpix/fastpix-node");
 ```
 
-3. Install the SDK
+## 3. Install the SDK
 
 a. Install the FastPix Node.js SDK using npm:
 
@@ -193,7 +192,7 @@ ES modules are enabled
 
 If this command fails, verify that `"type": "module"` is present in `package.json` before continuing.
 
-4. Verify the installation
+## 4. Verify the installation
 
 Before making an API request, verify that Node.js can import the SDK.
 
@@ -235,7 +234,7 @@ npm list @fastpix/fastpix-node
 
 ---
 
-5. Configure authentication
+## 5. Configure authentication
 
 FastPix uses Basic Authentication.
 
@@ -300,7 +299,7 @@ Use environment variables or a secure credential-management system.
 
 ---
 
-6. Initialize the FastPix client
+## 6. Initialize the FastPix client
 
 a. Create a file named `example.js`
 
@@ -343,7 +342,7 @@ An API request occurs when you call an operation such as:
 fastpix.inputVideo.create(...)
 ```
 
-7. Make your first API request
+## 7. Make your first API request
 
 The easiest way to verify the complete integration is to create media from a publicly accessible video URL.
 
@@ -394,7 +393,7 @@ b. Save the file and run:
 node example.js
 ```
 
-8. Verify the API response
+## 8. Verify the API response
 
 A successful request returns a response containing a media ID.
 
@@ -422,7 +421,7 @@ A `media_id` is different from a `playback_id`. They identify different resource
 
 ---
 
-9. Retrieve the media asset
+## 9. Retrieve the media asset
 
 Use the media ID returned by the create operation to retrieve the media asset.
 
@@ -647,25 +646,20 @@ Enhance video content with AI-powered features including moderation, summarizati
 - [Enable Moderation](docs/sdks/invideoai/README.md#updatemoderation) - Activate content moderation and safety checks
 
 #### Media Clips
-
 - [Get Media Clips](docs/sdks/media/README.md#getclips) - Retrieve all clips associated with a source media
 
 #### Subtitles
-
 - [Generate Subtitles](docs/sdks/managevideos/README.md#generatesubtitletrack) - Create automatic subtitles for media
 
 #### Media Tracks
-
 - [Add Track](docs/sdks/managevideos/README.md#addtrack) - Add audio or subtitle tracks to media
 - [Update Track](docs/sdks/managevideos/README.md#updatetrack) - Modify existing audio or subtitle tracks
 - [Delete Track](docs/sdks/media/README.md#deletetrack) - Remove audio or subtitle tracks
 
 #### Access Control
-
 - [Update Source Access](docs/sdks/media/README.md#updatesourceaccess) - Control access permissions for media source
 
 #### Format Support
-
 - [Update MP4 Support](docs/sdks/managevideos/README.md#updatemp4support) - Configure MP4 download capabilities
 
 <!-- End Available Resources and Operations [operations] -->
@@ -801,7 +795,6 @@ async function run() {
 }
 
 run();
-
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
@@ -842,7 +835,6 @@ async function run() {
 }
 
 run();
-
 ```
 <!-- End Retries [retries] -->
 
@@ -897,7 +889,6 @@ async function run() {
 }
 
 run();
-
 ```
 
 ### Error Classes
@@ -956,7 +947,6 @@ async function run() {
 }
 
 run();
-
 ```
 <!-- End Server Selection [server] -->
 
