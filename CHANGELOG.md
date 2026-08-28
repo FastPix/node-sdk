@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.10]
+
+- Updated License
+
 ## [2.0.9]
 
 ### Changed
