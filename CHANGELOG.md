@@ -2,9 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.11]
+
+### Fixed
+
+- **License metadata now matches the LICENSE file.** `2.0.10` shipped the
+  Apache 2.0 `LICENSE` file but still declared `"license": "MIT"` in
+  `package.json`, so the npm registry listed the package as MIT while the
+  published tarball carried Apache. The manifest now declares the SPDX
+  identifier `Apache-2.0`.
+
+  No code, API surface or runtime behaviour changed in this release.
+
+### Changed
+
+- **The SDK is licensed under Apache License 2.0 as of `2.0.10`.**
+  Releases up to and including `2.0.9` were published under the MIT License and
+  remain MIT. That grant is unaffected and is not being withdrawn. If you
+  determine the license from registry metadata rather than the file, use
+  `2.0.11` or later.
+
+
 ## [2.0.10]
 
-- Updated License
+### Changed
+
+- Relicensed from MIT to Apache License 2.0. The `package.json` `license` field
+  was not updated in this release and still declared MIT. Corrected in `2.0.11`.
 
 ## [2.0.9]
 
