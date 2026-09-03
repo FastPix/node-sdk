@@ -170,6 +170,10 @@ function getSDKInvoker(operationId: string): SDKInvoker | null {
       c.playback.updateDomainRestrictions(req),
     "update-user-agent-restrictions": (c, req) =>
       c.playback.updateUserAgentRestrictions(req),
+    "update-live-stream-domain-restrictions": (c, req) =>
+      c.livePlayback.updateDomainRestrictions(req),
+    "update-live-stream-user-agent-restrictions": (c, req) =>
+      c.livePlayback.updateUserAgentRestrictions(req),
 
     // Playlists
     "create-a-playlist": (c, req) => c.playlist.create(req),

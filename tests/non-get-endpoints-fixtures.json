@@ -47,7 +47,8 @@
         "inputMediaSettings": {
           "maxResolution": "1080p",
           "reconnectWindow": 60,
-          "mediaPolicy": "public"
+          "mediaPolicy": "public",
+          "enableRecording": false
         }
       }
     },
@@ -233,7 +234,7 @@
       "request": {
         "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
         "playbackId": "REPLACE_WITH_REAL_PLAYBACK_ID",
-        "domains": { "defaultPolicy": "allow", "allow": [], "deny": [] }
+        "body": { "defaultPolicy": "allow", "allow": [], "deny": [] }
       }
     },
     "update-user-agent-restrictions": {
@@ -242,7 +243,25 @@
       "request": {
         "mediaId": "REPLACE_WITH_REAL_MEDIA_ID",
         "playbackId": "REPLACE_WITH_REAL_PLAYBACK_ID",
-        "userAgents": { "defaultPolicy": "allow", "allow": [], "deny": [] }
+        "body": { "defaultPolicy": "allow", "allow": [], "deny": [] }
+      }
+    },
+    "update-live-stream-domain-restrictions": {
+      "skip": true,
+      "reason": "Needs real streamId + playbackId.",
+      "request": {
+        "streamId": "REPLACE_WITH_REAL_STREAM_ID",
+        "playbackId": "REPLACE_WITH_REAL_PLAYBACK_ID",
+        "body": { "defaultPolicy": "allow", "allow": [], "deny": [] }
+      }
+    },
+    "update-live-stream-user-agent-restrictions": {
+      "skip": true,
+      "reason": "Needs real streamId + playbackId.",
+      "request": {
+        "streamId": "REPLACE_WITH_REAL_STREAM_ID",
+        "playbackId": "REPLACE_WITH_REAL_PLAYBACK_ID",
+        "body": { "defaultPolicy": "allow", "allow": [], "deny": [] }
       }
     },
 
@@ -280,7 +299,11 @@
       "reason": "Needs real streamId.",
       "request": {
         "streamId": "REPLACE_WITH_REAL_STREAM_ID",
-        "accessPolicy": "public"
+        "accessPolicy": "public",
+        "accessRestrictions": {
+          "domains": { "defaultPolicy": "deny", "allow": ["example.com"], "deny": [] },
+          "userAgents": { "defaultPolicy": "allow", "allow": [], "deny": [] }
+        }
       }
     },
     "delete-playbackId-of-stream": {

@@ -140,7 +140,7 @@ function currentCapture(): RawCapture | null {
 const sharedHttpClient = new HTTPClient();
 sharedHttpClient.addHook("response", async (res, req) => {
   // Skip non-API hosts (in case the SDK fans out to GCS etc.).
-  if (!/api\.fastpix\.(com|io)/i.test(req.url)) return;
+  if (!/api\.fastpix\.[a-z]+/i.test(req.url)) return;
   try {
     const cloned = res.clone();
     const bodyText = await cloned.text();
@@ -454,6 +454,7 @@ const STEPS: Step[] = [
           maxResolution: "1080p",
           reconnectWindow: 60,
           mediaPolicy: "public",
+          enableRecording: false,
         },
       } as any),
     capture: (v, c) => { c.streamId = v?.data?.streamId ?? v?.data?.id; },
@@ -510,7 +511,13 @@ const STEPS: Step[] = [
     invoke: (c, ctx) =>
       c.livePlayback.createId({
         streamId: ctx.streamId,
-        body: { accessPolicy: "public" },
+        body: {
+          accessPolicy: "public",
+          accessRestrictions: {
+            domains: { defaultPolicy: "deny", allow: ["example.com"], deny: [] },
+            userAgents: { defaultPolicy: "allow", allow: [], deny: [] },
+          },
+        },
       } as any),
     capture: (v, c) => { c.streamPlaybackId = v?.data?.id; },
   },
@@ -671,6 +678,38 @@ const STEPS: Step[] = [
       c.playback.updateUserAgentRestrictions({
         mediaId: ctx.mediaId,
         playbackId: ctx.mediaPlaybackId,
+        body: {
+          defaultPolicy: "allow",
+          allow: ["Mozilla"],
+          deny: [],
+        },
+      } as any),
+  },
+  {
+    operationId: "update-live-stream-domain-restrictions",
+    phase: "UPDATE",
+    needs: ["streamId", "streamPlaybackId"],
+    retryOn: "not ready for updates",
+    invoke: (c, ctx) =>
+      c.livePlayback.updateDomainRestrictions({
+        streamId: ctx.streamId,
+        playbackId: ctx.streamPlaybackId,
+        body: {
+          defaultPolicy: "allow",
+          allow: ["example.com"],
+          deny: [],
+        },
+      } as any),
+  },
+  {
+    operationId: "update-live-stream-user-agent-restrictions",
+    phase: "UPDATE",
+    needs: ["streamId", "streamPlaybackId"],
+    retryOn: "not ready for updates",
+    invoke: (c, ctx) =>
+      c.livePlayback.updateUserAgentRestrictions({
+        streamId: ctx.streamId,
+        playbackId: ctx.streamPlaybackId,
         body: {
           defaultPolicy: "allow",
           allow: ["Mozilla"],
