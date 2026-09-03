@@ -2,7 +2,7 @@
 /*
  * GET endpoints validator using `openapi-response-validator`
  *
- * Per GET endpoint in `fixed.yaml`:
+ * Per GET endpoint in `openapi.yaml`:
  * - Calls the API to get the raw JSON response
  * - Validates the raw response against the OpenAPI response schema using `openapi-response-validator`
  * - Parses the same raw response through the SDK's Zod inbound schema (this is what the SDK returns)
@@ -344,10 +344,10 @@ function readFixtures(): Fixture | null {
 }
 
 function resolveSpecPath(): string {
-  // Deterministic search order (mirrors reference repo’s "../../fastpix.yaml" pattern).
+  // Deterministic search order. Snapshot the OpenAPI spec to the repo root as openapi.yaml.
   const candidates = [
-    join(__dirname, "../fixed.yaml"), // tests/../fixed.yaml (repo root)
-    join(__dirname, "../../fixed.yaml"), // tests/../../fixed.yaml (workspace new sdk/fixed.yaml)
+    join(__dirname, "../openapi.yaml"), // tests/../openapi.yaml (repo root)
+    join(__dirname, "../../openapi.yaml"), // tests/../../openapi.yaml (workspace root)
   ];
   for (const p of candidates) {
     if (existsSync(p)) return p;
@@ -439,7 +439,7 @@ function generateFixSuggestions(r: EndpointResult): FixSuggestion[] {
       why:
         "The current track schemas overlap (e.g. `type` is a free string and distinguishing fields are not required), so a single track object can match multiple branches. `oneOf` requires exactly one match.",
       where:
-        "In `fixed.yaml`: `components/schemas/{VideoTrack,VideoTrackForGetAll,AudioTrack,SubtitleTrack}.properties.type`",
+        "In `openapi.yaml`: `components/schemas/{VideoTrack,VideoTrackForGetAll,AudioTrack,SubtitleTrack}.properties.type`",
       pasteYaml: [
         "# Apply these changes inside each schema’s `properties:` block:",
         "",
@@ -474,7 +474,7 @@ function generateFixSuggestions(r: EndpointResult): FixSuggestion[] {
       why:
         "The API can return values like `\"1080\"` but the spec constrains the enum to `\"1080p\"`-style values.",
       where:
-        "In `fixed.yaml`: under the relevant media response schema(s) `sourceResolution:` field definition",
+        "In `openapi.yaml`: under the relevant media response schema(s) `sourceResolution:` field definition",
     });
   }
 
@@ -488,7 +488,7 @@ function generateFixSuggestions(r: EndpointResult): FixSuggestion[] {
       why:
         "`data` is defined as `oneOf: [array<string>, $ref: Dimensions]` and `Dimensions` itself is also `array<string>`, so valid responses can match multiple branches.",
       where:
-        "In `fixed.yaml`: `paths./data/dimensions.get.responses.200.content.application/json.schema.properties.data.oneOf`",
+        "In `openapi.yaml`: `paths./data/dimensions.get.responses.200.content.application/json.schema.properties.data.oneOf`",
     });
   }
 
@@ -502,7 +502,7 @@ function generateFixSuggestions(r: EndpointResult): FixSuggestion[] {
       why:
         "In JSON Schema, `integer` is a subset of `number`. A value like `0` matches both, causing oneOf validation errors.",
       where:
-        "In `fixed.yaml`: metrics schemas that use `oneOf: [integer, number]`",
+        "In `openapi.yaml`: metrics schemas that use `oneOf: [integer, number]`",
     });
   }
 
@@ -514,7 +514,7 @@ function generateFixSuggestions(r: EndpointResult): FixSuggestion[] {
     out.push({
       title: "Make `fpApiVersion` nullable in the spec",
       why: "The API can return `null` for fpApiVersion but the schema declares `string` only.",
-      where: "In `fixed.yaml`: `components/schemas/Views.properties.fpApiVersion`",
+      where: "In `openapi.yaml`: `components/schemas/Views.properties.fpApiVersion`",
     });
   }
 
@@ -541,7 +541,7 @@ function generateFixSuggestions(r: EndpointResult): FixSuggestion[] {
       why:
         "If `playOrder` is present/required only for `type: smart`, the response schemas should reflect that (e.g. discriminator split).",
       where:
-        "In `fixed.yaml`: playlist response schemas for create/update/get-by-id",
+        "In `openapi.yaml`: playlist response schemas for create/update/get-by-id",
     });
   }
 
@@ -553,7 +553,7 @@ function generateFixSuggestions(r: EndpointResult): FixSuggestion[] {
       why:
         "The API response includes simulcastResponses but the OpenAPI schema (and generated SDK inbound schema) does not, causing the SDK to drop the field.",
       where:
-        "In `fixed.yaml`: live stream response schema(s) for get/list streams",
+        "In `openapi.yaml`: live stream response schema(s) for get/list streams",
     });
   }
 

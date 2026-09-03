@@ -208,9 +208,8 @@ function safeJsonParse(s: string): any {
 
 function resolveSpecPath(): string {
   const candidates = [
-    join(__dirname, "../fixed.yaml"),
-    join(__dirname, "../fastpix.yaml"),
-    join(__dirname, "../../fixed.yaml"),
+    join(__dirname, "../openapi.yaml"),
+    join(__dirname, "../../openapi.yaml"),
   ];
   for (const p of candidates) if (existsSync(p)) return p;
   throw new Error(`OpenAPI spec not found. Tried: ${candidates.join(", ")}`);

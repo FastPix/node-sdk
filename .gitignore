@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# OpenAPI spec snapshot (fetched locally for the test harness)
+/*.yaml
+
 # Build outputs
 dist/
 *.tsbuildinfo
