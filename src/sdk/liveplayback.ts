@@ -7,6 +7,8 @@
 import { livePlaybackCreateId } from "../funcs/livePlaybackCreateId.js";
 import { livePlaybackDelete } from "../funcs/livePlaybackDelete.js";
 import { livePlaybackGet } from "../funcs/livePlaybackGet.js";
+import { livePlaybackUpdateDomainRestrictions } from "../funcs/livePlaybackUpdateDomainRestrictions.js";
+import { livePlaybackUpdateUserAgentRestrictions } from "../funcs/livePlaybackUpdateUserAgentRestrictions.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -69,6 +71,58 @@ export class LivePlayback extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetLiveStreamPlaybackIdResponse> {
     return unwrapAsync(livePlaybackGet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update domain restrictions for a live stream playback ID
+   *
+   * @remarks
+   * This endpoint updates domain-level restrictions for a specific playback ID associated with a live stream.
+   * It allows you to restrict playback to specific domains or block known unauthorized domains.
+   *
+   * **How it works:**
+   * 1. Make a `PATCH` request to this endpoint with your desired domain access configuration.
+   * 2. Set a default policy (`allow` or `deny`) and specify domain names in the `allow` or `deny` lists.
+   * 3. This is commonly used to restrict live playback to your website or approved client domains.
+   *
+   * **Example:**
+   * A streaming service can allow playback only from `example.com` and deny all others by setting: `"defaultPolicy": "deny"` and `"allow": ["example.com"]`.
+   */
+  async updateDomainRestrictions(
+    request: operations.UpdateLiveStreamDomainRestrictionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateLiveStreamDomainRestrictionsResponse> {
+    return unwrapAsync(livePlaybackUpdateDomainRestrictions(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update user-agent restrictions for a live stream playback ID
+   *
+   * @remarks
+   * This endpoint allows updating user-agent restrictions for a specific playback ID associated with a live stream.
+   * It can be used to allow or deny specific user-agents during playback request evaluation.
+   *
+   * **How it works:**
+   * 1. Make a `PATCH` request to this endpoint with your desired user-agent access configuration.
+   * 2. Specify a default policy (`allow` or `deny`) and provide specific `allow` or `deny` lists.
+   * 3. Use this to restrict access to specific browsers, devices, or bots.
+   *
+   * **Example:**
+   * A developer may configure a playback ID to deny access from known scraping user-agents while allowing all others by default.
+   */
+  async updateUserAgentRestrictions(
+    request: operations.UpdateLiveStreamUserAgentRestrictionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateLiveStreamUserAgentRestrictionsResponse> {
+    return unwrapAsync(livePlaybackUpdateUserAgentRestrictions(
       this,
       request,
       options,

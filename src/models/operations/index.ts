@@ -65,6 +65,8 @@ export * from "./updatedmp4support.js";
 export * from "./updatedomainrestrictions.js";
 export * from "./updatedsourceaccess.js";
 export * from "./updatelivestream.js";
+export * from "./updatelivestreamdomainrestrictions.js";
+export * from "./updatelivestreamuseragentrestrictions.js";
 export * from "./updatemediachapters.js";
 export * from "./updatemediamoderation.js";
 export * from "./updatemedianamedentities.js";
