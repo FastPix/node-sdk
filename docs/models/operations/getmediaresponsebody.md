@@ -59,7 +59,7 @@ let value: GetMediaResponseBody = {
     ],
     isAudioOnly: false,
     subtitleAvailable: true,
-    duration: "00:00:10",
+    duration: 145.82,
     aspectRatio: "16:9",
     createdAt: new Date("2025-01-09T06:44:44.617138Z"),
     updatedAt: new Date("2025-01-09T06:44:53.742648Z"),

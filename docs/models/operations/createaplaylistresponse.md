@@ -29,7 +29,7 @@ const value: models.PlaylistCreatedResponse = {
       {
         createdAt: new Date("2024-11-12T05:58:38.000708Z"),
         creatorId: "your-creator-id",
-        duration: "00:00:10",
+        duration: 145.82,
         id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
@@ -40,7 +40,7 @@ const value: models.PlaylistCreatedResponse = {
       {
         createdAt: new Date("2024-12-05T07:23:18.000108Z"),
         creatorId: "your-creator-id",
-        duration: "00:00:10",
+        duration: 145.82,
         id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
@@ -51,7 +51,7 @@ const value: models.PlaylistCreatedResponse = {
       {
         createdAt: new Date("2024-12-05T07:21:15.000508Z"),
         creatorId: "your-creator-id",
-        duration: "00:00:10",
+        duration: 145.82,
         id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",

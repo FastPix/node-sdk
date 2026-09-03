@@ -47,9 +47,9 @@ export type MediaClipResponseData = {
    */
   id?: string | undefined;
   /**
-   * Duration of the media in HH:MM:SS format.
+   * Duration of the media in seconds.
    */
-  duration?: string | undefined;
+  duration?: number | undefined;
   /**
    * The current processing status of the media.
    */
@@ -120,7 +120,7 @@ export const MediaClipResponseData$inboundSchema: z.ZodMiniType<
   unknown
 > = z.object({
   id: types.optional(types.string()),
-  duration: types.optional(types.string()),
+  duration: types.optional(types.number()),
   status: types.optional(MediaClipResponseStatus$inboundSchema),
   thumbnail: types.optional(types.string()),
   createdAt: types.optional(types.date()),

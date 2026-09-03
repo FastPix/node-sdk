@@ -20,9 +20,9 @@ export type PlaylistByIdResponseMediaListItem = {
    */
   creatorId?: string | undefined;
   /**
-   * Duration of the media in hh:mm:ss format.
+   * Duration of the media in seconds.
    */
-  duration?: string | undefined;
+  duration?: number | undefined;
   /**
    * unique id of the particular media.
    */
@@ -52,7 +52,7 @@ export const PlaylistByIdResponseMediaListItem$inboundSchema: z.ZodMiniType<
 > = z.object({
   createdAt: types.optional(types.date()),
   creatorId: types.optional(types.string()),
-  duration: types.optional(types.string()),
+  duration: types.optional(types.number()),
   id: types.optional(types.string()),
   sourceResolution: types.optional(types.string()),
   status: types.optional(types.string()),

@@ -16,7 +16,7 @@ const value: models.PlaylistByIdResponseDataManual = {
     {
       createdAt: new Date("2025-03-21T05:58:38.000708Z"),
       creatorId: "your-creator-id",
-      duration: "00:00:10",
+      duration: 145.82,
       id: "your-media-id",
       sourceResolution: "1080p",
       status: "Ready",
@@ -56,7 +56,7 @@ const value: models.PlaylistByIdResponseDataSmart = {
     {
       createdAt: new Date("2025-03-21T05:58:38.000708Z"),
       creatorId: "your-creator-id",
-      duration: "00:00:10",
+      duration: 145.82,
       id: "your-media-id",
       sourceResolution: "1080p",
       status: "Ready",

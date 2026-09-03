@@ -273,9 +273,9 @@ export type GetAllMediaResponse = {
    */
   subtitleAvailable?: boolean | null | undefined;
   /**
-   * The length of the media in seconds, with a maximum allowed duration of 12 hours per individual media.
+   * Duration of the media in seconds.
    */
-  duration?: string | undefined;
+  duration?: number | undefined;
   /**
    * Frame rate quantifies the speed at which frames are displayed per second. It represents the range of frames available for a specific track. The indeterminable frame rate of the input file is indicated by a value of -1.
    */
@@ -415,7 +415,7 @@ export const GetAllMediaResponse$inboundSchema: z.ZodMiniType<
   moderation: types.optional(AiResponseRecord$inboundSchema),
   isAudioOnly: z.optional(z.nullable(types.boolean())),
   subtitleAvailable: z.optional(z.nullable(types.boolean())),
-  duration: types.optional(types.string()),
+  duration: types.optional(types.number()),
   frameRate: z.optional(z.nullable(types.string())),
   aspectRatio: z.optional(z.nullable(types.string())),
   createdAt: types.optional(types.date()),

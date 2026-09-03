@@ -50,7 +50,7 @@ const value: operations.UpdatedSourceAccessResponseBody = {
     generatedSubtitles: [],
     isAudioOnly: false,
     subtitleAvailable: false,
-    duration: "00:00:10",
+    duration: 145.82,
     aspectRatio: "16:9",
     createdAt: new Date("2024-12-06T03:47:26.489888Z"),
     updatedAt: new Date("2024-12-06T03:47:47.593400Z"),
