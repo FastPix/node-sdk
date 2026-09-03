@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0]
+
+### Breaking
+
+- Media `duration` is now a float (seconds) instead of an `"HH:MM:SS"` string,
+  matching the updated API. Affects the media response models returned by
+  `media.list`, `manageVideos.get`, `media.getClips`, `liveStreams.listClips`,
+  `manageVideos.update`, `media.updateSourceAccess`, `manageVideos.updateMp4Support`,
+  and the `mediaList` items in every playlist response.
+
+### Added
+
+- `enableRecording` on live stream creation (`inputMediaSettings`); when omitted
+  the API default (recording on) applies.
+- `accessRestrictions` (domain and user-agent allow/deny policies) on live playback
+  ID create/get and live stream `playbackSettings`.
+- `livePlayback.updateDomainRestrictions` for
+  `PATCH /live/streams/{streamId}/playback-ids/{playbackId}/domains`.
+- `livePlayback.updateUserAgentRestrictions` for
+  `PATCH /live/streams/{streamId}/playback-ids/{playbackId}/user-agents`.
+
+### Fixed
+
+- Live validation harness now captures raw responses from the `api.fastpix.co`
+  (dev) host, not only `.com`/`.io`.
+
 ## [2.0.11]
 
 ### Fixed
