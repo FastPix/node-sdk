@@ -59,3 +59,33 @@ describe("media duration is a number of seconds", () => {
     });
   }
 });
+
+import {
+  InputMediaSettings$outboundSchema,
+  CreateLiveStreamRequest$outboundSchema,
+} from "../src/models/createlivestreamrequest.js";
+
+describe("enableRecording on live stream input settings", () => {
+  it("omits enableRecording when not set", () => {
+    const out = InputMediaSettings$outboundSchema.parse({});
+    expect("enableRecording" in out).toBe(false);
+  });
+
+  it("serializes enableRecording false", () => {
+    const out = InputMediaSettings$outboundSchema.parse({ enableRecording: false });
+    expect(out.enableRecording).toBe(false);
+  });
+
+  it("round-trips enableRecording true", () => {
+    const out = InputMediaSettings$outboundSchema.parse({ enableRecording: true });
+    expect(out.enableRecording).toBe(true);
+  });
+
+  it("carries inputMediaSettings.enableRecording through the stream request", () => {
+    const out = CreateLiveStreamRequest$outboundSchema.parse({
+      playbackSettings: { accessPolicy: "public" },
+      inputMediaSettings: { enableRecording: false },
+    });
+    expect(out.inputMediaSettings.enableRecording).toBe(false);
+  });
+});
