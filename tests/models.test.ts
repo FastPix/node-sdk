@@ -89,3 +89,68 @@ describe("enableRecording on live stream input settings", () => {
     expect(out.inputMediaSettings.enableRecording).toBe(false);
   });
 });
+
+import { PlaybackIdRequest$outboundSchema } from "../src/models/playbackidrequest.js";
+import { PlaybackSettings$outboundSchema } from "../src/models/playbacksettings.js";
+import { PlaybackIdSuccessResponseData$inboundSchema } from "../src/models/playbackidsuccessresponse.js";
+import { PlaybackIdResponse$inboundSchema } from "../src/models/playbackidresponse.js";
+
+const accessRestrictionsExample = {
+  domains: { defaultPolicy: "deny", allow: ["example.com"], deny: [] },
+  userAgents: { defaultPolicy: "allow", allow: [], deny: [] },
+};
+
+describe("accessRestrictions on live playback models (outbound)", () => {
+  it("serializes accessRestrictions with exact wire aliases on playback-ID request", () => {
+    const out = PlaybackIdRequest$outboundSchema.parse({
+      accessPolicy: "public",
+      accessRestrictions: accessRestrictionsExample,
+    });
+    expect(out.accessRestrictions.domains.defaultPolicy).toBe("deny");
+    expect(out.accessRestrictions.domains.allow).toEqual(["example.com"]);
+    expect(out.accessRestrictions.userAgents.defaultPolicy).toBe("allow");
+    const json = JSON.parse(JSON.stringify(out));
+    expect(json.accessRestrictions.userAgents).toBeDefined();
+  });
+
+  it("serializes accessRestrictions on playback settings", () => {
+    const out = PlaybackSettings$outboundSchema.parse({
+      accessPolicy: "public",
+      accessRestrictions: accessRestrictionsExample,
+    });
+    expect(out.accessRestrictions.domains.allow).toEqual(["example.com"]);
+  });
+
+  it("omits accessRestrictions when unset", () => {
+    const out = PlaybackIdRequest$outboundSchema.parse({ accessPolicy: "public" });
+    expect("accessRestrictions" in out).toBe(false);
+  });
+});
+
+describe("accessRestrictions on live playback models (inbound)", () => {
+  it("parses accessRestrictions on playback-ID success response data", () => {
+    const r = PlaybackIdSuccessResponseData$inboundSchema.safeParse({
+      id: "p1",
+      accessPolicy: "public",
+      accessRestrictions: accessRestrictionsExample,
+    });
+    expect(r.success).toBe(true);
+    expect(r.data.accessRestrictions.domains.defaultPolicy).toBe("deny");
+    expect(r.data.accessRestrictions.userAgents.defaultPolicy).toBe("allow");
+  });
+
+  it("parses accessRestrictions on playback-ID response item", () => {
+    const r = PlaybackIdResponse$inboundSchema.safeParse({
+      id: "p1",
+      accessRestrictions: accessRestrictionsExample,
+    });
+    expect(r.success).toBe(true);
+    expect(r.data.accessRestrictions.domains.allow).toEqual(["example.com"]);
+  });
+
+  it("leaves accessRestrictions undefined when absent", () => {
+    const r = PlaybackIdSuccessResponseData$inboundSchema.safeParse({ id: "p1" });
+    expect(r.success).toBe(true);
+    expect(r.data.accessRestrictions).toBeUndefined();
+  });
+});

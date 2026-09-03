@@ -5,6 +5,7 @@
  */
 
 export * from "./accesspolicy.js";
+export * from "./accessrestrictions.js";
 export * from "./addtrackrequest.js";
 export * from "./addtrackresponse.js";
 export * from "./airesponserecord.js";
