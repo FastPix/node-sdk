@@ -603,6 +603,8 @@ For detailed documentation, see [FastPix Live Stream Overview](https://fastpix.c
 - [Create Playback ID](docs/sdks/liveplayback/README.md#createid) - Generate secure live playback access
 - [Delete Playback ID](docs/sdks/liveplayback/README.md#delete) - Revoke live playback access
 - [Get Playback ID](docs/sdks/liveplayback/README.md#get) - Retrieve live playback configuration
+- [Update Domain Restrictions](docs/sdks/liveplayback/README.md#updatedomainrestrictions) - Update domain restrictions for a live playback ID
+- [Update User-Agent Restrictions](docs/sdks/liveplayback/README.md#updateuseragentrestrictions) - Update user-agent restrictions for a live playback ID
 
 #### Simulcast Stream
 - [Create Simulcast](docs/sdks/simulcasts/README.md#create) - Set up multi-platform streaming
@@ -693,6 +695,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`livePlaybackCreateId`](docs/sdks/liveplayback/README.md#createid) - Create a playbackId
 - [`livePlaybackDelete`](docs/sdks/liveplayback/README.md#delete) - Delete a playbackId
 - [`livePlaybackGet`](docs/sdks/liveplayback/README.md#get) - Get playbackId details
+- [`livePlaybackUpdateDomainRestrictions`](docs/sdks/liveplayback/README.md#updatedomainrestrictions) - Update domain restrictions for a live stream playback ID
+- [`livePlaybackUpdateUserAgentRestrictions`](docs/sdks/liveplayback/README.md#updateuseragentrestrictions) - Update user-agent restrictions for a live stream playback ID
 - [`liveStreamsCreate`](docs/sdks/livestreams/README.md#create) - Create a new stream
 - [`liveStreamsDelete`](docs/sdks/livestreams/README.md#delete) - Delete a stream
 - [`liveStreamsEnable`](docs/sdks/livestreams/README.md#enable) - Enable a stream
