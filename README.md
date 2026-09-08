@@ -16,6 +16,18 @@ The FastPix Node.js SDK is a type-safe Node.js client for the FastPix video API.
 
 📖 **Docs:** https://fastpix.com/docs/language-sdks/nodejs-sdk &nbsp;·&nbsp; 🚀 **Free account:** https://dashboard.fastpix.com
 
+## Jump to
+
+Skip straight to a section without scrolling:
+
+| Get started | Reference | Help & more |
+|---|---|---|
+| [Start here](#start-here) | [Available resources & operations](#available-resources-and-operations) | [FAQ](#faq) |
+| [Before you begin](#before-you-begin) | [Standalone functions](#standalone-functions) | [Webhooks](#webhooks) |
+| [Install the SDK](#3-install-the-sdk) | [Error handling](#error-handling) | [Which SDK?](#which-fastpix-sdk-should-i-use) |
+| [Make your first API request](#7-make-your-first-api-request) | [Server selection](#server-selection) | [Development](#development) |
+| [Retrieve the media asset](#9-retrieve-the-media-asset) | [Retries](#retries) | [Examples](https://github.com/FastPix/node-sdk/tree/main/examples) |
+
 <br />
 
 ## Start here
@@ -532,6 +544,8 @@ Your completed workflow is:
 
 You are now ready to use the returned `media_id` with other FastPix API operations.
 
+> **More examples:** For runnable, end-to-end flows (direct upload, live streaming, playlists, webhooks, analytics, and more), see the [`examples/`](https://github.com/FastPix/node-sdk/tree/main/examples) directory in the repo.
+
 ## Available Resources and Operations
 
 Comprehensive Node.js SDK for FastPix platform integration with full API coverage.
@@ -757,6 +771,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+
 ```typescript
 import { Fastpix } from "@fastpix/fastpix-node";
 
@@ -798,6 +813,7 @@ run();
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+
 ```typescript
 import { Fastpix } from "@fastpix/fastpix-node";
 
@@ -852,6 +868,7 @@ run();
 | `error.rawResponse` | `Response` | Raw HTTP response                                      |
 
 ### Example
+
 ```typescript
 import { Fastpix } from "@fastpix/fastpix-node";
 import * as errors from "@fastpix/fastpix-node/models/errors";
@@ -892,6 +909,7 @@ run();
 ```
 
 ### Error Classes
+
 **Primary error:**
 * [`FastpixError`](./src/models/errors/fastpixerror.ts): The base class for HTTP error responses.
 
@@ -906,7 +924,6 @@ run();
 * [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
 * [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
 
-
 **Inherit from [`FastpixError`](./src/models/errors/fastpixerror.ts)**:
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
@@ -919,6 +936,7 @@ run();
 ### Override Server URL Per-Client
 
 The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+
 ```typescript
 import { Fastpix } from "@fastpix/fastpix-node";
 
@@ -1019,6 +1037,7 @@ You can also enable a default debug logger by setting an environment variable `F
 <!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future fastpix SDK Sections -->
+
 ## Webhooks
 
 FastPix signs every webhook delivery. The SDK's `webhooks` resource verifies that signature and returns the parsed, trusted event in **one call** — so you never act on a forged payload.
@@ -1075,6 +1094,7 @@ app.post(
         default:
           console.log(`unhandled: ${event.type}`);
       }
+
       return res.status(202).send("accepted");
     } catch (err) {
       if (err instanceof WebhookVerificationError) {
