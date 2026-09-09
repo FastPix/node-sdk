@@ -925,59 +925,6 @@ function buildReportLines(results: EndpointResult[], summary: ReportSummary): st
   return lines;
 }
 
-function buildConsolidatedLines(results: EndpointResult[], summary: ReportSummary): string[] {
-  const { total, passed, failed, skipped, generatedAt } = summary;
-  const consolidated: string[] = [];
-  consolidated.push(
-    `Last generated: ${generatedAt}`,
-    "",
-    `- **Total GET endpoints**: ${total}`,
-    `- **PASS**: ${passed}`,
-    `- **FAIL**: ${failed}`,
-    `- **SKIP**: ${skipped}`,
-    "",
-    "| Endpoint | OperationId | OpenAPI valid | SDK parse | Missing in SDK (present in API) | Missing in API (present in SDK) | Empty arrays omitted by SDK | Status |",
-    "|---|---|---:|---:|---|---|---|---|",
-  );
-  for (const r of results) consolidated.push(consolidatedTableRow(r));
-  consolidated.push("", "#### Missing fields (full lists)", "");
-  for (const r of results) {
-    consolidated.push(
-      `- **${r.operationId}** (\`${r.endpoint}\`)`,
-      `  - **Missing in SDK (present in API)**: ${fmtPathList(r.missingInSDK)}`,
-      `  - **Missing in API (present in SDK)**: ${fmtPathList(r.missingInAPI)}`,
-      `  - **Empty arrays omitted by SDK**: ${fmtPathList(r.emptyArraysOmittedInSDK)}`,
-      `  - **Empty arrays omitted by API**: ${fmtPathList(r.emptyArraysOmittedInAPI)}`,
-    );
-  }
-  consolidated.push("", `Full details: \`tests/GET_ENDPOINTS_OPENAPI_RESPONSE_VALIDATION_REPORT.md\``);
-  return consolidated;
-}
-
-// Also update tests/README.md with the consolidated report section so it always stays in sync.
-function updateReadmeConsolidated(
-  readmePath: string,
-  results: EndpointResult[],
-  summary: ReportSummary,
-): void {
-  try {
-    if (!existsSync(readmePath)) return;
-    const begin = "<!-- BEGIN GET_ENDPOINTS_CONSOLIDATED -->";
-    const end = "<!-- END GET_ENDPOINTS_CONSOLIDATED -->";
-
-    const consolidated = buildConsolidatedLines(results, summary);
-
-    const readme = readFileSync(readmePath, "utf-8");
-    if (readme.includes(begin) && readme.includes(end)) {
-      const block = `${begin}\n${consolidated.join("\n")}\n${end}`;
-      const updated = readme.replace(new RegExp(String.raw`${begin}[\s\S]*?${end}`), block);
-      writeFileSync(readmePath, updated);
-    }
-  } catch {
-    // ignore README update failures
-  }
-}
-
 function writeReport(results: EndpointResult[]) {
   const summary: ReportSummary = {
     total: results.length,
@@ -988,12 +935,9 @@ function writeReport(results: EndpointResult[]) {
   };
 
   const reportPath = join(__dirname, "GET_ENDPOINTS_OPENAPI_RESPONSE_VALIDATION_REPORT.md");
-  const readmePath = join(__dirname, "README.md");
 
   writeFileSync(reportPath, buildReportLines(results, summary).join("\n"));
   writeFixSuggestions(results);
-
-  updateReadmeConsolidated(readmePath, results, summary);
 
   // eslint-disable-next-line no-console
   console.log(`Report generated: ${reportPath}`);

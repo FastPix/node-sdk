@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Update user-agent restrictions for a playback ID
  *
  * @remarks
- * This endpoint allows updating user-agent restrictions for a specific playback ID associated with a media asset.
+ * This endpoint allows updating user-agent restrictions for a specific playback ID associated with a live stream.
  * It can be used to allow or deny specific user-agents during playback request evaluation.
  *
  * **How it works:**

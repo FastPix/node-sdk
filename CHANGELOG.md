@@ -25,8 +25,20 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Live validation harness now captures raw responses from the `api.fastpix.co`
-  (dev) host, not only `.com`/`.io`.
+- Live validation harness now captures raw responses from the dev API host,
+  not only the `.com`/`.io` hosts.
+
+### Tests & tooling
+
+- Added an offline model-contract test suite (vitest, no credentials): media
+  `duration`, `enableRecording`, and `accessRestrictions` serialization, and
+  mocked-transport tests for the two new restriction endpoints.
+- Added a full API-surface smoke test asserting every resource method exists.
+- Added a return-type contract test asserting each resource method's declared
+  return type matches the envelope class it deserializes.
+- Added an async error-path test asserting 4XX/5XX reject with the typed error.
+- The GET validation harness no longer rewrites results into `tests/README.md`.
+- `.gitignore` now ignores the OpenAPI snapshot narrowly (`/openapi.yaml`).
 
 ## [2.0.11]
 

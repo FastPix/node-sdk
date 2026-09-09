@@ -31,13 +31,13 @@ import { Result } from "../types/fp.js";
  * Update domain restrictions for a playback ID
  *
  * @remarks
- * This endpoint updates domain-level restrictions for a specific playback ID associated with a media asset.
+ * This endpoint updates domain-level restrictions for a specific playback ID associated with a live stream.
  * It allows you to restrict playback to specific domains or block known unauthorized domains.
  *
  * **How it works:**
  * 1. Make a `PATCH` request to this endpoint with your desired domain access configuration.
  * 2. Set a default policy (`allow` or `deny`) and specify domain names in the `allow` or `deny` lists.
- * 3. This is commonly used to restrict video playback to your website or approved client domains.
+ * 3. This is commonly used to restrict live playback to your website or approved client domains.
  *
  * **Example:**
  * A streaming service can allow playback only from `example.com` and deny all others by setting: `"defaultPolicy": "deny"` and `"allow": ["example.com"]`.
