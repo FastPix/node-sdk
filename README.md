@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@fastpix/fastpix-node)](https://www.npmjs.com/package/@fastpix/fastpix-node)
 [![npm downloads](https://img.shields.io/npm/dm/@fastpix/fastpix-node)](https://www.npmjs.com/package/@fastpix/fastpix-node)
-[![license](https://img.shields.io/npm/l/@fastpix/fastpix-node)](https://github.com/FastPix/node-sdk/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@fastpix/fastpix-node)](LICENSE)
 [![Node.js 18+](https://img.shields.io/badge/node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
 A robust, type-safe Node.js SDK designed for seamless integration with the FastPix API platform.
