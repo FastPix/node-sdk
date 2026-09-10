@@ -9,6 +9,10 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
+import {
+  PlaybackIdAccessRestrictions,
+  PlaybackIdAccessRestrictions$inboundSchema,
+} from "./playbackid.js";
 
 export type PlaybackIdSuccessResponseData = {
   /**
@@ -19,6 +23,10 @@ export type PlaybackIdSuccessResponseData = {
    * Determines if access to the streamed content is kept private or available to all.
    */
   accessPolicy?: string | undefined;
+  /**
+   * Access control restrictions applied to the playback ID.
+   */
+  accessRestrictions?: PlaybackIdAccessRestrictions | undefined;
 };
 
 /**
@@ -39,6 +47,9 @@ export const PlaybackIdSuccessResponseData$inboundSchema: z.ZodMiniType<
 > = z.object({
   id: types.optional(types.string()),
   accessPolicy: types.optional(types.string()),
+  accessRestrictions: types.optional(
+    z.lazy(() => PlaybackIdAccessRestrictions$inboundSchema),
+  ),
 });
 
 export function playbackIdSuccessResponseDataFromJSON(

@@ -142,11 +142,17 @@ const fastpix = new Fastpix({
 
 async function run() {
   const result = await fastpix.liveStreams.create({
-    playbackSettings: {},
+    playbackSettings: {
+      accessRestrictions: {
+        domains: { defaultPolicy: "deny", allow: ["example.com"], deny: [] },
+        userAgents: { defaultPolicy: "allow", allow: [], deny: [] },
+      },
+    },
     inputMediaSettings: {
       metadata: {
         "livestream_name": "fastpix_livestream",
       },
+      enableRecording: true,
     },
   });
 
@@ -175,11 +181,17 @@ const fastpix = new FastpixCore({
 
 async function run() {
   const res = await liveStreamsCreate(fastpix, {
-    playbackSettings: {},
+    playbackSettings: {
+      accessRestrictions: {
+        domains: { defaultPolicy: "deny", allow: ["example.com"], deny: [] },
+        userAgents: { defaultPolicy: "allow", allow: [], deny: [] },
+      },
+    },
     inputMediaSettings: {
       metadata: {
         "livestream_name": "fastpix_livestream",
       },
+      enableRecording: true,
     },
   });
   if (res.ok) {

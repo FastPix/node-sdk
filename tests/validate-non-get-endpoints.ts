@@ -170,6 +170,10 @@ function getSDKInvoker(operationId: string): SDKInvoker | null {
       c.playback.updateDomainRestrictions(req),
     "update-user-agent-restrictions": (c, req) =>
       c.playback.updateUserAgentRestrictions(req),
+    "update-live-stream-domain-restrictions": (c, req) =>
+      c.livePlayback.updateDomainRestrictions(req),
+    "update-live-stream-user-agent-restrictions": (c, req) =>
+      c.livePlayback.updateUserAgentRestrictions(req),
 
     // Playlists
     "create-a-playlist": (c, req) => c.playlist.create(req),
@@ -263,8 +267,8 @@ function readFixtures(): Fixture {
 
 function resolveSpecPath(): string {
   const candidates = [
-    join(__dirname, "../fixed.yaml"),
-    join(__dirname, "../../fixed.yaml"),
+    join(__dirname, "../openapi.yaml"),
+    join(__dirname, "../../openapi.yaml"),
   ];
   for (const p of candidates) {
     if (existsSync(p)) return p;

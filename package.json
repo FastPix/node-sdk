@@ -1,6 +1,6 @@
 {
   "name": "@fastpix/fastpix-node",
-  "version": "2.0.11",
+  "version": "2.1.0",
   "author": {
     "name": "FastPix-Dev",
     "email": "devs@fastpix.com",
@@ -26,6 +26,7 @@
   "sideEffects": false,
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
+    "test": "vitest run",
     "validate:get-endpoints": "tsx tests/validate-get-endpoints.ts",
     "validate:non-get-endpoints": "tsx tests/validate-non-get-endpoints.ts",
     "validate:non-get-lifecycle": "tsx tests/validate-non-get-lifecycle.ts",
@@ -46,7 +47,8 @@
     "tshy": "^2.0.0",
     "tsx": "^4.21.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.26.0"
+    "typescript-eslint": "^8.26.0",
+    "vitest": "^2.1.9"
   },
   "dependencies": {
     "zod": "^3.25.65 || >=4.0.0 <4.4.0"

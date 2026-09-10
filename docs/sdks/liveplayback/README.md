@@ -7,6 +7,8 @@
 * [createId](#createid) - Create a playbackId
 * [delete](#delete) - Delete a playbackId
 * [get](#get) - Get playbackId details
+* [updateDomainRestrictions](#updatedomainrestrictions) - Update domain restrictions for a live stream playback ID
+* [updateUserAgentRestrictions](#updateuseragentrestrictions) - Update user-agent restrictions for a live stream playback ID
 
 ## createId
 
@@ -34,7 +36,13 @@ const fastpix = new Fastpix({
 async function run() {
   const result = await fastpix.livePlayback.createId({
     streamId: "your-stream-id",
-    body: {},
+    body: {
+      accessPolicy: "public",
+      accessRestrictions: {
+        domains: { defaultPolicy: "deny", allow: ["example.com"], deny: [] },
+        userAgents: { defaultPolicy: "allow", allow: [], deny: [] },
+      },
+    },
   });
 
   console.log(JSON.stringify(result, null, 2));
@@ -63,7 +71,13 @@ const fastpix = new FastpixCore({
 async function run() {
   const res = await livePlaybackCreateId(fastpix, {
     streamId: "your-stream-id",
-    body: {},
+    body: {
+      accessPolicy: "public",
+      accessRestrictions: {
+        domains: { defaultPolicy: "deny", allow: ["example.com"], deny: [] },
+        userAgents: { defaultPolicy: "allow", allow: [], deny: [] },
+      },
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -256,6 +270,221 @@ run();
 ### Response
 
 **Promise\<[operations.GetLiveStreamPlaybackIdResponse](../../models/operations/getlivestreamplaybackidresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
+## updateDomainRestrictions
+
+This endpoint updates domain-level restrictions for a specific playback ID associated with a live stream.
+It allows you to restrict playback to specific domains or block known unauthorized domains.
+
+**How it works:**
+1. Make a `PATCH` request to this endpoint with your desired domain access configuration.
+2. Set a default policy (`allow` or `deny`) and specify domain names in the `allow` or `deny` lists.
+3. This is commonly used to restrict live playback to your website or approved client domains.
+
+**Example:**
+A streaming service can allow playback only from `example.com` and deny all others by setting: `"defaultPolicy": "deny"` and `"allow": ["example.com"]`.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="update-live-stream-domain-restrictions" method="patch" path="/live/streams/{streamId}/playback-ids/{playbackId}/domains" -->
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const fastpix = new Fastpix({
+  security: {
+    username: "your-access-token",
+    password: "your-secret-key",
+  },
+});
+
+async function run() {
+  const result = await fastpix.livePlayback.updateDomainRestrictions({
+    streamId: "your-stream-id",
+    playbackId: "your-playback-id",
+    body: {
+      allow: [
+        "yourdomain.com",
+        "sampledomain.com",
+      ],
+      deny: [
+        "yourworkdomain.com",
+      ],
+    },
+  });
+
+  console.log(JSON.stringify(result, null, 2));
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FastpixCore } from "@fastpix/fastpix-node/core.js";
+import { livePlaybackUpdateDomainRestrictions } from "@fastpix/fastpix-node/funcs/livePlaybackUpdateDomainRestrictions.js";
+
+// Use `FastpixCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const fastpix = new FastpixCore({
+  security: {
+    username: "your-access-token",
+    password: "your-secret-key",
+  },
+});
+
+async function run() {
+  const res = await livePlaybackUpdateDomainRestrictions(fastpix, {
+    streamId: "your-stream-id",
+    playbackId: "your-playback-id",
+    body: {
+      allow: [
+        "yourdomain.com",
+        "sampledomain.com",
+      ],
+      deny: [
+        "yourworkdomain.com",
+      ],
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(JSON.stringify(result, null, 2));
+  } else {
+    console.log("livePlaybackUpdateDomainRestrictions failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateLiveStreamDomainRestrictionsRequest](../../models/operations/updatelivestreamdomainrestrictionsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdateLiveStreamDomainRestrictionsResponse](../../models/operations/updatelivestreamdomainrestrictionsresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.FastpixDefaultError | 4XX, 5XX                   | \*/\*                      |
+
+## updateUserAgentRestrictions
+
+This endpoint allows updating user-agent restrictions for a specific playback ID associated with a live stream. 
+It can be used to allow or deny specific user-agents during playback request evaluation.
+
+**How it works:**
+1. Make a `PATCH` request to this endpoint with your desired user-agent access configuration.
+2. Specify a default policy (`allow` or `deny`) and provide specific `allow` or `deny` lists.
+3. Use this to restrict access to specific browsers, devices, or bots.
+
+**Example:**
+A developer may configure a playback ID to deny access from known scraping user-agents while allowing all others by default.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="update-live-stream-user-agent-restrictions" method="patch" path="/live/streams/{streamId}/playback-ids/{playbackId}/user-agents" -->
+```typescript
+import { Fastpix } from "@fastpix/fastpix-node";
+
+const fastpix = new Fastpix({
+  security: {
+    username: "your-access-token",
+    password: "your-secret-key",
+  },
+});
+
+async function run() {
+  const result = await fastpix.livePlayback.updateUserAgentRestrictions({
+    streamId: "your-stream-id",
+    playbackId: "your-playback-id",
+    body: {
+      allow: [
+        "Mozilla/55.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+      ],
+      deny: [
+        "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/53745.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36",
+      ],
+    },
+  });
+
+  console.log(JSON.stringify(result, null, 2));
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FastpixCore } from "@fastpix/fastpix-node/core.js";
+import { livePlaybackUpdateUserAgentRestrictions } from "@fastpix/fastpix-node/funcs/livePlaybackUpdateUserAgentRestrictions.js";
+
+// Use `FastpixCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const fastpix = new FastpixCore({
+  security: {
+    username: "your-access-token",
+    password: "your-secret-key",
+  },
+});
+
+async function run() {
+  const res = await livePlaybackUpdateUserAgentRestrictions(fastpix, {
+    streamId: "your-stream-id",
+    playbackId: "your-playback-id",
+    body: {
+      allow: [
+        "Mozilla/55.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+      ],
+      deny: [
+        "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/53745.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36",
+      ],
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(JSON.stringify(result, null, 2));
+  } else {
+    console.log("livePlaybackUpdateUserAgentRestrictions failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateLiveStreamUserAgentRestrictionsRequest](../../models/operations/updatelivestreamuseragentrestrictionsrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdateLiveStreamUserAgentRestrictionsResponse](../../models/operations/updatelivestreamuseragentrestrictionsresponse.md)\>**
 
 ### Errors
 

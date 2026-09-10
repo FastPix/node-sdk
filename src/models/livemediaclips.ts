@@ -198,9 +198,9 @@ export type LiveMediaClips = {
    */
   subtitleAvailable?: boolean | null | undefined;
   /**
-   * The length of the media in seconds, with a maximum allowed duration of 12 hours per individual media.
+   * Duration of the media in seconds.
    */
-  duration?: string | undefined;
+  duration?: number | undefined;
   /**
    * The aspect ratio of a video is a value that describes the relative shape of a video based on its width and height.
    */
@@ -317,7 +317,7 @@ export const LiveMediaClips$inboundSchema: z.ZodMiniType<
   ),
   isAudioOnly: z.optional(z.nullable(types.boolean())),
   subtitleAvailable: z.optional(z.nullable(types.boolean())),
-  duration: types.optional(types.string()),
+  duration: types.optional(types.number()),
   aspectRatio: z.optional(z.nullable(types.string())),
   createdAt: types.optional(types.date()),
   updatedAt: types.optional(types.date()),

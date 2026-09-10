@@ -247,9 +247,9 @@ export type UpdateMedia = {
    */
   subtitleAvailable?: boolean | undefined;
   /**
-   * The length of the media in seconds, with a maximum allowed duration of 12 hours per individual media.
+   * Duration of the media in seconds.
    */
-  duration?: string | undefined;
+  duration?: number | undefined;
   /**
    * The aspect ratio of a video is a value that describes the relative shape of a video based on its width and height.
    */
@@ -381,7 +381,7 @@ export const UpdateMedia$inboundSchema: z.ZodMiniType<UpdateMedia, unknown> = z
     moderation: types.optional(AiResponseRecord$inboundSchema),
     isAudioOnly: z.optional(z.nullable(types.boolean())),
     subtitleAvailable: types.optional(types.boolean()),
-    duration: types.optional(types.string()),
+    duration: types.optional(types.number()),
     aspectRatio: types.optional(types.string()),
     createdAt: types.optional(types.date()),
     updatedAt: types.optional(types.date()),

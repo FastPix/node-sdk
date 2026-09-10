@@ -10,7 +10,7 @@ let value: MediaClipResponse = {
   data: [
     {
       id: "your-media-id",
-      duration: "00:00:13",
+      duration: 145.82,
       status: "Ready",
       thumbnail:
         "your-thumbnail-url",

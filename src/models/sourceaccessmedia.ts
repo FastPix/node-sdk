@@ -251,9 +251,9 @@ export type SourceAccessMedia = {
    */
   subtitleAvailable?: boolean | null | undefined;
   /**
-   * The length of the media in seconds, with a maximum allowed duration of 12 hours per individual media.
+   * Duration of the media in seconds.
    */
-  duration?: string | undefined;
+  duration?: number | undefined;
   /**
    * The aspect ratio of a video describes its shape based on the relationship between its width and height.
    */
@@ -387,7 +387,7 @@ export const SourceAccessMedia$inboundSchema: z.ZodMiniType<
   moderation: types.optional(AiResponseRecord$inboundSchema),
   isAudioOnly: z.optional(z.nullable(types.boolean())),
   subtitleAvailable: z.optional(z.nullable(types.boolean())),
-  duration: types.optional(types.string()),
+  duration: types.optional(types.number()),
   aspectRatio: z.optional(z.nullable(types.string())),
   createdAt: types.optional(types.date()),
   updatedAt: types.optional(types.date()),

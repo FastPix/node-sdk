@@ -9,6 +9,10 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
+import {
+  PlaybackIdAccessRestrictions,
+  PlaybackIdAccessRestrictions$inboundSchema,
+} from "./playbackid.js";
 
 /**
  * A collection of Playback ID objects utilized for crafting HLS playback urls.
@@ -22,6 +26,10 @@ export type PlaybackIdResponse = {
    * Determines if access to the streamed content is kept private or available to all.
    */
   accessPolicy?: string | undefined;
+  /**
+   * Access control restrictions applied to the playback ID.
+   */
+  accessRestrictions?: PlaybackIdAccessRestrictions | undefined;
 };
 
 /** @internal */
@@ -31,6 +39,9 @@ export const PlaybackIdResponse$inboundSchema: z.ZodMiniType<
 > = z.object({
   id: types.optional(types.string()),
   accessPolicy: types.optional(types.string()),
+  accessRestrictions: types.optional(
+    z.lazy(() => PlaybackIdAccessRestrictions$inboundSchema),
+  ),
 });
 
 export function playbackIdResponseFromJSON(

@@ -28,7 +28,7 @@ let value: PlaylistByIdResponse = {
       {
         createdAt: new Date("2025-05-27T09:37:52.445936Z"),
         creatorId: "your-creator-id",
-        duration: "00:00:10",
+        duration: 145.82,
         id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
@@ -39,7 +39,7 @@ let value: PlaylistByIdResponse = {
       {
         createdAt: new Date("2025-04-04T13:26:23.507284Z"),
         creatorId: "your-creator-id",
-        duration: "00:00:10",
+        duration: 145.82,
         id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",
@@ -50,7 +50,7 @@ let value: PlaylistByIdResponse = {
       {
         createdAt: new Date("2025-04-04T13:26:12.552840Z"),
         creatorId: "your-creator-id",
-        duration: "00:00:10",
+        duration: 145.82,
         id: "your-media-id",
         sourceResolution: "1080p",
         status: "Ready",

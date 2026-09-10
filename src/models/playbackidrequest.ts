@@ -6,6 +6,11 @@
 
 import * as z from "zod/v4-mini";
 import {
+  AccessRestrictions,
+  AccessRestrictions$Outbound,
+  AccessRestrictions$outboundSchema,
+} from "./accessrestrictions.js";
+import {
   BasicAccessPolicy,
   BasicAccessPolicy$outboundSchema,
 } from "./basicaccesspolicy.js";
@@ -15,11 +20,16 @@ export type PlaybackIdRequest = {
    * Basic access policy for media content
    */
   accessPolicy?: BasicAccessPolicy | undefined;
+  /**
+   * Access control restrictions applied to the playback ID.
+   */
+  accessRestrictions?: AccessRestrictions | undefined;
 };
 
 /** @internal */
 export type PlaybackIdRequest$Outbound = {
   accessPolicy: string;
+  accessRestrictions?: AccessRestrictions$Outbound | undefined;
 };
 
 /** @internal */
@@ -28,6 +38,9 @@ export const PlaybackIdRequest$outboundSchema: z.ZodMiniType<
   PlaybackIdRequest
 > = z.object({
   accessPolicy: z._default(BasicAccessPolicy$outboundSchema, "public"),
+  accessRestrictions: z.optional(
+    z.lazy(() => AccessRestrictions$outboundSchema),
+  ),
 });
 
 export function playbackIdRequestToJSON(

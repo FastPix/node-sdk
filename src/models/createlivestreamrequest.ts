@@ -68,6 +68,12 @@ export type InputMediaSettings = {
    * @remarks
    */
   enableDvrMode?: boolean | undefined;
+  /**
+   * Controls whether the livestream is recorded to a VOD asset (Live-to-VOD). When true (default), FastPix records and stores the livestream for on-demand viewing. When false, the livestream is not recorded.
+   *
+   * @remarks
+   */
+  enableRecording?: boolean | undefined;
 };
 
 export type CreateLiveStreamRequest = {
@@ -93,6 +99,7 @@ export type InputMediaSettings$Outbound = {
   mediaPolicy: string;
   metadata?: { [k: string]: string } | undefined;
   enableDvrMode?: boolean | undefined;
+  enableRecording?: boolean | undefined;
 };
 
 /** @internal */
@@ -108,6 +115,7 @@ export const InputMediaSettings$outboundSchema: z.ZodMiniType<
   mediaPolicy: z._default(BasicAccessPolicy$outboundSchema, "public"),
   metadata: z.optional(z.record(z.string(), z.string())),
   enableDvrMode: z.optional(z.boolean()),
+  enableRecording: z.optional(z.boolean()),
 });
 
 export function inputMediaSettingsToJSON(

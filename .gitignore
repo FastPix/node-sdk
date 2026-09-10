@@ -1,6 +1,11 @@
 # Dependencies
 node_modules/
 
+# OpenAPI spec snapshot
+/openapi.yaml
+# Local dev check script
+/spec_sync_check.*
+
 # Build outputs
 dist/
 *.tsbuildinfo
